@@ -9,8 +9,9 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
-
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+    completions."
+  </string>
 
     <string name="end_interview"> اختتام </string>
     <string name="start_interview"> انٹرویو شروع کریں </string>
@@ -44,31 +45,17 @@
     <string name="participant_id">Participant ID</string>
 
     <!-- Strings that are fixed for all apps -->
-
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="dcother">دیگر(وضاحت کریں)</string>
     <string name="dcdkn">معلوم نہیں</string>
     <string name="dcyes">ہاں</string>
     <string name="dcno">نہیں</string>
-    <string name="title_activity_splashscreen">SplashscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="other"> ٻيو ڪو وضاحت ڪريو. </string>
-    <string name="dkn"> خبر نه آھي </string>
-    <string name="yes"> ھا </string>
-    <string name="no"> نه </string>
     <string name="dcna">قابل اطلاق نہیں</string>
     <string name="dctimes">تعداد</string>
     <string name="dcmale"> مرد </string>
     <string name="dcfemale"> عورت </string>
-    <string name="dcFrequency"> تعداد </string>
-    <string name="times">تعداد</string>
-    <string name="male"> مرد </string>
-    <string name="female"> عورت </string>
-    <string name="day"> ڏينهن </string>
-    <string name="month"> مهينو </string>
-    <string name="year"> سال </string>
-    <string name="hour"> ڪلاڪ </string>
-    <string name="min"> منٽ</string>
     <string name="Frequency"> تعداد </string>
 
     <string name="dcpro01">پروفیشنل / ٹیکنیکل / مینیجریل</string>
@@ -710,21 +697,6 @@
     <string name="dcl06"> 6) پچھلے ایک مہینے میں کیا آپ یا گھر کا کوئی اور فرد پورا ایک دن اور رات کھانے کی قلت کی وجہ سے بھوکا گزار ہے </string>
     <string name="dcl0601"> کبھی کبھار 2-1 بار </string>
     <string name="dcl0602"> کبھی کبھی 10-3 بار </string>
-    <string name="dcl0603"> اکثر 10 بار سے زیادہ </string>
-    <string name="dcm01sub">گھر کا ماحول</string>
-    <string name="dcm01"> 1) مندرجہ ذیل میں سے کونسا آپ کے گھر کو بہتر بیان کرسکتا ہے ؟ </string>
-    <string name="dcm0101"> گھر </string>
-    <string name="dcm0102"> اپارٹمنٹ/فلٹ کو دو حصوں میں تقسیم کرں </string>
-    <string name="dcm0103"> اپارٹمنٹ/فلیٹ 3 سے زیادہ </string>
-    <string name="dcm0104"> ہوٹل/موٹل </string>
-    <string name="dcm0105"> ٹریلر یا موبائل ہوم </string>
-    <string name="dcm0106"> روایتی مکان </string>
-    <string name="dcm0107"> عرضی گھر </string>
-    <string name="dcm02"> 2) آپ کے گھر میں سینیٹری (صفائی والی جگہ )کہاں ہیں </string>
-    <string name="dcm0201"> گھر کے اندر </string>
-    <string name="dcm0202"> گھر کے باہر </string>
-    <string name="dcm03"> 3) کیا اپ کے ہاں سیوریج لائن موجود ہے </string>
-    <string name="dcm04"> 4) کیا آپ کھانا زیادہ ترخود پکاتے ہے؟ </string>
     <string name="dcm05"> 5) کیاآپ گھر کے اُس کمرے میں سوتے ہے جہاں کھانا پکاتے ہے ؟ </string>
     <string name="dcm06"> 6) زیادہ تر کھانا کہاں پکاتے ہیں؟ </string>
     <string name="dcm0601"> آپ کے گھر کے اندر </string>
@@ -773,19 +745,6 @@
     <!-- RH Disease String Start -->
 
 
-    <string name="title_activity_splashscreen">SplashscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="other">دیگر(وضاحت کریں)</string>
-    <string name="dkn">معلوم نہیں</string>
-    <string name="yes">ہاں</string>
-    <string name="no">نہیں</string>
-    <string name="na">قابل اطلاق نہیں</string>
-    <string name="times">تعداد</string>
-    <string name="male"> مرد </string>
-    <string name="female"> عورت </string>
-    <string name="Frequency"> تعداد </string>
-
     <string name="USExam"> الٽراسائونڊ جو معائنو </string>
 
     <string name="f08a001">تعداد پيٽ ۾ ٻار</string>
@@ -801,8 +760,27 @@
     <string name="f08a006">ڊيگھ – مٿي کان پير تائين</string>
     <string name="f08a007">ڊگھي هڏي ۽ سٿر جي ڊيگھ </string>
     <string name="f08a008">آخري ماهواري تاريخ کان وقت</string>
+    <string name="f08a008w"> هفتن </string>
+    <string name="f08a008d"> ڏينهن </string>
     <string name="f08a009">پيٽ ۾ ٻار جي جڳھ</string>
+    <string name="f08a009a">Fundal</string>
+    <string name="f08a009b">Low anterior</string>
+    <string name="f08a009c">High anterior</string>
+    <string name="f08a009d">Low posterior</string>
+    <string name="f08a009e">High posterior</string>
+    <string name="f08a009f">Low right lateral</string>
+    <string name="f08a009g">High left lateral</string>
+    <string name="f08a009h">Low left lateral</string>
+    <string name="f08a009i">High right lateral</string>
+
+
     <string name="f08a010">20 کان 35 هفتن ۾ پاڻي چڪاس</string>
+    <string name="f08a010a">نارمل</string>
+    <string name="f08a010b">وچتي</string>
+    <string name="f08a010c">گھٽ</string>
+    <string name="f08a010d">تمام گھٽ</string>
+
+
     <string name="f08a011">ڪا به پيدائشي خرابي بيماري</string>
     <string name="f08a012">لکو ها پيدائشي خرابي / بيماري</string>
     <string name="f08a013">ٻار جو وزن</string>
