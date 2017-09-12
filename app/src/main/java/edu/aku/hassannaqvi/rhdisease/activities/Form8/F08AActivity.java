@@ -15,11 +15,8 @@ import android.widget.EditText;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.RadioButton;
-import android.widget.Button;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
@@ -296,20 +293,68 @@ public class F08AActivity extends Activity {
 
         JSONObject f8 = new JSONObject();
 
-        f8.put("f08a001", f08a001.getText().toString());
+
+        if (f08a001999.isChecked()) {
+            f8.put("f08a001", "999");
+        } else {
+            f8.put("f08a001", f08a001.getText().toString());
+        }
+
+
         f8.put("f08a002", f08a002a.isChecked() ? "1"
                 : f08a002b.isChecked() ? "2"
                 : f08a002c.isChecked() ? "3"
                 : f08a002d.isChecked() ? "4"
                 : 0);
 
-        f8.put("f08a003", f08a003.getText().toString());
-        f8.put("f08a004", f08a004.getText().toString());
-        f8.put("f08a005", f08a005.getText().toString());
-        f8.put("f08a006", f08a006.getText().toString());
-        f8.put("f08a007", f08a007.getText().toString());
-        f8.put("f08a008w", f08a008w.getText().toString());
-        f8.put("f08a008d", f08a008d.getText().toString());
+        if (f08a003999.isChecked()) {
+            f8.put("f08a003", "999");
+        } else {
+            f8.put("f08a003", f08a003.getText().toString());
+        }
+
+
+        if (f08a004999.isChecked()) {
+            f8.put("f08a004", "999");
+        } else {
+            f8.put("f08a004", f08a004.getText().toString());
+        }
+
+
+        if (f08a005999.isChecked()) {
+            f8.put("f08a005", "999");
+        } else {
+            f8.put("f08a005", f08a005.getText().toString());
+        }
+
+
+        if (f08a006999.isChecked()) {
+            f8.put("f08a006", "999");
+        } else {
+            f8.put("f08a006", f08a006.getText().toString());
+        }
+
+
+        if (f08a007999.isChecked()) {
+            f8.put("f08a007", "999");
+        } else {
+            f8.put("f08a007", f08a007.getText().toString());
+        }
+
+
+        if (f08a008w999.isChecked()) {
+            f8.put("f08a008w", "999");
+        } else {
+            f8.put("f08a008w", f08a008w.getText().toString());
+        }
+
+
+        if (f08a008d999.isChecked()) {
+            f8.put("f08a008d", "999");
+        } else {
+            f8.put("f08a008d", f08a008d.getText().toString());
+        }
+
 
         f8.put("f08a009", f08a009a.isChecked() ? "1"
                 : f08a009b.isChecked() ? "2"

@@ -192,14 +192,6 @@
 
         </RadioGroup>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/f09a002888"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
 
         <EditText
             android:id="@+id/f09a002888x"
@@ -209,7 +201,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz "
-            android:hint="@string/other" />
+            android:hint="@string/other"
+            android:visibility="gone" />
 
         <TextView
             android:layout_width="match_parent"
