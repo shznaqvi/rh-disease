@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcother" />
+                android:text="@string/other" />
 
         </RadioGroup>
 
@@ -167,14 +167,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm0302"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -196,14 +196,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm0402"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -225,14 +225,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm0502"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -352,14 +352,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm0902"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -381,14 +381,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1002"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -410,14 +410,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1102"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -439,14 +439,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1202"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -503,7 +503,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcother" />
+                android:text="@string/other" />
 
         </RadioGroup>
 
@@ -592,14 +592,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1502"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -621,14 +621,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1602"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
         </RadioGroup>
 
         <TextView
@@ -650,21 +650,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1702"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/dcm1799"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcdkn" />
+                android:text="@string/dkn" />
         </RadioGroup>
 
         <LinearLayout
@@ -737,21 +737,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1802"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/dcm1899"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcdkn" />
+                android:text="@string/dkn" />
         </RadioGroup>
 
         <TextView
@@ -773,21 +773,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm1902"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/dcm1999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcdkn" />
+                android:text="@string/dkn" />
         </RadioGroup>
 
         <TextView
@@ -809,21 +809,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcyes" />
+                android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/dcm2002"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcno" />
+                android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/dcm2099"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/dcdkn" />
+                android:text="@string/dkn" />
         </RadioGroup>
 
         <LinearLayout
