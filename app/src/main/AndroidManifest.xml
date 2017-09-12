@@ -53,8 +53,16 @@
         <activity android:name=".activities.Form9.F09AActivity" />
         <activity android:name=".activities.Form9.F09BActivtiy" />
         <activity android:name=".activities.Form4.F04AActivity" />
-        <activity android:name=".activities.Form3.F03AActivity" />
-        <activity android:name=".activities.Form10.F10AActivty" />
+        <activity
+            android:name=".activities.Form3.F03AActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activities.Form10.F10AActivty"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".activities.Form10.F10BActivity" />
         <activity android:name=".activities.Form10.F10CActivity" />
         <activity android:name=".activities.Form7.F07AActivity" />

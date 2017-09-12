@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#1A237E</color>
+    <color name="colorPrimaryDark">#311b92</color>
+    <!--<color name="colorPrimaryDark">#1A237E</color> ===== Blue -->
     <color name="colorPrimary">#9C27B0</color>
     <color name="colorPrimaryAlpha">#669C27B0</color>
     <color name="colorAccent">#EA80FC</color>
-    <color name="pink_100">#fce4ec</color>
+    <color name="pink_100">#e1bee7</color>
     <color name="colorHeading">#DFB29B</color>
 
 

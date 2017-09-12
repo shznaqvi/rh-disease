@@ -13,6 +13,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.format.DateFormat;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -58,6 +60,12 @@ public class MainApp extends Application {
     private static final long DAYS_IN_MONTH = 30;
     public static final long MILLISECONDS_IN_MONTH = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_MONTH;
     //public static final long MILLISECONDS_IN_100_YEAR = MILLISECONDS_IN_YEAR * 100;
+
+    private static final long DAYS_IN_13_WEEKS = (7 * 13);
+    public static final long MILLISECONDS_IN_13_WEEKS = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_13_WEEKS;
+
+    private static final long DAYS_IN_42_WEEKS = (7 * 42);
+    public static final long MILLISECONDS_IN_42_WEEKS = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_42_WEEKS;
 
     public static String deviceId;
 
@@ -225,6 +233,39 @@ public class MainApp extends Application {
         alert.show();
     }
 
+    public static void setGPS(Activity activity) {
+        SharedPreferences GPSPref = activity.getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+
+//        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+            String dt = GPSPref.getString("Time", "0");
+
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(activity, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(activity, "GPS set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            MainApp.fc.setGpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.fc.setGpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.fc.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+//            AppMain.fc.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
+            MainApp.fc.setGpsDT(date); // Timestamp is converted to date above
+
+            Toast.makeText(activity, "GPS set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e("GPS", "setGPS: " + e.getMessage());
+        }
+
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -319,7 +360,6 @@ public class MainApp extends Application {
         return provider1.equals(provider2);
     }
 
-
     public static class deadMemberClass {
 
         int position;
@@ -388,6 +428,7 @@ public class MainApp extends Application {
 
         }
     }
+
 
 }
 
