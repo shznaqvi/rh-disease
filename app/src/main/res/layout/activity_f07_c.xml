@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.aku.hassannaqvi.rhdisease.activities.Form7.F07CActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:layoutDirection="rtl"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="@string/sec07CLabel"
+            android:textSize="30sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <!--01-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c001"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/f07c001"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <CheckBox
+            android:id="@+id/f07c001999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/dkn" />
+
+        <!--02-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c002"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/f07c002"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <CheckBox
+            android:id="@+id/f07c002999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/dkn" />
+
+        <!--03-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c003"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/f07c003"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <CheckBox
+            android:id="@+id/f07c003999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/dkn" />
+
+        <!--04-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c004"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/f07c004"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <CheckBox
+            android:id="@+id/f07c004999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/dkn" />
+
+        <!--05-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c005"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/f07c005"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:maxLength="6" />
+
+        <CheckBox
+            android:id="@+id/f07c005999"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/dkn" />
+
+        <!--06-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c006"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <RadioGroup
+            android:id="@+id/f07c006"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/f07c006a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c006a" />
+
+            <EditText
+                android:id="@+id/f07c006aage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:inputType="textCapWords"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/f07c006b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/f07c006b" />
+
+            <RadioButton
+                android:id="@+id/f07c006999"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dkn" />
+
+        </RadioGroup>
+
+        <!--07-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c007"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <RadioGroup
+            android:id="@+id/f07c007"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/f07c007a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c007a" />
+
+            <EditText
+                android:id="@+id/f07c007aage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:inputType="textCapWords"
+                android:visibility="gone" />
+
+            <RadioButton
+                android:id="@+id/f07c007b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/f07c007b" />
+
+            <RadioButton
+                android:id="@+id/f07c007999"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dkn" />
+
+        </RadioGroup>
+
+        <!--08-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c008"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+           android:id="@+id/f07c008"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="1dp"
+           android:focusable="true"
+           android:hint="@string/f07c008"
+           android:textColor="@android:color/black"
+           app:dateFormat="dd-MM-yyyy" />
+
+        <!--09-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07c009"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+
+        <RadioGroup
+            android:id="@+id/f07c009"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/f07c009a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c009a" />
+
+            <RadioButton
+                android:id="@+id/f07c009b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c009b" />
+
+            <RadioButton
+                android:id="@+id/f07c009c"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c009c" />
+
+            <RadioButton
+                android:id="@+id/f07c009d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c009d" />
+
+            <RadioButton
+                android:id="@+id/f07c009e"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c009e" />
+
+            <RadioButton
+                android:id="@+id/f07c009f"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f07c009f" />
+
+            <RadioButton
+                android:id="@+id/f07c009888"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/other" />
+
+            <RadioButton
+                android:id="@+id/f07c009999"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/dkn" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/f07c009888x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:inputType="textCapWords"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_End"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/red"
+                android:text="@string/end_interview"
+                android:textColor="#ff1e1e" />
+
+            <Button
+                android:id="@+id/btn_Continue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green"
+                android:text="@string/start_interview"
+                android:textColor="#1ed61e" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
