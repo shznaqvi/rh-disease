@@ -10,6 +10,6 @@ public class F04AActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_f04);
+        setContentView(R.layout.activity_f04_a);
     }
 }
