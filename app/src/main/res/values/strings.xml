@@ -9,9 +9,8 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-    completions."
-  </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+
 
     <string name="end_interview"> اختتام </string>
     <string name="start_interview"> انٹرویو شروع کریں </string>
@@ -45,6 +44,11 @@
     <string name="participant_id">Participant ID</string>
 
     <!-- Strings that are fixed for all apps -->
+
+    <string name="dcother">دیگر(وضاحت کریں)</string>
+    <string name="dcdkn">معلوم نہیں</string>
+    <string name="dcyes">ہاں</string>
+    <string name="dcno">نہیں</string>
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -53,6 +57,10 @@
     <string name="yes"> ھا </string>
     <string name="no"> نه </string>
     <string name="dcna">قابل اطلاق نہیں</string>
+    <string name="dctimes">تعداد</string>
+    <string name="dcmale"> مرد </string>
+    <string name="dcfemale"> عورت </string>
+    <string name="dcFrequency"> تعداد </string>
     <string name="times">تعداد</string>
     <string name="male"> مرد </string>
     <string name="female"> عورت </string>
@@ -760,4 +768,45 @@
 
 
     <string name="rsvp"> کیا آپ جواب دہندہ ہیں؟ </string>
+
+
+    <!-- RH Disease String Start -->
+
+
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="other">دیگر(وضاحت کریں)</string>
+    <string name="dkn">معلوم نہیں</string>
+    <string name="yes">ہاں</string>
+    <string name="no">نہیں</string>
+    <string name="na">قابل اطلاق نہیں</string>
+    <string name="times">تعداد</string>
+    <string name="male"> مرد </string>
+    <string name="female"> عورت </string>
+    <string name="Frequency"> تعداد </string>
+
+    <string name="USExam"> الٽراسائونڊ جو معائنو </string>
+
+    <string name="f08a001">تعداد پيٽ ۾ ٻار</string>
+    <string name="f08a002">بريفنگ</string>
+    <string name="f08a002a"> Cephalic </string>
+    <string name="f08a002b"> Transverse </string>
+    <string name="f08a002c"> Breech </string>
+    <string name="f08a002d"> Oblique </string>
+
+    <string name="f08a003">ٻار جي دل جي ڌڙڪن</string>
+    <string name="f08a004">ٻار جي ماپ بابت</string>
+    <string name="f08a005">32 هفتن تي ٻار جو وزن ۽ ماپ</string>
+    <string name="f08a006">ڊيگھ – مٿي کان پير تائين</string>
+    <string name="f08a007">ڊگھي هڏي ۽ سٿر جي ڊيگھ </string>
+    <string name="f08a008">آخري ماهواري تاريخ کان وقت</string>
+    <string name="f08a009">پيٽ ۾ ٻار جي جڳھ</string>
+    <string name="f08a010">20 کان 35 هفتن ۾ پاڻي چڪاس</string>
+    <string name="f08a011">ڪا به پيدائشي خرابي بيماري</string>
+    <string name="f08a012">لکو ها پيدائشي خرابي / بيماري</string>
+    <string name="f08a013">ٻار جو وزن</string>
+
+    <!-- RH Disease String End -->
+
 </resources>
