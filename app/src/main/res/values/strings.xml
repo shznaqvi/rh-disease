@@ -48,15 +48,10 @@
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="dcother">دیگر(وضاحت کریں)</string>
-    <string name="dcdkn">معلوم نہیں</string>
-    <string name="dcyes">ہاں</string>
-    <string name="dcno">نہیں</string>
-    <string name="dcna">قابل اطلاق نہیں</string>
-    <string name="dctimes">تعداد</string>
-    <string name="dcmale"> مرد </string>
-    <string name="dcfemale"> عورت </string>
-    <string name="Frequency"> تعداد </string>
+    <string name="other"> ٻيو ڪو وضاحت ڪريو. </string>
+    <string name="dkn"> خبر نه آھي </string>
+    <string name="yes"> ھا </string>
+    <string name="no"> نه </string>
 
     <string name="dcpro01">پروفیشنل / ٹیکنیکل / مینیجریل</string>
     <string name="dcpro02">کلرک</string>
