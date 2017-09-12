@@ -1,7 +1,9 @@
-package edu.aku.hassannaqvi.rhdisease;
+package edu.aku.hassannaqvi.rhdisease.activities.FormInfo;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import edu.aku.hassannaqvi.rhdisease.R;
 
 public class ActivityIdentification extends Activity {
 

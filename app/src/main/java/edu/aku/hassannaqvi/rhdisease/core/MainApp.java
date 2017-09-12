@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import edu.aku.hassannaqvi.rhdisease.activities.EndingActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.CensusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;

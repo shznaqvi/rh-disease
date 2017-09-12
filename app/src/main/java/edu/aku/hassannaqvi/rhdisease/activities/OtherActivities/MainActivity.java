@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.rhdisease.activities;
+package edu.aku.hassannaqvi.rhdisease.activities.OtherActivities;
 
 import android.app.Activity;
 import android.app.AlertDialog;

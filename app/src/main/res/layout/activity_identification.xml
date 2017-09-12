@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.aku.hassannaqvi.rhdisease.ActivityIdentification">
+    tools:context="edu.aku.hassannaqvi.rhdisease.activities.FormInfo.ActivityIdentification">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
             android:textColor="@android:color/white" />
 
         <EditText
-            android:id="@+id/ta01"
+            android:id="@+id/participant_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:digits="0123456789"

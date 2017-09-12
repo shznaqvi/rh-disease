@@ -1,4 +1,4 @@
-package edu.aku.hassannaqvi.rhdisease.activities;
+package edu.aku.hassannaqvi.rhdisease.activities.OtherActivities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
