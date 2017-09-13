@@ -327,6 +327,12 @@
 
         </RadioGroup>
 
+        <LinearLayout
+            android:id="@+id/fldGrpEligible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -488,6 +494,8 @@
                 android:layout_height="match_parent"
                 android:hint="@string/participant_id" />
 
+
+        </LinearLayout>
 
         </LinearLayout>
 

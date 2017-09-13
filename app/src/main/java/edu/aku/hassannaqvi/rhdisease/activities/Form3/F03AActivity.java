@@ -33,7 +33,7 @@ import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
-public class F03AActivity extends AppCompatActivity {
+public class F03AActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private static final String TAG = F03AActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -118,16 +118,20 @@ public class F03AActivity extends AppCompatActivity {
     EditText participantID;
     @BindView(R.id.fldGrpf03a012)
     LinearLayout fldGrpf03a012;
+    @BindView(R.id.fldGrpEligible)
+    LinearLayout fldGrpEligible;
 
-    @BindViews({R.id.f03a001, R.id.f03a002, R.id.f03a003, R.id.f03a004, R.id.f03a005})
+
+    @BindViews({R.id.f03a001, R.id.f03a002, R.id.f03a003, R.id.f03a004, R.id.f03a005, R.id.f03a006, R.id.f03a007, R.id.f03a008})
     List<RadioGroup> f03aInclusion;
-    @BindViews({R.id.f03a001a, R.id.f03a002a, R.id.f03a003a, R.id.f03a004a, R.id.f03a005a})
+    @BindViews({R.id.f03a001a, R.id.f03a002a, R.id.f03a003a, R.id.f03a004a, R.id.f03a005a,
+            R.id.f03a006b, R.id.f03a007b, R.id.f03a008b})
     List<RadioButton> f03aInclusionYes;
-    @BindViews({R.id.f03a006, R.id.f03a007, R.id.f03a008})
+    /*@BindViews({R.id.f03a006, R.id.f03a007, R.id.f03a008})
     List<RadioGroup> f03aExclusion;
     @BindViews({R.id.f03a006b, R.id.f03a007b, R.id.f03a008b})
     List<RadioButton> f03aExclusionNo;
-
+*/
     Boolean check = false;
     Boolean flag = false;
 
@@ -172,6 +176,13 @@ public class F03AActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //================== Q7 Skip Pattern ===========
+        for (RadioGroup rg : f03aInclusion) {
+            rg.setOnCheckedChangeListener(this);
+        }
+
+
 
     }
 
@@ -280,7 +291,7 @@ public class F03AActivity extends AppCompatActivity {
     public boolean ValidateForm() {
 
 
-        // =================== celcn ====================
+        // =================== 1 ====================
         if (f03a001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a001), Toast.LENGTH_SHORT).show();
             f03a001a.setError("This data is required");
@@ -289,6 +300,131 @@ public class F03AActivity extends AppCompatActivity {
         } else {
             f03a001a.setError(null);
         }
+
+        // =================== 2 ====================
+        if (f03a002.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a002), Toast.LENGTH_SHORT).show();
+            f03a002a.setError("This data is required");
+            Log.d(TAG, "f03a002:empty ");
+            return false;
+        } else {
+            f03a002a.setError(null);
+        }
+
+
+        // =================== 3 ====================
+        if (f03a003.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a003), Toast.LENGTH_SHORT).show();
+            f03a003a.setError("This data is required");
+            Log.d(TAG, "f03a003:empty ");
+            return false;
+        } else {
+            f03a003a.setError(null);
+        }
+
+        // =================== 4 ====================
+        if (f03a004.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a004), Toast.LENGTH_SHORT).show();
+            f03a004a.setError("This data is required");
+            Log.d(TAG, "f03a004:empty ");
+            return false;
+        } else {
+            f03a004a.setError(null);
+        }
+
+        // =================== 5 ====================
+        if (f03a005.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a005), Toast.LENGTH_SHORT).show();
+            f03a005a.setError("This data is required");
+            Log.d(TAG, "f03a005:empty ");
+            return false;
+        } else {
+            f03a005a.setError(null);
+        }
+
+        // =================== 6 ====================
+        if (f03a006.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a006), Toast.LENGTH_SHORT).show();
+            f03a006a.setError("This data is required");
+            Log.d(TAG, "f03a006:empty ");
+            return false;
+        } else {
+            f03a006a.setError(null);
+        }
+
+        // =================== 7 ====================
+        if (f03a007.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a007), Toast.LENGTH_SHORT).show();
+            f03a007a.setError("This data is required");
+            Log.d(TAG, "f03a007:empty ");
+            return false;
+        } else {
+            f03a007a.setError(null);
+        }
+
+        // =================== 8 ====================
+        if (f03a008.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a008), Toast.LENGTH_SHORT).show();
+            f03a008a.setError("This data is required");
+            Log.d(TAG, "f03a008:empty ");
+            return false;
+        } else {
+            f03a008a.setError(null);
+        }
+
+        if (isInclude()) {
+
+            // =================== 10 ====================
+            if (f03a010.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a010), Toast.LENGTH_SHORT).show();
+                f03a010a.setError("This data is required");
+                Log.d(TAG, "f03a010:empty ");
+                return false;
+            } else {
+                f03a002a.setError(null);
+            }
+
+            if (!f03a010a.isChecked()) {
+                if (f03a011.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a011), Toast.LENGTH_SHORT).show();
+                    f03a011a.setError("This data is required");
+                    Log.d(TAG, "f03a011:empty ");
+                    return false;
+                } else {
+                    f03a011a.setError(null);
+                }
+
+                if (f03a011888.isChecked() && f03a011888.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a011) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                    f03a011888x.setError("This data is Required!");
+
+                    Log.i(TAG, "f03a011888x: This Data is Required!");
+                    return false;
+                } else {
+                    f03a011888x.setError(null);
+                }
+            }
+
+            if (f03a012.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a012), Toast.LENGTH_SHORT).show();
+                f03a012a.setError("This data is required");
+                Log.d(TAG, "f03a012:empty ");
+                return false;
+            } else {
+                f03a012a.setError(null);
+            }
+
+            if (participantID.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.participant_id), Toast.LENGTH_SHORT).show();
+                participantID.setError("This data is required");
+                Log.d(TAG, "participantID:empty ");
+                return false;
+            } else {
+                participantID.setError(null);
+            }
+
+        }
+
 
         return true;
     }
@@ -300,5 +436,36 @@ public class F03AActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+    //=== Eligibility Skip pattern
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
 
+        if (isInclude()) {
+            fldGrpEligible.setVisibility(View.VISIBLE);
+        } else {
+            fldGrpEligible.setVisibility(View.GONE);
+            f03a010.clearCheck();
+            f03a011.clearCheck();
+            f03a011888x.setText(null);
+            f03a012.clearCheck();
+            participantID.setText(null);
+        }
+
+    }
+
+
+    public boolean isInclude() {
+
+        int i = 0;
+        for (RadioButton rg : f03aInclusionYes) {
+            if (rg.isChecked()) {
+                i++;
+            }
+
+        }
+
+
+        // Show answer here
+        return i == f03aInclusionYes.size();
+    }
 }
