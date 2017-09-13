@@ -26,6 +26,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
@@ -101,8 +102,6 @@ public class F03AActivity extends AppCompatActivity {
     RadioButton f03a011a;
     @BindView(R.id.f03a011b)
     RadioButton f03a011b;
-    @BindView(R.id.f03a011c)
-    RadioButton f03a011c;
     @BindView(R.id.f03a011888)
     RadioButton f03a011888;
     @BindView(R.id.f03a011999)

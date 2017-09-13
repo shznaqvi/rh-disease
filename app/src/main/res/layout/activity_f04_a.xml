@@ -15,33 +15,38 @@
         android:layoutDirection="rtl"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimary" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             android:gravity="center"
             android:text="@string/f04heading"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/pink_100"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginTop="5dp"
             android:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:background="@color/pink_100"
             android:gravity="center"
-            android:text="@string/f04subheading"
+            android:text="Baseline Knowledge"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView2"
@@ -210,7 +215,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a002999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a002888x"
@@ -354,7 +359,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a003777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a003888"
@@ -368,7 +373,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a003999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a003888x"
@@ -498,7 +503,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a004777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a004888"
@@ -512,7 +517,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a004999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a004888x"
@@ -642,7 +647,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a005777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a005888"
@@ -656,7 +661,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a005999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a005888x"
@@ -736,7 +741,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a006777" />
+                    android:text="@string/f04a002777" />
 
                 <RadioButton
                     android:id="@+id/f04a006888"
@@ -750,7 +755,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a006999" />
+                    android:text="@string/dkn" />
 
             </RadioGroup>
 
@@ -819,7 +824,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a007777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a007888"
@@ -833,7 +838,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a007999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a007888x"
@@ -921,7 +926,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a008777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a008888"
@@ -935,7 +940,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a008999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a008888x"
@@ -995,7 +1000,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a009777" />
+                    android:text="@string/f04a002777" />
 
                 <RadioButton
                     android:id="@+id/f04a009888"
@@ -1009,7 +1014,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a009999" />
+                    android:text="@string/dkn" />
 
             </RadioGroup>
 
@@ -1071,7 +1076,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a010777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a010888"
@@ -1085,7 +1090,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a010999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a010888x"
@@ -1164,7 +1169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a011999" />
+                    android:text="@string/f04a002777" />
 
             </RadioGroup>
 
@@ -1318,7 +1323,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a012777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a012888"
@@ -1332,7 +1337,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a012999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a012888x"
@@ -1413,7 +1418,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a013777" />
+                    android:text="@string/f04a002777" />
 
 
                 <RadioButton
@@ -1428,7 +1433,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a013999" />
+                    android:text="@string/dkn" />
 
             </RadioGroup>
 
@@ -1476,7 +1481,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f04a014999" />
+                android:text="@string/dkn" />
 
         </RadioGroup>
 
@@ -1550,7 +1555,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a015777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a015888"
@@ -1564,7 +1569,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a015999" />
+                android:text="@string/dkn" />
 
             <EditText
                 android:id="@+id/f04a015888x"
@@ -1610,7 +1615,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f04a016999" />
+                android:text="@string/dkn" />
 
         </RadioGroup>
 
@@ -1754,7 +1759,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="@string/f04a017777" />
+                android:text="@string/f04a002777" />
 
             <CheckBox
                 android:id="@+id/f04a017888"
@@ -1807,7 +1812,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f04a018999" />
+                android:text="@string/dkn" />
 
         </RadioGroup>
 
@@ -1907,14 +1912,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a019777" />
+                    android:text="@string/f04a002777" />
 
                 <RadioButton
                     android:id="@+id/f04a019888"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
-                    android:text="@string/f04a019888" />
+                    android:text="@string/other" />
 
             </RadioGroup>
 

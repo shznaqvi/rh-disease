@@ -3,20 +3,11 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form9;
 import android.app.Activity;
 import android.os.Bundle;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.rhdisease.R;
-import edu.aku.hassannaqvi.rhdisease.core.MainApp;
-
-import org.json.JSONObject;
-import org.json.JSONException;
-
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.CheckBox;
-import android.widget.RadioGroup;
-import android.widget.RadioButton;
-import android.widget.Toast;
 
 
 public class F09AActivity extends Activity {
@@ -35,7 +26,7 @@ public class F09AActivity extends Activity {
 
         JSONObject f9 = new JSONObject();
 
-        f9.put("f09hcwid", f09hcwid.getText().toString());
+        /*f9.put("f09hcwid", f09hcwid.getText().toString());
         f9.put("f09facid", f09facid.getText().toString());
         f9.put("f09gawk", f09gawk.getText().toString());
         f9.put("f09gad", f09gad.getText().toString());
@@ -194,7 +185,7 @@ public class F09AActivity extends Activity {
 
 
         f9.put("f09b019888x", f09b019888x.getText().toString());
-
+*/
         //MainApp.fc.setsF(String.valueOf(f9));
 
     }

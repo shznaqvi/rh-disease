@@ -19,8 +19,9 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.aku.hassannaqvi.rhdisease.R;
 
-public class ActivityF04AActivity extends Activity {
+public class F04AActivity extends Activity {
 
     @BindView(R.id.textView)
     TextView textView;
