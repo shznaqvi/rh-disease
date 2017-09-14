@@ -530,11 +530,11 @@
 
     <!-- Form 09-->
 
-    <string name="hcw">ايڇ سي ڊبليو آئي ڊي</string>
-    <string name="facility">سهولت ڪار جو نالو ۽ شناخت</string>
+    <string name="f09hcwid">ايڇ سي ڊبليو آئي ڊي</string>
+    <string name="f09facid">سهولت ڪار جو نالو ۽ شناخت</string>
     <string name="ga">شرڪت ڪندڙ جي مدت لکو</string>
-    <string name="weeks">هفتا</string>
-    <string name="days">ڏينهن</string>
+    <string name="f09gawk">هفتا</string>
+    <string name="f09gad">ڏينهن</string>
 
     <string name="f09heading"> Form 9: Point of care test: Results and Acceptability </string>
     <string name="f09ALabel"> (سارسنڀال) ٽيسٽ</string>
