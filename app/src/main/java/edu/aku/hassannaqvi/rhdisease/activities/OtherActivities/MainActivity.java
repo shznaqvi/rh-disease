@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
@@ -31,9 +30,8 @@ import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.rhdisease.FormsList;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
-import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
-import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForms;
 
@@ -114,7 +112,7 @@ public class MainActivity extends Activity {
         /*TagID End*/
 
 
-        DatabaseHelper db = new DatabaseHelper(this);
+        /*DatabaseHelper db = new DatabaseHelper(this);
         Collection<FormsContract> todaysForms = db.getTodayForms();
         Collection<FormsContract> unsyncedForms = db.getUnsyncedForms();
 
@@ -162,7 +160,7 @@ public class MainActivity extends Activity {
                 rSumText += "--------------------------------------------------\r\n";
             }
         }
-
+*/
 
         if (MainApp.admin) {
             adminsec.setVisibility(View.VISIBLE);
@@ -172,7 +170,7 @@ public class MainActivity extends Activity {
             rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
             rSumText += "\r\n";
             rSumText += "\r\n";
-            rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
+            //rSumText += "Unsynced Forms: \t" + unsyncedForms.size();
             rSumText += "\r\n";
         }
         Log.d(TAG, "onCreate: " + rSumText);
@@ -184,6 +182,7 @@ public class MainActivity extends Activity {
     public void openForm(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             Intent oF = new Intent(MainActivity.this, F03AActivity.class);
+            MainApp.formType = "3";
             startActivity(oF);
         } else {
 
@@ -207,6 +206,7 @@ public class MainActivity extends Activity {
 
                         if (!MainApp.userName.equals("0000")) {
                             Intent oF = new Intent(MainActivity.this, F03AActivity.class);
+                            MainApp.formType = "3";
                             startActivity(oF);
                         }
                     }
@@ -270,8 +270,33 @@ public class MainActivity extends Activity {
         startActivity(iMem);
     }
 */
-    public void openA(View v) {
-        Intent iA = new Intent(this, F03AActivity.class);
+    public void openForm4(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "4";
+        startActivity(iA);
+    }
+
+    public void openForm7(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "7";
+        startActivity(iA);
+    }
+
+    public void openForm8(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "8";
+        startActivity(iA);
+    }
+
+    public void openForm9(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "9";
+        startActivity(iA);
+    }
+
+    public void openForm10(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "10";
         startActivity(iA);
     }
 

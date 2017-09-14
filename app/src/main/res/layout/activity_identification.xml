@@ -12,18 +12,26 @@
         android:layoutDirection="rtl"
         android:orientation="vertical">
 
-    <TextView
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimary" />
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="2dp"
+            android:background="@color/colorPrimaryDark"
         android:gravity="center"
         android:text="Identificaiton"
-        android:textSize="30sp" />
+            android:textSize="30sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginTop="5dp"
             android:background="@color/colorPrimary" />
 
         <TextView
@@ -35,18 +43,43 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
 
-        <EditText
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCheck"
+                style="@style/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="2.5"
+                android:background="@color/colorPrimaryDark"
+                android:elevation="2dp"
+                android:padding="5dp"
+                android:text="CHECK"
+                android:textColor="@color/white" />
+
+            <EditText
             android:id="@+id/participant_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+                android:layout_weight="1"
             android:digits="0123456789"
             android:inputType="number"
-            android:maxLength="6" />
+                android:maxLength="6" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginTop="80dp"
             android:orientation="horizontal">
 
             <Button
@@ -56,7 +89,8 @@
                 android:layout_weight="1"
                 android:backgroundTint="@color/red"
                 android:text="@string/end_interview"
-                android:textColor="#ff1e1e" />
+                android:textColor="#ff1e1e"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btn_Continue"
