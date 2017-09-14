@@ -31,6 +31,7 @@ import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.rhdisease.FormsList;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
@@ -276,8 +277,8 @@ public class MainActivity extends Activity {
     }
 
     public void openB(View v) {
-        /*Intent iB = new Intent(this, SectionBActivity.class);
-        startActivity(iB);*/
+        Intent iB = new Intent(this, F04AActivity.class);
+        startActivity(iB);
     }
 
     public void openC(View v) {
