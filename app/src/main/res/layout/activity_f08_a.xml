@@ -15,19 +15,39 @@
         android:layoutDirection="rtl"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimary" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="2dp"
+            android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:text="@string/USExam"
-            android:textSize="30sp" />
+            android:text="@string/f08heading"
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginTop="5dp"
             android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/pink_100"
+            android:gravity="center"
+            android:text="@string/f08ALabel"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
 
         <TextView
             android:layout_width="match_parent"
@@ -253,7 +273,7 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a008w" />
+            android:hint="@string/weeks" />
 
         <CheckBox
             android:id="@+id/f08a008w999"
@@ -270,7 +290,7 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a008d" />
+            android:hint="@string/days" />
 
         <CheckBox
             android:id="@+id/f08a008d999"

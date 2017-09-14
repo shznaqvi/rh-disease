@@ -3,25 +3,21 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form8;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-import org.json.JSONObject;
-import org.json.JSONException;
-
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.CheckBox;
-import android.widget.RadioGroup;
-import android.widget.RadioButton;
-import android.widget.Toast;
-
-
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.MainActivity;
-import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F08AActivity extends Activity {
@@ -211,7 +207,7 @@ public class F08AActivity extends Activity {
 
         //        08w
         if (f08a008w.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.f08a008w), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.weeks), Toast.LENGTH_SHORT).show();
             f08a008w.setError("This data is Required!");    // Set Error on last radio button
             Log.i(TAG, "f08a008w: This data is Required!");
             return false;
@@ -222,7 +218,7 @@ public class F08AActivity extends Activity {
 
         //        08d
         if (f08a008d.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.f08a008d), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.days), Toast.LENGTH_SHORT).show();
             f08a008d.setError("This data is Required!");    // Set Error on last radio button
             Log.i(TAG, "f08a008d: This data is Required!");
             return false;

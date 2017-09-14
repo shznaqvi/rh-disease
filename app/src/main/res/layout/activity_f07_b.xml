@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,19 +12,39 @@
         android:layoutDirection="rtl"
         android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/colorPrimary" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="2dp"
+            android:background="@color/colorPrimaryDark"
             android:gravity="center"
-            android:text="@string/sec07BLabel"
-            android:textSize="30sp" />
+            android:text="@string/f07heading"
+            android:textSize="40sp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_marginTop="5dp"
             android:background="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/pink_100"
+            android:gravity="center"
+            android:text="@string/sec07BLabel"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
 
         <!--01-->
         <TextView
@@ -453,11 +472,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00701"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
-
+            android:textColor="@color/dullBlack" />
         <RadioGroup
             android:id="@+id/f07b00701"
             android:layout_width="match_parent"
@@ -490,10 +508,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00702"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00702"
@@ -527,11 +545,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00703"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
-
+            android:textColor="@color/dullBlack" />
         <RadioGroup
             android:id="@+id/f07b00703"
             android:layout_width="match_parent"
@@ -564,10 +581,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00704"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00704"
@@ -601,11 +618,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00705"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
-
+            android:textColor="@color/dullBlack" />
         <RadioGroup
             android:id="@+id/f07b00705"
             android:layout_width="match_parent"
@@ -638,10 +654,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00706"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00706"
@@ -675,11 +691,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00707"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
-
+            android:textColor="@color/dullBlack" />
         <RadioGroup
             android:id="@+id/f07b00707"
             android:layout_width="match_parent"
@@ -712,11 +727,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00708"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
-
+            android:textColor="@color/dullBlack" />
         <RadioGroup
             android:id="@+id/f07b00708"
             android:layout_width="match_parent"
@@ -749,10 +763,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00709"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00709"
@@ -786,10 +800,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00710"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00710"
@@ -823,11 +837,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00711"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
-
+            android:textColor="@color/dullBlack" />
         <RadioGroup
             android:id="@+id/f07b00711"
             android:layout_width="match_parent"
@@ -860,10 +873,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00712"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00712"
@@ -897,10 +910,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00713"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00713"
@@ -934,10 +947,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00714"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00714"
@@ -971,10 +984,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00715"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00715"
@@ -1008,10 +1021,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00716"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00716"
@@ -1045,10 +1058,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00717"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00717"
@@ -1082,10 +1095,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b00718"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b00718"
@@ -1690,10 +1703,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01601"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b01601"
@@ -1727,10 +1740,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01602"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b01602"
@@ -1764,10 +1777,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01603"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b01603"
@@ -1801,10 +1814,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01604"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <RadioGroup
             android:id="@+id/f07b01604"
@@ -1922,10 +1935,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01901"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01901"
@@ -1939,10 +1952,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01902"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01902"
@@ -1956,10 +1969,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01903"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01903"
@@ -1973,10 +1986,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01904"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01904"
@@ -1990,10 +2003,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01905"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01905"
@@ -2007,10 +2020,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01906"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01906"
@@ -2024,10 +2037,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryAlpha"
             android:text="@string/f07b01907"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            android:textColor="@color/dullBlack" />
 
         <EditText
             android:id="@+id/f07b01907"

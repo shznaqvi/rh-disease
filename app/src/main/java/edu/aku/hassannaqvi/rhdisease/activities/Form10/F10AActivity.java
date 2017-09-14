@@ -1,6 +1,7 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form10;
 
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -14,14 +15,18 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
+
+/**
+ * Created by gul.sanober on 13-Sep-17.
+ */
 
 public class F10AActivity extends AppCompatActivity {
 
@@ -224,6 +229,14 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a01109999;
     @BindView(R.id.f10a01110)
     RadioGroup f10a01110;
+    @BindView(R.id.f10a01110a)
+    RadioButton f10a01110a;
+    @BindView(R.id.f10a01110b)
+    RadioButton f10a01110b;
+    @BindView(R.id.f10a01110999)
+    RadioButton f10a01110999;
+    @BindView(R.id.f10a01111)
+    RadioGroup f10a01111;
     @BindView(R.id.f10a01111a)
     RadioButton f10a01111a;
     @BindView(R.id.f10a01111b)
@@ -264,6 +277,7 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a011888999;
     @BindView(R.id.f10a011888x)
     EditText f10a011888x;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -345,6 +359,20 @@ public class F10AActivity extends AppCompatActivity {
             }
         });
 
+        f10a008.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                if (!f10a008a.isChecked()) {
+                    fldGrpf10a009.setVisibility(View.GONE);
+                    f10a009.clearCheck();
+                    f10a009888x.setText(null);
+                } else {
+                    fldGrpf10a009.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
         f10a009888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -357,9 +385,45 @@ public class F10AActivity extends AppCompatActivity {
             }
         });
 
+        f10a010.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+                if (!f10a010a.isChecked()) {
+                    fldGrpf10a011.setVisibility(View.GONE);
+                    f10a01101.clearCheck();
+                    f10a01102.clearCheck();
+                    f10a01103.clearCheck();
+                    f10a01104.clearCheck();
+                    f10a01105.clearCheck();
+                    f10a01106.clearCheck();
+                    f10a01107.clearCheck();
+                    f10a01108.clearCheck();
+                    f10a01109.clearCheck();
+                    f10a01110.clearCheck();
+                    f10a01111.clearCheck();
+                    f10a01112.clearCheck();
+                    f10a01113.clearCheck();
+                    f10a01114.clearCheck();
+                    f10a011888.clearCheck();
+                    f10a011888x.setText(null);
 
+                } else {
+                    fldGrpf10a011.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
-
+        f10a011888a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
+                    f10a011888x.setVisibility(View.VISIBLE);
+                } else {
+                    f10a011888x.setVisibility(View.GONE);
+                    f10a011888x.setText(null);
+                }
+            }
+        });
 
 
     }
@@ -406,7 +470,7 @@ public class F10AActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
 
-        return true
+        return true;
     }
 
     public boolean ValidateForm() {
@@ -429,7 +493,6 @@ public class F10AActivity extends AppCompatActivity {
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "You Can't go back", Toast.LENGTH_LONG).show();
     }*/
-
 
 
 }

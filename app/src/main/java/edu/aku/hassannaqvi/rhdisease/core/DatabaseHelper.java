@@ -22,6 +22,7 @@ import edu.aku.hassannaqvi.rhdisease.contracts.CensusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.CensusContract.censusMember;
 import edu.aku.hassannaqvi.rhdisease.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.DeceasedContract.DeceasedMember;
+import edu.aku.hassannaqvi.rhdisease.contracts.F8;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.HouseholdContract;
@@ -53,6 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "rhdisease.db";
     public static final String DB_NAME = "rhdisease_copy.db";
     private static final int DATABASE_VERSION = 1;
+
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsContract.FormsTable.TABLE_NAME + "("
             + FormsTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -83,6 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsContract.FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsContract.FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
     private static final String SQL_CREATE_HOUSEHOLD = "CREATE TABLE "
             + householdForm.TABLE_NAME + "("
             + householdForm.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -100,6 +103,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             householdForm.COLUMN_SYNCED + " TEXT," +
             householdForm.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
     private static final String SQL_CREATE_CENSUS = "CREATE TABLE "
             + censusMember.TABLE_NAME + "("
             + censusMember.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -146,6 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             censusMember.COLUMN_SYNCED + " TEXT," +
             censusMember.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
+
     private static final String SQL_CREATE_MEMBERS = "CREATE TABLE "
             + singleMember.TABLE_NAME + "("
             + singleMember.COLUMN_ID + " TEXT," +
@@ -171,6 +176,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             singleMember.COLUMN_OCCUPATION + " TEXT," +
             singleMember.COLUMN_MEMBER_TYPE + " TEXT" +
             " );";
+
     private static final String SQL_CREATE_DECEASED = "CREATE TABLE "
             + DeceasedMember.TABLE_NAME + "("
             + DeceasedMember.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -249,6 +255,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             " );";
 
 
+    /*private static final String SQL_CREATE_F8 = "CREATE TABLE "
+            + F8.TABLE_NAME + "("
+            + F8.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            F8.COLUMN_PROJECT_NAME + " TEXT," +
+            F8.COLUMN_DEVICETAGID + " TEXT," +
+            F8.COLUMN_UUID + " TEXT," +
+            F8.COLUMN_UID + " TEXT," +
+            F8.COLUMN_SK + " TEXT," +
+            F8.COLUMN_FORMDATE + " TEXT," +
+            F8.COLUMN_USER + " TEXT," +
+            F8.COLUMN_CHILDID + " TEXT," +
+            F8.COLUMN_MM + " TEXT," +
+            F8.COLUMN_DSSID + " TEXT," +
+            F8.COLUMN_DEVICEID + " TEXT," +
+            F8.COLUMN_ISTATUS + " TEXT," +
+            F8.COLUMN_SYNCED + " TEXT," +
+            F8.COLUMN_SYNCED_DATE + " TEXT" +
+            " );";*/
+
+
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + singleUser.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
@@ -279,9 +305,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public DatabaseHelper(Context context) {
-
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -296,6 +320,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_MOTHER);
         db.execSQL(SQL_CREATE_SEC_K_IM);
 
+        //db.execSQL(SQL_CREATE_F8);
     }
 
     @Override
