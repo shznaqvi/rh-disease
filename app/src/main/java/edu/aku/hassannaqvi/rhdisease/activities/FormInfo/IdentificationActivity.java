@@ -60,7 +60,7 @@ public class IdentificationActivity extends Activity {
     @OnClick(R.id.btn_Continue)
     void onBtnContinueClick() {
 
-        if (check) {
+        //if (check) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -91,9 +91,9 @@ public class IdentificationActivity extends Activity {
             } else {
                 Toast.makeText(this, "Failed to update Database", Toast.LENGTH_SHORT).show();
             }
-        } else {
+        /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     private void SaveDraft() throws JSONException {
