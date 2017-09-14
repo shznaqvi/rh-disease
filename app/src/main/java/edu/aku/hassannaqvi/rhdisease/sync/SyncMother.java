@@ -1,8 +1,10 @@
+/*
 package edu.aku.hassannaqvi.rhdisease.sync;
 
-/**
+*
  * Created by hassan.naqvi on 12/2/2016.
- */
+
+
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -23,14 +25,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
 
-import edu.aku.hassannaqvi.rhdisease.contracts.MotherContract;
-import edu.aku.hassannaqvi.rhdisease.contracts.MotherContract.MotherTB;
+
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
-/**
+*
  * Created by hassan.naqvi on 7/26/2016.
- */
+
+
 public class SyncMother extends AsyncTask<Void, Void, String> {
 
     private static final String TAG = "SyncMother";
@@ -64,8 +66,8 @@ public class SyncMother extends AsyncTask<Void, Void, String> {
 
         String line = "No Response";
         try {
-            String url = MainApp._HOST_URL + MotherTB._URL;
-            Log.d(TAG, "doInBackground: URL " + url);
+            //String url = MainApp._HOST_URL + MotherTB._URL;
+            //Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
             return "Unable to upload data. Server may be down.";
@@ -124,8 +126,12 @@ public class SyncMother extends AsyncTask<Void, Void, String> {
 
                     conn = (HttpURLConnection) url.openConnection();
 
-                    conn.setReadTimeout(20000 /* milliseconds */);
-                    conn.setConnectTimeout(30000 /* milliseconds */);
+                    conn.setReadTimeout(20000
+ milliseconds
+);
+                    conn.setConnectTimeout(30000
+ milliseconds
+);
                     conn.setRequestMethod("POST");
                     conn.setDoOutput(true);
                     conn.setDoInput(true);
@@ -152,7 +158,8 @@ public class SyncMother extends AsyncTask<Void, Void, String> {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                   /*===================================================================*/
+===================================================================
+
 
                     BufferedReader br = new BufferedReader(new InputStreamReader(
                             conn.getInputStream(), "utf-8"));
@@ -180,7 +187,9 @@ public class SyncMother extends AsyncTask<Void, Void, String> {
             return "No new records to sync";
         }
         return line;
-                /*===================================================================*/
+===================================================================
+
 
     }
 }
+*/

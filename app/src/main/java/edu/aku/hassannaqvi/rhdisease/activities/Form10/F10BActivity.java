@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form10;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -21,6 +22,7 @@ import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F10BActivity extends Activity {
 
+    private static final String TAG = F10BActivity.class.getSimpleName();
     @BindView(R.id.f10b001)
     RadioGroup f10b001;
     @BindView(R.id.f10b001a)
@@ -183,16 +185,109 @@ public class F10BActivity extends Activity {
 
     public boolean ValidateForm() {
 
-       /* if (cen25.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.cen25), Toast.LENGTH_SHORT).show();
-            cen25.setError("This data is Required!");
+        if (f10b001.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b001), Toast.LENGTH_SHORT).show();
+            f10b001a.setError("This data is Required!");
 
-            Log.i(TAG, "cen25: This Data is Required!");
+            Log.i(TAG, "f10b001: This Data is Required!");
             return false;
         } else {
-            cen25.setError(null);
-        }*/
+            f10b001a.setError(null);
+        }
 
+        if (f10b002.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b002), Toast.LENGTH_SHORT).show();
+            f10b002a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b002: This Data is Required!");
+            return false;
+        } else {
+            f10b002a.setError(null);
+        }
+
+        if (f10b003.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b003), Toast.LENGTH_SHORT).show();
+            f10b003a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b003: This Data is Required!");
+            return false;
+        } else {
+            f10b003a.setError(null);
+        }
+
+        if (f10b004.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b004), Toast.LENGTH_SHORT).show();
+            f10b004a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b004: This Data is Required!");
+            return false;
+        } else {
+            f10b004a.setError(null);
+        }
+
+        if (f10b004a.isChecked()) {
+            if (f10b004x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b004a), Toast.LENGTH_SHORT).show();
+                f10b004x.setError("This data is Required!");
+
+                Log.i(TAG, "f10b004x: This Data is Required!");
+                return false;
+            } else {
+                f10b004x.setError(null);
+            }
+        }
+
+        if (!(f10b005a.isChecked() || f10b005b.isChecked() || f10b005c.isChecked() || f10b005d.isChecked()
+                || f10b005e.isChecked() || f10b005f.isChecked() || f10b005g.isChecked() || f10b005999.isChecked()
+                || f10b005888.isChecked())) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b005), Toast.LENGTH_SHORT).show();
+            f10b005a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b005: This Data is Required!");
+            return false;
+        } else {
+            f10b005a.setError(null);
+        }
+
+        if (f10b005888.isChecked() && f10b005888x.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b005) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+            f10b005888.setError("This data is Required!");
+
+            Log.i(TAG, "f10b005888x: This Data is Required!");
+            return false;
+        } else {
+            f10b005888x.setError(null);
+        }
+
+        if (f10b006.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b006), Toast.LENGTH_SHORT).show();
+            f10b006a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b006: This Data is Required!");
+            return false;
+        } else {
+            f10b006a.setError(null);
+        }
+
+        if (f10b007.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b007), Toast.LENGTH_SHORT).show();
+            f10b007a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b007: This Data is Required!");
+            return false;
+        } else {
+            f10b007a.setError(null);
+        }
+
+        if (f10b008.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10b008), Toast.LENGTH_SHORT).show();
+            f10b008a.setError("This data is Required!");
+
+            Log.i(TAG, "f10b008: This Data is Required!");
+            return false;
+        } else {
+            f10b008a.setError(null);
+        }
 
         return true;
     }

@@ -12,30 +12,27 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private final String projectName = "DSS Census";
+    private final String projectName = "rh - Disease";
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
-    private String ISNEW = "";
-    private String DSSID = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
-
-
+    private String participantID = "";
+    private String formType = "";
+    private String info = "";
     private String istatus = ""; // Interview Status
-    private String sA = "";
-    //private String sB = ""; // commented out for Members
-    //private String sC = ""; // Commented out for Deceased
-    private String sD = "";
-    private String sE = "";
-    private String sF = "";
-    private String sG = "";
-    private String sH = "";
-    private String sI = "";
-    private String sJ = "";
-    private String sK = "";
-    private String sL = "";
-    private String sM = "";
+    private String f03 = "";
+    private String f04 = "";
+    private String f07a = "";
+    private String f07b = "";
+    private String f07c = "";
+    private String f07d = "";
+    private String f08 = "";
+    private String f09 = "";
+    private String f10a = "";
+    private String f10b = "";
+    private String f10c = "";
 
 
     private String gpsLat = "";
@@ -52,64 +49,72 @@ public class FormsContract {
 
 
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
-        this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
-        this._UID = jsonObject.getString(FormsTable.COLUMN_UID);
-        this.ISNEW = jsonObject.getString(FormsTable.COLUMN_IS_NEW);
-        this.DSSID = jsonObject.getString(FormsTable.COLUMN_DSSID);
-        this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
+
+        this._ID = jsonObject.getString(FormsTable.COLUMN__ID);
+        this._UID = jsonObject.getString(FormsTable.COLUMN__UID);
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
+        this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANTID);
+        this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
+        this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
+        this.info = jsonObject.getString(FormsTable.COLUMN_INFO);
+        this.f03 = jsonObject.getString(FormsTable.COLUMN_F03);
+        this.f04 = jsonObject.getString(FormsTable.COLUMN_F04);
+        this.f07a = jsonObject.getString(FormsTable.COLUMN_F07A);
+        this.f07b = jsonObject.getString(FormsTable.COLUMN_F07B);
+        this.f07c = jsonObject.getString(FormsTable.COLUMN_F07C);
+        this.f07d = jsonObject.getString(FormsTable.COLUMN_F07D);
+        this.f08 = jsonObject.getString(FormsTable.COLUMN_F08);
+        this.f09 = jsonObject.getString(FormsTable.COLUMN_F09);
+        this.f10a = jsonObject.getString(FormsTable.COLUMN_F10A);
+        this.f10b = jsonObject.getString(FormsTable.COLUMN_F10B);
+        this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
-        this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
-        this.sD = jsonObject.getString(FormsTable.COLUMN_SD);
-        this.sE = jsonObject.getString(FormsTable.COLUMN_SE);
-        this.sF = jsonObject.getString(FormsTable.COLUMN_SF);
-        this.sG = jsonObject.getString(FormsTable.COLUMN_SG);
-        this.sH = jsonObject.getString(FormsTable.COLUMN_SH);
-        this.sI = jsonObject.getString(FormsTable.COLUMN_SI);
-        this.sJ = jsonObject.getString(FormsTable.COLUMN_SJ);
-        this.sK = jsonObject.getString(FormsTable.COLUMN_SK);
-        this.sL = jsonObject.getString(FormsTable.COLUMN_SL);
-        this.sM = jsonObject.getString(FormsTable.COLUMN_SM);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
-        this.gpsDT = jsonObject.getString(FormsTable.COLUMN_GPSDATE);
+        this.gpsDT = jsonObject.getString(FormsTable.COLUMN_GPSDT);
         this.gpsAcc = jsonObject.getString(FormsTable.COLUMN_GPSACC);
         this.deviceID = jsonObject.getString(FormsTable.COLUMN_DEVICEID);
         this.devicetagID = jsonObject.getString(FormsTable.COLUMN_DEVICETAGID);
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
 
+
+
         return this;
 
     }
 
     public FormsContract Hydrate(Cursor cursor) {
-        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
-        this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
-        this.ISNEW = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_IS_NEW));
-        this.DSSID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DSSID));
-        this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
+
+
+        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__ID));
+        this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UID));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
+        this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
+        this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
+        this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
+        this.info = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INFO));
+        this.f03 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F03));
+        this.f04 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F04));
+        this.f07a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F07A));
+        this.f07b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F07B));
+        this.f07c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F07C));
+        this.f07d = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F07D));
+        this.f08 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F08));
+        this.f09 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F09));
+        this.f10a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10A));
+        this.f10b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10B));
+        this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
-        this.sD = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SD));
-        this.sE = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SE));
-        this.sF = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SF));
-        this.sG = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SG));
-        this.sH = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SH));
-        this.sI = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SI));
-        this.sJ = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SJ));
-        this.sK = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SK));
-        this.sL = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SL));
-        this.sM = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SM));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
-        this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDATE));
+        this.gpsDT = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSDT));
         this.gpsAcc = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSACC));
         this.deviceID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
+        this.synced = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED));
+        this.synced_date = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED_DATE));
 
-        // TODO:
 
         return this;
 
@@ -120,30 +125,62 @@ public class FormsContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
-        json.put(FormsTable.COLUMN_UID, this._UID == null ? JSONObject.NULL : this._UID);
-        json.put(FormsTable.COLUMN_IS_NEW, this.ISNEW == null ? JSONObject.NULL : this.ISNEW);
-        json.put(FormsTable.COLUMN_DSSID, this.DSSID == null ? JSONObject.NULL : this.DSSID);
-        json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(FormsTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
+        json.put(FormsTable.COLUMN__ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(FormsTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
+        json.put(FormsTable.COLUMN_PARTICIPANTID, this.participantID == null ? JSONObject.NULL : this.participantID);
+        json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
+        json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
+
+        if (!this.info.equals("")) {
+            json.put(FormsTable.COLUMN_INFO, this.info == null ? JSONObject.NULL : this.info);
+        }
+
+        if (!this.f03.equals("")) {
+            json.put(FormsTable.COLUMN_F03, this.f03 == null ? JSONObject.NULL : this.f03);
+        }
+        if (!this.f04.equals("")) {
+            json.put(FormsTable.COLUMN_F04, this.f04 == null ? JSONObject.NULL : this.f04);
+        }
+
+        if (!this.f07a.equals("")) {
+            json.put(FormsTable.COLUMN_F07A, this.f07a == null ? JSONObject.NULL : this.f07a);
+        }
+        if (!this.f07b.equals("")) {
+            json.put(FormsTable.COLUMN_F07B, this.f07b == null ? JSONObject.NULL : this.f07b);
+        }
+        if (!this.f07c.equals("")) {
+            json.put(FormsTable.COLUMN_F07C, this.f07c == null ? JSONObject.NULL : this.f07c);
+        }
+        if (!this.f07d.equals("")) {
+            json.put(FormsTable.COLUMN_F07D, this.f07d == null ? JSONObject.NULL : this.f07d);
+        }
+        if (!this.f08.equals("")) {
+            json.put(FormsTable.COLUMN_F08, this.f08 == null ? JSONObject.NULL : this.f08);
+        }
+        if (!this.f09.equals("")) {
+            json.put(FormsTable.COLUMN_F09, this.f09 == null ? JSONObject.NULL : this.f09);
+        }
+        if (!this.f10a.equals("")) {
+            json.put(FormsTable.COLUMN_F10A, this.f10a == null ? JSONObject.NULL : this.f10a);
+        }
+        if (!this.f10b.equals("")) {
+            json.put(FormsTable.COLUMN_F10B, this.f10b == null ? JSONObject.NULL : this.f10b);
+        }
+        if (!this.f10c.equals("")) {
+            json.put(FormsTable.COLUMN_F10C, this.f10c == null ? JSONObject.NULL : this.f10c);
+        }
+
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
-        json.put(FormsTable.COLUMN_SA, this.sA.equals("") ? JSONObject.NULL : new JSONObject(this.sA));
-        json.put(FormsTable.COLUMN_SD, this.sD.equals("") ? JSONObject.NULL : new JSONObject(this.sD));
-        json.put(FormsTable.COLUMN_SE, this.sE.equals("") ? JSONObject.NULL : new JSONObject(this.sE));
-//        json.put(FormsTable.COLUMN_SF, this.sF.equals("") ? JSONObject.NULL : new JSONObject(this.sF));
-//        json.put(FormsTable.COLUMN_SG, this.sG.equals("") ? JSONObject.NULL : new JSONObject(this.sG));
-//        json.put(FormsTable.COLUMN_SH, this.sH.equals("") ? JSONObject.NULL : new JSONObject(this.sH));
-//        json.put(FormsTable.COLUMN_SI, this.sI.equals("") ? JSONObject.NULL : new JSONObject(this.sI));
-//        json.put(FormsTable.COLUMN_SJ, this.sJ.equals("") ? JSONObject.NULL : new JSONObject(this.sJ));
-//        json.put(FormsTable.COLUMN_SK, this.sK.equals("") ? JSONObject.NULL : new JSONObject(this.sK));
-        json.put(FormsTable.COLUMN_SL, this.sL.equals("") ? JSONObject.NULL : new JSONObject(this.sL));
-        json.put(FormsTable.COLUMN_SM, this.sM.equals("") ? JSONObject.NULL : new JSONObject(this.sM));
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
-        json.put(FormsTable.COLUMN_GPSDATE, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);
+        json.put(FormsTable.COLUMN_GPSDT, this.gpsDT == null ? JSONObject.NULL : this.gpsDT);
         json.put(FormsTable.COLUMN_GPSACC, this.gpsAcc == null ? JSONObject.NULL : this.gpsAcc);
         json.put(FormsTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
+        json.put(FormsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(FormsTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
 
 
         return json;
@@ -159,30 +196,6 @@ public class FormsContract {
 
     public void set_ID(String _ID) {
         this._ID = _ID;
-    }
-
-    public String getUID() {
-        return _UID;
-    }
-
-    public void setUID(String _UID) {
-        this._UID = _UID;
-    }
-
-    public String getISNEW() {
-        return ISNEW;
-    }
-
-    public void setISNEW(String ISNEW) {
-        this.ISNEW = ISNEW;
-    }
-
-    public String getDSSID() {
-        return DSSID;
-    }
-
-    public void setDSSID(String DSSID) {
-        this.DSSID = DSSID;
     }
 
     public String getFormDate() {
@@ -209,92 +222,124 @@ public class FormsContract {
         this.istatus = istatus;
     }
 
-    public String getsA() {
-        return sA;
+    public String get_UID() {
+        return _UID;
     }
 
-    public void setsA(String sA) {
-        this.sA = sA;
+    public void set_UID(String _UID) {
+        this._UID = _UID;
     }
 
-    public String getsD() {
-        return sD;
+    public String getParticipantID() {
+        return participantID;
     }
 
-    public void setsD(String sD) {
-        this.sD = sD;
+    public void setParticipantID(String participantID) {
+        this.participantID = participantID;
     }
 
-    public String getsE() {
-        return sE;
+    public String getInfo() {
+        return info;
     }
 
-    public void setsE(String sE) {
-        this.sE = sE;
+    public void setInfo(String info) {
+        this.info = info;
     }
 
-    public String getsF() {
-        return sF;
+    public String getF03() {
+        return f03;
     }
 
-    public void setsF(String sF) {
-        this.sF = sF;
+    public void setF03(String f03) {
+        this.f03 = f03;
     }
 
-    public String getsG() {
-        return sG;
+    public String getF04() {
+        return f04;
     }
 
-    public void setsG(String sG) {
-        this.sG = sG;
+    public void setF04(String f04) {
+        this.f04 = f04;
     }
 
-    public String getsH() {
-        return sH;
+    public String getF07a() {
+        return f07a;
     }
 
-    public void setsH(String sH) {
-        this.sH = sH;
+    public void setF07a(String f07a) {
+        this.f07a = f07a;
     }
 
-    public String getsI() {
-        return sI;
+    public String getF07b() {
+        return f07b;
     }
 
-    public void setsI(String sI) {
-        this.sI = sI;
+    public void setF07b(String f07b) {
+        this.f07b = f07b;
     }
 
-    public String getsJ() {
-        return sJ;
+    public String getF07c() {
+        return f07c;
     }
 
-    public void setsJ(String sJ) {
-        this.sJ = sJ;
+    public void setF07c(String f07c) {
+        this.f07c = f07c;
     }
 
-    public String getsK() {
-        return sK;
+    public String getF07d() {
+        return f07d;
     }
 
-    public void setsK(String sK) {
-        this.sK = sK;
+    public void setF07d(String f07d) {
+        this.f07d = f07d;
     }
 
-    public String getsL() {
-        return sL;
+    public String getF08() {
+        return f08;
     }
 
-    public void setsL(String sL) {
-        this.sL = sL;
+    public void setF08(String f08) {
+        this.f08 = f08;
     }
 
-    public String getsM() {
-        return sM;
+    public String getF09() {
+        return f09;
     }
 
-    public void setsM(String sM) {
-        this.sM = sM;
+    public void setF09(String f09) {
+        this.f09 = f09;
+    }
+
+    public String getF10a() {
+        return f10a;
+    }
+
+    public void setF10a(String f10a) {
+        this.f10a = f10a;
+    }
+
+    public String getF10b() {
+        return f10b;
+    }
+
+    public void setF10b(String f10b) {
+        this.f10b = f10b;
+    }
+
+    public String getF10c() {
+        return f10c;
+    }
+
+    public void setF10c(String f10c) {
+        this.f10c = f10c;
+    }
+
+    public String getFormType() {
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
     }
 
     public String getGpsLat() {
@@ -365,33 +410,36 @@ public class FormsContract {
 
         public static final String TABLE_NAME = "forms";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
-        public static final String COLUMN_PROJECT_NAME = "projectname";
-        public static final String COLUMN_ID = "_id";
-        public static final String COLUMN_UID = "_uid";
-        public static final String COLUMN_IS_NEW = "isnew";
-        public static final String COLUMN_DSSID = "dssid";
-        public static final String COLUMN_FORMDATE = "formdate";
+        public static final String COLUMN_PROJECTNAME = "projectname";
+        public static final String COLUMN__ID = "_id ";
+        public static final String COLUMN__UID = "_uid ";
         public static final String COLUMN_USER = "user";
+        public static final String COLUMN_PARTICIPANTID = "participantid";
+        public static final String COLUMN_FORMDATE = "formdate";
+        public static final String COLUMN_FORMTYPE = "formtype";
+        public static final String COLUMN_INFO = "info";
+        public static final String COLUMN_F03 = "f03";
+        public static final String COLUMN_F04 = "f04";
+        public static final String COLUMN_F07A = "f07a";
+        public static final String COLUMN_F07B = "f07b";
+        public static final String COLUMN_F07C = "f07c";
+        public static final String COLUMN_F07D = "f07d";
+        public static final String COLUMN_F08 = "f08";
+        public static final String COLUMN_F09 = "f09";
+        public static final String COLUMN_F10A = "f10a";
+        public static final String COLUMN_F10B = "f10b";
+        public static final String COLUMN_F10C = "f10c";
         public static final String COLUMN_ISTATUS = "istatus";
-        public static final String COLUMN_SA = "sa";
-        public static final String COLUMN_SD = "sd";
-        public static final String COLUMN_SE = "se";
-        public static final String COLUMN_SF = "sf";
-        public static final String COLUMN_SG = "sg";
-        public static final String COLUMN_SH = "sh";
-        public static final String COLUMN_SI = "si";
-        public static final String COLUMN_SJ = "sj";
-        public static final String COLUMN_SK = "sk";
-        public static final String COLUMN_SL = "sl";
-        public static final String COLUMN_SM = "sm";
-        public static final String COLUMN_GPSLAT = "gpslat";
-        public static final String COLUMN_GPSLNG = "gpslng";
-        public static final String COLUMN_GPSDATE = "gpsdate";
-        public static final String COLUMN_GPSACC = "gpsacc";
-        public static final String COLUMN_DEVICEID = "deviceid";
-        public static final String COLUMN_DEVICETAGID = "tagid";
-        public static final String COLUMN_SYNCED = "synced";
-        public static final String COLUMN_SYNCED_DATE = "synced_date";
+        public static final String COLUMN_GPSLAT = "gpslat ";
+        public static final String COLUMN_GPSLNG = "gpslng ";
+        public static final String COLUMN_GPSDT = "gpsdt ";
+        public static final String COLUMN_GPSACC = "gpsacc ";
+        public static final String COLUMN_DEVICEID = "deviceid ";
+        public static final String COLUMN_DEVICETAGID = "devicetagid ";
+        public static final String COLUMN_SYNCED = "synced ";
+        public static final String COLUMN_SYNCED_DATE = "synced_date ";
+
+
 
         public static String _URL = "forms.php";
     }

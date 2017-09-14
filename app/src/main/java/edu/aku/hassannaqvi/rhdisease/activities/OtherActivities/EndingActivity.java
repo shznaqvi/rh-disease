@@ -64,34 +64,6 @@ public class EndingActivity extends Activity {
             }
             if (UpdateDB()) {
 
-                MainApp.familyMembersList.clear();
-                MainApp.memFlag = 0;
-
-                MainApp.NoMembersCount = 0;
-                MainApp.NoMaleCount = 0;
-                MainApp.NoFemaleCount = 0;
-                MainApp.NoBoyCount = 0;
-                MainApp.NoGirlCount = 0;
-
-                MainApp.TotalMembersCount = 0;
-                MainApp.TotalMaleCount = 0;
-                MainApp.TotalFemaleCount = 0;
-                MainApp.TotalBoyCount = 0;
-                MainApp.TotalGirlCount = 0;
-
-//    Total No of Alive members got from Section B
-                MainApp.currentStatusCount = 0;
-                MainApp.currentDeceasedCheck = 0;
-                MainApp.currentMotherCheck = 0;
-
-                MainApp.selectedPos = -1;
-
-                MainApp.randID = 1;
-
-                MainApp.isRsvp = false;
-                MainApp.isHead = false;
-
-
                 finish();
 
                 Intent endSec = new Intent(this, MainActivity.class);
@@ -115,18 +87,6 @@ public class EndingActivity extends Activity {
         DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateEnding();
-        if (MainApp.memFlag != 0) {
-            db.updateCensus();
-        }
-        if (MainApp.currentDeceasedCheck != 0) {
-            db.updateDeceased();
-        }
-        if (MainApp.currentMotherCheck != 0) {
-            db.updateMother();
-        }
-        if (MainApp.totalChild != 0) {
-            db.updateIM();
-        }
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

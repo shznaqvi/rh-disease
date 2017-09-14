@@ -35,11 +35,7 @@ import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
-import edu.aku.hassannaqvi.rhdisease.get.GetMembers;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncCensus;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncDeceased;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForms;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncIM;
 
 public class MainActivity extends Activity {
 
@@ -157,7 +153,7 @@ public class MainActivity extends Activity {
                     iStatus = "\tN/A";
                 }
 
-                rSumText += fc.getDSSID();
+                rSumText += fc.getFormType();
 
                 rSumText += " " + iStatus + " ";
 
@@ -372,17 +368,11 @@ public class MainActivity extends Activity {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
             new SyncForms(this).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing Census", Toast.LENGTH_SHORT).show();
-            new SyncCensus(this).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing Deceased", Toast.LENGTH_SHORT).show();
-            new SyncDeceased(this).execute();
 
 //            Toast.makeText(getApplicationContext(), "Syncing Mother", Toast.LENGTH_SHORT).show();
 //            new SyncMother(this).execute();
 
-            Toast.makeText(getApplicationContext(), "Syncing IM", Toast.LENGTH_SHORT).show();
-            new SyncIM(this).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
@@ -408,7 +398,7 @@ public class MainActivity extends Activity {
            /* BackgroundDrawable bg = new BackgroundDrawable();
             syncDevice.setBackground(bg);
             bg.start();*/
-            new GetMembers(this).execute();
+            //new GetMembers(this).execute();
             //bg.stop();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
