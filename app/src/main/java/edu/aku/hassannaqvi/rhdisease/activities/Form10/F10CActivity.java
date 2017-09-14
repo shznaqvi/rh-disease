@@ -15,12 +15,14 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F10CActivity extends Activity {
@@ -271,6 +273,30 @@ public class F10CActivity extends Activity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
 
+        JSONObject f10c = new JSONObject();
+
+        f10c.put("f10c001", f10c001a.isChecked() ? "1" : f10c001b.isChecked() ? "2" : f10c001888.isChecked() ? "888" : "0");
+        f10c.put("f10c001888x", f10c001888x.getText().toString());
+        f10c.put("f10c002a", f10c002a.getText().toString());
+        f10c.put("f10c002b", f10c002b.getText().toString());
+        f10c.put("f10c003", f10c003a.isChecked() ? "1" : f10c003b.isChecked() ? "2" : "0");
+        f10c.put("f10c004a", f10c004a.getText().toString());
+        f10c.put("f10c004b", f10c004b.getText().toString());
+        f10c.put("f10c005", f10c005a.isChecked() ? "1" : f10c005b.isChecked() ? "2" : f10c005c.isChecked() ? "3" : "0");
+        f10c.put("f10c006", f10c006a.isChecked() ? "1" : f10c006b.isChecked() ? "2" : f10c006c.isChecked() ? "3"
+                : f10c006d.isChecked() ? "4" : "0");
+        f10c.put("f10c007", f10c007a.isChecked() ? "1" : f10c007b.isChecked() ? "2" : "0");
+        f10c.put("f10c008", f10c008a.isChecked() ? "1" : f10c008b.isChecked() ? "2" : "0");
+        f10c.put("f10c009", f10c009a.isChecked() ? "1" : f10c009b.isChecked() ? "2" : "0");
+        f10c.put("f10c010", f10c010a.isChecked() ? "1" : f10c010b.isChecked() ? "2" : "0");
+        f10c.put("f10c011", f10c011a.isChecked() ? "1" : f10c011b.isChecked() ? "2" : "0");
+        f10c.put("f10c012", f10c012a.isChecked() ? "1" : f10c012b.isChecked() ? "2" : "0");
+        f10c.put("f10c013", f10c013a.isChecked() ? "1" : f10c013b.isChecked() ? "2" : f10c013c.isChecked() ? "3"
+                : f10c013d.isChecked() ? "4" : f10c013e.isChecked() ? "5" : f10c013f.isChecked() ? "6"
+                : f10c013888.isChecked() ? "888" : "0");
+        f10c.put("f10c013888x", f10c013888x.getText().toString());
+        f10c.put("f10c014", f10c014a.isChecked() ? "1" : f10c014b.isChecked() ? "2" : "0");
+        f10c.put("f10c015", f10c015.getText().toString());
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
@@ -278,7 +304,17 @@ public class F10CActivity extends Activity {
     private boolean UpdateDB() {
 
 
-        return true;
+        DatabaseHelper db = new DatabaseHelper(this);
+
+        int updcount = db.updateF10C();
+
+        if (updcount == 1) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
     public boolean ValidateForm() {

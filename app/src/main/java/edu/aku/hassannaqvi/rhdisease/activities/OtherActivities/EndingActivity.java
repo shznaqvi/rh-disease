@@ -36,7 +36,7 @@ public class EndingActivity extends Activity {
         setContentView(R.layout.activity_ending);
         ButterKnife.bind(this);
 
-        Boolean check = getIntent().getExtras().getBoolean("check");
+        Boolean check = getIntent().getExtras().getBoolean("complete");
 
         if (check) {
             dcstatus01.setEnabled(true);

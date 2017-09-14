@@ -59,7 +59,7 @@
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
-            android:name=".activities.Form10.F10AActivty"
+            android:name=".activities.Form10.F10AActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
@@ -70,6 +70,7 @@
         <activity android:name=".activities.Form7.F07BActivity" />
         <activity android:name=".activities.Form7.F07CActivity" />
         <activity android:name=".activities.Form7.F07DActivity"></activity>
+        <activity android:name=".activities.FormInfo.IdentificationActivity"></activity>
     </application>
 
 </manifest>

@@ -49,7 +49,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -1102,6 +1101,7 @@
                 android:visibility="gone" />
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -1813,6 +1813,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:text="@string/dkn" />
+
+            <RadioButton
+                android:id="@+id/f04a018777"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f04a002777" />
 
         </RadioGroup>
 

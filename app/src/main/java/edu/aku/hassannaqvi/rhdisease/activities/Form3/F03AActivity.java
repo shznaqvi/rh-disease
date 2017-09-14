@@ -229,9 +229,10 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
                 if (UpdateDB()) {
                     Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
-                    //finish();
-
-                    startActivity(new Intent(this, EndingActivity.class));
+                    finish();
+                    Intent endSec = new Intent(this, EndingActivity.class);
+                    endSec.putExtra("complete", true);
+                    startActivity(endSec);
 
                 } else {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -248,7 +249,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         MainApp.fc.set_ID(String.valueOf(updcount));
 
-        if (updcount != 0) {
+        if (updcount > 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
             MainApp.fc.set_UID(

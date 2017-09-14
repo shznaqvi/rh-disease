@@ -1,8 +1,10 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form4;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -16,12 +18,21 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import butterknife.BindView;
+import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.MainActivity;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
+import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
-public class F04AActivity extends Activity {
+public class F04AActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
+
+    private static final String TAG = F04AActivity.class.getSimpleName();
 
     @BindView(R.id.textView)
     TextView textView;
@@ -473,6 +484,8 @@ public class F04AActivity extends Activity {
     RadioButton f04a018b;
     @BindView(R.id.f04a018999)
     RadioButton f04a018999;
+    @BindView(R.id.f04a018777)
+    RadioButton f04a018777;
     @BindView(R.id.fldGrp018)
     LinearLayout fldGrp018;
     @BindView(R.id.f04a019)
@@ -505,6 +518,9 @@ public class F04AActivity extends Activity {
     EditText f04a019ix;
     @BindView(R.id.f04a019888x)
     EditText f04a019888x;
+
+    @BindViews({R.id.f04a012m, R.id.f04a012n})
+    List<CheckBox> f04a12Skip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -671,6 +687,10 @@ public class F04AActivity extends Activity {
             }
         });
 
+        for (CheckBox ck : f04a12Skip) {
+            ck.setOnCheckedChangeListener(this);
+        }
+
         //=================== f04a002888 ==============
         f04a002888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -801,6 +821,7 @@ public class F04AActivity extends Activity {
             }
         });
 
+
         //=================== f04a012888 ==============
         f04a012888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -880,7 +901,7 @@ public class F04AActivity extends Activity {
         });
 
 
-        //=================== f04a012m ==============
+       /* //=================== f04a012m ==============
         f04a012m.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -895,7 +916,7 @@ public class F04AActivity extends Activity {
                 }
             }
         });
-
+*/
         //=================== f04a012n ==============
         f04a012n.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -903,6 +924,8 @@ public class F04AActivity extends Activity {
                 if (isChecked) {
                     fldGrp012.setVisibility(View.VISIBLE);
 
+                } else if (f04a012m.isChecked()) {
+                    fldGrp012.setVisibility(View.VISIBLE);
                 } else {
                     fldGrp012.setVisibility(View.GONE);
                     f04a013.clearCheck();
@@ -911,6 +934,7 @@ public class F04AActivity extends Activity {
                 }
             }
         });
+
 
         //=================== f04a014 ==============
         f04a014.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -1002,22 +1026,24 @@ public class F04AActivity extends Activity {
     void onBtnEndClick() {
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
-//        if (ValidateForm()) {
-//            try {
-//                SaveDraft();
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//            if (UpdateDB()) {
-
-        Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
-       /* Intent endSec = new Intent(this, EndingActivity.class);
-        endSec.putExtra("complete", false);
-        startActivity(endSec);*/
-//            } else {
-//                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-//            }
-//        }
+        //if (check) {
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
+            Intent endSec = new Intent(this, EndingActivity.class);
+            endSec.putExtra("complete", false);
+            startActivity(endSec);
+        } else {
+            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+        }
+        /*} else {
+            Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
+        }*/
     }
 
 
@@ -1035,7 +1061,7 @@ public class F04AActivity extends Activity {
                 finish();
 
 
-                // startActivity(new Intent(this, SectionEActivity.class));
+                startActivity(new Intent(this, MainActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -1044,52 +1070,214 @@ public class F04AActivity extends Activity {
     }
 
     private boolean UpdateDB() {
-       /* DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addForm(MainApp.fc);
+        int updcount = db.updateF04();
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormsUID();
+            return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-        }*/
-
-        return true;
+            return false;
+        }
 
     }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
 
-        JSONObject sa = new JSONObject();
+        JSONObject f04 = new JSONObject();
 
-        sa.put("f04a001", f04a001a.isChecked() ? "1" : f04a001b.isChecked() ? "2" : "0");
-        sa.put("f04a002a", f04a002a.isChecked() ? "1" : "0");
-        sa.put("f04a002b", f04a002b.isChecked() ? "2" : "0");
-        sa.put("f04a002c", f04a002c.isChecked() ? "3" : "0");
-        sa.put("f04a002d", f04a002d.isChecked() ? "4" : "0");
-        sa.put("f04a002e", f04a002e.isChecked() ? "5" : "0");
-        sa.put("f04a002f", f04a002f.isChecked() ? "6" : "0");
-        sa.put("f04a002g", f04a002g.isChecked() ? "7" : "0");
-        sa.put("f04a002h", f04a002h.isChecked() ? "8" : "0");
-        sa.put("f04a002i", f04a002i.isChecked() ? "9" : "0");
-        sa.put("f04a002j", f04a002j.isChecked() ? "10" : "0");
-        sa.put("f04a002k", f04a002k.isChecked() ? "11" : "0");
-        sa.put("f04a002l", f04a002l.isChecked() ? "12" : "0");
-        sa.put("f04a002m", f04a002m.isChecked() ? "13" : "0");
-        sa.put("f04a002n", f04a002n.isChecked() ? "14" : "0");
-        sa.put("f04a002777", f04a002777.isChecked() ? "777" : "0");
-        sa.put("f04a002888", f04a002888.isChecked() ? "888" : "0");
-        sa.put("f04a002999", f04a002999.isChecked() ? "999" : "0");
-        sa.put("f04a002888x", f04a002888x.getText().toString());
+        f04.put("f04a001", f04a001a.isChecked() ? "1" : f04a001b.isChecked() ? "2" : "0");
+        f04.put("f04a002a", f04a002a.isChecked() ? "1" : "0");
+        f04.put("f04a002b", f04a002b.isChecked() ? "2" : "0");
+        f04.put("f04a002c", f04a002c.isChecked() ? "3" : "0");
+        f04.put("f04a002d", f04a002d.isChecked() ? "4" : "0");
+        f04.put("f04a002e", f04a002e.isChecked() ? "5" : "0");
+        f04.put("f04a002f", f04a002f.isChecked() ? "6" : "0");
+        f04.put("f04a002g", f04a002g.isChecked() ? "7" : "0");
+        f04.put("f04a002h", f04a002h.isChecked() ? "8" : "0");
+        f04.put("f04a002i", f04a002i.isChecked() ? "9" : "0");
+        f04.put("f04a002j", f04a002j.isChecked() ? "10" : "0");
+        f04.put("f04a002k", f04a002k.isChecked() ? "11" : "0");
+        f04.put("f04a002l", f04a002l.isChecked() ? "12" : "0");
+        f04.put("f04a002m", f04a002m.isChecked() ? "13" : "0");
+        f04.put("f04a002n", f04a002n.isChecked() ? "14" : "0");
+        f04.put("f04a002777", f04a002777.isChecked() ? "777" : "0");
+        f04.put("f04a002888", f04a002888.isChecked() ? "888" : "0");
+        f04.put("f04a002999", f04a002999.isChecked() ? "999" : "0");
+        f04.put("f04a002888x", f04a002888x.getText().toString());
+        f04.put("f04a003a", f04a003a.isChecked() ? "1" : "0");
+        f04.put("f04a003b", f04a003b.isChecked() ? "2" : "0");
+        f04.put("f04a003c", f04a003c.isChecked() ? "3" : "0");
+        f04.put("f04a003d", f04a003d.isChecked() ? "4" : "0");
+        f04.put("f04a003e", f04a003e.isChecked() ? "5" : "0");
+        f04.put("f04a003f", f04a003f.isChecked() ? "6" : "0");
+        f04.put("f04a003g", f04a003g.isChecked() ? "7" : "0");
+        f04.put("f04a003h", f04a003h.isChecked() ? "8" : "0");
+        f04.put("f04a003i", f04a003i.isChecked() ? "9" : "0");
+        f04.put("f04a003j", f04a003j.isChecked() ? "10" : "0");
+        f04.put("f04a003k", f04a003k.isChecked() ? "11" : "0");
+        f04.put("f04a003l", f04a003l.isChecked() ? "12" : "0");
+        f04.put("f04a003m", f04a003m.isChecked() ? "13" : "0");
+        f04.put("f04a003n", f04a003n.isChecked() ? "14" : "0");
+        f04.put("f04a003o", f04a003o.isChecked() ? "15" : "0");
+        f04.put("f04a003p", f04a003p.isChecked() ? "16" : "0");
+        f04.put("f04a003q", f04a003q.isChecked() ? "17" : "0");
+        f04.put("f04a003777", f04a003777.isChecked() ? "777" : "0");
+        f04.put("f04a003888", f04a003888.isChecked() ? "888" : "0");
+        f04.put("f04a003999", f04a003999.isChecked() ? "999" : "0");
+        f04.put("f04a003888x", f04a003888x.getText().toString());
+        f04.put("f04a004a", f04a004a.isChecked() ? "1" : "0");
+        f04.put("f04a004b", f04a004b.isChecked() ? "2" : "0");
+        f04.put("f04a004c", f04a004c.isChecked() ? "3" : "0");
+        f04.put("f04a004d", f04a004d.isChecked() ? "4" : "0");
+        f04.put("f04a004e", f04a004e.isChecked() ? "5" : "0");
+        f04.put("f04a004f", f04a004f.isChecked() ? "6" : "0");
+        f04.put("f04a004g", f04a004g.isChecked() ? "7" : "0");
+        f04.put("f04a004h", f04a004h.isChecked() ? "8" : "0");
+        f04.put("f04a004i", f04a004i.isChecked() ? "9" : "0");
+        f04.put("f04a004j", f04a004j.isChecked() ? "10" : "0");
+        f04.put("f04a004k", f04a004k.isChecked() ? "11" : "0");
+        f04.put("f04a004l", f04a004l.isChecked() ? "12" : "0");
+        f04.put("f04a004m", f04a004m.isChecked() ? "13" : "0");
+        f04.put("f04a004n", f04a004n.isChecked() ? "14" : "0");
+        f04.put("f04a004o", f04a004o.isChecked() ? "15" : "0");
+        f04.put("f04a004777", f04a004777.isChecked() ? "777" : "0");
+        f04.put("f04a004888", f04a004888.isChecked() ? "888" : "0");
+        f04.put("f04a004999", f04a004999.isChecked() ? "999" : "0");
+        f04.put("f04a004888x", f04a004888x.getText().toString());
+        f04.put("f04a005a", f04a005a.isChecked() ? "1" : "0");
+        f04.put("f04a005b", f04a005b.isChecked() ? "2" : "0");
+        f04.put("f04a005c", f04a005c.isChecked() ? "3" : "0");
+        f04.put("f04a005d", f04a005d.isChecked() ? "4" : "0");
+        f04.put("f04a005e", f04a005e.isChecked() ? "5" : "0");
+        f04.put("f04a005f", f04a005f.isChecked() ? "6" : "0");
+        f04.put("f04a005g", f04a005g.isChecked() ? "7" : "0");
+        f04.put("f04a005h", f04a005h.isChecked() ? "8" : "0");
+        f04.put("f04a005i", f04a005i.isChecked() ? "9" : "0");
+        f04.put("f04a005j", f04a005j.isChecked() ? "10" : "0");
+        f04.put("f04a005k", f04a005k.isChecked() ? "11" : "0");
+        f04.put("f04a005l", f04a005l.isChecked() ? "12" : "0");
+        f04.put("f04a005m", f04a005m.isChecked() ? "13" : "0");
+        f04.put("f04a005n", f04a005n.isChecked() ? "14" : "0");
+        f04.put("f04a005o", f04a005o.isChecked() ? "15" : "0");
+        f04.put("f04a005777", f04a005777.isChecked() ? "777" : "0");
+        f04.put("f04a005888", f04a005888.isChecked() ? "888" : "0");
+        f04.put("f04a005999", f04a005999.isChecked() ? "999" : "0");
+        f04.put("f04a005888x", f04a005888x.getText().toString());
+        f04.put("f04a006a", f04a006a.isChecked() ? "1" : "0");
+        f04.put("f04a006b", f04a006b.isChecked() ? "2" : "0");
+        f04.put("f04a006c", f04a006c.isChecked() ? "3" : "0");
+        f04.put("f04a006d", f04a006d.isChecked() ? "4" : "0");
+        f04.put("f04a006e", f04a006e.isChecked() ? "5" : "0");
+        f04.put("f04a006f", f04a006f.isChecked() ? "6" : "0");
+        f04.put("f04a006g", f04a006g.isChecked() ? "7" : "0");
+        f04.put("f04a006777", f04a006777.isChecked() ? "777" : "0");
+        f04.put("f04a006888", f04a006888.isChecked() ? "888" : "0");
+        f04.put("f04a006999", f04a006999.isChecked() ? "999" : "0");
+        f04.put("f04a006888x", f04a006888x.getText().toString());
+        f04.put("f04a007a", f04a007a.isChecked() ? "1" : "0");
+        f04.put("f04a007b", f04a007b.isChecked() ? "2" : "0");
+        f04.put("f04a007c", f04a007c.isChecked() ? "3" : "0");
+        f04.put("f04a007d", f04a007d.isChecked() ? "4" : "0");
+        f04.put("f04a007e", f04a007e.isChecked() ? "5" : "0");
+        f04.put("f04a007f", f04a007f.isChecked() ? "6" : "0");
+        f04.put("f04a007777", f04a007777.isChecked() ? "777" : "0");
+        f04.put("f04a007888", f04a007888.isChecked() ? "888" : "0");
+        f04.put("f04a007999", f04a007999.isChecked() ? "999" : "0");
+        f04.put("f04a007888x", f04a007888x.getText().toString());
+        f04.put("f04a008a", f04a008a.isChecked() ? "1" : "0");
+        f04.put("f04a008b", f04a008b.isChecked() ? "2" : "0");
+        f04.put("f04a008c", f04a008c.isChecked() ? "3" : "0");
+        f04.put("f04a008d", f04a008d.isChecked() ? "4" : "0");
+        f04.put("f04a008e", f04a008e.isChecked() ? "5" : "0");
+        f04.put("f04a008f", f04a008f.isChecked() ? "6" : "0");
+        f04.put("f04a008g", f04a008g.isChecked() ? "7" : "0");
+        f04.put("f04a008h", f04a008h.isChecked() ? "8" : "0");
+        f04.put("f04a008i", f04a008i.isChecked() ? "9" : "0");
+        f04.put("f04a008777", f04a008777.isChecked() ? "777" : "0");
+        f04.put("f04a008888", f04a008888.isChecked() ? "888" : "0");
+        f04.put("f04a008999", f04a008999.isChecked() ? "999" : "0");
+        f04.put("f04a008888x", f04a008888x.getText().toString());
+        f04.put("f04a009", f04a009a.isChecked() ? "1" : f04a009b.isChecked() ? "2" : f04a009c.isChecked() ? "3" : f04a009d.isChecked() ? "4" : f04a009777.isChecked() ? "777" : f04a009888.isChecked() ? "888" : f04a009999.isChecked() ? "999" : "0");
+        f04.put("f04a009888x", f04a009888x.getText().toString());
+        f04.put("f04a010a", f04a010a.isChecked() ? "1" : "0");
+        f04.put("f04a010b", f04a010b.isChecked() ? "2" : "0");
+        f04.put("f04a010c", f04a010c.isChecked() ? "3" : "0");
+        f04.put("f04a010d", f04a010d.isChecked() ? "4" : "0");
+        f04.put("f04a010e", f04a010e.isChecked() ? "5" : "0");
+        f04.put("f04a010777", f04a010777.isChecked() ? "777" : "0");
+        f04.put("f04a010888", f04a010888.isChecked() ? "888" : "0");
+        f04.put("f04a010999", f04a010999.isChecked() ? "999" : "0");
+        f04.put("f04a010888x", f04a010888x.getText().toString());
+        f04.put("f04a011", f04a011a.isChecked() ? "1" : f04a011b.isChecked() ? "2" : f04a011c.isChecked() ? "3" : f04a011d.isChecked() ? "4" : f04a011e.isChecked() ? "5" : f04a011f.isChecked() ? "6" : f04a011888.isChecked() ? "888" : f04a011999.isChecked() ? "999" : "0");
+        f04.put("f04a011888x", f04a011888x.getText().toString());
+        f04.put("f04a012a", f04a012a.isChecked() ? "1" : "0");
+        f04.put("f04a012b", f04a012b.isChecked() ? "2" : "0");
+        f04.put("f04a012c", f04a012c.isChecked() ? "3" : "0");
+        f04.put("f04a012d", f04a012d.isChecked() ? "4" : "0");
+        f04.put("f04a012e", f04a012e.isChecked() ? "5" : "0");
+        f04.put("f04a012f", f04a012f.isChecked() ? "6" : "0");
+        f04.put("f04a012g", f04a012g.isChecked() ? "7" : "0");
+        f04.put("f04a012h", f04a012h.isChecked() ? "8" : "0");
+        f04.put("f04a012i", f04a012i.isChecked() ? "9" : "0");
+        f04.put("f04a012j", f04a012j.isChecked() ? "10" : "0");
+        f04.put("f04a012k", f04a012k.isChecked() ? "11" : "0");
+        f04.put("f04a012l", f04a012l.isChecked() ? "12" : "0");
+        f04.put("f04a012m", f04a012m.isChecked() ? "13" : "0");
+        f04.put("f04a012n", f04a012n.isChecked() ? "14" : "0");
+        f04.put("f04a012o", f04a012o.isChecked() ? "15" : "0");
+        f04.put("f04a012p", f04a012p.isChecked() ? "16" : "0");
+        f04.put("f04a012q", f04a012q.isChecked() ? "17" : "0");
+        f04.put("f04a012r", f04a012r.isChecked() ? "18" : "0");
+        f04.put("f04a012777", f04a012777.isChecked() ? "777" : "0");
+        f04.put("f04a012888", f04a012888.isChecked() ? "888" : "0");
+        f04.put("f04a012999", f04a012999.isChecked() ? "999" : "0");
+        f04.put("f04a012888x", f04a012888x.getText().toString());
+        f04.put("f04a013", f04a013a.isChecked() ? "1" : f04a013b.isChecked() ? "2" : f04a013c.isChecked() ? "3" : f04a013d.isChecked() ? "4" : f04a013e.isChecked() ? "5" : f04a013f.isChecked() ? "6" : f04a013777.isChecked() ? "777" : f04a013888.isChecked() ? "888" : f04a013999.isChecked() ? "999" : "0");
+        f04.put("f04a013888x", f04a013888x.getText().toString());
+        f04.put("f04a014", f04a014a.isChecked() ? "1" : f04a014b.isChecked() ? "2" : f04a014999.isChecked() ? "999" : "0");
+        f04.put("f04a015a", f04a015a.isChecked() ? "1" : "0");
+        f04.put("f04a015b", f04a015b.isChecked() ? "2" : "0");
+        f04.put("f04a015c", f04a015c.isChecked() ? "3" : "0");
+        f04.put("f04a015d", f04a015d.isChecked() ? "4" : "0");
+        f04.put("f04a015e", f04a015e.isChecked() ? "5" : "0");
+        f04.put("f04a015f", f04a015f.isChecked() ? "6" : "0");
+        f04.put("f04a015g", f04a015g.isChecked() ? "7" : "0");
+        f04.put("f04a015777", f04a015777.isChecked() ? "777" : "0");
+        f04.put("f04a015888", f04a015888.isChecked() ? "888" : "0");
+        f04.put("f04a015999", f04a015999.isChecked() ? "999" : "0");
+        f04.put("f04a015888x", f04a015888x.getText().toString());
+        f04.put("f04a016", f04a016a.isChecked() ? "1" : f04a016b.isChecked() ? "2" : f04a016999.isChecked() ? "999" : "0");
+        f04.put("f04a017a", f04a017a.isChecked() ? "1" : "0");
+        f04.put("f04a017b", f04a017b.isChecked() ? "2" : "0");
+        f04.put("f04a017c", f04a017c.isChecked() ? "3" : "0");
+        f04.put("f04a017d", f04a017d.isChecked() ? "4" : "0");
+        f04.put("f04a017e", f04a017e.isChecked() ? "5" : "0");
+        f04.put("f04a017f", f04a017f.isChecked() ? "6" : "0");
+        f04.put("f04a017g", f04a017g.isChecked() ? "7" : "0");
+        f04.put("f04a017h", f04a017h.isChecked() ? "8" : "0");
+        f04.put("f04a017i", f04a017i.isChecked() ? "9" : "0");
+        f04.put("f04a017j", f04a017j.isChecked() ? "10" : "0");
+        f04.put("f04a017k", f04a017k.isChecked() ? "11" : "0");
+        f04.put("f04a017l", f04a017l.isChecked() ? "12" : "0");
+        f04.put("f04a017m", f04a017m.isChecked() ? "13" : "0");
+        f04.put("f04a017n", f04a017n.isChecked() ? "14" : "0");
+        f04.put("f04a017o", f04a017o.isChecked() ? "15" : "0");
+        f04.put("f04a017p", f04a017p.isChecked() ? "16" : "0");
+        f04.put("f04a017q", f04a017q.isChecked() ? "17" : "0");
+        f04.put("f04a017777", f04a017777.isChecked() ? "777" : "0");
+        f04.put("f04a017888", f04a017888.isChecked() ? "888" : "0");
+        f04.put("f04a017888x", f04a017888x.getText().toString());
+        f04.put("f04a018", f04a018a.isChecked() ? "1" : f04a018b.isChecked() ? "2" : f04a018999.isChecked() ? "999" : f04a018777.isChecked() ? "777" : "0");
+        f04.put("f04a019", f04a019a.isChecked() ? "1" : f04a019b.isChecked() ? "2" : f04a019c.isChecked() ? "3" : f04a019d.isChecked() ? "4" : f04a019e.isChecked() ? "5" : f04a019f.isChecked() ? "6" : f04a019g.isChecked() ? "7" : f04a019h.isChecked() ? "8" : f04a019i.isChecked() ? "9" : f04a019j.isChecked() ? "10" : f04a019777.isChecked() ? "777" : f04a019888.isChecked() ? "888" : "0");
+        f04.put("f04a019888x", f04a019888x.getText().toString());
+        f04.put("f04a019ix", f04a019ix.getText().toString());
 
-        //  MainApp.fc.setsA(String.valueOf(sa));
+
+        MainApp.fc.setF04(String.valueOf(f04));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -1097,9 +1285,396 @@ public class F04AActivity extends Activity {
 
     public boolean ValidateForm() {
 
+
+        //=================== f04a001 ==============
+        if (f04a001.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a001), Toast.LENGTH_SHORT).show();
+            f04a001b.setError("This data is Required!");
+            Log.i(TAG, "f04a001: This Data is Required!");
+            return false;
+        } else {
+            f04a001b.setError(null);
+        }
+
+        if (f04a001a.isChecked()) {
+            // ====================== f04a002 ===================
+            if (!(f04a002a.isChecked() || f04a002b.isChecked() || f04a002c.isChecked() || f04a002d.isChecked()
+                    || f04a002e.isChecked() || f04a002f.isChecked() || f04a002g.isChecked() || f04a002h.isChecked()
+                    || f04a002i.isChecked() || f04a002j.isChecked() || f04a002k.isChecked() || f04a002l.isChecked()
+                    || f04a002m.isChecked() || f04a002n.isChecked() || f04a002777.isChecked() || f04a002888.isChecked() || f04a002999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a002), Toast.LENGTH_LONG).show();
+                f04a002999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a002: This data is Required!");
+                return false;
+            } else {
+                f04a002999.setError(null);
+            }
+
+            if (f04a002888.isChecked() && f04a002888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a002) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a002888x.setError("This data is required");
+                Log.d(TAG, " f04a002888x :empty ");
+                return false;
+            } else {
+                f04a002888x.setError(null);
+            }
+
+            // ====================== f04a003 ===================
+            if (!(f04a003a.isChecked() || f04a003b.isChecked() || f04a003c.isChecked() || f04a003d.isChecked()
+                    || f04a003e.isChecked() || f04a003f.isChecked() || f04a003g.isChecked() || f04a003h.isChecked()
+                    || f04a003i.isChecked() || f04a003j.isChecked() || f04a003k.isChecked() || f04a003l.isChecked()
+                    || f04a003m.isChecked() || f04a003n.isChecked() || f04a003o.isChecked() || f04a003p.isChecked()
+                    || f04a003q.isChecked() || f04a003777.isChecked() || f04a003888.isChecked() || f04a003999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a003), Toast.LENGTH_LONG).show();
+                f04a003999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a003: This data is Required!");
+                return false;
+            } else {
+                f04a003999.setError(null);
+            }
+
+            if (f04a003888.isChecked() && f04a003888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a003) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a003888x.setError("This data is required");
+                Log.d(TAG, " f04a003888x :empty ");
+                return false;
+            } else {
+                f04a003888x.setError(null);
+            }
+
+            // ====================== f04a004 ===================
+            if (!(f04a004a.isChecked() || f04a004b.isChecked() || f04a004c.isChecked() || f04a004d.isChecked()
+                    || f04a004e.isChecked() || f04a004f.isChecked() || f04a004g.isChecked() || f04a004h.isChecked()
+                    || f04a004i.isChecked() || f04a004j.isChecked() || f04a004k.isChecked() || f04a004l.isChecked()
+                    || f04a004m.isChecked() || f04a004n.isChecked() || f04a004o.isChecked() || f04a004777.isChecked() || f04a004888.isChecked() || f04a004999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a004), Toast.LENGTH_LONG).show();
+                f04a004999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a004: This data is Required!");
+                return false;
+            } else {
+                f04a004999.setError(null);
+            }
+
+            if (f04a004888.isChecked() && f04a004888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a004) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a004888x.setError("This data is required");
+                Log.d(TAG, " f04a004888x :empty ");
+                return false;
+            } else {
+                f04a004888x.setError(null);
+            }
+
+            // ====================== f04a005 ===================
+            if (!(f04a005a.isChecked() || f04a005b.isChecked() || f04a005c.isChecked() || f04a005d.isChecked()
+                    || f04a005e.isChecked() || f04a005f.isChecked() || f04a005g.isChecked() || f04a005h.isChecked()
+                    || f04a005i.isChecked() || f04a005j.isChecked() || f04a005k.isChecked() || f04a005l.isChecked()
+                    || f04a005m.isChecked() || f04a005n.isChecked() || f04a005o.isChecked() || f04a005777.isChecked() || f04a005888.isChecked() || f04a005999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a005), Toast.LENGTH_LONG).show();
+                f04a005999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a005: This data is Required!");
+                return false;
+            } else {
+                f04a005999.setError(null);
+            }
+
+            if (f04a005888.isChecked() && f04a005888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a005) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a005888x.setError("This data is required");
+                Log.d(TAG, " f04a005888x :empty ");
+                return false;
+            } else {
+                f04a005888x.setError(null);
+            }
+
+            // ====================== f04a006 ===================
+
+            if (f04a006.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a006), Toast.LENGTH_SHORT).show();
+                f04a006999.setError("This data is Required!");
+                Log.i(TAG, "f04a006: This Data is Required!");
+                return false;
+            } else {
+                f04a006999.setError(null);
+            }
+
+            if (f04a006888.isChecked() && f04a006888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a006) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a006888x.setError("This data is required");
+                Log.d(TAG, " f04a006888x :empty ");
+                return false;
+            } else {
+                f04a006888x.setError(null);
+            }
+
+            // ====================== f04a007 ===================
+            if (!(f04a007a.isChecked() || f04a007b.isChecked() || f04a007c.isChecked() || f04a007d.isChecked()
+                    || f04a007e.isChecked() || f04a007f.isChecked() || f04a007777.isChecked() || f04a007888.isChecked() || f04a007999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a007), Toast.LENGTH_LONG).show();
+                f04a007999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a007: This data is Required!");
+                return false;
+            } else {
+                f04a007999.setError(null);
+            }
+
+            if (f04a007888.isChecked() && f04a007888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a007) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a007888x.setError("This data is required");
+                Log.d(TAG, " f04a007888x :empty ");
+                return false;
+            } else {
+                f04a007888x.setError(null);
+            }
+
+            // ====================== f04a008 ===================
+            if (!(f04a008a.isChecked() || f04a008b.isChecked() || f04a008c.isChecked() || f04a008d.isChecked()
+                    || f04a008e.isChecked() || f04a008f.isChecked() || f04a008g.isChecked() || f04a008h.isChecked()
+                    || f04a008i.isChecked() || f04a008777.isChecked() || f04a008888.isChecked() || f04a008999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a008), Toast.LENGTH_LONG).show();
+                f04a008999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a008: This data is Required!");
+                return false;
+            } else {
+                f04a008999.setError(null);
+            }
+
+            if (f04a008888.isChecked() && f04a008888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a008) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a008888x.setError("This data is required");
+                Log.d(TAG, " f04a008888x :empty ");
+                return false;
+            } else {
+                f04a008888x.setError(null);
+            }
+
+            // ====================== f04a009 ===================
+
+            if (f04a009.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a009), Toast.LENGTH_SHORT).show();
+                f04a009999.setError("This data is Required!");
+                Log.i(TAG, "f04a009: This Data is Required!");
+                return false;
+            } else {
+                f04a009999.setError(null);
+            }
+
+            if (f04a009888.isChecked() && f04a009888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a009) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a009888x.setError("This data is required");
+                Log.d(TAG, " f04a009888x :empty ");
+                return false;
+            } else {
+                f04a009888x.setError(null);
+            }
+
+            // ====================== f04a010 ===================
+            if (!(f04a010a.isChecked() || f04a010b.isChecked() || f04a010c.isChecked() || f04a010d.isChecked()
+                    || f04a010e.isChecked() || f04a010777.isChecked() || f04a010888.isChecked() || f04a010999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a010), Toast.LENGTH_LONG).show();
+                f04a010999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a010: This data is Required!");
+                return false;
+            } else {
+                f04a010999.setError(null);
+            }
+
+            if (f04a010888.isChecked() && f04a010888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a010) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a010888x.setError("This data is required");
+                Log.d(TAG, " f04a010888x :empty ");
+                return false;
+            } else {
+                f04a010888x.setError(null);
+            }
+
+            // ====================== f04a011 ===================
+
+            if (f04a011.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a011), Toast.LENGTH_SHORT).show();
+                f04a011999.setError("This data is Required!");
+                Log.i(TAG, "f04a011: This Data is Required!");
+                return false;
+            } else {
+                f04a011999.setError(null);
+            }
+
+            if (f04a011888.isChecked() && f04a011888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a011) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a011888x.setError("This data is required");
+                Log.d(TAG, " f04a011888x :empty ");
+                return false;
+            } else {
+                f04a011888x.setError(null);
+            }
+
+
+            // ====================== f04a012 ===================
+            if (!(f04a012a.isChecked() || f04a012b.isChecked() || f04a012c.isChecked() || f04a012d.isChecked()
+                    || f04a012e.isChecked() || f04a012f.isChecked() || f04a012g.isChecked() || f04a012h.isChecked()
+                    || f04a012i.isChecked() || f04a012j.isChecked() || f04a012k.isChecked() || f04a012l.isChecked()
+                    || f04a012m.isChecked() || f04a012n.isChecked() || f04a012o.isChecked() || f04a012p.isChecked()
+                    || f04a012q.isChecked() || f04a012r.isChecked() || f04a012777.isChecked()
+                    || f04a012888.isChecked() || f04a012999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a012), Toast.LENGTH_LONG).show();
+                f04a012999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a012: This data is Required!");
+                return false;
+            } else {
+                f04a012999.setError(null);
+            }
+
+            if (f04a012888.isChecked() && f04a012888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a012) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a012888x.setError("This data is required");
+                Log.d(TAG, " f04a012888x :empty ");
+                return false;
+            } else {
+                f04a012888x.setError(null);
+            }
+
+            if (f04a012m.isChecked() || f04a012n.isChecked()) {      // ====================== f04a013 ===================
+                if (f04a013.getCheckedRadioButtonId() == -1) {
+                    Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a013), Toast.LENGTH_SHORT).show();
+                    f04a013999.setError("This data is Required!");
+                    Log.i(TAG, "f04a013: This Data is Required!");
+                    return false;
+                } else {
+                    f04a013999.setError(null);
+                }
+
+                if (f04a013888.isChecked() && f04a013888x.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a013) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                    f04a013888x.setError("This data is required");
+                    Log.d(TAG, " f04a013888x :empty ");
+                    return false;
+                } else {
+                    f04a013888x.setError(null);
+                }
+            }
+
+        }
+
+        // ====================== f04a014 ===================
+        if (f04a014.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a014), Toast.LENGTH_SHORT).show();
+            f04a014999.setError("This data is Required!");
+            Log.i(TAG, "f04a014: This Data is Required!");
+            return false;
+        } else {
+            f04a014999.setError(null);
+        }
+
+
+        if (f04a014a.isChecked()) {
+            // ====================== f04a015 ===================
+            if (!(f04a015a.isChecked() || f04a015b.isChecked() || f04a015c.isChecked() || f04a015d.isChecked()
+                    || f04a015e.isChecked() || f04a015f.isChecked() || f04a015g.isChecked() || f04a015777.isChecked()
+                    || f04a015888.isChecked() || f04a015999.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a015), Toast.LENGTH_LONG).show();
+                f04a015999.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a015: This data is Required!");
+                return false;
+            } else {
+                f04a015999.setError(null);
+            }
+
+            if (f04a015888.isChecked() && f04a015888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a015) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a015888x.setError("This data is required");
+                Log.d(TAG, " f04a015888x :empty ");
+                return false;
+            } else {
+                f04a015888x.setError(null);
+            }
+        }
+        // ====================== f04a016 ===================
+        if (f04a016.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a016), Toast.LENGTH_SHORT).show();
+            f04a016999.setError("This data is Required!");
+            Log.i(TAG, "f04a016: This Data is Required!");
+            return false;
+        } else {
+            f04a016999.setError(null);
+        }
+
+        if (f04a016a.isChecked()) {
+            // ====================== f04a017 ===================
+            if (!(f04a017a.isChecked() || f04a017b.isChecked() || f04a017c.isChecked() || f04a017d.isChecked()
+                    || f04a017e.isChecked() || f04a017f.isChecked() || f04a017g.isChecked() || f04a017h.isChecked()
+                    || f04a017i.isChecked() || f04a017j.isChecked() || f04a017k.isChecked() || f04a017l.isChecked()
+                    || f04a017m.isChecked() || f04a017n.isChecked() || f04a017o.isChecked() || f04a017p.isChecked()
+                    || f04a017q.isChecked() || f04a017777.isChecked()
+                    || f04a017888.isChecked())) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f04a017), Toast.LENGTH_LONG).show();
+                f04a017888.setError("This data is Required!");    // Set Error on last check box
+                Log.i(TAG, "f04a017: This data is Required!");
+                return false;
+            } else {
+                f04a017888.setError(null);
+            }
+
+            if (f04a017888.isChecked() && f04a017888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a017) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a017888x.setError("This data is required");
+                Log.d(TAG, " f04a017888x :empty ");
+                return false;
+            } else {
+                f04a017888x.setError(null);
+            }
+        }
+
+        // ====================== f04a018 ===================
+        if (f04a018.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a018), Toast.LENGTH_SHORT).show();
+            f04a018777.setError("This data is Required!");
+            Log.i(TAG, "f04a018: This Data is Required!");
+            return false;
+        } else {
+            f04a018777.setError(null);
+        }
+
+        if (f04a018a.isChecked()) {
+            // ====================== f04a019 ===================
+            if (f04a019.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a019), Toast.LENGTH_SHORT).show();
+                f04a019888.setError("This data is Required!");
+                Log.i(TAG, "f04a019: This Data is Required!");
+                return false;
+            } else {
+                f04a019888.setError(null);
+            }
+
+            if (f04a019888.isChecked() && f04a019888x.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a019) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                f04a019888x.setError("This data is required");
+                Log.d(TAG, " f04a019888x :empty ");
+                return false;
+            } else {
+                f04a019888x.setError(null);
+            }
+
+            if (f04a019i.isChecked() && f04a019ix.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f04a019) + " - " + getString(R.string.f04a019ix), Toast.LENGTH_SHORT).show();
+                f04a019ix.setError("This data is required");
+                Log.d(TAG, " f04a019ix :empty ");
+                return false;
+            } else {
+                f04a019ix.setError(null);
+            }
+        }
+
+
         return true;
 
     }
 
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        if (f04a012m.isChecked() || f04a012n.isChecked()) {
+            fldGrp012.setVisibility(View.VISIBLE);
+        } else {
+            fldGrp012.setVisibility(View.GONE);
+        }
+    }
 }
 

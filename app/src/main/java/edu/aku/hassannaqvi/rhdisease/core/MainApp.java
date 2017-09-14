@@ -104,6 +104,8 @@ public class MainApp extends Application {
     public static int randID = 1;
     public static Boolean isRsvp = false;
     public static Boolean isHead = false;
+    public static List<FormsContract> participantList;
+    public static String formType;
     protected static LocationManager locationManager;
     Location location;
 

@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form10;
 
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -15,13 +14,13 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-
-import java.util.Date;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
@@ -32,7 +31,7 @@ import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 public class F10AActivity extends AppCompatActivity {
 
     private static final String TAG = F10AActivity.class.getSimpleName();
-    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    //String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @BindView(R.id.f10a001)
     RadioGroup f10a001;
@@ -464,14 +463,76 @@ public class F10AActivity extends AppCompatActivity {
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
 
+        JSONObject f10a = new JSONObject();
+
+        f10a.put("f10a001", f10a001a.isChecked() ? "1" : f10a001b.isChecked() ? "2" : f10a001c.isChecked() ? "3"
+                : f10a001d.isChecked() ? "4" : f10a001e.isChecked() ? "5" : f10a001888.isChecked() ? "888" : "0");
+        f10a.put("f10a001888x", f10a001888x.getText().toString());
+
+        f10a.put("f10a002", f10a002a.isChecked() ? "1" : f10a002b.isChecked() ? "2" : f10a002888.isChecked() ? "888" : "0");
+        f10a.put("f10a002888x", f10a002888x.getText().toString());
+
+        f10a.put("f10a003", f10a003.getText().toString());
+        f10a.put("f10a004", f10a004.getText().toString());
+        f10a.put("f10a005", f10a005a.isChecked() ? "1" : f10a005b.isChecked() ? "2" : f10a005c.isChecked() ? "3"
+                : f10a005888.isChecked() ? "888" : "0");
+        f10a.put("f10a005888x", f10a005888x.getText().toString());
+        f10a.put("f10a006", f10a006a.isChecked() ? "1" : f10a006b.isChecked() ? "2" : f10a006c.isChecked() ? "3"
+                : f10a006d.isChecked() ? "4" : f10a006e.isChecked() ? "5" : f10a006888.isChecked() ? "888" : "0");
+        f10a.put("f10a006888x", f10a006888x.getText().toString());
+
+        f10a.put("f10a007", f10a007a.isChecked() ? "1" : f10a007b.isChecked() ? "2" : f10a007c.isChecked() ? "3"
+                : f10a007d.isChecked() ? "4" : f10a007e.isChecked() ? "5" : f10a007f.isChecked() ? "6"
+                : f10a007888.isChecked() ? "888" : f10a007999.isChecked() ? "999" : "0");
+        f10a.put("f10a007888x", f10a007888x.getText().toString());
+
+        f10a.put("f10a008", f10a008a.isChecked() ? "1" : f10a008b.isChecked() ? "2" : f10a008999.isChecked() ? "999" : "0");
+
+        f10a.put("f10a009", f10a009a.isChecked() ? "1" : f10a009b.isChecked() ? "2" : f10a009c.isChecked() ? "3"
+                : f10a009d.isChecked() ? "4" : f10a009e.isChecked() ? "5" : f10a009f.isChecked() ? "6" : f10a009g.isChecked() ? "7"
+                : f10a009888.isChecked() ? "888" : f10a009999.isChecked() ? "999" : "0");
+        f10a.put("f10a009888x", f10a009888x.getText().toString());
+        f10a.put("f10a010", f10a010a.isChecked() ? "1" : f10a010b.isChecked() ? "2" : f10a010999.isChecked() ? "999" : "0");
+        f10a.put("f10a01101", f10a01101a.isChecked() ? "1" : f10a01101b.isChecked() ? "2" : f10a01101999.isChecked() ? "999" : "0");
+        f10a.put("f10a01102", f10a01102a.isChecked() ? "1" : f10a01102b.isChecked() ? "2" : f10a01102999.isChecked() ? "999" : "0");
+        f10a.put("f10a01103", f10a01103a.isChecked() ? "1" : f10a01103b.isChecked() ? "2" : f10a01103999.isChecked() ? "999" : "0");
+        f10a.put("f10a01104", f10a01104a.isChecked() ? "1" : f10a01104b.isChecked() ? "2" : f10a01104999.isChecked() ? "999" : "0");
+        f10a.put("f10a01105", f10a01105a.isChecked() ? "1" : f10a01105b.isChecked() ? "2" : f10a01105999.isChecked() ? "999" : "0");
+        f10a.put("f10a01106", f10a01106a.isChecked() ? "1" : f10a01106b.isChecked() ? "2" : f10a01106999.isChecked() ? "999" : "0");
+        f10a.put("f10a01107", f10a01107a.isChecked() ? "1" : f10a01107b.isChecked() ? "2" : f10a01107999.isChecked() ? "999" : "0");
+        f10a.put("f10a01108", f10a01108a.isChecked() ? "1" : f10a01108b.isChecked() ? "2" : f10a01108999.isChecked() ? "999" : "0");
+        f10a.put("f10a01109", f10a01109a.isChecked() ? "1" : f10a01109b.isChecked() ? "2" : f10a01109999.isChecked() ? "999" : "0");
+        f10a.put("f10a01110", f10a01110a.isChecked() ? "1" : f10a01110b.isChecked() ? "2" : f10a01110999.isChecked() ? "999" : "0");
+        f10a.put("f10a01111", f10a01111a.isChecked() ? "1" : f10a01111b.isChecked() ? "2" : f10a01111999.isChecked() ? "999" : "0");
+        f10a.put("f10a01112", f10a01112a.isChecked() ? "1" : f10a01112b.isChecked() ? "2" : f10a01112999.isChecked() ? "999" : "0");
+        f10a.put("f10a01113", f10a01113a.isChecked() ? "1" : f10a01113b.isChecked() ? "2" : f10a01113999.isChecked() ? "999" : "0");
+        f10a.put("f10a01114", f10a01114a.isChecked() ? "1" : f10a01114b.isChecked() ? "2" : f10a01114999.isChecked() ? "999" : "0");
+        f10a.put("f10a011888", f10a011888a.isChecked() ? "1" : f10a011888b.isChecked() ? "2" : f10a011888999.isChecked() ? "999" : "0");
+        f10a.put("f10a011888x", f10a011888x.getText().toString());
+
+        MainApp.fc.setF10a(String.valueOf(f10a));
+
+
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
     private boolean UpdateDB() {
 
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        return true;
+        int updcount = db.updateF10A();
+
+        if (updcount == 1) {
+            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+        //return true;
     }
 
     public boolean ValidateForm() {
