@@ -22,12 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
-import edu.aku.hassannaqvi.rhdisease.contracts.CensusContract;
-import edu.aku.hassannaqvi.rhdisease.contracts.DeceasedContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
-import edu.aku.hassannaqvi.rhdisease.contracts.MembersContract;
-import edu.aku.hassannaqvi.rhdisease.contracts.MotherContract;
-import edu.aku.hassannaqvi.rhdisease.contracts.SectionKIMContract;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
 /**
@@ -96,11 +91,6 @@ public class MainApp extends Application {
     public static List<deadMemberClass> deadMembers = new ArrayList<deadMemberClass>();
     //    Ali
     public static String regionDss = "";
-    public static List<MembersContract> familyMembersList;
-    public static CensusContract cc;
-    public static DeceasedContract dc;
-    public static MotherContract mc;
-    public static SectionKIMContract ims;
     public static int mm = 1;
     public static int totalChild = 0;
     public static int memFlag = 0;

@@ -16,6 +16,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -27,9 +28,9 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
-import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
@@ -192,7 +193,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
-        if (check) {
+        //if (check) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -207,9 +208,9 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
-        } else {
+        /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
-        }
+        }*/
 
 
     }
@@ -230,18 +231,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
                     //finish();
 
-                    if (flag) {
-                        startActivity(new Intent(this, F04AActivity.class));
-                    } else {
-                        Intent intent = new Intent(this, EndingActivity.class);
-                        intent.putExtra("complete", true);
-                        startActivity(intent);
-
-                    }
-
-/*
-                startActivity(new Intent(this, SectionBActivity.class));
-*/
+                    startActivity(new Intent(this, EndingActivity.class));
 
                 } else {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -252,21 +242,22 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private boolean UpdateDB() {
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addEnrollment(AppMain.fc);
+        long updcount = db.addForm(MainApp.fc);
 
-        AppMain.fc.set_ID(String.valueOf(updcount));
+        MainApp.fc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
 
-            AppMain.fc.set_UID(
-                    (AppMain.fc.getDeviceID() + AppMain.fc.get_ID()));
+            MainApp.fc.set_UID(
+                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
             db.updateFormID();
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-        }*/
+        }
+
         return true;
     }
 
@@ -282,7 +273,35 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         MainApp.fc.setUser(MainApp.userName);
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
+        MainApp.fc.setParticipantID(participantID.getText().toString());
+        MainApp.fc.setFormType("3");
 
+        JSONObject f03 = new JSONObject();
+
+        f03.put("f03a001", f03a001a.isChecked() ? "1" : f03a001b.isChecked() ? "2" : "0");
+        f03.put("f03a002", f03a002a.isChecked() ? "1" : f03a002b.isChecked() ? "2" : "0");
+        f03.put("f03a002date", f03a002date.getText().toString());
+        f03.put("f03a003", f03a003a.isChecked() ? "1" : f03a003b.isChecked() ? "2" : "0");
+        f03.put("f03a004", f03a004a.isChecked() ? "1" : f03a004b.isChecked() ? "2" : "0");
+        f03.put("f03a005", f03a005a.isChecked() ? "1" : f03a005b.isChecked() ? "2" : "0");
+        f03.put("f03a006", f03a006a.isChecked() ? "1" : f03a006b.isChecked() ? "2" : "0");
+        f03.put("f03a007", f03a007a.isChecked() ? "1" : f03a007b.isChecked() ? "2" : "0");
+        f03.put("f03a008", f03a008a.isChecked() ? "1" : f03a008b.isChecked() ? "2" : "0");
+        if (isInclude()) {
+            f03.put("f03a009", "1");
+        } else {
+            f03.put("f03a009", "2");
+        }
+
+
+        f03.put("f03a010", f03a010a.isChecked() ? "1" : f03a010b.isChecked() ? "2" : "0");
+        f03.put("f03a011", f03a011a.isChecked() ? "1" : f03a011b.isChecked() ? "2" : f03a011888.isChecked() ? "888"
+                : f03a011999.isChecked() ? "999" : "0");
+        f03.put("f03a011888x", f03a011888x.getText().toString());
+        f03.put("f03a012", f03a012a.isChecked() ? "1" : f03a012b.isChecked() ? "2" : "0");
+        f03.put("f03a013", new Date());
+
+        MainApp.fc.setF03(String.valueOf(f03));
 
         MainApp.setGPS(this);
 
@@ -394,7 +413,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
                     f03a011a.setError(null);
                 }
 
-                if (f03a011888.isChecked() && f03a011888.getText().toString().isEmpty()) {
+                if (f03a011888.isChecked() && f03a011888x.getText().toString().isEmpty()) {
                     Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a011) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
                     f03a011888x.setError("This data is Required!");
 
