@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form10;
 
 import android.content.Intent;
-import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,7 +31,7 @@ import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 public class F10AActivity extends AppCompatActivity {
 
     private static final String TAG = F10AActivity.class.getSimpleName();
-    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    //String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @BindView(R.id.f10a001)
     RadioGroup f10a001;
