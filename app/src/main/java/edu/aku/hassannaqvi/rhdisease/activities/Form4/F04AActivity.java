@@ -27,6 +27,8 @@ import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.MainActivity;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
+import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F04AActivity extends Activity implements CompoundButton.OnCheckedChangeListener {
 
@@ -1068,23 +1070,17 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
     }
 
     private boolean UpdateDB() {
-      /*  DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addForm(MainApp.fc);
+        int updcount = db.updateF04();
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormsUID();
+            return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+            return false;
         }
-*/
-        return true;
 
     }
 
@@ -1281,7 +1277,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
         f04.put("f04a019ix", f04a019ix.getText().toString());
 
 
-              /*    MainApp.fc.setF04(String.valueOf(f04));*/
+        MainApp.fc.setF04(String.valueOf(f04));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
