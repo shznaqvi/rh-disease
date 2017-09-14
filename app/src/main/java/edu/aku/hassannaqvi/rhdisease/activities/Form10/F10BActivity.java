@@ -39,7 +39,7 @@ public class F10BActivity extends Activity {
     RadioButton f10b002a;
     @BindView(R.id.f10a002b)
     RadioButton f10b002b;
-    @BindView(R.id.f10a002999)
+    @BindView(R.id.f10b002999)
     RadioButton f10b002999;
     @BindView(R.id.f10b003)
     RadioGroup f10b003;
@@ -53,7 +53,7 @@ public class F10BActivity extends Activity {
     RadioGroup f10b004;
     @BindView(R.id.f10b004a)
     RadioButton f10b004a;
-    @BindView(R.id.f10a004b)
+    @BindView(R.id.f10b004b)
     RadioButton f10b004b;
     @BindView(R.id.f10b004999)
     RadioButton f10b004999;

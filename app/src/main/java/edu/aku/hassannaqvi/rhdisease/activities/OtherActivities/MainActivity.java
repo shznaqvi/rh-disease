@@ -22,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
@@ -31,6 +30,7 @@ import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.rhdisease.FormsList;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
