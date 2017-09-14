@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
@@ -301,8 +302,8 @@ public class MainActivity extends Activity {
     }
 
     public void openB(View v) {
-        /*Intent iB = new Intent(this, SectionBActivity.class);
-        startActivity(iB);*/
+        Intent iB = new Intent(this, F04AActivity.class);
+        startActivity(iB);
     }
 
     public void openC(View v) {
