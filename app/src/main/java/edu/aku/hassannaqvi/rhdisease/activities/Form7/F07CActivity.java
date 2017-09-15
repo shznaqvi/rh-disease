@@ -1,8 +1,8 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form7;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -16,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -27,7 +28,8 @@ import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
-public class F07CActivity extends Activity {
+public class F07CActivity extends AppCompatActivity
+{
 
     private static final String TAG = F07CActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -100,6 +102,14 @@ public class F07CActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f07_c);
         ButterKnife.bind(this);
+
+        String date13Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_13_WEEKS)));
+        String date42Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_42_WEEKS)));
+        f07c008.setManager(getSupportFragmentManager());
+        f07c008.setMaxDate(date13Weeks);
+        f07c008.setMinDate(date42Weeks);
+
+
 
 
         f07c001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

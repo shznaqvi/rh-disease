@@ -25,8 +25,8 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03BActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
-import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.MainActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -1020,6 +1020,1043 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
             }
         });
 
+        f04a002999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a002a.setEnabled(false);
+                    f04a002b.setEnabled(false);
+                    f04a002c.setEnabled(false);
+                    f04a002d.setEnabled(false);
+                    f04a002e.setEnabled(false);
+                    f04a002f.setEnabled(false);
+                    f04a002g.setEnabled(false);
+                    f04a002h.setEnabled(false);
+                    f04a002i.setEnabled(false);
+                    f04a002j.setEnabled(false);
+                    f04a002k.setEnabled(false);
+                    f04a002l.setEnabled(false);
+                    f04a002m.setEnabled(false);
+                    f04a002n.setEnabled(false);
+                    f04a002777.setEnabled(false);
+                    f04a002888.setEnabled(false);
+                    f04a002a.setChecked(false);
+                    f04a002b.setChecked(false);
+                    f04a002c.setChecked(false);
+                    f04a002d.setChecked(false);
+                    f04a002e.setChecked(false);
+                    f04a002f.setChecked(false);
+                    f04a002g.setChecked(false);
+                    f04a002h.setChecked(false);
+                    f04a002i.setChecked(false);
+                    f04a002j.setChecked(false);
+                    f04a002k.setChecked(false);
+                    f04a002l.setChecked(false);
+                    f04a002m.setChecked(false);
+                    f04a002n.setChecked(false);
+                    f04a002777.setChecked(false);
+                    f04a002888.setChecked(false);
+                    f04a002888x.setText(null);
+
+                } else {
+                    f04a002a.setEnabled(true);
+                    f04a002b.setEnabled(true);
+                    f04a002c.setEnabled(true);
+                    f04a002d.setEnabled(true);
+                    f04a002e.setEnabled(true);
+                    f04a002f.setEnabled(true);
+                    f04a002g.setEnabled(true);
+                    f04a002h.setEnabled(true);
+                    f04a002i.setEnabled(true);
+                    f04a002j.setEnabled(true);
+                    f04a002k.setEnabled(true);
+                    f04a002l.setEnabled(true);
+                    f04a002m.setEnabled(true);
+                    f04a002n.setEnabled(true);
+                    f04a002777.setEnabled(true);
+                    f04a002888.setEnabled(true);
+                }
+            }
+        });
+
+        f04a002777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a002a.setEnabled(false);
+                    f04a002b.setEnabled(false);
+                    f04a002c.setEnabled(false);
+                    f04a002d.setEnabled(false);
+                    f04a002e.setEnabled(false);
+                    f04a002f.setEnabled(false);
+                    f04a002g.setEnabled(false);
+                    f04a002h.setEnabled(false);
+                    f04a002i.setEnabled(false);
+                    f04a002j.setEnabled(false);
+                    f04a002k.setEnabled(false);
+                    f04a002l.setEnabled(false);
+                    f04a002m.setEnabled(false);
+                    f04a002n.setEnabled(false);
+                    f04a002999.setEnabled(false);
+                    f04a002888.setEnabled(false);
+                    f04a002a.setChecked(false);
+                    f04a002b.setChecked(false);
+                    f04a002c.setChecked(false);
+                    f04a002d.setChecked(false);
+                    f04a002e.setChecked(false);
+                    f04a002f.setChecked(false);
+                    f04a002g.setChecked(false);
+                    f04a002h.setChecked(false);
+                    f04a002i.setChecked(false);
+                    f04a002j.setChecked(false);
+                    f04a002k.setChecked(false);
+                    f04a002l.setChecked(false);
+                    f04a002m.setChecked(false);
+                    f04a002n.setChecked(false);
+                    f04a002999.setChecked(false);
+                    f04a002888.setChecked(false);
+                    f04a002888x.setText(null);
+
+                } else {
+                    f04a002a.setEnabled(true);
+                    f04a002b.setEnabled(true);
+                    f04a002c.setEnabled(true);
+                    f04a002d.setEnabled(true);
+                    f04a002e.setEnabled(true);
+                    f04a002f.setEnabled(true);
+                    f04a002g.setEnabled(true);
+                    f04a002h.setEnabled(true);
+                    f04a002i.setEnabled(true);
+                    f04a002j.setEnabled(true);
+                    f04a002k.setEnabled(true);
+                    f04a002l.setEnabled(true);
+                    f04a002m.setEnabled(true);
+                    f04a002n.setEnabled(true);
+                    f04a002999.setEnabled(true);
+                    f04a002888.setEnabled(true);
+                }
+            }
+        });
+
+
+        f04a003999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a003a.setEnabled(false);
+                    f04a003b.setEnabled(false);
+                    f04a003c.setEnabled(false);
+                    f04a003d.setEnabled(false);
+                    f04a003e.setEnabled(false);
+                    f04a003f.setEnabled(false);
+                    f04a003g.setEnabled(false);
+                    f04a003h.setEnabled(false);
+                    f04a003i.setEnabled(false);
+                    f04a003j.setEnabled(false);
+                    f04a003k.setEnabled(false);
+                    f04a003l.setEnabled(false);
+                    f04a003m.setEnabled(false);
+                    f04a003n.setEnabled(false);
+                    f04a003o.setEnabled(false);
+                    f04a003p.setEnabled(false);
+                    f04a003q.setEnabled(false);
+                    f04a003777.setEnabled(false);
+                    f04a003888.setEnabled(false);
+                    f04a003a.setChecked(false);
+                    f04a003b.setChecked(false);
+                    f04a003c.setChecked(false);
+                    f04a003d.setChecked(false);
+                    f04a003e.setChecked(false);
+                    f04a003f.setChecked(false);
+                    f04a003g.setChecked(false);
+                    f04a003h.setChecked(false);
+                    f04a003i.setChecked(false);
+                    f04a003j.setChecked(false);
+                    f04a003k.setChecked(false);
+                    f04a003l.setChecked(false);
+                    f04a003m.setChecked(false);
+                    f04a003n.setChecked(false);
+                    f04a003o.setChecked(false);
+                    f04a003p.setChecked(false);
+                    f04a003q.setChecked(false);
+                    f04a003777.setChecked(false);
+                    f04a003888.setChecked(false);
+                    f04a003888x.setText(null);
+
+                } else {
+                    f04a003a.setEnabled(true);
+                    f04a003b.setEnabled(true);
+                    f04a003c.setEnabled(true);
+                    f04a003d.setEnabled(true);
+                    f04a003e.setEnabled(true);
+                    f04a003f.setEnabled(true);
+                    f04a003g.setEnabled(true);
+                    f04a003h.setEnabled(true);
+                    f04a003i.setEnabled(true);
+                    f04a003j.setEnabled(true);
+                    f04a003k.setEnabled(true);
+                    f04a003l.setEnabled(true);
+                    f04a003m.setEnabled(true);
+                    f04a003n.setEnabled(true);
+                    f04a003o.setEnabled(true);
+                    f04a003p.setEnabled(true);
+                    f04a003q.setEnabled(true);
+                    f04a003777.setEnabled(true);
+                    f04a003888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a003777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a003a.setEnabled(false);
+                    f04a003b.setEnabled(false);
+                    f04a003c.setEnabled(false);
+                    f04a003d.setEnabled(false);
+                    f04a003e.setEnabled(false);
+                    f04a003f.setEnabled(false);
+                    f04a003g.setEnabled(false);
+                    f04a003h.setEnabled(false);
+                    f04a003i.setEnabled(false);
+                    f04a003j.setEnabled(false);
+                    f04a003k.setEnabled(false);
+                    f04a003l.setEnabled(false);
+                    f04a003m.setEnabled(false);
+                    f04a003n.setEnabled(false);
+                    f04a003o.setEnabled(false);
+                    f04a003p.setEnabled(false);
+                    f04a003q.setEnabled(false);
+                    f04a003888.setEnabled(false);
+                    f04a003999.setEnabled(false);
+                    f04a003a.setChecked(false);
+                    f04a003b.setChecked(false);
+                    f04a003c.setChecked(false);
+                    f04a003d.setChecked(false);
+                    f04a003e.setChecked(false);
+                    f04a003f.setChecked(false);
+                    f04a003g.setChecked(false);
+                    f04a003h.setChecked(false);
+                    f04a003i.setChecked(false);
+                    f04a003j.setChecked(false);
+                    f04a003k.setChecked(false);
+                    f04a003l.setChecked(false);
+                    f04a003m.setChecked(false);
+                    f04a003n.setChecked(false);
+                    f04a003o.setChecked(false);
+                    f04a003p.setChecked(false);
+                    f04a003q.setChecked(false);
+                    f04a003888.setChecked(false);
+                    f04a003888x.setText(null);
+                    f04a003999.setChecked(false);
+                } else {
+                    f04a003a.setEnabled(true);
+                    f04a003b.setEnabled(true);
+                    f04a003c.setEnabled(true);
+                    f04a003d.setEnabled(true);
+                    f04a003e.setEnabled(true);
+                    f04a003f.setEnabled(true);
+                    f04a003g.setEnabled(true);
+                    f04a003h.setEnabled(true);
+                    f04a003i.setEnabled(true);
+                    f04a003j.setEnabled(true);
+                    f04a003k.setEnabled(true);
+                    f04a003l.setEnabled(true);
+                    f04a003m.setEnabled(true);
+                    f04a003n.setEnabled(true);
+                    f04a003o.setEnabled(true);
+                    f04a003p.setEnabled(true);
+                    f04a003q.setEnabled(true);
+                    f04a003888.setEnabled(true);
+                    f04a003999.setEnabled(true);
+                }
+            }
+        });
+
+        f04a004999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a004a.setEnabled(false);
+                    f04a004b.setEnabled(false);
+                    f04a004c.setEnabled(false);
+                    f04a004d.setEnabled(false);
+                    f04a004e.setEnabled(false);
+                    f04a004f.setEnabled(false);
+                    f04a004g.setEnabled(false);
+                    f04a004h.setEnabled(false);
+                    f04a004i.setEnabled(false);
+                    f04a004j.setEnabled(false);
+                    f04a004k.setEnabled(false);
+                    f04a004l.setEnabled(false);
+                    f04a004m.setEnabled(false);
+                    f04a004n.setEnabled(false);
+                    f04a004o.setEnabled(false);
+                    f04a004777.setEnabled(false);
+                    f04a004888.setEnabled(false);
+                    f04a004a.setChecked(false);
+                    f04a004b.setChecked(false);
+                    f04a004c.setChecked(false);
+                    f04a004d.setChecked(false);
+                    f04a004e.setChecked(false);
+                    f04a004f.setChecked(false);
+                    f04a004g.setChecked(false);
+                    f04a004h.setChecked(false);
+                    f04a004i.setChecked(false);
+                    f04a004j.setChecked(false);
+                    f04a004k.setChecked(false);
+                    f04a004l.setChecked(false);
+                    f04a004m.setChecked(false);
+                    f04a004n.setChecked(false);
+                    f04a004o.setChecked(false);
+                    f04a004777.setChecked(false);
+                    f04a004888.setChecked(false);
+                    f04a004888x.setText(null);
+
+                } else {
+                    f04a004a.setEnabled(true);
+                    f04a004b.setEnabled(true);
+                    f04a004c.setEnabled(true);
+                    f04a004d.setEnabled(true);
+                    f04a004e.setEnabled(true);
+                    f04a004f.setEnabled(true);
+                    f04a004g.setEnabled(true);
+                    f04a004h.setEnabled(true);
+                    f04a004i.setEnabled(true);
+                    f04a004j.setEnabled(true);
+                    f04a004k.setEnabled(true);
+                    f04a004l.setEnabled(true);
+                    f04a004m.setEnabled(true);
+                    f04a004n.setEnabled(true);
+                    f04a004o.setEnabled(true);
+                    f04a004777.setEnabled(true);
+                    f04a004888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a004777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a004a.setEnabled(false);
+                    f04a004b.setEnabled(false);
+                    f04a004c.setEnabled(false);
+                    f04a004d.setEnabled(false);
+                    f04a004e.setEnabled(false);
+                    f04a004f.setEnabled(false);
+                    f04a004g.setEnabled(false);
+                    f04a004h.setEnabled(false);
+                    f04a004i.setEnabled(false);
+                    f04a004j.setEnabled(false);
+                    f04a004k.setEnabled(false);
+                    f04a004l.setEnabled(false);
+                    f04a004m.setEnabled(false);
+                    f04a004n.setEnabled(false);
+                    f04a004o.setEnabled(false);
+                    f04a004888.setEnabled(false);
+                    f04a004999.setEnabled(false);
+                    f04a004a.setChecked(false);
+                    f04a004b.setChecked(false);
+                    f04a004c.setChecked(false);
+                    f04a004d.setChecked(false);
+                    f04a004e.setChecked(false);
+                    f04a004f.setChecked(false);
+                    f04a004g.setChecked(false);
+                    f04a004h.setChecked(false);
+                    f04a004i.setChecked(false);
+                    f04a004j.setChecked(false);
+                    f04a004k.setChecked(false);
+                    f04a004l.setChecked(false);
+                    f04a004m.setChecked(false);
+                    f04a004n.setChecked(false);
+                    f04a004o.setChecked(false);
+                    f04a004888.setChecked(false);
+                    f04a004888x.setText(null);
+                    f04a004999.setChecked(false);
+                } else {
+                    f04a004a.setEnabled(true);
+                    f04a004b.setEnabled(true);
+                    f04a004c.setEnabled(true);
+                    f04a004d.setEnabled(true);
+                    f04a004e.setEnabled(true);
+                    f04a004f.setEnabled(true);
+                    f04a004g.setEnabled(true);
+                    f04a004h.setEnabled(true);
+                    f04a004i.setEnabled(true);
+                    f04a004j.setEnabled(true);
+                    f04a004k.setEnabled(true);
+                    f04a004l.setEnabled(true);
+                    f04a004m.setEnabled(true);
+                    f04a004n.setEnabled(true);
+                    f04a004o.setEnabled(true);
+                    f04a004888.setEnabled(true);
+                    f04a004999.setEnabled(true);
+                }
+            }
+        });
+
+
+        f04a005999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a005a.setEnabled(false);
+                    f04a005b.setEnabled(false);
+                    f04a005c.setEnabled(false);
+                    f04a005d.setEnabled(false);
+                    f04a005e.setEnabled(false);
+                    f04a005f.setEnabled(false);
+                    f04a005g.setEnabled(false);
+                    f04a005h.setEnabled(false);
+                    f04a005i.setEnabled(false);
+                    f04a005j.setEnabled(false);
+                    f04a005k.setEnabled(false);
+                    f04a005l.setEnabled(false);
+                    f04a005m.setEnabled(false);
+                    f04a005n.setEnabled(false);
+                    f04a005o.setEnabled(false);
+                    f04a005777.setEnabled(false);
+                    f04a005888.setEnabled(false);
+                    f04a005a.setChecked(false);
+                    f04a005b.setChecked(false);
+                    f04a005c.setChecked(false);
+                    f04a005d.setChecked(false);
+                    f04a005e.setChecked(false);
+                    f04a005f.setChecked(false);
+                    f04a005g.setChecked(false);
+                    f04a005h.setChecked(false);
+                    f04a005i.setChecked(false);
+                    f04a005j.setChecked(false);
+                    f04a005k.setChecked(false);
+                    f04a005l.setChecked(false);
+                    f04a005m.setChecked(false);
+                    f04a005n.setChecked(false);
+                    f04a005o.setChecked(false);
+                    f04a005777.setChecked(false);
+                    f04a005888.setChecked(false);
+                    f04a005888x.setText(null);
+
+                } else {
+                    f04a005a.setEnabled(true);
+                    f04a005b.setEnabled(true);
+                    f04a005c.setEnabled(true);
+                    f04a005d.setEnabled(true);
+                    f04a005e.setEnabled(true);
+                    f04a005f.setEnabled(true);
+                    f04a005g.setEnabled(true);
+                    f04a005h.setEnabled(true);
+                    f04a005i.setEnabled(true);
+                    f04a005j.setEnabled(true);
+                    f04a005k.setEnabled(true);
+                    f04a005l.setEnabled(true);
+                    f04a005m.setEnabled(true);
+                    f04a005n.setEnabled(true);
+                    f04a005o.setEnabled(true);
+                    f04a005777.setEnabled(true);
+                    f04a005888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a005777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a005a.setEnabled(false);
+                    f04a005b.setEnabled(false);
+                    f04a005c.setEnabled(false);
+                    f04a005d.setEnabled(false);
+                    f04a005e.setEnabled(false);
+                    f04a005f.setEnabled(false);
+                    f04a005g.setEnabled(false);
+                    f04a005h.setEnabled(false);
+                    f04a005i.setEnabled(false);
+                    f04a005j.setEnabled(false);
+                    f04a005k.setEnabled(false);
+                    f04a005l.setEnabled(false);
+                    f04a005m.setEnabled(false);
+                    f04a005n.setEnabled(false);
+                    f04a005o.setEnabled(false);
+                    f04a005888.setEnabled(false);
+                    f04a005999.setEnabled(false);
+                    f04a005a.setChecked(false);
+                    f04a005b.setChecked(false);
+                    f04a005c.setChecked(false);
+                    f04a005d.setChecked(false);
+                    f04a005e.setChecked(false);
+                    f04a005f.setChecked(false);
+                    f04a005g.setChecked(false);
+                    f04a005h.setChecked(false);
+                    f04a005i.setChecked(false);
+                    f04a005j.setChecked(false);
+                    f04a005k.setChecked(false);
+                    f04a005l.setChecked(false);
+                    f04a005m.setChecked(false);
+                    f04a005n.setChecked(false);
+                    f04a005o.setChecked(false);
+                    f04a005888.setChecked(false);
+                    f04a005888x.setText(null);
+                    f04a005999.setChecked(false);
+                } else {
+                    f04a005a.setEnabled(true);
+                    f04a005b.setEnabled(true);
+                    f04a005c.setEnabled(true);
+                    f04a005d.setEnabled(true);
+                    f04a005e.setEnabled(true);
+                    f04a005f.setEnabled(true);
+                    f04a005g.setEnabled(true);
+                    f04a005h.setEnabled(true);
+                    f04a005i.setEnabled(true);
+                    f04a005j.setEnabled(true);
+                    f04a005k.setEnabled(true);
+                    f04a005l.setEnabled(true);
+                    f04a005m.setEnabled(true);
+                    f04a005n.setEnabled(true);
+                    f04a005o.setEnabled(true);
+                    f04a005888.setEnabled(true);
+                    f04a005999.setEnabled(true);
+                }
+            }
+        });
+
+        f04a007999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a007a.setEnabled(false);
+                    f04a007b.setEnabled(false);
+                    f04a007c.setEnabled(false);
+                    f04a007d.setEnabled(false);
+                    f04a007e.setEnabled(false);
+                    f04a007f.setEnabled(false);
+                    f04a007777.setEnabled(false);
+                    f04a007888.setEnabled(false);
+                    f04a007a.setChecked(false);
+                    f04a007b.setChecked(false);
+                    f04a007c.setChecked(false);
+                    f04a007d.setChecked(false);
+                    f04a007e.setChecked(false);
+                    f04a007f.setChecked(false);
+                    f04a007777.setChecked(false);
+                    f04a007888.setChecked(false);
+                    f04a007888x.setText(null);
+
+                } else {
+                    f04a007a.setEnabled(true);
+                    f04a007b.setEnabled(true);
+                    f04a007c.setEnabled(true);
+                    f04a007d.setEnabled(true);
+                    f04a007e.setEnabled(true);
+                    f04a007f.setEnabled(true);
+                    f04a007777.setEnabled(true);
+                    f04a007888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a007777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a007a.setEnabled(false);
+                    f04a007b.setEnabled(false);
+                    f04a007c.setEnabled(false);
+                    f04a007d.setEnabled(false);
+                    f04a007e.setEnabled(false);
+                    f04a007f.setEnabled(false);
+                    f04a007888.setEnabled(false);
+                    f04a007999.setEnabled(false);
+                    f04a007a.setChecked(false);
+                    f04a007b.setChecked(false);
+                    f04a007c.setChecked(false);
+                    f04a007d.setChecked(false);
+                    f04a007e.setChecked(false);
+                    f04a007f.setChecked(false);
+                    f04a007888.setChecked(false);
+                    f04a007888x.setText(null);
+                    f04a007999.setChecked(false);
+                } else {
+                    f04a007a.setEnabled(true);
+                    f04a007b.setEnabled(true);
+                    f04a007c.setEnabled(true);
+                    f04a007d.setEnabled(true);
+                    f04a007e.setEnabled(true);
+                    f04a007f.setEnabled(true);
+                    f04a007888.setEnabled(true);
+                    f04a007999.setEnabled(true);
+                }
+            }
+        });
+
+        f04a008999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a008a.setEnabled(false);
+                    f04a008b.setEnabled(false);
+                    f04a008c.setEnabled(false);
+                    f04a008d.setEnabled(false);
+                    f04a008e.setEnabled(false);
+                    f04a008f.setEnabled(false);
+                    f04a008g.setEnabled(false);
+                    f04a008h.setEnabled(false);
+                    f04a008i.setEnabled(false);
+                    f04a008777.setEnabled(false);
+                    f04a008888.setEnabled(false);
+                    f04a008a.setChecked(false);
+                    f04a008b.setChecked(false);
+                    f04a008c.setChecked(false);
+                    f04a008d.setChecked(false);
+                    f04a008e.setChecked(false);
+                    f04a008f.setChecked(false);
+                    f04a008g.setChecked(false);
+                    f04a008h.setChecked(false);
+                    f04a008i.setChecked(false);
+                    f04a008777.setChecked(false);
+                    f04a008888.setChecked(false);
+                    f04a008888x.setText(null);
+
+                } else {
+                    f04a008a.setEnabled(true);
+                    f04a008b.setEnabled(true);
+                    f04a008c.setEnabled(true);
+                    f04a008d.setEnabled(true);
+                    f04a008e.setEnabled(true);
+                    f04a008f.setEnabled(true);
+                    f04a008g.setEnabled(true);
+                    f04a008h.setEnabled(true);
+                    f04a008i.setEnabled(true);
+                    f04a008777.setEnabled(true);
+                    f04a008888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a008777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a008a.setEnabled(false);
+                    f04a008b.setEnabled(false);
+                    f04a008c.setEnabled(false);
+                    f04a008d.setEnabled(false);
+                    f04a008e.setEnabled(false);
+                    f04a008f.setEnabled(false);
+                    f04a008g.setEnabled(false);
+                    f04a008h.setEnabled(false);
+                    f04a008i.setEnabled(false);
+                    f04a008888.setEnabled(false);
+                    f04a008999.setEnabled(false);
+                    f04a008a.setChecked(false);
+                    f04a008b.setChecked(false);
+                    f04a008c.setChecked(false);
+                    f04a008d.setChecked(false);
+                    f04a008e.setChecked(false);
+                    f04a008f.setChecked(false);
+                    f04a008g.setChecked(false);
+                    f04a008h.setChecked(false);
+                    f04a008i.setChecked(false);
+                    f04a008888.setChecked(false);
+                    f04a008888x.setText(null);
+                    f04a008999.setChecked(false);
+                } else {
+                    f04a008a.setEnabled(true);
+                    f04a008b.setEnabled(true);
+                    f04a008c.setEnabled(true);
+                    f04a008d.setEnabled(true);
+                    f04a008e.setEnabled(true);
+                    f04a008f.setEnabled(true);
+                    f04a008g.setEnabled(true);
+                    f04a008h.setEnabled(true);
+                    f04a008i.setEnabled(true);
+                    f04a008888.setEnabled(true);
+                    f04a008999.setEnabled(true);
+                }
+            }
+        });
+
+        f04a010999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a010a.setEnabled(false);
+                    f04a010b.setEnabled(false);
+                    f04a010c.setEnabled(false);
+                    f04a010d.setEnabled(false);
+                    f04a010e.setEnabled(false);
+                    f04a010777.setEnabled(false);
+                    f04a010888.setEnabled(false);
+                    f04a010a.setChecked(false);
+                    f04a010b.setChecked(false);
+                    f04a010c.setChecked(false);
+                    f04a010d.setChecked(false);
+                    f04a010e.setChecked(false);
+                    f04a010777.setChecked(false);
+                    f04a010888.setChecked(false);
+                    f04a010888x.setText(null);
+
+                } else {
+                    f04a010a.setEnabled(true);
+                    f04a010b.setEnabled(true);
+                    f04a010c.setEnabled(true);
+                    f04a010d.setEnabled(true);
+                    f04a010e.setEnabled(true);
+                    f04a010777.setEnabled(true);
+                    f04a010888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a010777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a010a.setEnabled(false);
+                    f04a010b.setEnabled(false);
+                    f04a010c.setEnabled(false);
+                    f04a010d.setEnabled(false);
+                    f04a010e.setEnabled(false);
+                    f04a010888.setEnabled(false);
+                    f04a010999.setEnabled(false);
+                    f04a010a.setChecked(false);
+                    f04a010b.setChecked(false);
+                    f04a010c.setChecked(false);
+                    f04a010d.setChecked(false);
+                    f04a010e.setChecked(false);
+                    f04a010888.setChecked(false);
+                    f04a010888x.setText(null);
+                    f04a010999.setChecked(false);
+                } else {
+                    f04a010a.setEnabled(true);
+                    f04a010b.setEnabled(true);
+                    f04a010c.setEnabled(true);
+                    f04a010d.setEnabled(true);
+                    f04a010e.setEnabled(true);
+                    f04a010888.setEnabled(true);
+                    f04a010999.setEnabled(true);
+                }
+            }
+        });
+
+        f04a012999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a012a.setEnabled(false);
+                    f04a012b.setEnabled(false);
+                    f04a012c.setEnabled(false);
+                    f04a012d.setEnabled(false);
+                    f04a012e.setEnabled(false);
+                    f04a012f.setEnabled(false);
+                    f04a012g.setEnabled(false);
+                    f04a012h.setEnabled(false);
+                    f04a012i.setEnabled(false);
+                    f04a012j.setEnabled(false);
+                    f04a012k.setEnabled(false);
+                    f04a012l.setEnabled(false);
+                    f04a012m.setEnabled(false);
+                    f04a012n.setEnabled(false);
+                    f04a012o.setEnabled(false);
+                    f04a012p.setEnabled(false);
+                    f04a012q.setEnabled(false);
+                    f04a012r.setEnabled(false);
+                    f04a012777.setEnabled(false);
+                    f04a012888.setEnabled(false);
+                    f04a012a.setChecked(false);
+                    f04a012b.setChecked(false);
+                    f04a012c.setChecked(false);
+                    f04a012d.setChecked(false);
+                    f04a012e.setChecked(false);
+                    f04a012f.setChecked(false);
+                    f04a012g.setChecked(false);
+                    f04a012h.setChecked(false);
+                    f04a012i.setChecked(false);
+                    f04a012j.setChecked(false);
+                    f04a012k.setChecked(false);
+                    f04a012l.setChecked(false);
+                    f04a012m.setChecked(false);
+                    f04a012n.setChecked(false);
+                    f04a012o.setChecked(false);
+                    f04a012p.setChecked(false);
+                    f04a012q.setChecked(false);
+                    f04a012r.setChecked(false);
+                    f04a012777.setChecked(false);
+                    f04a012888.setChecked(false);
+                    f04a012888x.setText(null);
+
+                } else {
+                    f04a012a.setEnabled(true);
+                    f04a012b.setEnabled(true);
+                    f04a012c.setEnabled(true);
+                    f04a012d.setEnabled(true);
+                    f04a012e.setEnabled(true);
+                    f04a012f.setEnabled(true);
+                    f04a012g.setEnabled(true);
+                    f04a012h.setEnabled(true);
+                    f04a012i.setEnabled(true);
+                    f04a012j.setEnabled(true);
+                    f04a012k.setEnabled(true);
+                    f04a012l.setEnabled(true);
+                    f04a012m.setEnabled(true);
+                    f04a012n.setEnabled(true);
+                    f04a012o.setEnabled(true);
+                    f04a012p.setEnabled(true);
+                    f04a012q.setEnabled(true);
+                    f04a012r.setEnabled(true);
+                    f04a012777.setEnabled(true);
+                    f04a012888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a012777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a012a.setEnabled(false);
+                    f04a012b.setEnabled(false);
+                    f04a012c.setEnabled(false);
+                    f04a012d.setEnabled(false);
+                    f04a012e.setEnabled(false);
+                    f04a012f.setEnabled(false);
+                    f04a012g.setEnabled(false);
+                    f04a012h.setEnabled(false);
+                    f04a012i.setEnabled(false);
+                    f04a012j.setEnabled(false);
+                    f04a012k.setEnabled(false);
+                    f04a012l.setEnabled(false);
+                    f04a012m.setEnabled(false);
+                    f04a012n.setEnabled(false);
+                    f04a012o.setEnabled(false);
+                    f04a012p.setEnabled(false);
+                    f04a012q.setEnabled(false);
+                    f04a012r.setEnabled(false);
+                    f04a012888.setEnabled(false);
+                    f04a012999.setEnabled(false);
+                    f04a012a.setChecked(false);
+                    f04a012b.setChecked(false);
+                    f04a012c.setChecked(false);
+                    f04a012d.setChecked(false);
+                    f04a012e.setChecked(false);
+                    f04a012f.setChecked(false);
+                    f04a012g.setChecked(false);
+                    f04a012h.setChecked(false);
+                    f04a012i.setChecked(false);
+                    f04a012j.setChecked(false);
+                    f04a012k.setChecked(false);
+                    f04a012l.setChecked(false);
+                    f04a012m.setChecked(false);
+                    f04a012n.setChecked(false);
+                    f04a012o.setChecked(false);
+                    f04a012p.setChecked(false);
+                    f04a012q.setChecked(false);
+                    f04a012r.setChecked(false);
+                    f04a012888.setChecked(false);
+                    f04a012888x.setText(null);
+                    f04a012999.setChecked(false);
+                } else {
+                    f04a012a.setEnabled(true);
+                    f04a012b.setEnabled(true);
+                    f04a012c.setEnabled(true);
+                    f04a012d.setEnabled(true);
+                    f04a012e.setEnabled(true);
+                    f04a012f.setEnabled(true);
+                    f04a012g.setEnabled(true);
+                    f04a012h.setEnabled(true);
+                    f04a012i.setEnabled(true);
+                    f04a012j.setEnabled(true);
+                    f04a012k.setEnabled(true);
+                    f04a012l.setEnabled(true);
+                    f04a012m.setEnabled(true);
+                    f04a012n.setEnabled(true);
+                    f04a012o.setEnabled(true);
+                    f04a012p.setEnabled(true);
+                    f04a012q.setEnabled(true);
+                    f04a012r.setEnabled(true);
+                    f04a012888.setEnabled(true);
+                    f04a012999.setEnabled(true);
+                }
+            }
+        });
+
+
+        f04a015999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a015a.setEnabled(false);
+                    f04a015b.setEnabled(false);
+                    f04a015c.setEnabled(false);
+                    f04a015d.setEnabled(false);
+                    f04a015e.setEnabled(false);
+                    f04a015f.setEnabled(false);
+                    f04a015g.setEnabled(false);
+                    f04a015777.setEnabled(false);
+                    f04a015888.setEnabled(false);
+                    f04a015a.setChecked(false);
+                    f04a015b.setChecked(false);
+                    f04a015c.setChecked(false);
+                    f04a015d.setChecked(false);
+                    f04a015e.setChecked(false);
+                    f04a015f.setChecked(false);
+                    f04a015g.setChecked(false);
+                    f04a015777.setChecked(false);
+                    f04a015888.setChecked(false);
+                    f04a015888x.setText(null);
+
+                } else {
+                    f04a015a.setEnabled(true);
+                    f04a015b.setEnabled(true);
+                    f04a015c.setEnabled(true);
+                    f04a015d.setEnabled(true);
+                    f04a015e.setEnabled(true);
+                    f04a015f.setEnabled(true);
+                    f04a015g.setEnabled(true);
+                    f04a015777.setEnabled(true);
+                    f04a015888.setEnabled(true);
+
+                }
+            }
+        });
+
+
+        f04a015777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a015a.setEnabled(false);
+                    f04a015b.setEnabled(false);
+                    f04a015c.setEnabled(false);
+                    f04a015d.setEnabled(false);
+                    f04a015e.setEnabled(false);
+                    f04a015f.setEnabled(false);
+                    f04a015g.setEnabled(false);
+                    f04a015888.setEnabled(false);
+                    f04a015999.setEnabled(false);
+                    f04a015a.setChecked(false);
+                    f04a015b.setChecked(false);
+                    f04a015c.setChecked(false);
+                    f04a015d.setChecked(false);
+                    f04a015e.setChecked(false);
+                    f04a015f.setChecked(false);
+                    f04a015g.setChecked(false);
+                    f04a015888.setChecked(false);
+                    f04a015888x.setText(null);
+                    f04a015999.setChecked(false);
+                } else {
+                    f04a015a.setEnabled(true);
+                    f04a015b.setEnabled(true);
+                    f04a015c.setEnabled(true);
+                    f04a015d.setEnabled(true);
+                    f04a015e.setEnabled(true);
+                    f04a015f.setEnabled(true);
+                    f04a015g.setEnabled(true);
+                    f04a015888.setEnabled(true);
+                    f04a015999.setEnabled(true);
+                }
+            }
+        });
+
+        f04a017777.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a017a.setEnabled(false);
+                    f04a017b.setEnabled(false);
+                    f04a017c.setEnabled(false);
+                    f04a017d.setEnabled(false);
+                    f04a017e.setEnabled(false);
+                    f04a017f.setEnabled(false);
+                    f04a017g.setEnabled(false);
+                    f04a017h.setEnabled(false);
+                    f04a017i.setEnabled(false);
+                    f04a017j.setEnabled(false);
+                    f04a017k.setEnabled(false);
+                    f04a017l.setEnabled(false);
+                    f04a017m.setEnabled(false);
+                    f04a017n.setEnabled(false);
+                    f04a017o.setEnabled(false);
+                    f04a017p.setEnabled(false);
+                    f04a017q.setEnabled(false);
+                    f04a017888.setEnabled(false);
+                    f04a017a.setChecked(false);
+                    f04a017b.setChecked(false);
+                    f04a017c.setChecked(false);
+                    f04a017d.setChecked(false);
+                    f04a017e.setChecked(false);
+                    f04a017f.setChecked(false);
+                    f04a017g.setChecked(false);
+                    f04a017h.setChecked(false);
+                    f04a017i.setChecked(false);
+                    f04a017j.setChecked(false);
+                    f04a017k.setChecked(false);
+                    f04a017l.setChecked(false);
+                    f04a017m.setChecked(false);
+                    f04a017n.setChecked(false);
+                    f04a017o.setChecked(false);
+                    f04a017p.setChecked(false);
+                    f04a017q.setChecked(false);
+                    f04a017888.setChecked(false);
+                    f04a017888x.setText(null);
+                } else {
+                    f04a017a.setEnabled(true);
+                    f04a017b.setEnabled(true);
+                    f04a017c.setEnabled(true);
+                    f04a017d.setEnabled(true);
+                    f04a017e.setEnabled(true);
+                    f04a017f.setEnabled(true);
+                    f04a017g.setEnabled(true);
+                    f04a017h.setEnabled(true);
+                    f04a017i.setEnabled(true);
+                    f04a017j.setEnabled(true);
+                    f04a017k.setEnabled(true);
+                    f04a017l.setEnabled(true);
+                    f04a017m.setEnabled(true);
+                    f04a017n.setEnabled(true);
+                    f04a017o.setEnabled(true);
+                    f04a017p.setEnabled(true);
+                    f04a017q.setEnabled(true);
+                    f04a017888.setEnabled(true);
+                }
+            }
+        });
+
+
     }
 
     @OnClick(R.id.btn_End)
@@ -1061,7 +2098,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
                 finish();
 
 
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, F03BActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

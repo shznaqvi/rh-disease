@@ -7,16 +7,12 @@ import android.provider.Settings;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,8 +24,8 @@ import butterknife.BindViews;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
-import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
@@ -39,6 +35,8 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     private static final String TAG = F03AActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
+    @BindView(R.id.screeningnum)
+    EditText screeningnum;
     @BindView(R.id.f03a001)
     RadioGroup f03a001;
     @BindView(R.id.f03a001a)
@@ -89,38 +87,6 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     RadioButton f03a008a;
     @BindView(R.id.f03a008b)
     RadioButton f03a008b;
-    @BindView(R.id.f03a010)
-    RadioGroup f03a010;
-    @BindView(R.id.f03a010a)
-    RadioButton f03a010a;
-    @BindView(R.id.f03a010b)
-    RadioButton f03a010b;
-    @BindView(R.id.fldGrpf03a011)
-    LinearLayout fldGrpf03a011;
-    @BindView(R.id.f03a011)
-    RadioGroup f03a011;
-    @BindView(R.id.f03a011a)
-    RadioButton f03a011a;
-    @BindView(R.id.f03a011b)
-    RadioButton f03a011b;
-    @BindView(R.id.f03a011888)
-    RadioButton f03a011888;
-    @BindView(R.id.f03a011999)
-    RadioButton f03a011999;
-    @BindView(R.id.f03a011888x)
-    EditText f03a011888x;
-    @BindView(R.id.f03a012)
-    RadioGroup f03a012;
-    @BindView(R.id.f03a012a)
-    RadioButton f03a012a;
-    @BindView(R.id.f03a012b)
-    RadioButton f03a012b;
-    @BindView(R.id.participantID)
-    EditText participantID;
-    @BindView(R.id.fldGrpf03a012)
-    LinearLayout fldGrpf03a012;
-    @BindView(R.id.fldGrpEligible)
-    LinearLayout fldGrpEligible;
 
 
     @BindViews({R.id.f03a001, R.id.f03a002, R.id.f03a003, R.id.f03a004, R.id.f03a005, R.id.f03a006, R.id.f03a007, R.id.f03a008})
@@ -128,11 +94,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     @BindViews({R.id.f03a001a, R.id.f03a002a, R.id.f03a003a, R.id.f03a004a, R.id.f03a005a,
             R.id.f03a006b, R.id.f03a007b, R.id.f03a008b})
     List<RadioButton> f03aInclusionYes;
-    /*@BindViews({R.id.f03a006, R.id.f03a007, R.id.f03a008})
-    List<RadioGroup> f03aExclusion;
-    @BindViews({R.id.f03a006b, R.id.f03a007b, R.id.f03a008b})
-    List<RadioButton> f03aExclusionNo;
-*/
+
     Boolean check = false;
     Boolean flag = false;
 
@@ -149,34 +111,6 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         f03a002date.setMaxDate(date13Weeks);
         f03a002date.setMinDate(date42Weeks);
 
-        f03a010.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if (f03a010b.isChecked()) {
-                    fldGrpf03a011.setVisibility(View.VISIBLE);
-                    fldGrpf03a012.setVisibility(View.GONE);
-                    f03a012.clearCheck();
-                    participantID.setText(null);
-                } else {
-                    fldGrpf03a011.setVisibility(View.GONE);
-                    f03a011.clearCheck();
-                    f03a011888x.setText(null);
-                    fldGrpf03a012.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
-        f03a011888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked) {
-                    f03a011888x.setVisibility(View.VISIBLE);
-                } else {
-                    f03a011888x.setVisibility(View.GONE);
-                    f03a011888x.setText(null);
-                }
-            }
-        });
 
         //================== Q7 Skip Pattern ===========
         for (RadioGroup rg : f03aInclusion) {
@@ -230,9 +164,15 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
                     Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
                     finish();
-                    Intent endSec = new Intent(this, EndingActivity.class);
-                    endSec.putExtra("complete", true);
-                    startActivity(endSec);
+                    if (MainApp.eligibleFlag) {
+                        Intent endSec = new Intent(this, F04AActivity.class);
+                        endSec.putExtra("complete", true);
+                        startActivity(endSec);
+                    } else {
+                        Intent endSec = new Intent(this, EndingActivity.class);
+                        endSec.putExtra("complete", true);
+                        startActivity(endSec);
+                    }
 
                 } else {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -267,42 +207,33 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 
-        MainApp.fc = new FormsContract();
+        //MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(sharedPref.getString("tagName", null));
         MainApp.fc.setFormDate(dtToday);
         MainApp.fc.setUser(MainApp.userName);
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
-        MainApp.fc.setParticipantID(participantID.getText().toString());
+        //MainApp.fc.setParticipantID(participantID.getText().toString());
         MainApp.fc.setFormType("3");
 
-        JSONObject f03 = new JSONObject();
-
-        f03.put("f03a001", f03a001a.isChecked() ? "1" : f03a001b.isChecked() ? "2" : "0");
-        f03.put("f03a002", f03a002a.isChecked() ? "1" : f03a002b.isChecked() ? "2" : "0");
-        f03.put("f03a002date", f03a002date.getText().toString());
-        f03.put("f03a003", f03a003a.isChecked() ? "1" : f03a003b.isChecked() ? "2" : "0");
-        f03.put("f03a004", f03a004a.isChecked() ? "1" : f03a004b.isChecked() ? "2" : "0");
-        f03.put("f03a005", f03a005a.isChecked() ? "1" : f03a005b.isChecked() ? "2" : "0");
-        f03.put("f03a006", f03a006a.isChecked() ? "1" : f03a006b.isChecked() ? "2" : "0");
-        f03.put("f03a007", f03a007a.isChecked() ? "1" : f03a007b.isChecked() ? "2" : "0");
-        f03.put("f03a008", f03a008a.isChecked() ? "1" : f03a008b.isChecked() ? "2" : "0");
+        MainApp.f03.put("screennum", screeningnum.getText().toString());
+        MainApp.f03.put("f03a001", f03a001a.isChecked() ? "1" : f03a001b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a002", f03a002a.isChecked() ? "1" : f03a002b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a002date", f03a002date.getText().toString());
+        MainApp.f03.put("f03a003", f03a003a.isChecked() ? "1" : f03a003b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a004", f03a004a.isChecked() ? "1" : f03a004b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a005", f03a005a.isChecked() ? "1" : f03a005b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a006", f03a006a.isChecked() ? "1" : f03a006b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a007", f03a007a.isChecked() ? "1" : f03a007b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a008", f03a008a.isChecked() ? "1" : f03a008b.isChecked() ? "2" : "0");
         if (isInclude()) {
-            f03.put("f03a009", "1");
+            MainApp.f03.put("f03a009", "1");
         } else {
-            f03.put("f03a009", "2");
+            MainApp.f03.put("f03a009", "2");
         }
 
-
-        f03.put("f03a010", f03a010a.isChecked() ? "1" : f03a010b.isChecked() ? "2" : "0");
-        f03.put("f03a011", f03a011a.isChecked() ? "1" : f03a011b.isChecked() ? "2" : f03a011888.isChecked() ? "888"
-                : f03a011999.isChecked() ? "999" : "0");
-        f03.put("f03a011888x", f03a011888x.getText().toString());
-        f03.put("f03a012", f03a012a.isChecked() ? "1" : f03a012b.isChecked() ? "2" : "0");
-        f03.put("f03a013", new Date());
-
-        MainApp.fc.setF03(String.valueOf(f03));
+        MainApp.fc.setF03(String.valueOf(MainApp.f03));
 
         MainApp.setGPS(this);
 
@@ -392,58 +323,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             f03a008a.setError(null);
         }
 
-        if (isInclude()) {
 
-            // =================== 10 ====================
-            if (f03a010.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a010), Toast.LENGTH_SHORT).show();
-                f03a010a.setError("This data is required");
-                Log.d(TAG, "f03a010:empty ");
-                return false;
-            } else {
-                f03a002a.setError(null);
-            }
-
-            if (!f03a010a.isChecked()) {
-                if (f03a011.getCheckedRadioButtonId() == -1) {
-                    Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a011), Toast.LENGTH_SHORT).show();
-                    f03a011a.setError("This data is required");
-                    Log.d(TAG, "f03a011:empty ");
-                    return false;
-                } else {
-                    f03a011a.setError(null);
-                }
-
-                if (f03a011888.isChecked() && f03a011888x.getText().toString().isEmpty()) {
-                    Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a011) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                    f03a011888x.setError("This data is Required!");
-
-                    Log.i(TAG, "f03a011888x: This Data is Required!");
-                    return false;
-                } else {
-                    f03a011888x.setError(null);
-                }
-            }
-
-            if (f03a012.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a012), Toast.LENGTH_SHORT).show();
-                f03a012a.setError("This data is required");
-                Log.d(TAG, "f03a012:empty ");
-                return false;
-            } else {
-                f03a012a.setError(null);
-            }
-
-            if (participantID.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.participant_id), Toast.LENGTH_SHORT).show();
-                participantID.setError("This data is required");
-                Log.d(TAG, "participantID:empty ");
-                return false;
-            } else {
-                participantID.setError(null);
-            }
-
-        }
 
 
         return true;
@@ -460,16 +340,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
 
-        if (isInclude()) {
-            fldGrpEligible.setVisibility(View.VISIBLE);
-        } else {
-            fldGrpEligible.setVisibility(View.GONE);
-            f03a010.clearCheck();
-            f03a011.clearCheck();
-            f03a011888x.setText(null);
-            f03a012.clearCheck();
-            participantID.setText(null);
-        }
+        MainApp.eligibleFlag = isInclude();
 
     }
 
@@ -483,8 +354,6 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             }
 
         }
-
-
         // Show answer here
         return i == f03aInclusionYes.size();
     }
