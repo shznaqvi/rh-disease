@@ -746,7 +746,7 @@ public class F07BActivity extends Activity
                     Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
                     finish();
-                    Intent endSec = new Intent(this, EndingActivity.class);
+                    Intent endSec = new Intent(this, F07CActivity.class);
                     endSec.putExtra("complete", true);
                     startActivity(endSec);
 
@@ -1104,7 +1104,7 @@ public class F07BActivity extends Activity
             f07b003a.setError(null);
         }
 
-        if (f07b003b.isChecked()) {
+        if (!f07b003b.isChecked()) {
             if (!(f07b004a.isChecked() || f07b004b.isChecked() || f07b004c.isChecked() || f07b004d.isChecked()
                     || f07b004e.isChecked() || f07b004f.isChecked() || f07b004888.isChecked() || f07b004999.isChecked())) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b004), Toast.LENGTH_SHORT).show();
@@ -1494,69 +1494,70 @@ public class F07BActivity extends Activity
             f07b018a.setError(null);
         }
 
-        if (f07b01901.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01901), Toast.LENGTH_SHORT).show();
-            f07b01901.setError("This data is required");
-            Log.d(TAG, "f07b01901:empty ");
-            return false;
-        } else {
-            f07b01901.setError(null);
-        }
+        if (!f07b018b.isChecked()) {
+            if (f07b01901.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01901), Toast.LENGTH_SHORT).show();
+                f07b01901.setError("This data is required");
+                Log.d(TAG, "f07b01901:empty ");
+                return false;
+            } else {
+                f07b01901.setError(null);
+            }
 
-        if (f07b01902.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01902), Toast.LENGTH_SHORT).show();
-            f07b01902.setError("This data is required");
-            Log.d(TAG, "f07b01902:empty ");
-            return false;
-        } else {
-            f07b01902.setError(null);
-        }
+            if (f07b01902.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01902), Toast.LENGTH_SHORT).show();
+                f07b01902.setError("This data is required");
+                Log.d(TAG, "f07b01902:empty ");
+                return false;
+            } else {
+                f07b01902.setError(null);
+            }
 
-        if (f07b01903.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01903), Toast.LENGTH_SHORT).show();
-            f07b01903.setError("This data is required");
-            Log.d(TAG, "f07b01903:empty ");
-            return false;
-        } else {
-            f07b01903.setError(null);
-        }
+            if (f07b01903.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01903), Toast.LENGTH_SHORT).show();
+                f07b01903.setError("This data is required");
+                Log.d(TAG, "f07b01903:empty ");
+                return false;
+            } else {
+                f07b01903.setError(null);
+            }
 
-        if (f07b01904.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01904), Toast.LENGTH_SHORT).show();
-            f07b01904.setError("This data is required");
-            Log.d(TAG, "f07b01904:empty ");
-            return false;
-        } else {
-            f07b01904.setError(null);
-        }
+            if (f07b01904.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01904), Toast.LENGTH_SHORT).show();
+                f07b01904.setError("This data is required");
+                Log.d(TAG, "f07b01904:empty ");
+                return false;
+            } else {
+                f07b01904.setError(null);
+            }
 
-        if (f07b01905.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01905), Toast.LENGTH_SHORT).show();
-            f07b01905.setError("This data is required");
-            Log.d(TAG, "f07b01905:empty ");
-            return false;
-        } else {
-            f07b01905.setError(null);
-        }
+            if (f07b01905.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01905), Toast.LENGTH_SHORT).show();
+                f07b01905.setError("This data is required");
+                Log.d(TAG, "f07b01905:empty ");
+                return false;
+            } else {
+                f07b01905.setError(null);
+            }
 
-        if (f07b01906.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01906), Toast.LENGTH_SHORT).show();
-            f07b01906.setError("This data is required");
-            Log.d(TAG, "f07b01906:empty ");
-            return false;
-        } else {
-            f07b01906.setError(null);
-        }
+            if (f07b01906.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01906), Toast.LENGTH_SHORT).show();
+                f07b01906.setError("This data is required");
+                Log.d(TAG, "f07b01906:empty ");
+                return false;
+            } else {
+                f07b01906.setError(null);
+            }
 
-        if (f07b01907.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01907), Toast.LENGTH_SHORT).show();
-            f07b01907.setError("This data is required");
-            Log.d(TAG, "f07b01907:empty ");
-            return false;
-        } else {
-            f07b01907.setError(null);
+            if (f07b01907.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01907), Toast.LENGTH_SHORT).show();
+                f07b01907.setError("This data is required");
+                Log.d(TAG, "f07b01907:empty ");
+                return false;
+            } else {
+                f07b01907.setError(null);
+            }
         }
-
 
         return true;
     }

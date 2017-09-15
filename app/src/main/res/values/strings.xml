@@ -229,8 +229,8 @@
     <string name="f07b01907"> ڪڪڙيون </string>
     <string name="sec07CLabel"> Reproductive History </string>
     <string name="f07c001"> ڪيترا مرتبه ويم ٿيو (پيٽ) ٿيو آهي(موجوده به لکو </string>
-    <string name="f07c001a">  </string>
-    <string name="f07c001b">  </string>
+    <string name="f07c001a"> تمام حمل جو تعداد  </string>
+    <string name="f07c001b">اندازو ناهي</string>
     <string name="f07c002"> ڪيترا دفعا توهان ٻار ضايح ٿيو يا ڇڪي آئي (20 هفتن کان پهرين پيٽ جي) </string>
     <string name="f07c002a"> حمل جو شروع جي ڏينهن ۾ ضايح ٿيڻ جو تعداد </string>
     <string name="f07c002b"> اندازو ناهي </string>
@@ -262,7 +262,7 @@
     <string name="sec07DLabel"> Current Pregnancy and Health </string>
     <string name="f07d001"> هن موجوده حمل جي دوران توهان ڪيتري مرتبه چيڪ اپ معائنو ڪرايو(اڄ جي دوري کي شامل ڪريو) </string>
     <string name="f07d001a"> تمام دورن جي تعداد </string>
-    <string name="f07d001b"> خبر ناهي </string>
+    <string name="f07d001b"> اندازو ناهي </string>
     <string name="f07d002"> ڇا توهان کي ڪو طبعي مسئلو جيڪو تشخيص ڪيو هجي هڪ ڊاڪٽر يا صحت جي ورڪر هن حمل جي دوران </string>
     <string name="f07d003"> اگر ها ته پنهنجي طبي بيماري کي وضاحت ڪريو </string>
     <string name="f07d003a"> رت جي ڪمي </string>

@@ -1,18 +1,17 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form7;
 
 import android.app.Activity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.CheckBox;
-import android.widget.RadioGroup;
-import android.widget.RadioButton;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -320,7 +319,7 @@ public class F07AActivity extends Activity {
 
         JSONObject sF07A = new JSONObject();
 
-        sF07A.put("f07a001", f07a001999.isChecked() ? "99" : f07a001.getText().toString());
+        sF07A.put("f07a001", f07a001999.isChecked() ? "999" : f07a001.getText().toString());
         sF07A.put("f07a002", f07a002a.isChecked() ? "1" : f07a002b.isChecked() ? "2" : "0");
         sF07A.put("f07a003", f07a003a.isChecked() ? "1" : f07a003b.isChecked() ? "2" : f07a003c.isChecked() ? "3" : f07a003d.isChecked() ? "4" :
                 f07a003e.isChecked() ? "5" : f07a003f.isChecked() ? "6" : f07a003g.isChecked() ? "7" : f07a003h.isChecked() ? "8" :

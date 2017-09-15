@@ -1717,7 +1717,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:inputType="textCapWords"
-            android:visibility="gone" />
+            android:visibility="visible" />
 
         <!--16-->
         <TextView
