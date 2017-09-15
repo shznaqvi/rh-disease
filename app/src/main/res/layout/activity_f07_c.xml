@@ -95,7 +95,7 @@
             android:digits="0123456789"
             android:hint="@string/f07c002a"
             android:inputType="number"
-            android:maxLength="6" />
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f07c002999"
@@ -122,7 +122,7 @@
             android:digits="0123456789"
             android:hint="@string/f07c003a"
             android:inputType="number"
-            android:maxLength="6" />
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f07c003999"
@@ -149,7 +149,7 @@
             android:digits="0123456789"
             android:hint="@string/f07c004a"
             android:inputType="number"
-            android:maxLength="6" />
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f07c004999"
@@ -176,7 +176,7 @@
             android:digits="0123456789"
             android:hint="@string/f07c005a"
             android:inputType="number"
-            android:maxLength="6" />
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f07c005999"
@@ -374,6 +374,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/other"
             android:inputType="textCapWords"
             android:visibility="gone" />
 
