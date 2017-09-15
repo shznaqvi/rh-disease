@@ -23,9 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
-import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
-import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.MainActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
@@ -33,7 +31,7 @@ import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 public class F07CActivity extends AppCompatActivity
 {
 
-    private static final String TAG = F04AActivity.class.getSimpleName();
+    private static final String TAG = F07CActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @BindView(R.id.f07c001)
@@ -258,7 +256,7 @@ public class F07CActivity extends AppCompatActivity
                 finish();
 
 
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, F07DActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

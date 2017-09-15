@@ -1344,15 +1344,15 @@ public class F07BActivity extends Activity
             f07b009888x.setError(null);
         }
 
-        if (!f07b009b.isChecked() || !f07b009c.isChecked()) {
+        if (f07b009a.isChecked() || f07b009888.isChecked() || f07b009999.isChecked()) {
 
             if (f07b010.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b010), Toast.LENGTH_SHORT).show();
-                f07b010a.setError("This data is required");
+                f07b010b.setError("This data is required");
                 Log.d(TAG, "f07b010:empty ");
                 return false;
             } else {
-                f07b010a.setError(null);
+                f07b010b.setError(null);
             }
         }
 
