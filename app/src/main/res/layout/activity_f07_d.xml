@@ -98,12 +98,14 @@
                 android:id="@+id/f07d002b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
                 android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/f07d002999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
                 android:text="@string/dkn" />
 
         </RadioGroup>
@@ -204,12 +206,14 @@
                 android:id="@+id/f07d004b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
                 android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/f07d004999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
                 android:text="@string/dkn" />
 
         </RadioGroup>
@@ -250,12 +254,14 @@
                 android:id="@+id/f07d005b"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
                 android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/f07d005999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
                 android:text="@string/dkn" />
 
         </RadioGroup>
