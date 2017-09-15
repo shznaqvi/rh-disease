@@ -16,6 +16,8 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -68,7 +70,8 @@ public class MainApp extends Application {
     public static String interviewerCode;
     public static int loginFieldArea = -1;
     public static String child_name = "TEST";
-    public static FormsContract fc;
+    public static FormsContract fc = new FormsContract();
+    public static JSONObject f03 = new JSONObject();
     public static String userName = "0000";
     public static String areaCode;
     //    Total No of members got from Section A
@@ -106,6 +109,7 @@ public class MainApp extends Application {
     public static Boolean isHead = false;
     public static List<FormsContract> participantList;
     public static String formType;
+    public static boolean eligibleFlag = false;
     protected static LocationManager locationManager;
     Location location;
 

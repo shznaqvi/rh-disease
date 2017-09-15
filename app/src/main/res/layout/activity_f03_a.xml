@@ -36,6 +36,32 @@
             android:layout_marginTop="5dp"
             android:background="@color/colorPrimary" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/screeningnum"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:hint="@string/screennum" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1.5"
+                android:text="@string/screennum"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        </LinearLayout>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -328,7 +354,7 @@
 
         </RadioGroup>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:id="@+id/fldGrpEligible"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -499,7 +525,7 @@
         </LinearLayout>
 
         </LinearLayout>
-
+-->
 
         <LinearLayout
             android:layout_width="match_parent"

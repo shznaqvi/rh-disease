@@ -21,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F07AActivity extends Activity {
@@ -263,7 +264,6 @@ public class F07AActivity extends Activity {
 
     @OnClick(R.id.btn_End)
     void onBtnEndClick() {
-        //TODO implement
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
@@ -273,7 +273,7 @@ public class F07AActivity extends Activity {
 
     @OnClick(R.id.btn_Continue)
     void onBtnContinueClick() {
-        //TODO implement
+
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -294,23 +294,17 @@ public class F07AActivity extends Activity {
     }
 
     private boolean UpdateDB() {
-       /* DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        long updcount = db.addForm(MainApp.fc);
+        int updcount = db.updateF07A();
 
-        MainApp.fc.set_ID(String.valueOf(updcount));
-
-        if (updcount != 0) {
+        if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-
-            MainApp.fc.set_UID(
-                    (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
-            db.updateFormsUID();
+            return true;
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-        }*/
-
-        return true;
+            return false;
+        }
 
     }
 
