@@ -119,7 +119,8 @@
             android:hint="@string/f03a002date"
             android:textColor="@android:color/black"
             android:textSize="30sp"
-            app:dateFormat="dd-MM-yyyy" />
+            app:dateFormat="dd-MM-yyyy"
+            app:minDate="01/01/1917" />
 
         <TextView
             android:layout_width="match_parent"

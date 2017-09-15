@@ -69,8 +69,9 @@
         <activity android:name=".activities.Form8.F08AActivity" />
         <activity android:name=".activities.Form7.F07BActivity" />
         <activity android:name=".activities.Form7.F07CActivity" />
-        <activity android:name=".activities.Form7.F07DActivity"></activity>
-        <activity android:name=".activities.FormInfo.IdentificationActivity"></activity>
+        <activity android:name=".activities.Form7.F07DActivity" />
+        <activity android:name=".activities.FormInfo.IdentificationActivity" />
+        <activity android:name=".activities.Form3.F03BActivity"></activity>
     </application>
 
 </manifest>

@@ -23,9 +23,6 @@
     <!-- String related to section headings -->
 
 
-
-
-
     <string name="participant_id">Participant ID</string>
 
     <!-- Strings that are fixed for all apps -->
@@ -118,8 +115,8 @@
     <string name="f07b002"> اهو ڪيترو پري آهي جتان حاصل ٿئي پاڻي ۽ واپس اچي </string>
     <string name="f07b002a"> حدن ۾ </string>
     <string name="f07b002sub"> يا </string>
-    <string name="f07b002b"> مهرباني ڪري منٽن ۾ ٻڌايو </string>
-    <string name="f07b002c"> In Minutes </string>
+    <string name="f07b002b">  </string>
+    <string name="f07b002c">مهرباني ڪري منٽن ۾ ٻڌايو </string>
     <string name="f07b003"> ڇا توهان پنهنجي پاڻي جي صفائي ڪندا آهيو ڪنهن به طريقي سان جيئين اهو محفوظ ۽ بهتر ٿئي پيئڻ لاءِ </string>
     <string name="f07b004"> توهان عام طور تي ڇا ڪندا آهيو ته پاڻي وڌيڪ محفوظ ٿئي پيئڻ لاءِ </string>
     <string name="f07b004a"> ٽوڪايل پاڻي </string>
