@@ -242,6 +242,14 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     public boolean ValidateForm() {
 
 
+        if (screeningnum.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.screennum), Toast.LENGTH_SHORT).show();
+            screeningnum.setError("This data is required");
+            Log.d(TAG, "screeningnum:empty ");
+            return false;
+        } else {
+            screeningnum.setError(null);
+        }
         // =================== 1 ====================
         if (f03a001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a001), Toast.LENGTH_SHORT).show();
