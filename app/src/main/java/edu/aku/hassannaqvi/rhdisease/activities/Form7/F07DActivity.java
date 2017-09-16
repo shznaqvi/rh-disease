@@ -220,7 +220,7 @@ public class F07DActivity extends Activity {
 
                 finish();
                 Intent endSec = new Intent(this, EndingActivity.class);
-                endSec.putExtra("complete", false);
+                endSec.putExtra("complete", true);
                 startActivity(endSec);
 
             } else {

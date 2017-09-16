@@ -244,7 +244,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECTNAME, fc.getProjectName());
-
         values.put(FormsTable.COLUMN__UID, fc.get_UID());
         values.put(FormsTable.COLUMN_USER, fc.getUser());
         values.put(FormsTable.COLUMN_PARTICIPANTID, fc.getParticipantID());
@@ -276,6 +275,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+
+
+
+
+
 
 
     public void updateSyncedForms(String id) {
@@ -750,15 +754,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }*/
+    }
 
     public Collection<FormsContract> getTodayForms() {
-
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
                 FormsTable._ID,
+                FormsTable.COLUMN_FORMTYPE,
                 FormsTable.COLUMN_FORMDATE,
+                FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SYNCED,
 
         };
@@ -783,8 +788,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
-                fc.set_ID(c.getString(c.getColumnIndex(FormsTable._ID)));
+                //fc.set_ID(c.getString(c.getColumnIndex(FormsTable._ID)));
+                fc.setParticipantID(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMTYPE)));
                 fc.setFormDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
+                fc.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
                 fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
                 allFC.add(fc);
             }
