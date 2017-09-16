@@ -414,6 +414,8 @@ public class MainActivity extends Activity {
 
     public void syncDevice(View view) {
 
+
+
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
