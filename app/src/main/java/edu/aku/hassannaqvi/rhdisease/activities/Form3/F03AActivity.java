@@ -35,6 +35,8 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     private static final String TAG = F03AActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
+    @BindView(R.id.participantName)
+    EditText participantName;
     @BindView(R.id.screeningnum)
     EditText screeningnum;
     @BindView(R.id.f03a001)
@@ -218,6 +220,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         MainApp.fc.setFormType("3");
 
         MainApp.f03.put("screennum", screeningnum.getText().toString());
+        MainApp.f03.put("participantName", participantName.getText().toString());
         MainApp.f03.put("f03a001", f03a001a.isChecked() ? "1" : f03a001b.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a002", f03a002a.isChecked() ? "1" : f03a002b.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a002date", f03a002date.getText().toString());
@@ -249,6 +252,15 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             return false;
         } else {
             screeningnum.setError(null);
+        }
+
+        if (participantName.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.participantName), Toast.LENGTH_SHORT).show();
+            participantName.setError("This data is required");
+            Log.d(TAG, "participantName:empty ");
+            return false;
+        } else {
+            participantName.setError(null);
         }
         // =================== 1 ====================
         if (f03a001.getCheckedRadioButtonId() == -1) {
