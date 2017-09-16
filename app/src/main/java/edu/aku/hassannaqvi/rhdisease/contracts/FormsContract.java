@@ -87,7 +87,7 @@ public class FormsContract {
     public FormsContract Hydrate(Cursor cursor) {
 
 
-        //this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
+        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UID));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
@@ -438,8 +438,6 @@ public class FormsContract {
         public static final String COLUMN_DEVICETAGID = "devicetagid ";
         public static final String COLUMN_SYNCED = "synced ";
         public static final String COLUMN_SYNCED_DATE = "synced_date ";
-
-
 
         public static String _URL = "forms.php";
     }
