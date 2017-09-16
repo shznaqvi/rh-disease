@@ -25,7 +25,6 @@ import edu.aku.hassannaqvi.rhdisease.contracts.UsersContract.singleUser;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
 
-
 /**
  * Created by hassan.naqvi on 11/30/2016.
  */
@@ -76,7 +75,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_SYNCED_DATE + " TEXT"
 
             + " );";
-
 
 
     private static final String SQL_DELETE_USERS =
@@ -277,11 +275,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
-
     public void updateSyncedForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -321,9 +314,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
     public Collection<FormsContract> getAllForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -354,8 +344,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_DEVICEID,
                 FormsTable.COLUMN_DEVICETAGID,
                 FormsTable.COLUMN_SYNCED,
-                FormsTable.COLUMN_SYNCED_DATE,
-
+                FormsTable.COLUMN_SYNCED_DATE
 
         };
         String whereClause = null;
@@ -393,11 +382,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
-
-
-
-
     public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -426,12 +410,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_GPSDT,
                 FormsTable.COLUMN_GPSACC,
                 FormsTable.COLUMN_DEVICEID,
-                FormsTable.COLUMN_DEVICETAGID,
-                FormsTable.COLUMN_SYNCED,
-                FormsTable.COLUMN_SYNCED_DATE,
-
+                FormsTable.COLUMN_DEVICETAGID
         };
-        String whereClause = FormsContract.FormsTable.COLUMN_SYNCED + " is null";
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null";
         String[] whereArgs = null;
         String groupBy = null;
         String having = null;
@@ -439,10 +420,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String orderBy =
                 FormsTable._ID + " ASC";
 
-        Collection<FormsContract> allFC = new ArrayList<FormsContract>();
+        Collection<FormsContract> allFC = new ArrayList<>();
         try {
             c = db.query(
-                    FormsContract.FormsTable.TABLE_NAME,  // The table to query
+                    FormsTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -579,7 +560,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
 
 
     public int updateEnding() {
@@ -821,13 +801,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
-
-
-
-
-
-
 
 
 }

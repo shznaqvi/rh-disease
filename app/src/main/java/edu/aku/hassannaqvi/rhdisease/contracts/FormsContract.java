@@ -79,15 +79,13 @@ public class FormsContract {
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
 
 
-
         return this;
 
     }
 
     public FormsContract Hydrate(Cursor cursor) {
 
-
-        //this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
+        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UID));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
@@ -125,7 +123,7 @@ public class FormsContract {
 
         JSONObject json = new JSONObject();
 
-        json.put(FormsTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
+        /*json.put(FormsTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);*/
         json.put(FormsTable._ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
@@ -438,7 +436,6 @@ public class FormsContract {
         public static final String COLUMN_DEVICETAGID = "devicetagid ";
         public static final String COLUMN_SYNCED = "synced ";
         public static final String COLUMN_SYNCED_DATE = "synced_date ";
-
 
 
         public static String _URL = "forms.php";
