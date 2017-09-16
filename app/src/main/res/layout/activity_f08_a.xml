@@ -63,7 +63,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
-            android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/f08a001" />
@@ -275,13 +274,6 @@
             android:digits="0123456789"
             android:hint="@string/weeks" />
 
-        <CheckBox
-            android:id="@+id/f08a008w999"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/dkn" />
-
-
         <EditText
             android:id="@+id/f08a008d"
             android:layout_width="match_parent"
@@ -293,7 +285,7 @@
             android:hint="@string/days" />
 
         <CheckBox
-            android:id="@+id/f08a008d999"
+            android:id="@+id/f08a008999"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dkn" />
@@ -468,6 +460,12 @@
 
         </RadioGroup>
 
+        <LinearLayout
+            android:id="@+id/fldGrpf08012"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
 
         <TextView
             android:layout_width="match_parent"
@@ -488,6 +486,8 @@
             android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
             android:hint="@string/f08a012" />
 
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="match_parent"
@@ -505,9 +505,15 @@
             android:layout_marginBottom="1dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:digits="0123456789"
             android:hint="@string/f08a013"
-            android:maxLength="4" />
+            android:inputType="numberDecimal"
+            android:maxLength="4"/>
+
+        <CheckBox
+            android:id="@+id/f08a013999"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dkn"/>
 
 
         <!--  = = = = =  END OF FORM FIELDS  = = = = = -->
