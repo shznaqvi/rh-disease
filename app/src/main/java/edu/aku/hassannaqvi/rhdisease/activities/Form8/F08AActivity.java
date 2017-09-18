@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form8;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -22,16 +24,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
+import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F08AActivity extends Activity {
 
     private static final String TAG = F08AActivity.class.getName();
 
-    @BindView(R.id.f08a001)
-    EditText f08a001;
-    @BindView(R.id.f08a001999)
-    CheckBox f08a001999;
+
     @BindView(R.id.f08a002)
     RadioGroup f08a002;
     @BindView(R.id.f08a002a)
@@ -118,6 +119,8 @@ public class F08AActivity extends Activity {
     LinearLayout fldGrpf08012;
     @BindView(R.id.f08a013999)
     CheckBox f08a013999;
+    @BindView(R.id.count)
+    TextView count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,18 +128,7 @@ public class F08AActivity extends Activity {
         setContentView(R.layout.activity_f08_a);
         ButterKnife.bind(this);
 
-        f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (b) {
-                    f08a001.setVisibility(View.GONE);
-                    f08a001.setText(null);
-                } else {
-                    f08a001.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+        count.setText("Fetus: " + MainApp.FetusCount + " out of " + MainApp.TotalFetusCount);
 
         f08a003999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
@@ -257,7 +249,7 @@ public class F08AActivity extends Activity {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
 
 
-        if (!f08a001999.isChecked()) {
+        /*if (!f08a001999.isChecked()) {
             //        01
             if (f08a001.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(empty): " + getString(R.string.f08a001), Toast.LENGTH_SHORT).show();
@@ -267,7 +259,7 @@ public class F08AActivity extends Activity {
             } else {
                 f08a001.setError(null);
             }
-        }
+        }*/
 
 
         //        02
@@ -436,14 +428,27 @@ public class F08AActivity extends Activity {
 
     private void SaveDraft() throws JSONException {
 
+
+        SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
+
+        MainApp.fec = new FetusContract();
+
+        MainApp.fec.setDevicetagID(sharedPref.getString("tagName", null));
+        MainApp.fec.setUser(MainApp.userName);
+        MainApp.fec.set_UUID(MainApp.fc.get_UID());
+        MainApp.fec.setParticipantID(MainApp.fc.getParticipantID());
+        MainApp.fec.setFormType(MainApp.fc.getFormType());
+        MainApp.fec.setFormDate(MainApp.fc.getFormDate());
+        MainApp.fec.setDeviceID(MainApp.fc.getDeviceID());
+
         JSONObject f8 = new JSONObject();
 
 
-        if (f08a001999.isChecked()) {
+       /* if (f08a001999.isChecked()) {
             f8.put("f08a001", "999");
         } else {
             f8.put("f08a001", f08a001.getText().toString());
-        }
+        }*/
 
         f8.put("f08a002", f08a002a.isChecked() ? "1"
                 : f08a002b.isChecked() ? "2"
@@ -518,7 +523,7 @@ public class F08AActivity extends Activity {
         f8.put("f08a013", f08a013.getText().toString());
 
 
-        //MainApp.fc.setF8(String.valueOf(f8));
+        MainApp.fec.setF08(String.valueOf(f8));
 
     }
 
@@ -548,9 +553,17 @@ public class F08AActivity extends Activity {
 
                 finish();
 
-                Intent secNext = new Intent(this, EndingActivity.class);
-                secNext.putExtra("complete", true);
-                startActivity(secNext);
+                if (MainApp.FetusCount < MainApp.TotalFetusCount) {
+                    Intent intent = new Intent(this, F08AActivity.class);
+                    MainApp.FetusCount++;
+                    startActivity(intent);
+                } else {
+                    Intent secNext = new Intent(this, EndingActivity.class);
+                    secNext.putExtra("complete", true);
+                    startActivity(secNext);
+                }
+
+
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -559,17 +572,21 @@ public class F08AActivity extends Activity {
 
     private boolean UpdateDB() {
 
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateSA();
+        long updcount = db.addFetus(MainApp.fec);
 
-        if (updcount == 1) {
+        MainApp.fec.set_ID(String.valueOf(updcount));
+
+        if (updcount > 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-            return true;
+
+            MainApp.fec.set_UID(
+                    (MainApp.fc.getDeviceID() + MainApp.fec.get_ID()));
+            db.updateFetusID();
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
-        }*/
+        }
 
         return true;
     }

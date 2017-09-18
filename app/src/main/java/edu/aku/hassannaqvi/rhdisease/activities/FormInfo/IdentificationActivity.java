@@ -5,7 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -22,6 +26,7 @@ import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form7.F07AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form8.F08AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form9.F09AActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
@@ -30,6 +35,12 @@ public class IdentificationActivity extends Activity {
 
     @BindView(R.id.participant_id)
     EditText participantId;
+    @BindView(R.id.f08a001)
+    EditText f08a001;
+    @BindView(R.id.f08a001999)
+    CheckBox f08a001999;
+    @BindView(R.id.fldGrpF08)
+    LinearLayout fldGrpF08;
 
     DatabaseHelper db;
     boolean check = false;
@@ -40,7 +51,29 @@ public class IdentificationActivity extends Activity {
         setContentView(R.layout.activity_identification);
         ButterKnife.bind(this);
 
+
         db = new DatabaseHelper(this);
+
+        if (MainApp.formType.equals("8")) {
+            fldGrpF08.setVisibility(View.VISIBLE);
+        } else {
+            fldGrpF08.setVisibility(View.GONE);
+            f08a001.setText(null);
+            f08a001999.setChecked(false);
+        }
+
+        f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f08a001.setVisibility(View.GONE);
+                    f08a001.setText(null);
+                } else {
+                    f08a001.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 
@@ -78,7 +111,7 @@ public class IdentificationActivity extends Activity {
                 } else if (MainApp.formType.equals("7")) {
                     Intent secB = new Intent(this, F07AActivity.class);
                     startActivity(secB);
-                } else if (MainApp.formType.equals("8")) {
+                } else if (MainApp.formType.equals("8") && !f08a001999.isChecked()) {
                     Intent secB = new Intent(this, F08AActivity.class);
                     startActivity(secB);
                 } else if (MainApp.formType.equals("9")) {
@@ -86,6 +119,10 @@ public class IdentificationActivity extends Activity {
                     startActivity(secB);
                 } else if (MainApp.formType.equals("10")) {
                     Intent secB = new Intent(this, F10AActivity.class);
+                    startActivity(secB);
+                } else if (MainApp.formType.equals("8") && f08a001999.isChecked()) {
+                    Intent secB = new Intent(this, EndingActivity.class);
+                    secB.putExtra("complete", true);
                     startActivity(secB);
                 }
             } else {
@@ -111,8 +148,12 @@ public class IdentificationActivity extends Activity {
 
         JSONObject sInfo = new JSONObject();
 
+        sInfo.put("f08a001", f08a001999.isChecked() ? "999" : f08a001.getText().toString());
+        MainApp.TotalFetusCount = Integer.valueOf(f08a001.getText().toString().isEmpty() ? "0" : f08a001.getText().toString());
 
-        MainApp.fc.setInfo(String.valueOf(sInfo));
+        if (MainApp.formType.equals("8")) {
+            MainApp.fc.setF08(String.valueOf(sInfo));
+        }
 
         MainApp.setGPS(this);
 

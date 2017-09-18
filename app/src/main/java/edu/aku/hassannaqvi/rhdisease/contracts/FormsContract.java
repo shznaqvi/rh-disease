@@ -56,7 +56,7 @@ public class FormsContract {
         this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANTID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
-        this.info = jsonObject.getString(FormsTable.COLUMN_INFO);
+        //this.info = jsonObject.getString(FormsTable.COLUMN_INFO);
         this.f03 = jsonObject.getString(FormsTable.COLUMN_F03);
         this.f04 = jsonObject.getString(FormsTable.COLUMN_F04);
         this.f07a = jsonObject.getString(FormsTable.COLUMN_F07A);
@@ -93,7 +93,7 @@ public class FormsContract {
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
-        this.info = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INFO));
+        //this.info = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INFO));
         this.f03 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F03));
         this.f04 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F04));
         this.f07a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F07A));
@@ -133,9 +133,9 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
 
-        if (!this.info.equals("")) {
+       /* if (!this.info.equals("")) {
             json.put(FormsTable.COLUMN_INFO, this.info == null ? JSONObject.NULL : this.info);
-        }
+        }*/
 
         if (!this.f03.equals("")) {
             json.put(FormsTable.COLUMN_F03, this.f03 == null ? JSONObject.NULL : this.f03);
@@ -417,7 +417,7 @@ public class FormsContract {
         public static final String COLUMN_PARTICIPANTID = "participantid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_FORMTYPE = "formtype";
-        public static final String COLUMN_INFO = "info";
+        //public static final String COLUMN_INFO = "info";
         public static final String COLUMN_F03 = "f03";
         public static final String COLUMN_F04 = "f04";
         public static final String COLUMN_F07A = "f07a";
