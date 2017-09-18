@@ -34,7 +34,11 @@ import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms;
+import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms10;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms3;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms8;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms9;
 
 public class MainActivity extends Activity {
 

@@ -689,7 +689,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
     }
 
-   /* public Collection<FormsContract> getUnsyncedForms() {
+    /*public Collection<FormsContract> getUnsyncedForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
@@ -804,7 +804,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
-    }
+    }*/
 
     // ANDROID DATABASE MANAGER
     public ArrayList<Cursor> getData(String Query) {
