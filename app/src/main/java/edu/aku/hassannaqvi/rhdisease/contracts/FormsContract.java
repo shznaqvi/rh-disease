@@ -86,7 +86,6 @@ public class FormsContract {
 
     public FormsContract Hydrate(Cursor cursor) {
 
-
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UID));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
