@@ -5,7 +5,9 @@
     <color name="colorPrimary">#9C27B0</color>
     <color name="colorPrimaryAlpha">#669C27B0</color>
     <color name="colorAccent">#EA80FC</color>
-    <color name="pink_100">#e1bee7</color>
+    <color name="pink_100">#eabef1</color>
+    <color name="blue_100">#bebee7</color>
+    <color name="purple_100">#9C27B0</color>
     <color name="colorHeading">#DFB29B</color>
 
 

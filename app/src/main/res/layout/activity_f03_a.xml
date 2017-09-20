@@ -61,6 +61,22 @@
 
         </LinearLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/participantName"
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        <EditText
+            android:id="@+id/participantName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/participantName"
+            android:inputType="textCapWords"/>
+
 
         <TextView
             android:layout_width="match_parent"

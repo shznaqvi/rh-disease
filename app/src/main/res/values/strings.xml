@@ -235,7 +235,7 @@
     <string name="f07c002a"> حمل جو شروع جي ڏينهن ۾ ضايح ٿيڻ جو تعداد </string>
     <string name="f07c002b"> اندازو ناهي </string>
     <string name="f07c003"> توهان جي گھڻن ٻارن جي زنده ٻارن جي پيدائش ٿئي </string>
-    <string name="f07c003a"> حمل جو شروع جي ڏينهن ۾ ضايح ٿيڻ جو تعداد </string>
+    <string name="f07c003a"> زنده پيدا ٿيڻ وارن ٻارن جي تعداد </string>
     <string name="f07c003b"> اندازو ناهي </string>
     <string name="f07c004"> توهان ڪيترا مرتبه مئل ٻار پيدا ڪيو (جيڪو 20 هفتن ۾ مئل ڄائو ) </string>
     <string name="f07c004a"> تمام مرده پيدا ٿيل ٻارن جي تعداد </string>
@@ -286,6 +286,7 @@
 
     <!-- Form 3-->
     <string name="screennum">Screening #</string>
+    <string name="participantName">Participant Name</string>
     <string name="f03heading"> Form 3: Participant Eligibility Screening Form </string>
     <string name="f03a001"> ڇا حصو وٺندڙ حمل سان آهي </string>
     <string name="f03a002"> ڇا شرڪت ڪندڙ جي حمل جي مدت گھٽ ۾ گھٽ 13 هفتا يا ان کان زياده هئي </string>

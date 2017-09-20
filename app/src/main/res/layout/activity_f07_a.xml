@@ -227,6 +227,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:hint="@string/other"
                 android:inputType="textCapWords"
                 android:visibility="gone" />
 
@@ -296,6 +297,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
+            android:hint="@string/other"
             android:inputType="textCapWords"
             android:visibility="gone" />
 
@@ -393,6 +395,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:hint="@string/other"
                 android:inputType="textCapWords"
                 android:visibility="gone" />
 
@@ -512,6 +515,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:hint="@string/other"
                 android:inputType="textCapWords"
                 android:visibility="gone" />
 
@@ -531,6 +535,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:digits="0123456789"
+                android:hint="@string/days"
                 android:inputType="number"
                 android:maxLength="6" />
 
@@ -550,7 +555,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:digits="0123456789"
+                android:hint="@string/hour"
                 android:inputType="number"
+
                 android:maxLength="6" />
 
         </LinearLayout>

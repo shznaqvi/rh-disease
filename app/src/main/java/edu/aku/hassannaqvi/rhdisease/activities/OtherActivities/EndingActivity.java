@@ -64,6 +64,8 @@ public class EndingActivity extends Activity {
             }
             if (UpdateDB()) {
 
+                MainApp.FetusCount = 1;
+
                 finish();
 
                 Intent endSec = new Intent(this, MainActivity.class);
