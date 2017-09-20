@@ -22,7 +22,7 @@ import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.UsersContract;
-import edu.aku.hassannaqvi.rhdisease.contracts.UsersContract.singleUser;
+import edu.aku.hassannaqvi.rhdisease.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
 
@@ -34,12 +34,10 @@ import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-    public static final String SQL_CREATE_USERS = "CREATE TABLE " + singleUser.TABLE_NAME + "("
-            + singleUser._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + singleUser.ROW_USERNAME + " TEXT,"
-            + singleUser.ROW_PASSWORD + " TEXT,"
-            + singleUser.FULL_NAME + " TEXT,"
-            + singleUser.REGION_DSS + " TEXT );";
+    public static final String SQL_CREATE_USERS = "CREATE TABLE " + UsersContract.UsersTable.TABLE_NAME + "("
+            + UsersContract.UsersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + UsersContract.UsersTable.ROW_USERNAME + " TEXT,"
+            + UsersContract.UsersTable.ROW_PASSWORD + " TEXT );";
 
     public static final String DATABASE_NAME = "rhdisease.db";
     public static final String DB_NAME = "rhdisease_copy.db";
@@ -99,7 +97,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     private static final String SQL_DELETE_USERS =
-            "DROP TABLE IF EXISTS " + singleUser.TABLE_NAME;
+            "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
             "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
 
@@ -141,73 +139,78 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void syncUser(JSONArray userlist) {
+    public void addUser(UsersContract userscontract) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(UsersContract.singleUser.TABLE_NAME, null, null);
         try {
-            JSONArray jsonArray = userlist;
-            for (int i = 0; i < jsonArray.length(); i++) {
+            ContentValues values = new ContentValues();
 
-                JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
-
-                UsersContract user = new UsersContract();
-                user.Sync(jsonObjectUser);
-                ContentValues values = new ContentValues();
-
-                values.put(singleUser.ROW_USERNAME, user.getUserName());
-                values.put(singleUser.ROW_PASSWORD, user.getPassword());
-                values.put(singleUser.FULL_NAME, user.getFULL_NAME());
-                values.put(singleUser.REGION_DSS, user.getREGION_DSS());
-                db.insert(singleUser.TABLE_NAME, null, values);
-            }
-
+            values.put(UsersTable.ROW_USERNAME, userscontract.getUserName());
+            values.put(UsersTable.ROW_PASSWORD, userscontract.getPassword());
+            db.insert(UsersTable.TABLE_NAME, null, values);
+            db.close();
 
         } catch (Exception e) {
-            Log.d(TAG, "syncUser(e): " + e);
-        } finally {
-            db.close();
         }
     }
 
+    public void syncUsers(JSONArray userlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(UsersTable.TABLE_NAME, null, null);
 
-//    public ArrayList<UsersContract> getAllUsers() {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        ArrayList<UsersContract> userList = null;
-//        try {
-//            userList = new ArrayList<UsersContract>();
-//            String QUERY = "SELECT * FROM " + singleUser.TABLE_NAME;
-//            Cursor cursor = db.rawQuery(QUERY, null);
-//            int num = cursor.getCount();
-//            if (!cursor.isLast()) {
-//                while (cursor.moveToNext()) {
-//                    UsersContract user = new UsersContract();
-//                    user.setId(cursor.getInt(0));
-//                    user.setUserName(cursor.getString(1));
-//                    user.setPassword(cursor.getString(2));
-//                    user.setFULL_NAME(cursor.getString(3));
-//                    user.setREGION_DSS(cursor.getString(4));
-//                    userList.add(user);
-//                }
-//            }
-//            db.close();
-//        } catch (Exception e) {
-//        }
-//        return userList;
-//    }
+        try {
+            JSONArray jsonArray = userlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObjectUser = jsonArray.getJSONObject(i);
+                String userName = jsonObjectUser.getString("username");
+                String password = jsonObjectUser.getString("password");
+
+
+                ContentValues values = new ContentValues();
+
+                values.put(UsersTable.ROW_USERNAME, userName);
+                values.put(UsersTable.ROW_PASSWORD, password);
+                db.insert(UsersTable.TABLE_NAME, null, values);
+            }
+            db.close();
+
+        } catch (Exception e) {
+        }
+    }
+
+    public ArrayList<UsersContract> getAllUsers() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ArrayList<UsersContract> userList = null;
+        try {
+            userList = new ArrayList<UsersContract>();
+            String QUERY = "SELECT * FROM " + UsersTable.TABLE_NAME;
+            Cursor cursor = db.rawQuery(QUERY, null);
+            int num = cursor.getCount();
+            if (!cursor.isLast()) {
+                while (cursor.moveToNext()) {
+                    UsersContract user = new UsersContract();
+                    user.setId(cursor.getInt(0));
+                    user.setUserName(cursor.getString(1));
+                    user.setPassword(cursor.getString(2));
+                    userList.add(user);
+                }
+            }
+            db.close();
+        } catch (Exception e) {
+        }
+        return userList;
+    }
 
     public boolean Login(String username, String password) throws SQLException {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor mCursor = db.rawQuery("SELECT * FROM " + singleUser.TABLE_NAME + " WHERE " + singleUser.ROW_USERNAME + "=? AND " + singleUser.ROW_PASSWORD + "=?", new String[]{username, password});
+        Cursor mCursor = db.rawQuery("SELECT * FROM " + UsersContract.UsersTable.TABLE_NAME + " WHERE " + UsersContract.UsersTable.ROW_USERNAME + "=? AND " + UsersContract.UsersTable.ROW_PASSWORD + "=?", new String[]{username, password});
+
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
-
-                if (mCursor.moveToFirst()) {
-                    MainApp.regionDss = mCursor.getString(mCursor.getColumnIndex("region_dss"));
-                }
                 return true;
             }
         }
+        db.close();
         return false;
     }
 
@@ -917,28 +920,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }*/
 
     public Collection<FormsContract> getTodayForms() {
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                FormsTable._ID,
-                FormsTable.COLUMN_FORMTYPE,
-                FormsTable.COLUMN_FORMDATE,
-                FormsTable.COLUMN_ISTATUS,
-                FormsTable.COLUMN_SYNCED,
-
+                FormsTable._ID
         };
-        String whereClause = FormsTable.COLUMN_FORMDATE + " Like ? ";
-        String[] whereArgs = new String[]{"%" + spDateT.substring(0, 8).trim() + "%"};
+
+        String whereClause = FormsTable.COLUMN_FORMDATE + " LIKE ?";
+        String[] whereArgs = {spDateT};
         String groupBy = null;
         String having = null;
 
         String orderBy =
                 FormsTable._ID + " ASC";
 
-        Collection<FormsContract> allFC = new ArrayList<>();
+        Collection<FormsContract> formList = new ArrayList<FormsContract>();
         try {
             c = db.query(
-                    FormsTable.TABLE_NAME,  // The table to query
+                    FormsContract.FormsTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
                     whereClause,               // The columns for the WHERE clause
                     whereArgs,                 // The values for the WHERE clause
@@ -948,12 +948,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
-                //fc.set_ID(c.getString(c.getColumnIndex(FormsTable._ID)));
-                fc.setParticipantID(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMTYPE)));
-                fc.setFormDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
-                fc.setIstatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
-                allFC.add(fc);
+                formList.add(fc.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -963,14 +958,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return allFC;
+
+
+        // return contact list
+        return formList;
     }
 
     // ANDROID DATABASE MANAGER
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
         SQLiteDatabase sqlDB = this.getWritableDatabase();
-        String[] columns = new String[]{"message"};
+        String[] columns = new String[]{"mesage"};
         //an array list of cursor to save two cursors one has results from the query
         //other cursor stores error message if any errors are triggered
         ArrayList<Cursor> alc = new ArrayList<Cursor>(2);
