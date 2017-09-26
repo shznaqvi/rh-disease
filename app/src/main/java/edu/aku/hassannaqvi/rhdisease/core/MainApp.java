@@ -24,6 +24,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
+import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
@@ -35,7 +36,7 @@ public class MainApp extends Application {
 
     public static final String _IP = "43.245.131.159"; // Test PHP server
     public static final Integer _PORT = 8080; // Port - with colon (:)
-    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/rhdisease/api/";
+    public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/rhd/api/";
 
     /*
         public static final String _IP = "43.245.131.159"; // Test server
@@ -71,6 +72,7 @@ public class MainApp extends Application {
     public static int loginFieldArea = -1;
     public static String child_name = "TEST";
     public static FormsContract fc = new FormsContract();
+    public static FetusContract fec;
     public static JSONObject f03 = new JSONObject();
     public static String userName = "0000";
     public static String areaCode;
@@ -85,7 +87,9 @@ public class MainApp extends Application {
     public static int TotalMaleCount = 0;
     public static int TotalFemaleCount = 0;
     public static int TotalBoyCount = 0;
-    public static int TotalGirlCount = 0;
+    public static int FetusCount = 1;
+    public static int TotalFetusCount = 0;
+
 
     //    Total No of Alive members got from Section B
     public static int currentStatusCount = 0;
