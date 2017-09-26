@@ -134,7 +134,7 @@ public class FetusContract
     public FetusContract Sync(JSONObject jsonObject) throws JSONException {
 
 
-        this._ID = jsonObject.getString(FetusTable._ID);
+        this._ID = jsonObject.getString(FetusTable.COLUMN_ID);
         this._UID = jsonObject.getString(FetusTable.COLUMN__UID);
         this._UUID = jsonObject.getString(FetusTable.COLUMN__UUID);
         this.user = jsonObject.getString(FetusTable.COLUMN_USER);
@@ -155,7 +155,7 @@ public class FetusContract
     public FetusContract Hydrate(Cursor cursor) {
 
 
-        this._ID = cursor.getString(cursor.getColumnIndex(FetusTable._ID));
+        this._ID = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN__UID));
         this._UUID = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN__UUID));
         this.user = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN_USER));
@@ -179,7 +179,7 @@ public class FetusContract
         JSONObject json = new JSONObject();
 
         json.put(FetusTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
-        json.put(FetusTable._ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(FetusTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FetusTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(FetusTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(FetusTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
@@ -204,7 +204,7 @@ public class FetusContract
         public static final String TABLE_NAME = "fetus";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECTNAME = "projectname";
-        public static final String _ID = "_id ";
+        public static final String COLUMN_ID = "_id ";
         public static final String COLUMN__UID = "_uid";
         public static final String COLUMN__UUID = "_uuid";
         public static final String COLUMN_USER = "user";

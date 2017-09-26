@@ -50,7 +50,7 @@ public class FormsContract {
 
     public FormsContract Sync(JSONObject jsonObject) throws JSONException {
 
-        this._ID = jsonObject.getString(FormsTable._ID);
+        this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
         this._UID = jsonObject.getString(FormsTable.COLUMN__UID);
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
         this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANTID);
@@ -86,7 +86,7 @@ public class FormsContract {
 
     public FormsContract Hydrate(Cursor cursor) {
 
-        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable._ID));
+        this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UID));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
@@ -125,7 +125,7 @@ public class FormsContract {
         JSONObject json = new JSONObject();
 
         json.put(FormsTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
-        json.put(FormsTable._ID, this._ID == null ? JSONObject.NULL : this._ID);
+        json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(FormsTable.COLUMN_PARTICIPANTID, this.participantID == null ? JSONObject.NULL : this.participantID);
@@ -410,7 +410,7 @@ public class FormsContract {
         public static final String TABLE_NAME = "forms";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECTNAME = "projectname";
-        public static final String _ID = "_id ";
+        public static final String COLUMN_ID = "_id ";
         public static final String COLUMN__UID = "_uid ";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_PARTICIPANTID = "participantid";
