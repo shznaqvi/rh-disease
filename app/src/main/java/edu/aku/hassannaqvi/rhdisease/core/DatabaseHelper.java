@@ -26,7 +26,6 @@ import edu.aku.hassannaqvi.rhdisease.contracts.UsersContract.UsersTable;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
 
-
 /**
  * Created by hassan.naqvi on 11/30/2016.
  */
@@ -93,7 +92,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FetusContract.FetusTable.COLUMN_SYNCED_DATE + " TEXT"
 
             + " );";
-
 
 
     private static final String SQL_DELETE_USERS =
@@ -783,7 +781,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public Collection<FormsContract> getAllForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1030,7 +1027,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1188,10 +1184,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F09, MainApp.fc.getF09());
 
 // Which row to update, based on the ID
-        String selection = FormsContract.FormsTable._ID + " = ?";
+        String selection = FormsTable._ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
-        int count = db.update(FormsContract.FormsTable.TABLE_NAME,
+        int count = db.update(FormsTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
