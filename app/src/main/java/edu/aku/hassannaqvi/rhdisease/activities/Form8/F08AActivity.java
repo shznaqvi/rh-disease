@@ -130,8 +130,7 @@ public class F08AActivity extends Activity {
 
         count.setText("Fetus: " + MainApp.FetusCount + " out of " + MainApp.TotalFetusCount);
 
-        f08a003999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a003999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -143,8 +142,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a004999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a004999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -156,8 +154,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a005999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a005999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -169,8 +166,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a006999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a006999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -182,8 +178,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a007999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a007999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -195,8 +190,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a008999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a008999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -211,8 +205,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a011.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-        {
+        f08a011.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (f08a011a.isChecked()) {
@@ -224,8 +217,7 @@ public class F08AActivity extends Activity {
             }
         });
 
-        f08a013999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a013999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -237,8 +229,6 @@ public class F08AActivity extends Activity {
                 }
             }
         });
-
-
 
 
     }

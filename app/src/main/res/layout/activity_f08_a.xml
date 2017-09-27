@@ -47,7 +47,7 @@
             android:text="Fetus 1 out of 2"
             android:textColor="@color/purple_100"
             android:textSize="34sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
 
         <TextView
@@ -61,7 +61,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="32sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
 
         <!--<TextView
@@ -158,7 +158,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a003" />
+            android:hint="@string/f08a003"
+            android:inputType="number" />
 
         <CheckBox
             android:id="@+id/f08a003999"
@@ -184,7 +185,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a004" />
+            android:hint="@string/f08a004"
+            android:inputType="number" />
 
         <CheckBox
             android:id="@+id/f08a004999"
@@ -210,7 +212,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a005" />
+            android:hint="@string/f08a005"
+            android:inputType="number" />
 
         <CheckBox
             android:id="@+id/f08a005999"
@@ -236,7 +239,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a006" />
+            android:hint="@string/f08a006"
+            android:inputType="number" />
 
         <CheckBox
             android:id="@+id/f08a006999"
@@ -262,7 +266,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/f08a007" />
+            android:hint="@string/f08a007"
+            android:inputType="number" />
 
         <CheckBox
             android:id="@+id/f08a007999"
@@ -288,7 +293,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/weeks" />
+            android:hint="@string/weeks"
+            android:inputType="number" />
 
         <EditText
             android:id="@+id/f08a008d"
@@ -298,7 +304,8 @@
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:digits="0123456789"
-            android:hint="@string/days" />
+            android:hint="@string/days"
+            android:inputType="number" />
 
         <CheckBox
             android:id="@+id/f08a008999"
@@ -483,24 +490,25 @@
             android:orientation="vertical">
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorPrimary"
-            android:text="@string/f08a012"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@android:color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorPrimary"
+                android:text="@string/f08a012"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@android:color/white" />
 
-        <EditText
-            android:id="@+id/f08a012"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
-            android:hint="@string/f08a012" />
+            <EditText
+                android:id="@+id/f08a012"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:hint="@string/f08a012"
+                android:inputType="textCapWords" />
 
         </LinearLayout>
 
@@ -523,13 +531,13 @@
             android:layout_weight="1"
             android:hint="@string/f08a013"
             android:inputType="numberDecimal"
-            android:maxLength="4"/>
+            android:maxLength="4" />
 
         <CheckBox
             android:id="@+id/f08a013999"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/dkn"/>
+            android:text="@string/dkn" />
 
 
         <!--  = = = = =  END OF FORM FIELDS  = = = = = -->

@@ -2,6 +2,7 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form9;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.util.Log;
@@ -21,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -1080,6 +1082,20 @@ public class F09AActivity extends Activity {
 
 
     private void SaveDraft() throws JSONException {
+
+
+        SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
+
+        MainApp.fec = new FetusContract();
+
+        MainApp.fec.setDevicetagID(sharedPref.getString("tagName", null));
+        MainApp.fec.setUser(MainApp.userName);
+        MainApp.fec.set_UUID(MainApp.fc.get_UID());
+        MainApp.fec.setParticipantID(MainApp.fc.getParticipantID());
+        MainApp.fec.setFormType(MainApp.fc.getFormType());
+        MainApp.fec.setFormDate(MainApp.fc.getFormDate());
+        MainApp.fec.setDeviceID(MainApp.fc.getDeviceID());
+
 
         JSONObject f9 = new JSONObject();
 
