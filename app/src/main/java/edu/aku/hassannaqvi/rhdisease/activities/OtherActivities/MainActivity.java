@@ -38,10 +38,7 @@ import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms10;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForms3;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms8;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms9;
 
 public class MainActivity extends Activity {
 
@@ -411,11 +408,11 @@ public class MainActivity extends Activity {
         Log.e(TAG, "syncServer: 2");
         if (networkInfo != null && networkInfo.isConnected()) {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncForms3(this).execute();
-            new SyncForms8(this).execute();
-//            new SyncFetus(this).execute();
+           /* new SyncForms10(this).execute();
             new SyncForms9(this).execute();
-            new SyncForms10(this).execute();
+//            new SyncFetus(this).execute();
+            new SyncForms8(this).execute();*/
+            new SyncForms3(this).execute();
 
            /* Toast.makeText(getApplicationContext(), "Syncing Participants", Toast.LENGTH_SHORT).show();
             new SyncParticipants(this).execute();*/

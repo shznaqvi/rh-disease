@@ -64,7 +64,7 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
 
         String line = "No Response";
         try {
-            String url = MainApp._HOST_URL + FormsContract.FormsTable._URL.replace(".php", "3.php");
+            String url = MainApp._HOST_URL + FormsContract.FormsTable._URL;
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
@@ -109,6 +109,86 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
 
     private String downloadUrl(String myurl) throws IOException {
         String line = "No Response";
+
+        DatabaseHelper db = new DatabaseHelper(mContext);
+        Collection<FormsContract> Forms = db.getUnsyncedForms3();
+        Log.d(TAG, String.valueOf(Forms.size()));
+
+        if (Forms.size() > 0) {
+
+            HttpURLConnection connection = null;
+            try {
+                String request = myurl;
+                //String request = "http://10.1.42.30:3000/Forms";
+
+                URL url = new URL(request);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+                int HttpResult = connection.getResponseCode();
+                if (HttpResult == HttpURLConnection.HTTP_OK) {
+                    JSONArray jsonSync = new JSONArray();
+                    connection = (HttpURLConnection) url.openConnection();
+
+                    connection.setDoOutput(true);
+                    connection.setDoInput(true);
+                    connection.setInstanceFollowRedirects(false);
+                    connection.setRequestMethod("POST");
+                    connection.setRequestProperty("Content-Type", "application/json");
+                    connection.setRequestProperty("charset", "utf-8");
+                    connection.setUseCaches(false);
+                    connection.connect();
+
+
+                    DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
+
+//            pd.setMessage("Total Forms: " );
+
+                    for (FormsContract fc : Forms) {
+                        //if (fc.getIstatus().equals("1")) {
+                        jsonSync.put(fc.toJSONObject());
+                        //}
+                    }
+                    wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
+                    longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
+                    wr.flush();
+
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(
+                            connection.getInputStream(), "utf-8"));
+                    StringBuffer sb = new StringBuffer();
+
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line + "\n");
+                    }
+                    br.close();
+
+                    System.out.println("" + sb.toString());
+                    return sb.toString();
+                } else {
+                    System.out.println(connection.getResponseMessage());
+                    return connection.getResponseMessage();
+                }
+            } catch (MalformedURLException e) {
+
+                e.printStackTrace();
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } finally {
+                if (connection != null)
+                    connection.disconnect();
+            }
+        } else {
+            return "No new records to sync";
+        }
+        return line;
+    }
+
+    /*private String downloadUrl(String myurl) throws IOException {
+        String line = "No Response";
         // Only display the first 500 characters of the retrieved
         // web page content.
         //  int len = 500;
@@ -119,8 +199,8 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
             try {
                 URL url = new URL(myurl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setReadTimeout(20000 /* milliseconds */);
-                conn.setConnectTimeout(30000 /* milliseconds */);
+                conn.setReadTimeout(20000 *//* milliseconds *//*);
+                conn.setConnectTimeout(30000 *//* milliseconds *//*);
                 conn.setRequestMethod("POST");
                 conn.setDoOutput(true);
                 conn.setDoInput(true);
@@ -146,7 +226,7 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
 
-/*===================================================================*/
+*//*===================================================================*//*
                 int HttpResult = conn.getResponseCode();
                 if (HttpResult == HttpURLConnection.HTTP_OK) {
                     BufferedReader br = new BufferedReader(new InputStreamReader(
@@ -175,9 +255,9 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
             return "No new records to sync";
         }
         return line;
-            /*===================================================================*/
+            *//*===================================================================*//*
 
-    }
+    }*/
 
    /* public String readIt(InputStream stream) throws IOException {
         Reader reader = null;
@@ -186,4 +266,7 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
         reader.read(buffer);
         return new String(buffer);
     }*/
+
+
 }
+
