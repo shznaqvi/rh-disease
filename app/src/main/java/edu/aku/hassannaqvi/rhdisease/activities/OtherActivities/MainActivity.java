@@ -38,7 +38,10 @@ import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms10;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForms3;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms8;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncForms9;
 
 public class MainActivity extends Activity {
 
@@ -120,9 +123,9 @@ public class MainActivity extends Activity {
         DatabaseHelper db = new DatabaseHelper(this);
         Collection<FormsContract> todaysForms = db.getTodayForms();
         /*Collection<FormsContract> unsyncedForms3 = db.getUnsyncedForms3();
-        Collection<FormsContract> unsyncedForms8 = db.getUnsyncedForms8();
-        /*//*   Collection<FetusContract> unsyncedFetus = db.getUnsyncedFetus();*//**//*
-        Collection<FormsContract> unsyncedForms9 = db.getUnsyncedForms9();
+        Collection<FormsContract> unsyncedForms8 = db.getUnsyncedForms8();*/
+     /*   Collection<FetusContract> unsyncedFetus = db.getUnsyncedFetus();*/
+        /*Collection<FormsContract> unsyncedForms9 = db.getUnsyncedForms9();
         Collection<FormsContract> unsyncedForms10 = db.getUnsyncedForms10();*/
 
         rSumText += "TODAY'S RECORDS SUMMARY\r\n";
@@ -170,7 +173,7 @@ public class MainActivity extends Activity {
             }
         }
 
-        if (MainApp.admin) {
+        /*if (MainApp.admin) {
             adminsec.setVisibility(View.VISIBLE);
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
@@ -178,17 +181,17 @@ public class MainActivity extends Activity {
             rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
             rSumText += "\r\n";
             rSumText += "\r\n";
-//            rSumText += "Unsynced Forms3: \t" + unsyncedForms3.size();
-//            rSumText += "\r\n";
-//            rSumText += "Unsynced Forms8: \t" + unsyncedForms8.size();
-//            rSumText += "\r\n";
-//            /*rSumText += "Unsynced Fetus: \t" + unsyncedFetus.size();
-//            rSumText += "\r\n";*/
-//            rSumText += "Unsynced Forms9: \t" + unsyncedForms9.size();
-//            rSumText += "\r\n";
-//            rSumText += "Unsynced Forms10: \t" + unsyncedForms10.size();
-//            rSumText += "\r\n";
-        }
+            rSumText += "Unsynced Forms3: \t" + unsyncedForms3.size();
+            rSumText += "\r\n";
+            rSumText += "Unsynced Forms8: \t" + unsyncedForms8.size();
+            rSumText += "\r\n";
+            *//*rSumText += "Unsynced Fetus: \t" + unsyncedFetus.size();
+            rSumText += "\r\n";*//*
+            rSumText += "Unsynced Forms9: \t" + unsyncedForms9.size();
+            rSumText += "\r\n";
+            rSumText += "Unsynced Forms10: \t" + unsyncedForms10.size();
+            rSumText += "\r\n";
+        }*/
         Log.d(TAG, "onCreate: " + rSumText);
         recordSummary.setText(rSumText);
 

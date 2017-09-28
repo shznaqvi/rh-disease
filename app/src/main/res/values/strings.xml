@@ -501,11 +501,11 @@
     <string name="f08a002c"> Breech </string>
     <string name="f08a002d"> Oblique </string>
     <string name="f08a002e"> خبر ناهي </string>
-    <string name="f08a003"> ٻار جي دل جي ڌڙڪن </string>
-    <string name="f08a004"> ٻار جي ماپ بابت </string>
-    <string name="f08a005"> Abdominal circumference </string>
-    <string name="f08a006"> ڊيگھ – مٿي کان پير تائين </string>
-    <string name="f08a007"> ڊگھي هڏي ۽ سٿر جي ڊيگھ </string>
+    <string name="f08a003"> ٻار جي دل جي ڌڙڪن (bpm) </string>
+    <string name="f08a004"> ٻار جي ماپ بابت (mm) </string>
+    <string name="f08a005"> 32 هفتن تي ٻار جو وزن ۽ ماپ (mm) </string>
+    <string name="f08a006"> ڊيگھ – مٿي کان پير تائين (mm) </string>
+    <string name="f08a007"> ڊگھي هڏي ۽ سٿر جي ڊيگھ (mm) </string>
     <string name="f08a008"> آخري ماهواري تاريخ کان وقت </string>
     <string name="f08a009"> پيٽ ۾ ٻار جي جڳھ </string>
     <string name="f08a009a"> Fundal </string>
@@ -518,7 +518,7 @@
     <string name="f08a009h"> Low left lateral </string>
     <string name="f08a009i"> High right lateral </string>
     <string name="f08a009j"> Unknown </string>
-    <string name="f08a010"> Amniotic fluid index </string>
+    <string name="f08a010"> 20 کان 35 هفتن ۾ پاڻي چڪاس </string>
     <string name="f08a010a"> >5cm نارمل </string>
     <string name="f08a010b"> Greater than 4 - 5 cm وچتي  </string>
     <string name="f08a010c"> گھٽ </string>
@@ -560,8 +560,7 @@
     <string name="f09a003rh02"> نيگيٽو </string>
     <string name="f09a004"> نتيجو (سار سنڀال) ٽيسٽ موبائل فون مطابق </string>
     <string name="f09b001">
-    ڇا توهان سمجھو ٿا ته هي ٽيسٽ توهان جي نئي ڄاول ٻار جي صحت جي بهتري جي باري ۾ معلومات فراهم ڪندي
-    </string>"
+ڇا توهان سمجھو ٿا ته هي ٽيسٽ توهان جي نئي ڄاول ٻار جي صحت جي بهتري جي باري ۾ معلومات فراهم ڪندي    </string>
     <string name="f09b002"> ڇا توهان سمجھو ٿا ته (سارسنڀال) ٽيسٽ سان توهان جي صحت بهتر ٿئي ٿي؟ </string>
     <string name="f09b003"> ڇا توهان سمجھو ٿا ته (سارسنڀال) ٽيسٽ محفوظ آهي؟ </string>
     <string name="f09b004"> اگر توهان هي سمجھو ٿيون يا سمجھوٿا ته هي ٽيسٽ محفوظ آهي برائي مهرباني ان جي وضاحت ڪريو </string>
