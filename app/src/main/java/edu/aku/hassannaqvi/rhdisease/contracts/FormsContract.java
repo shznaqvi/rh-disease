@@ -79,7 +79,6 @@ public class FormsContract {
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
 
 
-
         return this;
 
     }
@@ -137,38 +136,46 @@ public class FormsContract {
         }*/
 
         if (!this.f03.equals("")) {
-            json.put(FormsTable.COLUMN_F03, this.f03 == null ? JSONObject.NULL : this.f03);
+            json.put(FormsTable.COLUMN_F03, this.f03 == null ? JSONObject.NULL : new JSONObject(this.f03));
         }
+
         if (!this.f04.equals("")) {
-            json.put(FormsTable.COLUMN_F04, this.f04 == null ? JSONObject.NULL : this.f04);
+            json.put(FormsTable.COLUMN_F04, this.f04 == null ? JSONObject.NULL : new JSONObject(this.f04));
         }
 
         if (!this.f07a.equals("")) {
-            json.put(FormsTable.COLUMN_F07A, this.f07a == null ? JSONObject.NULL : this.f07a);
+            json.put(FormsTable.COLUMN_F07A, this.f07a == null ? JSONObject.NULL : new JSONObject(this.f07a));
         }
+
         if (!this.f07b.equals("")) {
-            json.put(FormsTable.COLUMN_F07B, this.f07b == null ? JSONObject.NULL : this.f07b);
+            json.put(FormsTable.COLUMN_F07B, this.f07b == null ? JSONObject.NULL : new JSONObject(this.f07b));
         }
+
         if (!this.f07c.equals("")) {
-            json.put(FormsTable.COLUMN_F07C, this.f07c == null ? JSONObject.NULL : this.f07c);
+            json.put(FormsTable.COLUMN_F07C, this.f07c == null ? JSONObject.NULL : new JSONObject(this.f07c));
         }
+
         if (!this.f07d.equals("")) {
-            json.put(FormsTable.COLUMN_F07D, this.f07d == null ? JSONObject.NULL : this.f07d);
+            json.put(FormsTable.COLUMN_F07D, this.f07d == null ? JSONObject.NULL : new JSONObject(this.f07d));
         }
+
         if (!this.f08.equals("")) {
-            json.put(FormsTable.COLUMN_F08, this.f08 == null ? JSONObject.NULL : this.f08);
+            json.put(FormsTable.COLUMN_F08, this.f08 == null ? JSONObject.NULL : new JSONObject(this.f08));
         }
         if (!this.f09.equals("")) {
-            json.put(FormsTable.COLUMN_F09, this.f09 == null ? JSONObject.NULL : this.f09);
+            json.put(FormsTable.COLUMN_F09, this.f09 == null ? JSONObject.NULL : new JSONObject(this.f09));
         }
+
         if (!this.f10a.equals("")) {
-            json.put(FormsTable.COLUMN_F10A, this.f10a == null ? JSONObject.NULL : this.f10a);
+            json.put(FormsTable.COLUMN_F10A, this.f10a == null ? JSONObject.NULL : new JSONObject(this.f10a));
         }
+
         if (!this.f10b.equals("")) {
-            json.put(FormsTable.COLUMN_F10B, this.f10b == null ? JSONObject.NULL : this.f10b);
+            json.put(FormsTable.COLUMN_F10B, this.f10b == null ? JSONObject.NULL : new JSONObject(this.f10b));
         }
+
         if (!this.f10c.equals("")) {
-            json.put(FormsTable.COLUMN_F10C, this.f10c == null ? JSONObject.NULL : this.f10c);
+            json.put(FormsTable.COLUMN_F10C, this.f10c == null ? JSONObject.NULL : new JSONObject(this.f10c));
         }
 
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
@@ -411,8 +418,8 @@ public class FormsContract {
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
 
         public static final String COLUMN_PROJECTNAME = "projectname";
-        public static final String COLUMN_ID = "_id ";
-        public static final String COLUMN__UID = "_uid ";
+        public static final String COLUMN_ID = "_id";
+        public static final String COLUMN__UID = "_uid";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_PARTICIPANTID = "participantid";
         public static final String COLUMN_FORMDATE = "formdate";
@@ -430,14 +437,14 @@ public class FormsContract {
         public static final String COLUMN_F10B = "f10b";
         public static final String COLUMN_F10C = "f10c";
         public static final String COLUMN_ISTATUS = "istatus";
-        public static final String COLUMN_GPSLAT = "gpslat ";
-        public static final String COLUMN_GPSLNG = "gpslng ";
-        public static final String COLUMN_GPSDT = "gpsdt ";
-        public static final String COLUMN_GPSACC = "gpsacc ";
-        public static final String COLUMN_DEVICEID = "deviceid ";
-        public static final String COLUMN_DEVICETAGID = "devicetagid ";
-        public static final String COLUMN_SYNCED = "synced ";
-        public static final String COLUMN_SYNCED_DATE = "synced_date ";
+        public static final String COLUMN_GPSLAT = "gpslat";
+        public static final String COLUMN_GPSLNG = "gpslng";
+        public static final String COLUMN_GPSDT = "gpsdt";
+        public static final String COLUMN_GPSACC = "gpsacc";
+        public static final String COLUMN_DEVICEID = "deviceid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
+        public static final String COLUMN_SYNCED = "synced";
+        public static final String COLUMN_SYNCED_DATE = "synced_date";
 
         public static String _URL = "forms.php";
     }
