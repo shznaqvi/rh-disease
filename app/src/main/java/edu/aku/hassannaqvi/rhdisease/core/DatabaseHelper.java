@@ -573,6 +573,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     having,                    // don't filter by row groups
                     orderBy                    // The sort order
             );
+
+            /*c = db.rawQuery("Select *from forms where "+
+                    FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?", new String[]{"3"});
+*/
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 allFC.add(fc.Hydrate(c));
