@@ -1340,12 +1340,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_F03, MainApp.fc.getF03());
+        values.put(FormsTable.COLUMN_PARTICIPANTID, MainApp.fc.getParticipantID());
 
 // Which row to update, based on the ID
-        String selection = FormsContract.FormsTable.COLUMN_ID + " = ?";
+        String selection = FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
-        int count = db.update(FormsContract.FormsTable.TABLE_NAME,
+        int count = db.update(FormsTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);

@@ -13,6 +13,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -120,7 +121,6 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
 
 
-
     }
 
     @OnClick(R.id.btn_End)
@@ -130,20 +130,20 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
         //if (check) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            if (UpdateDB()) {
-                finish();
-                Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
-                Intent endSec = new Intent(this, EndingActivity.class);
-                endSec.putExtra("complete", false);
-                startActivity(endSec);
-            } else {
-                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-            }
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        if (UpdateDB()) {
+            finish();
+            Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
+            Intent endSec = new Intent(this, EndingActivity.class);
+            endSec.putExtra("complete", false);
+            startActivity(endSec);
+        } else {
+            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+        }
         /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
         }*/
@@ -218,6 +218,8 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
                 Settings.Secure.ANDROID_ID));
         //MainApp.fc.setParticipantID(participantID.getText().toString());
         MainApp.fc.setFormType("3");
+
+        MainApp.f03 = new JSONObject();
 
         MainApp.f03.put("screennum", screeningnum.getText().toString());
         MainApp.f03.put("participantName", participantName.getText().toString());
@@ -342,8 +344,6 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         } else {
             f03a008a.setError(null);
         }
-
-
 
 
         return true;

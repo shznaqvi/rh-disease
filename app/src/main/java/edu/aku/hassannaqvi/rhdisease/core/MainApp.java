@@ -73,7 +73,7 @@ public class MainApp extends Application {
     public static String child_name = "TEST";
     public static FormsContract fc = new FormsContract();
     public static FetusContract fec;
-    public static JSONObject f03 = new JSONObject();
+    public static JSONObject f03;
     public static String userName = "0000";
     public static String areaCode;
     //    Total No of members got from Section A

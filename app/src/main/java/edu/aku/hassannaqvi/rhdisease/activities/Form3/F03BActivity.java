@@ -163,7 +163,7 @@ public class F03BActivity extends Activity
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
 
 
-        MainApp.f03.put("f03ba010", f03a010a.isChecked() ? "1" : f03a010b.isChecked() ? "2" : "0");
+        MainApp.f03.put("f03a010", f03a010a.isChecked() ? "1" : f03a010b.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a011", f03a011a.isChecked() ? "1" : f03a011b.isChecked() ? "2" : f03a011888.isChecked() ? "888"
                 : f03a011999.isChecked() ? "999" : "0");
         MainApp.f03.put("f03a011888x", f03a011888x.getText().toString());
