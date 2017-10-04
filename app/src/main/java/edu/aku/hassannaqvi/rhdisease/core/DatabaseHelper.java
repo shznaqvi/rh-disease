@@ -1182,6 +1182,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
+
     public int updateF07B() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1264,7 +1265,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F09, MainApp.fc.getF09());
 
 // Which row to update, based on the ID
-        String selection = FormsTable._ID + " = ?";
+        String selection = FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
@@ -1319,7 +1320,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F10C, MainApp.fc.getF10c());
 
 // Which row to update, based on the ID
-        String selection = FormsContract.FormsTable._ID + " = ?";
+        String selection = FormsContract.FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsContract.FormsTable.TABLE_NAME,
@@ -1337,7 +1338,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F03, MainApp.fc.getF03());
 
 // Which row to update, based on the ID
-        String selection = FormsContract.FormsTable._ID + " = ?";
+        String selection = FormsContract.FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsContract.FormsTable.TABLE_NAME,

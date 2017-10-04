@@ -761,7 +761,7 @@ public class F07BActivity extends Activity
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateF07C();
+        int updcount = db.updateF07B();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

@@ -333,7 +333,7 @@ public class F07AActivity extends Activity {
         sF07A.put("f07a009", f07a009.getText().toString());
         sF07A.put("f07a010", f07a010.getText().toString());
 
-        //  MainApp.fc.setsF07A(String.valueOf(sF07A));
+        MainApp.fc.setF07a(String.valueOf(sF07A));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
