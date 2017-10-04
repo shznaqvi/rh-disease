@@ -79,7 +79,6 @@ public class FormsContract {
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
 
 
-
         return this;
 
     }

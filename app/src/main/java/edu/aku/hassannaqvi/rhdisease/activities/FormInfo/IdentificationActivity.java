@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -32,6 +33,8 @@ import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class IdentificationActivity extends Activity {
+
+    private static final String TAG = IdentificationActivity.class.getSimpleName();
 
     @BindView(R.id.participant_id)
     EditText participantId;
@@ -62,8 +65,7 @@ public class IdentificationActivity extends Activity {
             f08a001999.setChecked(false);
         }
 
-        f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
+        f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
@@ -80,7 +82,6 @@ public class IdentificationActivity extends Activity {
     @OnClick(R.id.btnCheck)
     void onBtnCheckClick() {
 
-
     }
 
 
@@ -94,11 +95,14 @@ public class IdentificationActivity extends Activity {
     void onBtnContinueClick() {
 
         //if (check) {
+
+        if (formValidation()) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+
 
             if (UpdateDB()) {
                 Toast.makeText(this, "starting next section", Toast.LENGTH_SHORT).show();
@@ -131,9 +135,34 @@ public class IdentificationActivity extends Activity {
         /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
         }*/
+
+        }
+
+    }
+
+
+    private boolean formValidation() {
+
+        Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+
+        if (!f08a001999.isChecked()) {
+
+            if (f08a001.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f08a001), Toast.LENGTH_SHORT).show();
+                f08a001.setError("This data is Required!");    // Set Error on last radio button
+                Log.i(TAG, "f08a001: This data is Required!");
+                return false;
+            } else {
+                f08a001.setError(null);
+            }
+
+        }
+
+        return true;
     }
 
     private void SaveDraft() throws JSONException {
+
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
         SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
         MainApp.fc = new FormsContract();
@@ -159,7 +188,6 @@ public class IdentificationActivity extends Activity {
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
-
     }
 
     private boolean UpdateDB() {
@@ -181,6 +209,5 @@ public class IdentificationActivity extends Activity {
         }
         return true;
     }
-
 
 }

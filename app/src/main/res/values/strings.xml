@@ -736,5 +736,96 @@
     <string name="f10ccmnt"> رايا / موقف </string>
 
 
+    <!-- Form 11-->
+
+    <string name="f11heading"> Form 11: Administration and acceptance of prophylaxis </string>
+    <string name="f11sub"> Identification </string>
+    <string name="f11pid"> شموليت ڪندڙ جي شناخت </string>
+    <string name="f11rp"> تحقيق ڪندڙ جو نالو ۽ شناخت </string>
+
+    <string name="f11hcwid">ايڇ سي ڊبليو آئي ڊي</string>
+    <string name="f11facid">سهولت ڪار جو نالو ۽ شناخت</string>
+    <string name="f11hcw">ايڇ سي ڊبليو آئي ڊي</string>
+    <string name="f11facility">سهولت ڪار جو نالو ۽ شناخت</string>
+    <string name="f11ga">شرڪت ڪندڙ جي مدت لکو</string>
+    <string name="f11weeks">هفتا</string>
+    <string name="f11days">ڏينهن</string>
+    <string name="f11gawk">هفتا</string>
+    <string name="f11gad">ڏينهن</string>
+
+    <string name="f11subheading1"> (احتياط) بيماري کي روڪڻ واري دوا</string>
+    <string name="f11a001">تاريخ ۽ ٽائيم معائني وقت</string>
+    <string name="f11a002">ڇا عورت جو ويم ٿي ويوآهي</string>
+    <string name="f11a003">ڇااميدوار 28 هفتن تائين آهي</string>
+    <string name="f11a004">گهڻو ٽائيم اڳي عورت ويم ڪيو هو</string>
+    <string name="f11a004a">24 ڪلاڪن کان گھٽ</string>
+    <string name="f11a004b">24 ڪلاڪن ۾</string>
+    <string name="f11a004c">24 ڪلاڪن کان زياده پر 48 ڪلاڪن کان گھٽ</string>
+    <string name="f11a004d">48 ڪلاڪن کان زياده پر 72 ڪلاڪن کان گھٽ</string>
+    <string name="f11a004e">72 ڪلاڪن کان زياده پر 96 ڪلاڪن کان گھٽ</string>
+    <string name="f11a004f">96 ڪلاڪن کان زياده</string>
+    <string name="f11b001">ڇااميدوار عورت راضي هئي دوا وٺڻ لاءِ</string>
+    <string name="f11b002">اگر نه ، ته ڇو توهان راضي نه آهيو اها دوا وٺڻ لاءِ</string>
+    <string name="f11b002a">ٽائيم نه آهي</string>
+    <string name="f11b002b">منهنجي گھر وارا مون کي اجازت نٿا ڏين</string>
+    <string name="f11b002c">مون کي يقين آهي ته دوائن جي وجه سان نقصان ٿيندو آهي</string>
+    <string name="f11b002d">مون کي يقين آهي ته دوائون اثر ڪنديون آهن</string>
+    <string name="f11b002e">منهنجي ٻار جي لاءِ نقصان ڪارآهي</string>
+    <string name="f11b002f">مستقبل ۾ پيدا ٿيڻ وارن ٻارن جي نقصان ڪارآهي</string>
+    <string name="f11b003">ڇا توهان سمجھو ٿا ته احتياطي دوا وٺڻ سان نئي ٻار جي صحت بهتر ٿيندي</string>
+    <string name="f11b004">ڇا توهان سمجھو ٿا ته مستقبل ۾ پيدا ٿيڻ وارن ٻارن جي صحت ۾ بهتري جو استعمال ضروري آهي prophylaxis جي لاءِ</string>
+    <string name="f11b005">ڇا توهان سمجھو ٿيون ته جو استعمال توهان جي صحت ۾ پيدا ڪري سگھي ٿو</string>
+    <string name="f11b006">ڇا توهان سمجھو ٿيون ته جو استعمال محفوظ آهي؟</string>
+    <string name="f11b007">ڇا توهان جي خاندان وارن توهان کي اجازت ڏني ته بچاءُ واري دوا استعمال ڪيو</string>
+    <string name="f11b007c">Didn’t ask permission</string>
+    <string name="f11b008">ڇا توهان ڳوٺ ۾ موجود هن بيماري جي شڪار ٻئي عورت کي هي انجيڪشن لڳائڻ جو مشورو ڏيندا</string>
+    <string name="f11b009">توهان ڇو ڳوٺ ۾ موجود هن بيماري جي شڪار ٻئي عورت کي هي انجيڪشن لڳائڻ جو مشورونه ڏيندا</string>
+    <string name="f11b009a">تڪليف ڏيندڙ آهي</string>
+    <string name="f11b009b">منهنجي خيال ۾ ان مان ڪو فائيدو نه ٿيندو</string>
+    <string name="f11b009c">منهنجي خيال ۾ هي انجيڪشن ٻار لاءِ نقصان ڪار هوندو</string>
+    <string name="f11b009d">منهنجي خيال ۾ هي انجيڪشن ماءُ لاءِ نقصان ڪار هوندو</string>
+    <string name="f11b009e">منهنجي خيال ۾ هي انجيڪشن مستقبل ۾ پيدا ٿيڻ وارن ٻارن لاءِ نقصان ڪار هوندو</string>
+    <string name="f11b010">ڇا توهان مستقبل ۾ ٿيڻ واري حمل جي دوران مزيد انجيڪشن لڳائڻ جي لاءِ رضامندآهيو</string>
+    <string name="f11b011">توهان ڇو مزيد انجيڪشن لڳائڻ جي لاءِ رضامند نه آهيو</string>
+    <string name="f11b011a">تڪليف ڏيندڙ آهي</string>
+    <string name="f11b011b">منهنجو خيال آهي ته فائيدي مند نه هوندو</string>
+    <string name="f11b011c">منهنجو خيال آهي ته ٽيسٽ ٻار جي لاءِ نقصان ڪارآهي</string>
+    <string name="f11b011d">منهنجو خيال آهي ته ٽيسٽ ماءُ جي لاءِ نقصان ڪارآهي</string>
+    <string name="f11b011e">صحت مرڪز تائين وڃڻ مشڪل آهي</string>
+    <string name="f11b012">توهان کي هي ٽيسٽ بيهر ڪرائڻ جو موقعو ملي ته توهان هن ٽيسٽ جي لاءِ ڪهڙي جڳھ کي ترجيح ڏيندا؟</string>
+    <string name="f11b012a">گھر</string>
+    <string name="f11b012b">بنيادي مرڪز</string>
+    <string name="f11b012c">ٽي ايڇ قيو</string>
+    <string name="f11b012d">ڊي ايڇ قيو</string>
+    <string name="f11b012e">مقامي اسڪول</string>
+    <string name="f11b012f">مقامي مسجد</string>
+    <string name="f11b012g">مقامي مارڪيٽ</string>
+    <string name="f11b013">ڇا توهان هن ٽيسٽ کي ڪرائڻ جي لاءِ پيئسا خرچ ڪندا</string>
+    <string name="f11b014">ڇا توهان هن ٽيسٽ جي لاءِ 500 روپيا خرچ ڪندا</string>
+    <string name="f11b015">ڇا توهان هن ٽيسٽ جي لاء1000روپيا خرچ ڪندا؟</string>
+    <string name="f11b016">ڇا توهان هن ٽيسٽ جي لاءِ 2000 روپيا خرچ ڪندا</string>
+    <string name="f11b017">ڇا توهان هن ٽيسٽ جي لاءِ 3000 روپيا خرچ ڪند</string>
+    <string name="f11b018">ڇا توهان هن ٽيسٽ جي لاءِ 4000 روپيا خرچ ڪندا</string>
+    <string name="f11b019">ڇا توهان هن ٽيسٽ جي لاءِ 5000 روپيا خرچ ڪند</string>
+    <string name="f11b020">هن ٽيشٽ جي لاءِ توهان زياده کان زياده ڪيترا روپيا خرچ ڪري سگھو ٿا (مٿي بيان ڪيل قيمت کي نظر انداز ڪري ٻڌايو)</string>
+    <string name="f11b021">هن ٽيسٽ کي ڪرائڻ جي لاءِ خرچ ڪرڻ جي اهم وجه ڇا آهي</string>
+    <string name="f11b021a">هن جي قيمت مناسب آهي</string>
+    <string name="f11b021b">ٻار جي صحت مندي جي لاءِ</string>
+    <string name="f11b021c">پيچدگين کان بچڻ لاء</string>
+    <string name="f11b022">هن ٽيسٽ تي پيئسا خرچ نه ڪرڻ جي سب کان اهم وجه ڇا آهي؟(سڀنن تي نشان لڳايو جيڪي لاڳو ٿين ٿا)</string>
+    <string name="f11b022a">هن جي قيمت زياده آهي</string>
+    <string name="f11b022b">مون کي قيقين نه آهي ته هن سان فائيدو ٿيندو</string>
+    <string name="f11b022c">مون کي قيقين نه آهي ته هن سان منهنجي ٻار کي  فائيدو ٿيندو</string>
+    <string name="f11b022d">گھر جا ماڻهون مون کي هن تي خرچ ڪرڻ نٿا ڏين</string>
+    <string name="f11b023">ڇا هن انجيڪشن جي لڳڻ کان پوءِ 30 منٽن جي اندر ڪو مضر اثر ظاهر ٿيا هئا</string>
+    <string name="f11b024">ڇا هن انجيڪشن لڳڻ کان پوءِ هيٺ ڏنل مان ڪا علامت ظاهر ٿي هئي؟</string>
+    <string name="f11b024a">انجيڪشن جي جڳھ تي سوڄ</string>
+    <string name="f11b024b">رت جو اخراج</string>
+    <string name="f11b024c">گھڻو زياده درد</string>
+    <string name="f11b024d">انجيڪشن جي جڳھ تي لال نشان</string>
+    <string name="f11b024e">ريش</string>
+    <string name="f11b024f">الٽيون</string>
+    <string name="f11b024g">هيڊو پيشاب</string>
+
     <string name="rsvp"> کیا آپ جواب دہندہ ہیں؟ </string>
 </resources>
