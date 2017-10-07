@@ -320,6 +320,12 @@ public class MainActivity extends Activity {
         startActivity(iA);
     }
 
+    public void openForm11(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "11";
+        startActivity(iA);
+    }
+
     public void openB(View v) {
         Intent iB = new Intent(this, F04AActivity.class);
         startActivity(iB);

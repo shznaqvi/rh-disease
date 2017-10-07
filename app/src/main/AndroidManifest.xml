@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="edu.aku.hassannaqvi.rhdisease">
+    package="edu.aku.hassannaqvi.rhdisease">
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Needed only if your app targets Android 5.0 (API level 21) or higher. -->
-    <uses-feature android:name="android.hardware.location.gps"/>
+    <uses-feature android:name="android.hardware.location.gps" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.hardware.location.gps"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.hardware.location.gps" />
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.READ_PROFILE"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".core.MainApp"
@@ -27,92 +27,94 @@
             android:name=".activities.OtherActivities.SplashscreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.OtherActivities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:windowSoftInputMode="stateVisible|adjustPan"/>
+            android:windowSoftInputMode="stateVisible|adjustPan" />
         <activity
             android:name=".activities.OtherActivities.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".core.AndroidDatabaseManager"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".activities.OtherActivities.EndingActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".FormsList"/>
-        <activity android:name=".activities.Form9.F09AActivity"/>
-        <activity android:name=".activities.Form9.F09BActivtiy"/>
-        <activity android:name=".activities.Form4.F04AActivity"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".FormsList" />
+        <activity android:name=".activities.Form9.F09AActivity" />
+        <activity android:name=".activities.Form9.F09BActivtiy" />
+        <activity android:name=".activities.Form4.F04AActivity" />
         <activity
             android:name=".activities.Form3.F03AActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".activities.Form10.F10AActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".activities.Form10.F10BActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.Form10.F10CActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.Form7.F07AActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.Form8.F08AActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.Form7.F07BActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.Form7.F07CActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".activities.Form7.F07DActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.FormInfo.IdentificationActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".activities.Form3.F03BActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize|stateHidden"/>
-        />
-        <activity android:name=".activities.Form11.F11AActivity">
-        </activity>
-        <activity android:name=".activities.Form11.F11BActivity">
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".activities.Form11.F11AActivity"
+            android:theme="@style/AppTheme1"></activity>
+        <activity
+            android:name=".activities.Form11.F11BActivity"
+            android:theme="@style/AppTheme1"></activity>
     </application>
 
 </manifest>

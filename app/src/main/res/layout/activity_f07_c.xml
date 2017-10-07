@@ -294,14 +294,14 @@
             android:textColor="@android:color/white" />
 
         <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-           android:id="@+id/f07c008"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginTop="1dp"
-           android:focusable="true"
-           android:hint="@string/f07c008"
-           android:textColor="@android:color/black"
-           app:dateFormat="dd-MM-yyyy" />
+            android:id="@+id/f07c008"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:focusable="true"
+            android:hint="@string/f07c008"
+            android:textColor="@android:color/black"
+            app:dateFormat="dd-MM-yyyy" />
 
         <!--09-->
         <TextView
@@ -392,6 +392,15 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/btn_Continue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="@color/green"
+                android:text="@string/start_interview"
+                android:textColor="#1ed61e" />
+
+            <Button
                 android:id="@+id/btn_End"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -400,14 +409,6 @@
                 android:text="@string/end_interview"
                 android:textColor="#ff1e1e" />
 
-            <Button
-                android:id="@+id/btn_Continue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/green"
-                android:text="@string/start_interview"
-                android:textColor="#1ed61e" />
 
         </LinearLayout>
 

@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form10.F10AActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form11.F11AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form7.F07AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form8.F08AActivity;
@@ -96,47 +97,52 @@ public class IdentificationActivity extends Activity {
 
         //if (check) {
 
-        if (formValidation()) {
-            try {
-                SaveDraft();
-            } catch (JSONException e) {
-                e.printStackTrace();
+        //if (formValidation()) {
+
+        try {
+            SaveDraft();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        if (UpdateDB()) {
+            Toast.makeText(this, "starting next section", Toast.LENGTH_SHORT).show();
+
+            finish();
+
+            if (MainApp.formType.equals("4")) {
+                Intent secB = new Intent(this, F04AActivity.class);
+                startActivity(secB);
+            } else if (MainApp.formType.equals("7")) {
+                Intent secB = new Intent(this, F07AActivity.class);
+                startActivity(secB);
+            } else if (MainApp.formType.equals("8") && !f08a001999.isChecked()) {
+                Intent secB = new Intent(this, F08AActivity.class);
+                startActivity(secB);
+            } else if (MainApp.formType.equals("9")) {
+                Intent secB = new Intent(this, F09AActivity.class);
+                startActivity(secB);
+            } else if (MainApp.formType.equals("10")) {
+                Intent secB = new Intent(this, F10AActivity.class);
+                startActivity(secB);
+            } else if (MainApp.formType.equals("8") && f08a001999.isChecked()) {
+                Intent secB = new Intent(this, EndingActivity.class);
+                secB.putExtra("complete", true);
+                startActivity(secB);
+            } else if (MainApp.formType.equals("11")) {
+                Intent secB = new Intent(this, F11AActivity.class);
+                startActivity(secB);
             }
+        } else {
+            Toast.makeText(this, "Failed to update Database", Toast.LENGTH_SHORT).show();
+        }
 
-
-            if (UpdateDB()) {
-                Toast.makeText(this, "starting next section", Toast.LENGTH_SHORT).show();
-
-                finish();
-
-                if (MainApp.formType.equals("4")) {
-                    Intent secB = new Intent(this, F04AActivity.class);
-                    startActivity(secB);
-                } else if (MainApp.formType.equals("7")) {
-                    Intent secB = new Intent(this, F07AActivity.class);
-                    startActivity(secB);
-                } else if (MainApp.formType.equals("8") && !f08a001999.isChecked()) {
-                    Intent secB = new Intent(this, F08AActivity.class);
-                    startActivity(secB);
-                } else if (MainApp.formType.equals("9")) {
-                    Intent secB = new Intent(this, F09AActivity.class);
-                    startActivity(secB);
-                } else if (MainApp.formType.equals("10")) {
-                    Intent secB = new Intent(this, F10AActivity.class);
-                    startActivity(secB);
-                } else if (MainApp.formType.equals("8") && f08a001999.isChecked()) {
-                    Intent secB = new Intent(this, EndingActivity.class);
-                    secB.putExtra("complete", true);
-                    startActivity(secB);
-                }
-            } else {
-                Toast.makeText(this, "Failed to update Database", Toast.LENGTH_SHORT).show();
-            }
         /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
         }*/
 
-        }
+        //}
 
     }
 
