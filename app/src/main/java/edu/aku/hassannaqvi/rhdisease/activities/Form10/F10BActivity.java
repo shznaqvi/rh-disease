@@ -158,8 +158,10 @@ public class F10BActivity extends Activity {
 
                 finish();
 
+                Intent endSec = new Intent(this, F10CActivity.class);
+                endSec.putExtra("complete", false);
+                startActivity(endSec);
 
-                startActivity(new Intent(this, F10CActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

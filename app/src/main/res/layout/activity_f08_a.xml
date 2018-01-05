@@ -159,7 +159,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/f08a003"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f08a003999"
@@ -186,7 +187,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/f08a004"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f08a004999"
@@ -213,7 +215,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/f08a005"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f08a005999"
@@ -240,7 +243,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/f08a006"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f08a006999"
@@ -267,7 +271,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/f08a007"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f08a007999"
@@ -294,7 +299,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/weeks"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <EditText
             android:id="@+id/f08a008d"
@@ -305,7 +311,8 @@
             android:layout_weight="1"
             android:digits="0123456789"
             android:hint="@string/days"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2" />
 
         <CheckBox
             android:id="@+id/f08a008999"

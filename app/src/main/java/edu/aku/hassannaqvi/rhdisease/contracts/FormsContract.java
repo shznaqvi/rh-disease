@@ -33,6 +33,7 @@ public class FormsContract {
     private String f10a = "";
     private String f10b = "";
     private String f10c = "";
+    private String f11 = "";
 
 
     private String gpsLat = "";
@@ -68,6 +69,8 @@ public class FormsContract {
         this.f10a = jsonObject.getString(FormsTable.COLUMN_F10A);
         this.f10b = jsonObject.getString(FormsTable.COLUMN_F10B);
         this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
+        this.f11 = jsonObject.getString(FormsTable.COLUMN_F11);
+
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -103,6 +106,9 @@ public class FormsContract {
         this.f10a = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10A));
         this.f10b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10B));
         this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
+        this.f11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F11));
+
+
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -169,6 +175,12 @@ public class FormsContract {
         if (!this.f10c.equals("")) {
             json.put(FormsTable.COLUMN_F10C, new JSONObject(this.f10c));
         }
+
+
+        if (!this.f11.equals("")) {
+            json.put(FormsTable.COLUMN_F10C, new JSONObject(this.f11));
+        }
+
 
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
@@ -332,6 +344,16 @@ public class FormsContract {
         this.f10c = f10c;
     }
 
+
+    public String getF11() {
+        return f11;
+    }
+
+    public void setF11(String f11) {
+        this.f11 = f11;
+    }
+
+
     public String getFormType() {
         return formType;
     }
@@ -428,6 +450,8 @@ public class FormsContract {
         public static final String COLUMN_F10A = "f10a";
         public static final String COLUMN_F10B = "f10b";
         public static final String COLUMN_F10C = "f10c";
+        public static final String COLUMN_F11 = "f11";
+
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

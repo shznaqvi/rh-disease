@@ -448,8 +448,10 @@ public class F10AActivity extends AppCompatActivity {
 
                 finish();
 
+                Intent endSec = new Intent(this, F10BActivity.class);
+                endSec.putExtra("complete", false);
+                startActivity(endSec);
 
-                startActivity(new Intent(this, F10BActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -511,7 +513,6 @@ public class F10AActivity extends AppCompatActivity {
         f10a.put("f10a011888x", f10a011888x.getText().toString());
 
         MainApp.fc.setF10a(String.valueOf(f10a));
-
 
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();

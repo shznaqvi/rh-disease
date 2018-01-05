@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import edu.aku.hassannaqvi.rhdisease.R;
-import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity_ViewBinding;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -260,9 +260,11 @@ public class F10CActivity extends Activity {
 
                 finish();
 
+                Intent endSec = new Intent(this, EndingActivity.class);
+                endSec.putExtra("complete", true);
+                startActivity(endSec);
 
                 //startActivity(new Intent(this, F10BActivity.class));
-                startActivity(new Intent(this, EndingActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

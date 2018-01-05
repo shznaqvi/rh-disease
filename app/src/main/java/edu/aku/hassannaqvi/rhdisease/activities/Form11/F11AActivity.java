@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import android.content.Intent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -1481,7 +1482,7 @@ public class F11AActivity extends AppCompatActivity {
 
         f11.put("f11b024888x", f11b024888x.getText().toString());
 
-        MainApp.fc.setF09(String.valueOf(f11));
+        MainApp.fc.setF11(String.valueOf(f11));
 
     }
 
@@ -1507,8 +1508,9 @@ public class F11AActivity extends AppCompatActivity {
 
                 finish();
 
-                /*Intent secNext = new Intent(this, SectionHAActivity.class);
-                startActivity(secNext);*/
+                Intent secNext = new Intent(this, EndingActivity.class);
+                secNext.putExtra("complete", true);
+                startActivity(secNext);
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -1518,9 +1520,9 @@ public class F11AActivity extends AppCompatActivity {
 
     private boolean UpdateDB() {
 
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateF09();
+        int updcount = db.updateF011();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -1528,9 +1530,7 @@ public class F11AActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
-
-        return true;
+        }
 
     }
 }
