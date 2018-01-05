@@ -22,6 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity_ViewBinding;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -212,7 +213,6 @@ public class F10CActivity extends Activity {
         });
 
 
-
     }
 
     @OnTextChanged(value = R.id.f10c002a,
@@ -261,7 +261,8 @@ public class F10CActivity extends Activity {
                 finish();
 
 
-                startActivity(new Intent(this, F10BActivity.class));
+                //startActivity(new Intent(this, F10BActivity.class));
+                startActivity(new Intent(this, EndingActivity.class));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -514,7 +515,6 @@ public class F10CActivity extends Activity {
         }
 
 
-
         return true;
     }
 
@@ -522,8 +522,6 @@ public class F10CActivity extends Activity {
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "You Can't go back", Toast.LENGTH_LONG).show();
     }*/
-
-
 
 
 }

@@ -36,7 +36,6 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     private static final String TAG = F03AActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
-
     @BindView(R.id.participantName)
     EditText participantName;
     @BindView(R.id.screeningnum)

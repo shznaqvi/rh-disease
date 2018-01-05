@@ -37,7 +37,7 @@ public class F10BActivity extends Activity {
     RadioGroup f10b002;
     @BindView(R.id.f10b002a)
     RadioButton f10b002a;
-    @BindView(R.id.f10a002b)
+    @BindView(R.id.f10b002b)
     RadioButton f10b002b;
     @BindView(R.id.f10b002999)
     RadioButton f10b002999;
@@ -83,7 +83,7 @@ public class F10BActivity extends Activity {
     RadioGroup f10b006;
     @BindView(R.id.f10b006a)
     RadioButton f10b006a;
-    @BindView(R.id.f10a006b)
+    @BindView(R.id.f10b006b)
     RadioButton f10b006b;
     @BindView(R.id.f10b006999)
     RadioButton f10b006999;
@@ -133,9 +133,6 @@ public class F10BActivity extends Activity {
                 }
             }
         });
-
-
-
 
 
     }
@@ -327,8 +324,6 @@ public class F10BActivity extends Activity {
     public void onBackPressed() {
         Toast.makeText(getApplicationContext(), "You Can't go back", Toast.LENGTH_LONG).show();
     }*/
-
-
 
 
 }
