@@ -261,7 +261,7 @@ public class F07DActivity extends Activity {
         f07d.put("f07d006888x", f07d006888x.getText().toString());
 
 
-        MainApp.fc.setF07d(String.valueOf(f07d));
+        MainApp.fc4.setF07d(String.valueOf(f07d));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 

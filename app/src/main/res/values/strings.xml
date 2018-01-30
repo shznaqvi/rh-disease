@@ -549,7 +549,7 @@
     <string name="f09a002b"> گھر وارا نٿا چاهين </string>
     <string name="f09a002c"> يقين آهي ته ٽيسٽ سان نقصان/ٿيندو </string>
     <string name="f09a002d"> مون کي يقين ناهي ته هن ٽيسٽ سان ڪو فائيدو ٿيندو </string>
-    <string name="f09a003"> مطابقHCWنتيجو (سارسنڀال) </string>
+    <string name="f09a003"> (سارسنڀال) جو نتيجو (HCW) مطابق </string>
     <string name="f09a003bg"> رت جو گروپ </string>
     <string name="f09a003bg01"> A </string>
     <string name="f09a003bg02"> B </string>
@@ -607,7 +607,7 @@
 
     <!-- Form 10-->
 
-    <string name="f10heading"> Form 10: Delivery Characteristics and Newborn Assessment </string>
+    <string name="f10heading"> Form 11: Delivery Characteristics and Newborn Assessment </string>
     <string name="f10sub"> Identification </string>
     <string name="f10pid"> شموليت ڪندڙ جي شناخت </string>
     <string name="f10rp"> تحقيق ڪندڙ جو نالو ۽ شناخت </string>
@@ -738,7 +738,7 @@
 
     <!-- Form 11-->
 
-    <string name="f11heading"> Form 11: Administration and acceptance of prophylaxis </string>
+    <string name="f11heading"> Form 10: Administration and acceptance of prophylaxis(Only complete Form 11 for Rh-negative Woman) </string>
     <string name="f11sub"> Identification </string>
     <string name="f11pid"> شموليت ڪندڙ جي شناخت </string>
     <string name="f11rp"> تحقيق ڪندڙ جو نالو ۽ شناخت </string>

@@ -38,6 +38,7 @@ import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncFetus;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForm11;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForms;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncForms10;
@@ -203,7 +204,7 @@ public class MainActivity extends Activity {
     public void openForm(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             Intent oF = new Intent(MainActivity.this, F03AActivity.class);
-            MainApp.formType = "3";
+            MainApp.formType = "5";
             startActivity(oF);
         } else {
 
@@ -227,7 +228,7 @@ public class MainActivity extends Activity {
 
                         if (!MainApp.userName.equals("0000")) {
                             Intent oF = new Intent(MainActivity.this, F03AActivity.class);
-                            MainApp.formType = "3";
+                            MainApp.formType = "5";
                             startActivity(oF);
                         }
                     }
@@ -317,13 +318,13 @@ public class MainActivity extends Activity {
 
     public void openForm10(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
-        MainApp.formType = "10";
+        MainApp.formType = "11";
         startActivity(iA);
     }
 
     public void openForm11(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
-        MainApp.formType = "11";
+        MainApp.formType = "10";
         startActivity(iA);
     }
 
@@ -420,7 +421,14 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
 
+
             new SyncForms(this).execute();
+            new SyncForms3(this).execute();
+            new SyncForms8(this).execute();
+            new SyncFetus(this).execute();
+            new SyncForms9(this).execute();
+            new SyncForms10(this).execute();
+            new SyncForm11(this).execute();
 
             //new SyncForms3(this).execute();
             //new SyncForms8(this).execute();

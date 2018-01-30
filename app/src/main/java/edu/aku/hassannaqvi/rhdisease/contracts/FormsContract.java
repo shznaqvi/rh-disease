@@ -16,6 +16,7 @@ public class FormsContract {
     //private final String surveyType = "SN";
     private String _ID = "";
     private String _UID = "";
+    private String _UUID = "";
     private String formDate = ""; // Date
     private String user = ""; // Interviewer
     private String participantID = "";
@@ -36,6 +37,7 @@ public class FormsContract {
     private String f11 = "";
 
 
+
     private String gpsLat = "";
     private String gpsLng = "";
     private String gpsDT = "";
@@ -44,6 +46,7 @@ public class FormsContract {
     private String devicetagID = "";
     private String synced = "";
     private String synced_date = "";
+    private String app_version = "";
 
     public FormsContract() {
     }
@@ -53,6 +56,7 @@ public class FormsContract {
 
         this._ID = jsonObject.getString(FormsTable.COLUMN_ID);
         this._UID = jsonObject.getString(FormsTable.COLUMN__UID);
+        this._UUID = jsonObject.getString(FormsTable.COLUMN__UUID);
         this.user = jsonObject.getString(FormsTable.COLUMN_USER);
         this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANTID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
@@ -80,6 +84,7 @@ public class FormsContract {
         this.devicetagID = jsonObject.getString(FormsTable.COLUMN_DEVICETAGID);
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
+        this.app_version = jsonObject.getString(FormsTable.COLUMN_APP_VERSION);
 
 
         return this;
@@ -90,6 +95,7 @@ public class FormsContract {
 
         this._ID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this._UID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UID));
+        this._UUID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN__UUID));
         this.user = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USER));
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
@@ -118,6 +124,7 @@ public class FormsContract {
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
         this.synced = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED));
         this.synced_date = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED_DATE));
+        this.app_version = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APP_VERSION));
 
 
         return this;
@@ -132,6 +139,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_PROJECTNAME, this.projectName == null ? JSONObject.NULL : this.projectName);
         json.put(FormsTable.COLUMN_ID, this._ID == null ? JSONObject.NULL : this._ID);
         json.put(FormsTable.COLUMN__UID, this._UID == null ? JSONObject.NULL : this._UID);
+        json.put(FormsTable.COLUMN__UUID, this._UUID == null ? JSONObject.NULL : this._UUID);
         json.put(FormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(FormsTable.COLUMN_PARTICIPANTID, this.participantID == null ? JSONObject.NULL : this.participantID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
@@ -191,6 +199,7 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(FormsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(FormsTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
+        json.put(FormsTable.COLUMN_APP_VERSION, this.app_version == null ? JSONObject.NULL : this.app_version);
 
 
         return json;
@@ -426,6 +435,22 @@ public class FormsContract {
         this.synced_date = synced_date;
     }
 
+    public String getApp_version() {
+        return app_version;
+    }
+
+    public void setApp_version(String app_version) {
+        this.app_version = app_version;
+    }
+
+    public String get_UUID() {
+        return _UUID;
+    }
+
+    public void set_UUID(String _UUID) {
+        this._UUID = _UUID;
+    }
+
     public static abstract class FormsTable implements BaseColumns {
 
         public static final String TABLE_NAME = "forms";
@@ -434,6 +459,7 @@ public class FormsContract {
         public static final String COLUMN_PROJECTNAME = "projectname";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN__UID = "_uid";
+        public static final String COLUMN__UUID = "_uuid";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_PARTICIPANTID = "participantid";
         public static final String COLUMN_FORMDATE = "formdate";
@@ -461,6 +487,7 @@ public class FormsContract {
         public static final String COLUMN_DEVICETAGID = "devicetagid";
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
+        public static final String COLUMN_APP_VERSION = "app_version";
 
         public static String _URL = "forms.php";
     }

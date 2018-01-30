@@ -2094,11 +2094,15 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
             }
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
-
                 finish();
 
+                if (MainApp.eligibleFlag) {
+                    startActivity(new Intent(this, F03BActivity.class));
+                } else {
+                    startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
+                }
 
-                startActivity(new Intent(this, F03BActivity.class));
+
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -2107,6 +2111,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
     }
 
     private boolean UpdateDB() {
+
         DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateF04();
@@ -2119,10 +2124,24 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
             return false;
         }
 
+
     }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
+
+
+        //MainApp.fc4 = new FormsContract();
+
+        /*MainApp.formType = "4";
+        MainApp.fc4.setFormType("4");
+        MainApp.fc4.setDevicetagID(MainApp.fc.getDevicetagID());
+        MainApp.fc4.setFormDate(new Date().toString());
+        MainApp.fc4.setUser(MainApp.userName);
+        MainApp.fc4.setDeviceID(MainApp.fc.getDeviceID());
+        MainApp.fc4.setApp_version(MainApp.fc.getApp_version());
+        //MainApp.fc4.setParticipantID(MainApp.fc.getParticipantID());
+        MainApp.fc4.set_UUID(MainApp.fc.get_UID())*/
 
         JSONObject f04 = new JSONObject();
 
@@ -2313,8 +2332,12 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
         f04.put("f04a019888x", f04a019888x.getText().toString());
         f04.put("f04a019ix", f04a019ix.getText().toString());
 
+        //setGPS();
 
         MainApp.fc.setF04(String.valueOf(f04));
+        //MainApp.fc.setF04(String.valueOf(f04));
+
+
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -2713,5 +2736,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
             fldGrp012.setVisibility(View.GONE);
         }
     }
+
+
 }
 

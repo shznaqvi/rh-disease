@@ -1,9 +1,12 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form7;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -16,6 +19,8 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -296,20 +301,39 @@ public class F07AActivity extends Activity {
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateF07A();
+        long updcount = db.addForm(MainApp.fc4);
 
-        if (updcount == 1) {
+        MainApp.fc4.set_ID(String.valueOf(updcount));
+
+        if (updcount > 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-            return true;
+
+            MainApp.fc4.set_UID(
+                    (MainApp.fc4.getDeviceID() + MainApp.fc4.get_ID()));
+            db.updateForm4ID();
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
         }
+
+        return true;
 
     }
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
+
+        //MainApp.fc4 = new FormsContract();
+
+        MainApp.formType = "7";
+        MainApp.fc4.setFormType("7");
+        MainApp.fc4.setDevicetagID(MainApp.fc.getDevicetagID());
+        MainApp.fc4.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.fc4.setUser(MainApp.userName);
+        MainApp.fc4.setDeviceID(MainApp.fc.getDeviceID());
+        MainApp.fc4.setApp_version(MainApp.fc.getApp_version());
+        MainApp.fc4.setParticipantID(MainApp.fc.getParticipantID());
+        MainApp.fc4.set_UUID(MainApp.fc.get_UID());
+
 
         JSONObject sF07A = new JSONObject();
 
@@ -333,7 +357,10 @@ public class F07AActivity extends Activity {
         sF07A.put("f07a009", f07a009.getText().toString());
         sF07A.put("f07a010", f07a010.getText().toString());
 
-        MainApp.fc.setF07a(String.valueOf(sF07A));
+        MainApp.fc4.setF07a(String.valueOf(sF07A));
+        //MainApp.fc.setF07a(String.valueOf(sF07A));
+
+        setGPS();
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
@@ -494,6 +521,39 @@ public class F07AActivity extends Activity {
         }
 
         return true;
+
+    }
+
+    public void setGPS() {
+        SharedPreferences GPSPref = getSharedPreferences("GPSCoordinates", Context.MODE_PRIVATE);
+
+//        String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+        try {
+            String lat = GPSPref.getString("Latitude", "0");
+            String lang = GPSPref.getString("Longitude", "0");
+            String acc = GPSPref.getString("Accuracy", "0");
+            String dt = GPSPref.getString("Time", "0");
+
+            if (lat == "0" && lang == "0") {
+                Toast.makeText(this, "Could not obtained GPS points", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+            }
+
+            String date = DateFormat.format("dd-MM-yyyy HH:mm", Long.parseLong(GPSPref.getString("Time", "0"))).toString();
+
+            MainApp.fc4.setGpsLat(GPSPref.getString("Latitude", "0"));
+            MainApp.fc4.setGpsLng(GPSPref.getString("Longitude", "0"));
+            MainApp.fc4.setGpsAcc(GPSPref.getString("Accuracy", "0"));
+//            AppMain.fc.setGpsTime(GPSPref.getString(date, "0")); // Timestamp is converted to date above
+            MainApp.fc4.setGpsDT(date); // Timestamp is converted to date above
+
+            Toast.makeText(this, "GPS set", Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Log.e(TAG, "setGPS: " + e.getMessage());
+        }
 
     }
 }

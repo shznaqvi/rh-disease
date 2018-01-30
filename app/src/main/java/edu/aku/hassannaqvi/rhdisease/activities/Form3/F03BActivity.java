@@ -170,6 +170,10 @@ public class F03BActivity extends Activity
         MainApp.f03.put("f03a012", f03a012a.isChecked() ? "1" : f03a012b.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a013", new Date().toString());
         MainApp.fc.setParticipantID(participantID.getText().toString());
+        MainApp.fc4.setParticipantID(participantID.getText().toString());
+
+
+        MainApp.participantID = participantID.getText().toString();
 
 
         MainApp.fc.setF03(String.valueOf(MainApp.f03));

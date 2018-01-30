@@ -1048,7 +1048,7 @@ public class F07BActivity extends Activity
         f07.put("f07b01906", f07b01906.getText().toString());
         f07.put("f07b01907", f07b01907.getText().toString());
 
-        MainApp.fc.setF07b(String.valueOf(f07));
+        MainApp.fc4.setF07b(String.valueOf(f07));
 
     }
 

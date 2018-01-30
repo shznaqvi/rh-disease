@@ -77,6 +77,7 @@ public class SyncFetus extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         int sSynced = 0;
+        int sDuplicate = 0;
         String sSyncedError = "";
         JSONArray json = null;
         try {
@@ -86,10 +87,14 @@ public class SyncFetus extends AsyncTask<Void, Void, String> {
 
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
-                    db.updateForms(jsonObject.getString("id"));
+
+                    db.updateSyncedForms(jsonObject.getString("id"));  // UPDATE SYNCED
                     sSynced++;
+                } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
+                    db.updateSyncedForms(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    sDuplicate++;
                 } else {
-                    sSyncedError += jsonObject.getString("message").toString() + "\n";
+                    sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
 

@@ -65,6 +65,9 @@ public class MainApp extends Application {
     private static final long DAYS_IN_42_WEEKS = (7 * 42);
     public static final long MILLISECONDS_IN_42_WEEKS = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_42_WEEKS;
 
+    private static final long DAYS_IN_3_WEEKS = (7 * 3);
+    public static final long MILLISECONDS_IN_3_WEEKS = MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY * DAYS_IN_3_WEEKS;
+
     public static String deviceId;
 
     public static Boolean admin = false;
@@ -72,10 +75,12 @@ public class MainApp extends Application {
     public static int loginFieldArea = -1;
     public static String child_name = "TEST";
     public static FormsContract fc = new FormsContract();
+    public static FormsContract fc4 = new FormsContract();
     public static FetusContract fec;
     public static JSONObject f03;
     public static String userName = "0000";
     public static String areaCode;
+    public static String participantID;
     //    Total No of members got from Section A
     public static int NoMembersCount = 0;
     public static int NoMaleCount = 0;
@@ -89,6 +94,8 @@ public class MainApp extends Application {
     public static int TotalBoyCount = 0;
     public static int FetusCount = 1;
     public static int TotalFetusCount = 0;
+    public static int versionCode;
+    public static String versionName;
 
 
     //    Total No of Alive members got from Section B

@@ -32,7 +32,7 @@ import edu.aku.hassannaqvi.rhdisease.core.MainApp;
  */
 public class SyncForms3 extends AsyncTask<Void, Void, String> {
 
-    private static final String TAG = "SyncForms3";
+    private static final String TAG = "SyncForms7";
     private Context mContext;
     private ProgressDialog pd;
 
@@ -64,7 +64,7 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
 
         String line = "No Response";
         try {
-            String url = MainApp._HOST_URL + FormsContract.FormsTable._URL;
+            String url = MainApp._HOST_URL + FormsContract.FormsTable._URL.replace(".php", "7.php");
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
         } catch (IOException e) {
@@ -76,6 +76,7 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         int sSynced = 0;
+        int sDuplicate = 0;
         String sSyncedError = "";
         JSONArray json = null;
         try {
@@ -85,24 +86,28 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
 
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
-                    db.updateForms(jsonObject.getString("id"));
+
+                    db.updateSyncedForms(jsonObject.getString("id"));  // UPDATE SYNCED
                     sSynced++;
+                } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
+                    db.updateSyncedForms(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    sDuplicate++;
                 } else {
-                    sSyncedError += jsonObject.getString("message").toString() + "\n";
+                    sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
 
-            Toast.makeText(mContext, sSynced + " Forms3 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, sSynced + " Forms7 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
-            pd.setMessage(sSynced + " Forms3 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
-            pd.setTitle("Done uploading Forms3 data");
+            pd.setMessage(sSynced + " Forms7 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
+            pd.setTitle("Done uploading Forms7 data");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(result);
-            pd.setTitle("Forms3 Sync Failed");
+            pd.setTitle("Forms7 Sync Failed");
             pd.show();
         }
     }
@@ -111,7 +116,7 @@ public class SyncForms3 extends AsyncTask<Void, Void, String> {
         String line = "No Response";
 
         DatabaseHelper db = new DatabaseHelper(mContext);
-        Collection<FormsContract> Forms = db.getUnsyncedForms3();
+        Collection<FormsContract> Forms = db.getUnsyncedForms7();
         Log.d(TAG, String.valueOf(Forms.size()));
 
         if (Forms.size() > 0) {

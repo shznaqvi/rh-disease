@@ -121,48 +121,56 @@
         </RadioGroup>
 
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/fldGrpf03a002"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/f03a002"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="vertical">
 
-        <RadioGroup
-            android:id="@+id/f03a002"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/f03a002a"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="@string/yes" />
+                android:layout_marginTop="16dp"
+                android:text="@string/f03a002"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <RadioButton
-                android:id="@+id/f03a002b"
+            <RadioGroup
+                android:id="@+id/f03a002"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:layout_weight="1"
-                android:text="@string/no" />
+                android:orientation="horizontal">
 
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/f03a002a"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/yes" />
 
-        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-            android:id="@+id/f03a002date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:focusable="false"
-            android:hint="@string/f03a002date"
-            android:textColor="@android:color/black"
-            android:textSize="30sp"
-            app:dateFormat="dd-MM-yyyy"
-            app:minDate="01/01/1917" />
+                <RadioButton
+                    android:id="@+id/f03a002b"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
+                    android:text="@string/no" />
+
+            </RadioGroup>
+
+            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                android:id="@+id/f03a002date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:focusable="false"
+                android:hint="@string/f03a002date"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                app:dateFormat="dd-MM-yyyy"
+                app:minDate="01/01/1917" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"

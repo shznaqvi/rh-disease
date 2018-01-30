@@ -10,11 +10,13 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -67,6 +69,10 @@ public class EndingActivity extends Activity {
                 MainApp.FetusCount = 1;
 
                 finish();
+                MainApp.f03 = new JSONObject();
+                MainApp.formType = "";
+                MainApp.fc = new FormsContract();
+                MainApp.fc4 = new FormsContract();
 
                 Intent endSec = new Intent(this, MainActivity.class);
                 endSec.putExtra("complete", false);
@@ -82,6 +88,10 @@ public class EndingActivity extends Activity {
 
         MainApp.fc.setIstatus(dcstatus01.isChecked() ? "1" : dcstatus02.isChecked() ? "2" : "0");
 
+        if (MainApp.formType.equals("7")) {
+            MainApp.fc4.setIstatus(dcstatus01.isChecked() ? "1" : dcstatus02.isChecked() ? "2" : "0");
+        }
+
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 
@@ -89,8 +99,12 @@ public class EndingActivity extends Activity {
         DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateEnding();
+        int updcount1 = 0;
+        if (MainApp.formType.equals("7")) {
+            updcount1 = db.updateEnding4();
+        }
 
-        if (updcount == 1) {
+        if (updcount == 1 || updcount1 == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {

@@ -16,7 +16,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,14 +123,14 @@ public class IdentificationActivity extends Activity {
             } else if (MainApp.formType.equals("9")) {
                 Intent secB = new Intent(this, F09AActivity.class);
                 startActivity(secB);
-            } else if (MainApp.formType.equals("10")) {
+            } else if (MainApp.formType.equals("11")) {
                 Intent secB = new Intent(this, F10AActivity.class);
                 startActivity(secB);
             } else if (MainApp.formType.equals("8") && f08a001999.isChecked()) {
                 Intent secB = new Intent(this, EndingActivity.class);
                 secB.putExtra("complete", true);
                 startActivity(secB);
-            } else if (MainApp.formType.equals("11")) {
+            } else if (MainApp.formType.equals("10")) {
                 Intent secB = new Intent(this, F11AActivity.class);
                 startActivity(secB);
             }
@@ -174,12 +174,13 @@ public class IdentificationActivity extends Activity {
         MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(sharedPref.getString("tagName", null));
-        MainApp.fc.setFormDate(new Date().toString());
+        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
         MainApp.fc.setUser(MainApp.userName);
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setFormType(MainApp.formType);
         MainApp.fc.setParticipantID(participantId.getText().toString());
+        MainApp.fc.setDeviceID(MainApp.deviceId);
 
         JSONObject sInfo = new JSONObject();
 

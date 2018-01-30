@@ -29,7 +29,7 @@ import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class SyncForms extends AsyncTask<Void, Void, String> {
 
-    private static final String TAG = "SyncForms";
+    private static final String TAG = "SyncForms5";
     private Context mContext;
     private ProgressDialog pd;
 
@@ -153,6 +153,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         int sSynced = 0;
+        int sDuplicate = 0;
         String sSyncedError = "";
         JSONArray json = null;
         try {
@@ -161,23 +162,27 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
-                    db.updateSyncedForms(jsonObject.getString("id"));
+
+                    db.updateSyncedForms(jsonObject.getString("id"));  // UPDATE SYNCED
                     sSynced++;
+                } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
+                    db.updateSyncedForms(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    sDuplicate++;
                 } else {
-                    sSyncedError += "\nError: " + jsonObject.getString("message").toString();
+                    sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
-            Toast.makeText(mContext, sSynced + " Forms synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, sSynced + " Forms 5 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
-            pd.setMessage(sSynced + " Forms synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
-            pd.setTitle("Done uploading Forms data");
+            pd.setMessage(sSynced + " Forms 5 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
+            pd.setTitle("Done uploading Forms 5 data");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(result);
-            pd.setTitle("Forms Sync Failed");
+            pd.setTitle("Forms 5 Sync Failed");
             pd.show();
         }
     }

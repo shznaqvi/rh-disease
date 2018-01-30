@@ -7,7 +7,9 @@ import android.provider.Settings;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -90,16 +92,22 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     RadioButton f03a008a;
     @BindView(R.id.f03a008b)
     RadioButton f03a008b;
+    @BindView(R.id.fldGrpf03a002)
+    LinearLayout fldGrpf03a002;
 
 
     @BindViews({R.id.f03a001, R.id.f03a002, R.id.f03a003, R.id.f03a004, R.id.f03a005, R.id.f03a006, R.id.f03a007, R.id.f03a008})
     List<RadioGroup> f03aInclusion;
-    @BindViews({R.id.f03a001a, R.id.f03a002a, R.id.f03a003a, R.id.f03a004a, R.id.f03a005a,
+    @BindViews({R.id.f03a001a, R.id.f03a003a, R.id.f03a004a, R.id.f03a005a,
             R.id.f03a006b, R.id.f03a007b, R.id.f03a008b})
     List<RadioButton> f03aInclusionYes;
 
     Boolean check = false;
     Boolean flag = false;
+
+    String date13Weeks;
+    String date42Weeks;
+    String date3Weeks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,11 +116,10 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         ButterKnife.bind(this);
 
 
-        String date13Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_13_WEEKS)));
-        String date42Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_42_WEEKS)));
+        date13Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_13_WEEKS)));
+        date42Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_42_WEEKS)));
+        date3Weeks = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTimeInMillis() - ((MainApp.MILLISECONDS_IN_3_WEEKS)));
         f03a002date.setManager(getSupportFragmentManager());
-        f03a002date.setMaxDate(date13Weeks);
-        f03a002date.setMinDate(date42Weeks);
 
 
         //================== Q7 Skip Pattern ===========
@@ -166,15 +173,11 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
                     Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
                     finish();
-                    if (MainApp.eligibleFlag) {
+                    //if (MainApp.eligibleFlag) {
                         Intent endSec = new Intent(this, F04AActivity.class);
                         endSec.putExtra("complete", true);
                         startActivity(endSec);
-                    } else {
-                        Intent endSec = new Intent(this, EndingActivity.class);
-                        endSec.putExtra("complete", true);
-                        startActivity(endSec);
-                    }
+
 
                 } else {
                     Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -217,7 +220,8 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));
         //MainApp.fc.setParticipantID(participantID.getText().toString());
-        MainApp.fc.setFormType("3");
+        MainApp.fc.setFormType("5");
+        MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
 
         MainApp.f03 = new JSONObject();
 
@@ -274,16 +278,27 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             f03a001a.setError(null);
         }
 
-        // =================== 2 ====================
-        if (f03a002.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a002), Toast.LENGTH_SHORT).show();
-            f03a002a.setError("This data is required");
-            Log.d(TAG, "f03a002:empty ");
-            return false;
-        } else {
-            f03a002a.setError(null);
-        }
+        if (f03a001a.isChecked()) {
+            // =================== 2 ====================
+            if (f03a002.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a002), Toast.LENGTH_SHORT).show();
+                f03a002a.setError("This data is required");
+                Log.d(TAG, "f03a002:empty ");
+                return false;
+            } else {
+                f03a002a.setError(null);
+            }
 
+            if (f03a002date.getText().toString().isEmpty()) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a002date), Toast.LENGTH_SHORT).show();
+                f03a002date.setError("This data is required");
+                Log.d(TAG, "f03a002date:empty ");
+                return false;
+            } else {
+                f03a002date.setError(null);
+            }
+
+        }
 
         // =================== 3 ====================
         if (f03a003.getCheckedRadioButtonId() == -1) {
@@ -360,7 +375,25 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
 
-        MainApp.eligibleFlag = isInclude();
+        if (f03a001a.isChecked()) {
+            fldGrpf03a002.setVisibility(View.VISIBLE);
+            MainApp.eligibleFlag = (isInclude() && f03a002a.isChecked());
+
+        } else {
+            fldGrpf03a002.setVisibility(View.GONE);
+            MainApp.eligibleFlag = isInclude();
+            f03a002date.setText(null);
+        }
+
+        if (f03a002a.isChecked()) {
+            f03a002date.setMaxDate(date13Weeks);
+            f03a002date.setMinDate(date42Weeks);
+        } else {
+            f03a002date.setMaxDate(date3Weeks);
+            f03a002date.setMinDate(date13Weeks);
+        }
+
+
 
     }
 

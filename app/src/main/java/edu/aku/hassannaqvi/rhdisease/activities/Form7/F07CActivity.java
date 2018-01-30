@@ -302,7 +302,7 @@ public class F07CActivity extends AppCompatActivity
         f07c.put("f07c009", f07c009a.isChecked() ? "1" : f07c009b.isChecked() ? "2" : f07c009c.isChecked() ? "3" : f07c009d.isChecked() ? "4" : f07c009e.isChecked() ? "5" : f07c009f.isChecked() ? "6" : f07c009888.isChecked() ? "888" : f07c009999.isChecked() ? "999" : "0");
         f07c.put("f07c009888x", f07c009888x.getText().toString());
 
-        MainApp.fc.setF07c(String.valueOf(f07c));
+        MainApp.fc4.setF07c(String.valueOf(f07c));
 
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 

@@ -27,6 +27,7 @@ public class FetusContract
     private String devicetagID = "";
     private String synced = "";
     private String synced_date = "";
+    private String app_version = "";
 
     public FetusContract() {
     }
@@ -131,6 +132,14 @@ public class FetusContract
         this.synced_date = synced_date;
     }
 
+    public String getApp_version() {
+        return app_version;
+    }
+
+    public void setApp_version(String app_version) {
+        this.app_version = app_version;
+    }
+
     public FetusContract Sync(JSONObject jsonObject) throws JSONException {
 
 
@@ -146,6 +155,7 @@ public class FetusContract
         this.devicetagID = jsonObject.getString(FetusTable.COLUMN_DEVICETAGID);
         this.synced = jsonObject.getString(FetusTable.COLUMN_SYNCED);
         this.synced_date = jsonObject.getString(FetusTable.COLUMN_SYNCED_DATE);
+        this.app_version = jsonObject.getString(FetusTable.COLUMN_APP_VERSION);
 
 
         return this;
@@ -167,6 +177,7 @@ public class FetusContract
         this.devicetagID = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN_DEVICETAGID));
         this.synced = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN_SYNCED));
         this.synced_date = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN_SYNCED_DATE));
+        this.app_version = cursor.getString(cursor.getColumnIndex(FetusTable.COLUMN_APP_VERSION));
 
 
         return this;
@@ -194,6 +205,7 @@ public class FetusContract
         json.put(FetusTable.COLUMN_DEVICETAGID, this.devicetagID == null ? JSONObject.NULL : this.devicetagID);
         json.put(FetusTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
         json.put(FetusTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
+        json.put(FetusTable.COLUMN_APP_VERSION, this.app_version == null ? JSONObject.NULL : this.app_version);
 
         return json;
     }
@@ -216,6 +228,8 @@ public class FetusContract
         public static final String COLUMN_DEVICETAGID = "devicetagid ";
         public static final String COLUMN_SYNCED = "synced ";
         public static final String COLUMN_SYNCED_DATE = "synced_date ";
+
+        public static final String COLUMN_APP_VERSION = "app_version";
 
         public static String _URL = "fetus.php";
     }
