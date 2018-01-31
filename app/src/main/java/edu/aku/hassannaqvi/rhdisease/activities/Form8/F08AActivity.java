@@ -430,6 +430,7 @@ public class F08AActivity extends Activity {
         MainApp.fec.setFormType(MainApp.fc.getFormType());
         MainApp.fec.setFormDate(MainApp.fc.getFormDate());
         MainApp.fec.setDeviceID(MainApp.fc.getDeviceID());
+        MainApp.fec.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
 
         JSONObject f8 = new JSONObject();
 

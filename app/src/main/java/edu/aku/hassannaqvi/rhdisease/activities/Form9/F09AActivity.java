@@ -2,7 +2,6 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form9;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.util.Log;
@@ -23,7 +22,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
-import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
+import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 
@@ -606,7 +605,7 @@ public class F09AActivity extends Activity {
 
     private boolean UpdateDB() {
 
-        /*DatabaseHelper db = new DatabaseHelper(this);
+        DatabaseHelper db = new DatabaseHelper(this);
 
         int updcount = db.updateF09();
 
@@ -616,9 +615,9 @@ public class F09AActivity extends Activity {
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
-        }*/
+        }
 
-        return true;
+        //return true;
 
     }
 
@@ -1085,9 +1084,9 @@ public class F09AActivity extends Activity {
     private void SaveDraft() throws JSONException {
 
 
-        SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
+        //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 
-        MainApp.fec = new FetusContract();
+       /* MainApp.fec = new FetusContract();
 
         MainApp.fec.setDevicetagID(sharedPref.getString("tagName", null));
         MainApp.fec.setUser(MainApp.userName);
@@ -1095,7 +1094,7 @@ public class F09AActivity extends Activity {
         MainApp.fec.setParticipantID(MainApp.fc.getParticipantID());
         MainApp.fec.setFormType(MainApp.fc.getFormType());
         MainApp.fec.setFormDate(MainApp.fc.getFormDate());
-        MainApp.fec.setDeviceID(MainApp.fc.getDeviceID());
+        MainApp.fec.setDeviceID(MainApp.fc.getDeviceID());*/
 
 
         JSONObject f9 = new JSONObject();

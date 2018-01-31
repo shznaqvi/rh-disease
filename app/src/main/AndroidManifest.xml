@@ -50,9 +50,18 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".FormsList" />
-        <activity android:name=".activities.Form9.F09AActivity" />
-        <activity android:name=".activities.Form9.F09BActivtiy" />
-        <activity android:name=".activities.Form4.F04AActivity" />
+        <activity
+            android:name=".activities.Form9.F09AActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activities.Form9.F09BActivtiy"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activities.Form4.F04AActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".activities.Form3.F03AActivity"
             android:screenOrientation="portrait"
@@ -111,10 +120,14 @@
 
         <activity
             android:name=".activities.Form11.F11AActivity"
-            android:theme="@style/AppTheme1"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity
             android:name=".activities.Form11.F11BActivity"
-            android:theme="@style/AppTheme1"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

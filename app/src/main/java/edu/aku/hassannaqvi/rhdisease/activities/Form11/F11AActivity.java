@@ -1,6 +1,6 @@
 package edu.aku.hassannaqvi.rhdisease.activities.Form11;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-import android.content.Intent;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,12 +26,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
-import edu.aku.hassannaqvi.rhdisease.activities.Form11.F11AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
-
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
 public class F11AActivity extends AppCompatActivity {
@@ -640,8 +637,17 @@ public class F11AActivity extends AppCompatActivity {
                     f11b021888x.setText(null);
 
                     fldGrpf11b014.setVisibility(View.GONE);
+
+                    fldGrpf11b022.setVisibility(View.VISIBLE);
                 } else {
                     fldGrpf11b014.setVisibility(View.VISIBLE);
+                    fldGrpf11b022.setVisibility(View.GONE);
+                    f11b022a.setChecked(false);
+                    f11b022b.setChecked(false);
+                    f11b022c.setChecked(false);
+                    f11b022d.setChecked(false);
+                    f11b022888.setChecked(false);
+                    f11b022888x.setText(null);
                 }
             }
         });
@@ -739,11 +745,11 @@ public class F11AActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (f11b021888.isChecked()) {
                     f11b021888x.setVisibility(View.VISIBLE);
-                    fldGrpf11b022.setVisibility(View.VISIBLE);
+
                 } else {
                     f11b021888x.setText(null);
                     f11b021888x.setVisibility(View.GONE);
-                    fldGrpf11b022.setVisibility(View.VISIBLE);
+
                 }
             }
         });

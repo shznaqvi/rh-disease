@@ -301,6 +301,8 @@ public class F10CActivity extends Activity {
         f10c.put("f10c014", f10c014a.isChecked() ? "1" : f10c014b.isChecked() ? "2" : "0");
         f10c.put("f10c015", f10c015.getText().toString());
 
+        MainApp.fc.setF10c(String.valueOf(f10c));
+
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
     }
 

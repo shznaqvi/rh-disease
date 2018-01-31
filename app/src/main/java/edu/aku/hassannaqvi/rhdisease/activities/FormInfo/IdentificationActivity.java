@@ -181,6 +181,7 @@ public class IdentificationActivity extends Activity {
         MainApp.fc.setFormType(MainApp.formType);
         MainApp.fc.setParticipantID(participantId.getText().toString());
         MainApp.fc.setDeviceID(MainApp.deviceId);
+        MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
 
         JSONObject sInfo = new JSONObject();
 
