@@ -28,7 +28,6 @@ import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class F03BActivity extends Activity
 {
-
     private static final String TAG = F03BActivity.class.getSimpleName();
     @BindView(R.id.fldGrpEligible)
     LinearLayout fldGrpEligible;

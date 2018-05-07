@@ -41,13 +41,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-
+            <!--TODO (1): Apply character limit on screening as per given in form i.e 4 characters. Confirm it is accepting numer or alphanumeric characters-->
             <EditText
                 android:id="@+id/screeningnum"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="16dp"
                 android:layout_weight="1"
+                android:maxLength="4"
+                android:digits="1234567890"
+                android:inputType="number"
                 android:hint="@string/screennum" />
 
             <TextView

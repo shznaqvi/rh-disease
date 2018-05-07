@@ -217,6 +217,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public boolean checkFormParticipantID(String participantID, int formType) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='"+participantID+"' AND " + FormsTable.COLUMN_FORMTYPE + "='"+formType+"'";
+        Cursor mCursor = db.rawQuery(query,null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
 
     public List<FormsContract> getFormsByDSS(String dssID) {
         List<FormsContract> formList = new ArrayList<FormsContract>();
@@ -301,6 +313,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_DEVICEID, fc.getDeviceID());
         values.put(FormsTable.COLUMN_DEVICETAGID, fc.getDevicetagID());
         values.put(FormsTable.COLUMN_APP_VERSION, fc.getApp_version());
+        values.put(FormsTable.COLUMN_SYNCED, fc.getSynced());
+        values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;

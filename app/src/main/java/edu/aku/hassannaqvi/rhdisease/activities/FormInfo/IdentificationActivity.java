@@ -45,6 +45,8 @@ public class IdentificationActivity extends Activity {
     CheckBox f08a001999;
     @BindView(R.id.fldGrpF08)
     LinearLayout fldGrpF08;
+    @BindView(R.id.fldGrpfooter)
+    LinearLayout fldGrpfooter;
 
     DatabaseHelper db;
     boolean check = false;
@@ -65,6 +67,9 @@ public class IdentificationActivity extends Activity {
             f08a001.setText(null);
             f08a001999.setChecked(false);
         }
+        if( MainApp.formType.equals("8") || MainApp.formType.equals("9")) {
+            fldGrpfooter.setVisibility(View.GONE);
+        }
 
         f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -82,7 +87,16 @@ public class IdentificationActivity extends Activity {
 
     @OnClick(R.id.btnCheck)
     void onBtnCheckClick() {
-
+        int formtype = 0;
+        if( MainApp.formType.equals("8") || MainApp.formType.equals("9")){
+            formtype = 7;
+            if (db.checkFormParticipantID(participantId.getText().toString(), formtype)) {
+                fldGrpfooter.setVisibility(View.VISIBLE);
+            } else {
+                fldGrpfooter.setVisibility(View.GONE);
+                Toast.makeText(this, "Participant ID is not allocated yet! Please Enter a correct Participant ID", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
 
@@ -99,11 +113,13 @@ public class IdentificationActivity extends Activity {
 
         //if (formValidation()) {
 
+
         try {
             SaveDraft();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
 
 
         if (UpdateDB()) {
@@ -119,6 +135,8 @@ public class IdentificationActivity extends Activity {
                 startActivity(secB);
             } else if (MainApp.formType.equals("8") && !f08a001999.isChecked()) {
                 Intent secB = new Intent(this, F08AActivity.class);
+                DatabaseHelper db = new DatabaseHelper(this);
+
                 startActivity(secB);
             } else if (MainApp.formType.equals("9")) {
                 Intent secB = new Intent(this, F09AActivity.class);
@@ -137,6 +155,7 @@ public class IdentificationActivity extends Activity {
         } else {
             Toast.makeText(this, "Failed to update Database", Toast.LENGTH_SHORT).show();
         }
+
 
         /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();

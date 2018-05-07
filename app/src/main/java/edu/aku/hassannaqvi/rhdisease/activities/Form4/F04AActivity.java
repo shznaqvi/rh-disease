@@ -2097,6 +2097,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
                 finish();
 
                 if (MainApp.eligibleFlag) {
+//                     TODO (2): Activity is not moving to Form 7. find out the case and Collect data for form 7!
                     startActivity(new Intent(this, F03BActivity.class));
                 } else {
                     startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));

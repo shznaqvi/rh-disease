@@ -37,6 +37,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     private static final String TAG = F03AActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    Intent endintent;
 
     @BindView(R.id.participantName)
     EditText participantName;
@@ -127,7 +128,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             rg.setOnCheckedChangeListener(this);
         }
 
-
+endintent = new Intent(this, EndingActivity.class);
     }
 
     @OnClick(R.id.btn_End)
@@ -145,9 +146,8 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         if (UpdateDB()) {
             finish();
             Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
-            Intent endSec = new Intent(this, EndingActivity.class);
-            endSec.putExtra("complete", false);
-            startActivity(endSec);
+            endintent.putExtra("complete", false);
+            startActivity(endintent);
         } else {
             Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
         }
@@ -174,9 +174,15 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
                     finish();
                     //if (MainApp.eligibleFlag) {
+                    if(isInclude()){
                         Intent endSec = new Intent(this, F04AActivity.class);
                         endSec.putExtra("complete", true);
                         startActivity(endSec);
+                    }else {
+                        endintent.putExtra("complete", false);
+                        startActivity(endintent);
+                    }
+
 
 
                 } else {

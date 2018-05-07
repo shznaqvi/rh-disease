@@ -194,6 +194,9 @@
                     android:id="@+id/participantID"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:digits="1234567890"
+                    android:inputType="number"
+                    android:maxLength="4"
                     android:hint="@string/participant_id" />
 
 
