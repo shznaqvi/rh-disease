@@ -52,6 +52,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_PARTICIPANTID + " TEXT,"
             + FormsTable.COLUMN_FORMDATE + " TEXT,"
             + FormsTable.COLUMN_FORMTYPE + " TEXT,"
+/*            + FormsTable.COLUMN_LMP + " TEXT,"
++            FormsTable.COLUMN_G_AGE + " TEXT,"*/
             //+ FormsTable.COLUMN_INFO + " TEXT,"
             + FormsTable.COLUMN_F03 + " TEXT,"
             + FormsTable.COLUMN_F04 + " TEXT,"
@@ -292,6 +294,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_PARTICIPANTID, fc.getParticipantID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
+    /*    values.put(FormsTable.COLUMN_LMP, fc.getlmp());
+        values.put(FormsTable.COLUMN_G_AGE, fc.getg_age());
+*/
         //values.put(FormsTable.COLUMN_INFO, fc.getInfo());
         values.put(FormsTable.COLUMN_F03, fc.getF03());
         values.put(FormsTable.COLUMN_F04, fc.getF04());
@@ -501,6 +506,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
+/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_G_AGE,*/
+
                 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
@@ -575,6 +583,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
+/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_G_AGE,*/
+
                 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
@@ -654,7 +665,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-                //FormsTable.COLUMN_INFO,
+          /*      FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_G_AGE,*/
+//FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
                 FormsTable.COLUMN_F07A,
@@ -785,7 +798,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-                //FormsTable.COLUMN_INFO,
+/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_G_AGE,*/
+//FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
                 FormsTable.COLUMN_F07A,
@@ -859,7 +874,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-                //FormsTable.COLUMN_INFO,
+/*                FormsTable.COLUMN_LMP,
+               FormsTable.COLUMN_G_AGE,*/
+ //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
                 FormsTable.COLUMN_F07A,
@@ -934,7 +951,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-                //FormsTable.COLUMN_INFO,
+/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_G_AGE,*/
+//FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
                 FormsTable.COLUMN_F07A,
@@ -1008,7 +1027,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-                //FormsTable.COLUMN_INFO,
+/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_G_AGE,*/
+//FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
                 FormsTable.COLUMN_F07A,

@@ -21,6 +21,9 @@ public class FormsContract {
     private String user = ""; // Interviewer
     private String participantID = "";
     private String formType = "";
+   // private String lmp= "";//last menstrual period
+   // private String g_age = "";//gestational age
+
     private String info = "";
     private String istatus = ""; // Interview Status
     private String f03 = "";
@@ -61,6 +64,10 @@ public class FormsContract {
         this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANTID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
+/*        this.lmp= jsonObject.getString(FormsTable.COLUMN_LMP);
+this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
+*/
+
         //this.info = jsonObject.getString(FormsTable.COLUMN_INFO);
         this.f03 = jsonObject.getString(FormsTable.COLUMN_F03);
         this.f04 = jsonObject.getString(FormsTable.COLUMN_F04);
@@ -100,6 +107,9 @@ public class FormsContract {
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
+   /*     this.lmp = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LMP));
+this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
+*/
         //this.info = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INFO));
         this.f03 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F03));
         this.f04 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F04));
@@ -144,7 +154,9 @@ public class FormsContract {
         json.put(FormsTable.COLUMN_PARTICIPANTID, this.participantID == null ? JSONObject.NULL : this.participantID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
-
+     /*   json.put(FormsTable.COLUMN_LMP, this.lmp == null ? JSONObject.NULL : this.lmp);
+        json.put(FormsTable.COLUMN_G_AGE, this.g_age == null ? JSONObject.NULL : this.g_age);
+*/
        /* if (!this.info.equals("")) {
             json.put(FormsTable.COLUMN_INFO, this.info == null ? JSONObject.NULL : this.info);
         }*/
@@ -370,7 +382,15 @@ public class FormsContract {
     public void setFormType(String formType) {
         this.formType = formType;
     }
-
+   /* public String getlmp(){
+    return lmp;}
+    public void setlmp(String lmp){
+        this.lmp = lmp;
+    } public String getg_age(){
+    return g_age;}
+    public void setg_age(String g_age){
+        this.g_age = g_age;
+    }*/
     public String getGpsLat() {
         return gpsLat;
     }
@@ -464,6 +484,9 @@ public class FormsContract {
         public static final String COLUMN_PARTICIPANTID = "participantid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_FORMTYPE = "formtype";
+       /* public static final String COLUMN_LMP = "lmp";
+public static final String COLUMN_G_AGE = "g_age";
+*/
         //public static final String COLUMN_INFO = "info";
         public static final String COLUMN_F03 = "f03";
         public static final String COLUMN_F04 = "f04";

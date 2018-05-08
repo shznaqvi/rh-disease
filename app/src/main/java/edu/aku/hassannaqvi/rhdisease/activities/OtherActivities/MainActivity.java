@@ -410,7 +410,80 @@ public class MainActivity extends Activity {
         startActivity(cluster_list);
 
     }
+  public void syncServer(View view) {
 
+        // Require permissions INTERNET & ACCESS_NETWORK_STATE
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            DatabaseHelper db = new DatabaseHelper(this);
+
+/*           new SyncForms(this).execute();
+            new SyncForms3(this).execute();
+            new SyncForms8(this).execute();
+            new SyncFetus(this).execute();
+            new SyncForms9(this).execute();
+            new SyncForms10(this).execute();
+            new SyncForm11(this).execute();
+            */
+            //TODO:sync Form 5 and 6 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form# 5 and 6", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Screening",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "form.php")),
+                    db.getUnsyncedForms(), this.findViewById(R.id.syncStatus)
+            ).execute();
+            // TODO : sync Baseline Assessment sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 7", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form7",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "7.php")),
+                    db.getUnsyncedForms7(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            //TODO:sync Form 8 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Followup", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Followup",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "fup.php")),
+                    db.getUnsyncedFollowup(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            //TODO:sync History sync to server
+            Toast.makeText(getApplicationContext(), "Syncing History", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "History",
+                    "updateSyncedHistory",
+                    HistoryContract.class,
+                    NetworkUtils.buildUrl(HistoryTable._URL),
+                    db.getUnsyncedHistory(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+
+
+            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = syncPref.edit();
+
+            editor.putString("LastUpSyncServer", dtToday);
+
+            editor.apply();
+
+        } else {
+            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
     public void syncServer(View view) {
         Log.e(TAG, "syncServer: 1");
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
@@ -421,15 +494,14 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
 
-
-            new SyncForms(this).execute();
+/*           new SyncForms(this).execute();
             new SyncForms3(this).execute();
             new SyncForms8(this).execute();
             new SyncFetus(this).execute();
             new SyncForms9(this).execute();
             new SyncForms10(this).execute();
             new SyncForm11(this).execute();
-
+*/
             //new SyncForms3(this).execute();
             //new SyncForms8(this).execute();
             ////new SyncFetus(this).execute();
