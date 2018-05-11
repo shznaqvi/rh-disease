@@ -16,7 +16,10 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,12 +33,14 @@ import edu.aku.hassannaqvi.rhdisease.activities.Form8.F08AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form9.F09AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
 public class IdentificationActivity extends Activity {
 
     private static final String TAG = IdentificationActivity.class.getSimpleName();
+    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
     @BindView(R.id.participant_id)
     EditText participantId;
@@ -67,7 +72,7 @@ public class IdentificationActivity extends Activity {
             f08a001.setText(null);
             f08a001999.setChecked(false);
         }
-        if( MainApp.formType.equals("8") || MainApp.formType.equals("9")) {
+        if( MainApp.formType.equals("8") || MainApp.formType.equals("9")||MainApp.formType.equals(MainApp.FORM11)) {
             fldGrpfooter.setVisibility(View.GONE);
         }
 
@@ -88,15 +93,59 @@ public class IdentificationActivity extends Activity {
     @OnClick(R.id.btnCheck)
     void onBtnCheckClick() {
         int formtype = 0;
-        if( MainApp.formType.equals("8") || MainApp.formType.equals("9")){
-            formtype = 7;
-            if (db.checkFormParticipantID(participantId.getText().toString(), formtype)) {
-                fldGrpfooter.setVisibility(View.VISIBLE);
-            } else {
-                fldGrpfooter.setVisibility(View.GONE);
-                Toast.makeText(this, "Participant ID is not allocated yet! Please Enter a correct Participant ID", Toast.LENGTH_LONG).show();
-            }
+        String formType = MainApp.formType;
+        switch (formType) {
+
+            case MainApp.FORM8:
+                formtype = 9;
+               // if (db.checkForRH_Results(participantId.getText().toString(), formtype)||db.checkForRH_Results(participantId.getText().toString())) {
+                if (db.checkForRH_Results(participantId.getText().toString(),"2")) {
+                    rh_resultsContract resultsContract = new rh_resultsContract();
+                    resultsContract = db.getRH_Results(participantId.getText().toString(),"2");
+                    if (!resultsContract.get_id().equals("")) {
+                        try {
+                            DateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+                            String lmpDate = resultsContract.getLmp();
+                            Date frmDate = sdf.parse(lmpDate);
+                            Date curretDate = new Date();
+                            curretDate.getTime();
+                            int GA = (int) getDateDiff(frmDate,curretDate,TimeUnit.DAYS);
+                            if(GA>=32 && GA <=36){
+                                fldGrpfooter.setVisibility(View.VISIBLE);
+                                Toast.makeText(this,"Gestational age is "+GA,Toast.LENGTH_LONG).show();
+
+                            }else {
+                                Toast.makeText(this,"Gestational age is "+GA+" i:e not in range",Toast.LENGTH_LONG).show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                } else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Participant has no RH-Results or has RH-Positive", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case MainApp.FORM9:
+                formtype = 7;
+                if (db.checkFormParticipantID(participantId.getText().toString(), formtype)||db.checkFormParticipantID(participantId.getText().toString())) {
+                    fldGrpfooter.setVisibility(View.VISIBLE);
+                } else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
+                }
+                break;
+
+            case MainApp.FORM11:
+                if (db.checkForRH_Results(participantId.getText().toString(),"1")) {
+                    fldGrpfooter.setVisibility(View.VISIBLE);
+                }else{
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
+                }
+                break;
         }
+
     }
 
 
@@ -105,7 +154,11 @@ public class IdentificationActivity extends Activity {
         //TODO implement
     }
 
-
+    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        TimeUnit.MILLISECONDS.toDays(diffInMillies);
+        return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS)/7;
+    }
     @OnClick(R.id.btn_Continue)
     void onBtnContinueClick() {
 
@@ -140,6 +193,7 @@ public class IdentificationActivity extends Activity {
                 startActivity(secB);
             } else if (MainApp.formType.equals("9")) {
                 Intent secB = new Intent(this, F09AActivity.class);
+                secB.putExtra(F09AActivity.PARTICIPANT_ID_TAG,participantId.getText().toString());
                 startActivity(secB);
             } else if (MainApp.formType.equals("11")) {
                 Intent secB = new Intent(this, F10AActivity.class);
@@ -199,7 +253,7 @@ public class IdentificationActivity extends Activity {
                 Settings.Secure.ANDROID_ID));
         MainApp.fc.setFormType(MainApp.formType);
         MainApp.fc.setParticipantID(participantId.getText().toString());
-        MainApp.fc.setDeviceID(MainApp.deviceId);
+        //MainApp.fc.setDeviceID(MainApp.deviceId);
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
 
         JSONObject sInfo = new JSONObject();

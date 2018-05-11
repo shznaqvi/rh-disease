@@ -63,6 +63,7 @@ import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.get.GetForm5;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
 
 
@@ -584,6 +585,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 public void run() {
                     Toast.makeText(LoginActivity.this, "Sync User", Toast.LENGTH_LONG).show();
                     new GetUsers(mContext).execute();
+                    new GetForm5(mContext).execute();
                 }
             });
 

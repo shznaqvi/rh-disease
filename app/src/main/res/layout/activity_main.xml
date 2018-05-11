@@ -138,7 +138,12 @@
                 android:onClick="CheckCluster"
                 android:text="Check Block" />
         </LinearLayout>
-
+        <TextView
+            android:id="@+id/syncStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sync Status"
+            android:visibility="gone" />
         <Button
             android:id="@+id/syncServer"
             android:layout_width="match_parent"

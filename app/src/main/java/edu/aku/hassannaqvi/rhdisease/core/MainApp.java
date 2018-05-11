@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,6 +99,12 @@ public class MainApp extends Application {
     public static int versionCode;
     public static String versionName;
 
+   final public static String FORM5 = "5";
+   final public static String FORM9 = "9";
+   final public static String FORM8 = "8";
+   final public static String FORM10 = "10";
+   final public static String FORM11 = "11";
+
 
     //    Total No of Alive members got from Section B
     public static int currentStatusCount = 0;
@@ -149,7 +157,21 @@ public class MainApp extends Application {
         monthsBetween += (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * 12;
         return monthsBetween;
     }
+    public static Calendar getCalendarDate(String value) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        Calendar calendar = Calendar.getInstance();
+        try {
+            Date date = sdf.parse(value);
+            calendar.setTime(date);
+            //   sdf.format(date);
+            return calendar;
 
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return calendar;
+    }
     public static void errorCheck(final Context context, String error) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);

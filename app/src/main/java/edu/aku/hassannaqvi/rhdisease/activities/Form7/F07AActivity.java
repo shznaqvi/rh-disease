@@ -270,8 +270,8 @@ public class F07AActivity extends Activity {
     @OnClick(R.id.btn_End)
     void onBtnEndClick() {
 
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
 
         MainApp.endActivity(this, this);
     }

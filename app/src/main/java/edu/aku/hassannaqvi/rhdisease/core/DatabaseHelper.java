@@ -19,6 +19,9 @@ import java.util.Date;
 import java.util.List;
 
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract.FetusTable;
+import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract.RH_ResultsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract.FormsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.UsersContract;
@@ -67,6 +70,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_F10B + " TEXT,"
             + FormsTable.COLUMN_F10C + " TEXT,"
             + FormsTable.COLUMN_F11 + " TEXT,"
+            + FormsTable.COLUMN_ISRHCOMPLETED + " TEXT,"
             + FormsTable.COLUMN_ISTATUS + " TEXT,"
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
             + FormsTable.COLUMN_GPSLNG + " TEXT,"
@@ -99,6 +103,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FetusContract.FetusTable.COLUMN_SYNCED_DATE + " TEXT"
 
             + " );";
+    private static final String SQL_CREATE_RHRESULTS = "CREATE TABLE "
+            + RH_ResultsTable.TABLE_NAME + "("
+            + RH_ResultsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + RH_ResultsTable.COLUMN_PARTICIPANTID + " TEXT," +
+            RH_ResultsTable.COLUMN_LMP + " TEXT," +
+            RH_ResultsTable.COLUMN_FORM5_UID + " TEXT," +
+            RH_ResultsTable.COLUMN_ISRHCOMPLETED + " TEXT," +
+            RH_ResultsTable.COLUMN_RH_STATUS + " TEXT," +
+            RH_ResultsTable.COLUMN_GA_WEEKS + " TEXT," +
+            RH_ResultsTable.COLUMN_GA_DAYS + " TEXT"
+            + " );";
 
 
     private static final String SQL_DELETE_USERS =
@@ -108,6 +123,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_FETUS =
             "DROP TABLE IF EXISTS " + FetusContract.FetusTable.TABLE_NAME;
+    private static final String SQL_DELETE_RHRESULTS =
+            "DROP TABLE IF EXISTS " + RH_ResultsTable.TABLE_NAME;
 
     private static final String SQL_SELECT_MOTHER_BY_CHILD =
             "SELECT c.agem cm, c.agey cy, c.aged cd, c.gender, c.serial serial, m.serial serialm, c.name child_name, c.dss_id_member child_id, m.name mother_name, c.dss_id_member mother_id, c.dob date_of_birth FROM census C join census m on c.dss_id_m = m.dss_id_member where c.member_type =? and c.uuid = m.uuid and c.current_status IN ('1', '2') and c.uuid = ? group by mother_id order by substr(c.dob, 7) desc, substr(c.dob, 4,2) desc, substr(c.dob, 1,2) desc;";
@@ -133,6 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USERS);
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_FETUS);
+        db.execSQL(SQL_CREATE_RHRESULTS);
 
     }
 
@@ -141,6 +159,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_FETUS);
+        db.execSQL(SQL_DELETE_RHRESULTS);
 
     }
 
@@ -179,6 +198,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.close();
 
         } catch (Exception e) {
+        }
+    }
+
+    public void syncForm5(JSONArray formparticipantlist) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(RH_ResultsTable.TABLE_NAME, null, null);
+
+        try {
+            JSONArray jsonArray = formparticipantlist;
+            for (int i = 0; i < jsonArray.length(); i++) {
+
+                JSONObject jsonObjectch = jsonArray.getJSONObject(i);
+
+                rh_resultsContract rh = new rh_resultsContract();
+                rh.Sync(jsonObjectch);
+                ContentValues values = new ContentValues();
+                values.put(RH_ResultsTable.COLUMN_PARTICIPANTID, rh.getParticipantid());
+                values.put(RH_ResultsTable.COLUMN_LMP, rh.getLmp());
+                values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
+                values.put(RH_ResultsTable.COLUMN_ISRHCOMPLETED, rh.getIsrhCompleted());
+                values.put(RH_ResultsTable.COLUMN_RH_STATUS, rh.getRh_status());
+                values.put(RH_ResultsTable.COLUMN_GA_WEEKS, rh.getGa_weeks());
+                values.put(RH_ResultsTable.COLUMN_GA_DAYS, rh.getGa_days());
+                values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
+
+
+
+                db.insert(RH_ResultsTable.TABLE_NAME, null, values);
+            }
+        } catch (Exception e) {
+            Log.d(TAG, "syncform5(e): " + e);
+        } finally {
+            db.close();
         }
     }
 
@@ -221,8 +273,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean checkFormParticipantID(String participantID, int formType) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='"+participantID+"' AND " + FormsTable.COLUMN_FORMTYPE + "='"+formType+"'";
-        Cursor mCursor = db.rawQuery(query,null);
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + "='" + formType + "'";
+        Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
                 return true;
@@ -230,6 +282,89 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return false;
+    }
+
+    public boolean checkForRH_Results(String participantID, int formType) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + "='" + formType + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+
+    public String getForm5_UID(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + RH_ResultsTable.COLUMN_FORM5_UID + " FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return mCursor.getString(0);
+            }
+        }
+        db.close();
+        return null;
+    }
+
+    public String getForm5_UID(String participantID, String formType) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT " + FormsTable.COLUMN__UID + " FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + "='" + formType + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                return mCursor.getString(0);
+            }
+        }
+        db.close();
+        return null;
+    }
+
+    public boolean checkFormParticipantID(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= 'null'";
+        //String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+
+    public boolean checkForRH_Results(String participantID, String status) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= "+status;
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+
+    public rh_resultsContract getRH_Results(String participantID, String status) {
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = " + participantID + " AND " + RH_ResultsTable.COLUMN_RH_STATUS + "=" + status;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        rh_resultsContract rh = new rh_resultsContract();
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            rh.Hydrate(c);
+        }
+        // return contact list
+        return rh;
     }
 
     public List<FormsContract> getFormsByDSS(String dssID) {
@@ -310,6 +445,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F10B, fc.getF10b());
         values.put(FormsTable.COLUMN_F10C, fc.getF10c());
         values.put(FormsTable.COLUMN_F11, fc.getF11());
+        values.put(FormsTable.COLUMN_ISRHCOMPLETED, fc.getIsrhCompleted());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -357,6 +493,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         newRowId = db.insert(
                 FetusContract.FetusTable.TABLE_NAME,
                 FetusContract.FetusTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+    public Long addRhResults(rh_resultsContract rh) {
+
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_PARTICIPANTID, rh.getParticipantid());
+        values.put(RH_ResultsTable.COLUMN_LMP, rh.getLmp());
+        values.put(RH_ResultsTable.COLUMN_ISRHCOMPLETED, rh.getIsrhCompleted());
+        values.put(RH_ResultsTable.COLUMN_RH_STATUS, rh.getRh_status());
+        values.put(RH_ResultsTable.COLUMN_GA_WEEKS, rh.getGa_weeks());
+        values.put(RH_ResultsTable.COLUMN_GA_DAYS, rh.getGa_days());
+        values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                RH_ResultsTable.TABLE_NAME,
+                RH_ResultsTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -535,8 +695,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 /*        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
-        String[] whereArgs = new String[]{"5"};
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{"5", "1"};
         String groupBy = null;
         String having = null;
 
@@ -613,8 +773,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 /*        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
-        String[] whereArgs = new String[]{"7"};
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{"7", "1"};
         String groupBy = null;
         String having = null;
 
@@ -665,8 +825,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-          /*      FormsTable.COLUMN_LMP,
-                FormsTable.COLUMN_G_AGE,*/
+                /*      FormsTable.COLUMN_LMP,
+                      FormsTable.COLUMN_G_AGE,*/
 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
@@ -694,8 +854,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
 /*        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
-        String[] whereArgs = new String[]{"8"};
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{"8", "1"};
         String groupBy = null;
         String having = null;
 
@@ -734,24 +894,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
 
-                FetusContract.FetusTable.COLUMN_ID,
-                FetusContract.FetusTable.COLUMN__UID,
-                FetusContract.FetusTable.COLUMN__UUID,
-                FetusContract.FetusTable.COLUMN_USER,
-                FetusContract.FetusTable.COLUMN_PARTICIPANTID,
-                FetusContract.FetusTable.COLUMN_FORMDATE,
-                FetusContract.FetusTable.COLUMN_FORMTYPE,
-                FetusContract.FetusTable.COLUMN_F08,
-                FetusContract.FetusTable.COLUMN_DEVICEID,
-                FetusContract.FetusTable.COLUMN_DEVICETAGID,
-                FetusContract.FetusTable.COLUMN_SYNCED,
-                FetusContract.FetusTable.COLUMN_SYNCED_DATE,
-                FetusContract.FetusTable.COLUMN_APP_VERSION
+                FetusTable.COLUMN_ID,
+                FetusTable.COLUMN__UID,
+                FetusTable.COLUMN__UUID,
+                FetusTable.COLUMN_USER,
+                FetusTable.COLUMN_PARTICIPANTID,
+                FetusTable.COLUMN_FORMDATE,
+                FetusTable.COLUMN_FORMTYPE,
+                FetusTable.COLUMN_F08,
+                FetusTable.COLUMN_DEVICEID,
+                FetusTable.COLUMN_DEVICETAGID,
+                FetusTable.COLUMN_SYNCED,
+                FetusTable.COLUMN_SYNCED_DATE,
+                FetusTable.COLUMN_APP_VERSION
 
         };
        /* String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FetusContract.FetusTable.COLUMN_SYNCED + " is null AND " + FetusContract.FetusTable.COLUMN_FORMTYPE + " =?";
+        String whereClause = FetusTable.COLUMN_SYNCED + " is null OR " + FetusTable.COLUMN_SYNCED + "='' AND " + FetusTable.COLUMN_FORMTYPE + " =?";
         String[] whereArgs = new String[]{"8"};
         String groupBy = null;
         String having = null;
@@ -827,8 +987,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
       /*  String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
-        String[] whereArgs = new String[]{"9"};
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{"9", "1"};
         String groupBy = null;
         String having = null;
 
@@ -876,7 +1036,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_FORMTYPE,
 /*                FormsTable.COLUMN_LMP,
                FormsTable.COLUMN_G_AGE,*/
- //FormsTable.COLUMN_INFO,
+                //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
                 FormsTable.COLUMN_F04,
                 FormsTable.COLUMN_F07A,
@@ -903,8 +1063,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
        /* String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
-        String[] whereArgs = new String[]{"11"};
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
+        String[] whereArgs = new String[]{"11", "1"};
         String groupBy = null;
         String having = null;
 
@@ -980,7 +1140,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         };
        /* String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
-        String whereClause = FormsTable.COLUMN_SYNCED + " is null AND " + FormsTable.COLUMN_FORMTYPE + " =?";
+        String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
         String[] whereArgs = new String[]{"10"};
         String groupBy = null;
         String having = null;
@@ -1041,6 +1201,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10A,
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
+                FormsTable.COLUMN_ISRHCOMPLETED,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1442,7 +1603,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_F09, MainApp.fc.getF09());
-
+        values.put(FormsTable.COLUMN__UUID, MainApp.fc.get_UUID());
+        values.put(FormsTable.COLUMN_ISRHCOMPLETED, "1");
 // Which row to update, based on the ID
         String selection = FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};

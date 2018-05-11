@@ -2,7 +2,9 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form9;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +19,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,7 +34,9 @@ import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 public class F09AActivity extends Activity {
 
     private static final String TAG = F09AActivity.class.getSimpleName();
-
+    String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
+    String participantID = null;
+    public static String PARTICIPANT_ID_TAG = "participantID";
     @BindView(R.id.f09hcwid)
     EditText f09hcwid;
     @BindView(R.id.f09facid)
@@ -297,6 +304,11 @@ public class F09AActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f09_a);
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        if (intent.hasExtra(PARTICIPANT_ID_TAG)) {
+            participantID = intent.getStringExtra(PARTICIPANT_ID_TAG);
+        }
+
 
         f09a001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -606,8 +618,13 @@ public class F09AActivity extends Activity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
+          // MainApp.fc.set_UUID(db.getForm5_UID(participantID));
+            if(MainApp.fc.get_UUID().equals("") || MainApp.fc.get_UUID() == null) {
+                MainApp.fc.set_UUID(db.getForm5_UID(participantID,MainApp.FORM5));
+            }
 
         int updcount = db.updateF09();
+
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -1082,7 +1099,16 @@ public class F09AActivity extends Activity {
 
 
     private void SaveDraft() throws JSONException {
+        SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 
+        MainApp.fc.setDevicetagID(sharedPref.getString("tagName", null));
+        MainApp.fc.setFormDate(dtToday);
+        MainApp.fc.setUser(MainApp.userName);
+        MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
+                Settings.Secure.ANDROID_ID));
+        //MainApp.fc.setParticipantID(participantID.getText().toString());
+        MainApp.fc.setFormType(MainApp.FORM9);
+        MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
 
         //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 

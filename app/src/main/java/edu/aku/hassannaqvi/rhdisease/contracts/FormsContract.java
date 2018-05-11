@@ -21,8 +21,8 @@ public class FormsContract {
     private String user = ""; // Interviewer
     private String participantID = "";
     private String formType = "";
-   // private String lmp= "";//last menstrual period
-   // private String g_age = "";//gestational age
+    // private String lmp= "";//last menstrual period
+    // private String g_age = "";//gestational age
 
     private String info = "";
     private String istatus = ""; // Interview Status
@@ -38,7 +38,7 @@ public class FormsContract {
     private String f10b = "";
     private String f10c = "";
     private String f11 = "";
-
+    private String isrhCompleted = "";
 
 
     private String gpsLat = "";
@@ -81,7 +81,9 @@ this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
         this.f10b = jsonObject.getString(FormsTable.COLUMN_F10B);
         this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
         this.f11 = jsonObject.getString(FormsTable.COLUMN_F11);
-
+        if(!this.isrhCompleted.equals("")){
+            this.isrhCompleted = jsonObject.getString(FormsTable.COLUMN_ISRHCOMPLETED);
+        }
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -123,8 +125,9 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f10b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10B));
         this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
         this.f11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F11));
-
-
+        if (!this.isrhCompleted.equals("")) {
+            this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
+        }
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -200,8 +203,9 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         if (!this.f11.equals("")) {
             json.put(FormsTable.COLUMN_F10C, new JSONObject(this.f11));
         }
-
-
+if (!this.isrhCompleted.equals("")) {
+    json.put(FormsTable.COLUMN_ISRHCOMPLETED, this.isrhCompleted == null ? JSONObject.NULL : this.isrhCompleted);
+}
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
@@ -215,6 +219,14 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
 
 
         return json;
+    }
+
+    public String getIsrhCompleted() {
+        return isrhCompleted;
+    }
+
+    public void setIsrhCompleted(String isrhCompleted) {
+        this.isrhCompleted = isrhCompleted;
     }
 
     public String getProjectName() {
@@ -382,15 +394,16 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
     public void setFormType(String formType) {
         this.formType = formType;
     }
-   /* public String getlmp(){
-    return lmp;}
-    public void setlmp(String lmp){
-        this.lmp = lmp;
-    } public String getg_age(){
-    return g_age;}
-    public void setg_age(String g_age){
-        this.g_age = g_age;
-    }*/
+
+    /* public String getlmp(){
+     return lmp;}
+     public void setlmp(String lmp){
+         this.lmp = lmp;
+     } public String getg_age(){
+     return g_age;}
+     public void setg_age(String g_age){
+         this.g_age = g_age;
+     }*/
     public String getGpsLat() {
         return gpsLat;
     }
@@ -475,7 +488,6 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
 
         public static final String TABLE_NAME = "forms";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
-
         public static final String COLUMN_PROJECTNAME = "projectname";
         public static final String COLUMN_ID = "_id";
         public static final String COLUMN__UID = "_uid";
@@ -484,9 +496,10 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         public static final String COLUMN_PARTICIPANTID = "participantid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_FORMTYPE = "formtype";
-       /* public static final String COLUMN_LMP = "lmp";
-public static final String COLUMN_G_AGE = "g_age";
-*/
+        /* public static final String COLUMN_LMP = "lmp";
+ public static final String COLUMN_G_AGE = "g_age";
+ public static final String COLUMN_RH_RESULTS = "rh_resultsContract";
+ */
         //public static final String COLUMN_INFO = "info";
         public static final String COLUMN_F03 = "f03";
         public static final String COLUMN_F04 = "f04";
@@ -501,6 +514,7 @@ public static final String COLUMN_G_AGE = "g_age";
         public static final String COLUMN_F10C = "f10c";
         public static final String COLUMN_F11 = "f11";
 
+        public static final String COLUMN_ISRHCOMPLETED = "isrhcompleted";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_GPSLAT = "gpslat";
         public static final String COLUMN_GPSLNG = "gpslng";

@@ -33,18 +33,15 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
+import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.get.GetForm5;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncFetus;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForm11;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms10;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms3;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms8;
-import edu.aku.hassannaqvi.rhdisease.sync.SyncForms9;
+import edu.aku.hassannaqvi.rhdisease.otherClasses.NetworkUtils;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncAllData;
 
 public class MainActivity extends Activity {
 
@@ -127,7 +124,7 @@ public class MainActivity extends Activity {
         Collection<FormsContract> todaysForms = db.getTodayForms();
         /*Collection<FormsContract> unsyncedForms3 = db.getUnsyncedForms3();
         Collection<FormsContract> unsyncedForms8 = db.getUnsyncedForms8();*/
-     /*   Collection<FetusContract> unsyncedFetus = db.getUnsyncedFetus();*/
+        /*   Collection<FetusContract> unsyncedFetus = db.getUnsyncedFetus();*/
         /*Collection<FormsContract> unsyncedForms9 = db.getUnsyncedForms9();
         Collection<FormsContract> unsyncedForms10 = db.getUnsyncedForms10();*/
 
@@ -410,7 +407,8 @@ public class MainActivity extends Activity {
         startActivity(cluster_list);
 
     }
-  public void syncServer(View view) {
+
+    public void syncServer(View view) {
 
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -434,7 +432,7 @@ public class MainActivity extends Activity {
                     "Screening",
                     "updateSyncedForms",
                     FormsContract.class,
-                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "form.php")),
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL),
                     db.getUnsyncedForms(), this.findViewById(R.id.syncStatus)
             ).execute();
             // TODO : sync Baseline Assessment sync to server
@@ -449,28 +447,59 @@ public class MainActivity extends Activity {
             ).execute();
 
             //TODO:sync Form 8 sync to server
-            Toast.makeText(getApplicationContext(), "Syncing Followup", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Syncing Form 8", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "Followup",
+                    "Form8",
                     "updateSyncedForms",
                     FormsContract.class,
-                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "fup.php")),
-                    db.getUnsyncedFollowup(), this.findViewById(R.id.syncStatus)
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "8.php")),
+                    db.getUnsyncedForms8(), this.findViewById(R.id.syncStatus)
             ).execute();
 
-            //TODO:sync History sync to server
-            Toast.makeText(getApplicationContext(), "Syncing History", Toast.LENGTH_SHORT).show();
+            //TODO:sync Fetus sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Fetus", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
-                    "History",
-                    "updateSyncedHistory",
-                    HistoryContract.class,
-                    NetworkUtils.buildUrl(HistoryTable._URL),
-                    db.getUnsyncedHistory(), this.findViewById(R.id.syncStatus)
+                    "Fetus",
+                    "updateSyncedForms",
+                    FetusContract.class,
+                    NetworkUtils.buildUrl(FetusContract.FetusTable._URL),
+                    db.getUnsyncedFetus(), this.findViewById(R.id.syncStatus)
             ).execute();
 
+            //TODO:sync Form 9 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 9", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form9",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "9.php")),
+                    db.getUnsyncedForms9(), this.findViewById(R.id.syncStatus)
+            ).execute();
 
+            //TODO:sync Form 10 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 10", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form10",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "10.php")),
+                    db.getUnsyncedForms10(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+            //TODO:sync Form 11 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 11", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form11",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "11.php")),
+                    db.getUnsyncedForms11(), this.findViewById(R.id.syncStatus)
+            ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
@@ -484,7 +513,7 @@ public class MainActivity extends Activity {
         }
 
     }
-    public void syncServer(View view) {
+/*    public void syncServer(View view) {
         Log.e(TAG, "syncServer: 1");
         // Require permissions INTERNET & ACCESS_NETWORK_STATE
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -494,14 +523,14 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
             Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
 
-/*           new SyncForms(this).execute();
+*//*           new SyncForms(this).execute();
             new SyncForms3(this).execute();
             new SyncForms8(this).execute();
             new SyncFetus(this).execute();
             new SyncForms9(this).execute();
             new SyncForms10(this).execute();
             new SyncForm11(this).execute();
-*/
+*//*
             //new SyncForms3(this).execute();
             //new SyncForms8(this).execute();
             ////new SyncFetus(this).execute();
@@ -509,8 +538,8 @@ public class MainActivity extends Activity {
             //new SyncForms10(this).execute();
             //new SyncForm11(this).execute();
 
-           /* Toast.makeText(getApplicationContext(), "Syncing Participants", Toast.LENGTH_SHORT).show();
-            new SyncParticipants(this).execute();*/
+           *//* Toast.makeText(getApplicationContext(), "Syncing Participants", Toast.LENGTH_SHORT).show();
+            new SyncParticipants(this).execute();*//*
 
 
 //            Toast.makeText(getApplicationContext(), "Syncing Mother", Toast.LENGTH_SHORT).show();
@@ -528,7 +557,7 @@ public class MainActivity extends Activity {
             Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
         }
 
-    }
+    }*/
 
     public void syncDevice(View view) {
         if (isNetworkAvailable()) {
@@ -537,6 +566,10 @@ public class MainActivity extends Activity {
             GetUsers gu = new GetUsers(this);
             Toast.makeText(getApplicationContext(), "Syncing Users", Toast.LENGTH_SHORT).show();
             gu.execute();
+
+            GetForm5 gf5 = new GetForm5(this);
+            Toast.makeText(getApplicationContext(), "Syncing Form 5", Toast.LENGTH_SHORT).show();
+            gf5.execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();

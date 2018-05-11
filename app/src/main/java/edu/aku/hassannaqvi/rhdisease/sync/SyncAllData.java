@@ -26,7 +26,7 @@ import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 
 
 /**
- * Created by ramsha.ahmed on 4/20/2018.
+ * Created by ramsha.ahmed on 5/9/2018.
  */
 
 public class SyncAllData extends AsyncTask<Void, Void, String> {
@@ -40,7 +40,7 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
     URL url ;
     private Class contractClass;
     private Collection dbData;
-    private TextView syncStatus;
+//    private TextView syncStatus;
 
 
     public SyncAllData(Context context, String syncClass, String updateSyncClass, Class contractClass, URL url, Collection dbData, View syncStatus) {
@@ -82,7 +82,6 @@ public class SyncAllData extends AsyncTask<Void, Void, String> {
 
             HttpURLConnection connection = null;
             try {
-
 //                URL url = new URL( NetworkUtils.buildUrl(url));
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
