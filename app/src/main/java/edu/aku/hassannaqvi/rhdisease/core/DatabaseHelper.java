@@ -55,7 +55,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_PARTICIPANTID + " TEXT,"
             + FormsTable.COLUMN_FORMDATE + " TEXT,"
             + FormsTable.COLUMN_FORMTYPE + " TEXT,"
-/*            + FormsTable.COLUMN_LMP + " TEXT,"
+            + FormsTable.COLUMN_LMP + " TEXT," +
+            FormsTable.COLUMN_RH_STATUS + " TEXT," +
+            FormsTable.COLUMN_F10_ACCEPTANCE + " TEXT," +
+            FormsTable.COLUMN_F15_ADVERSE + " TEXT,"
+
+/*
 +            FormsTable.COLUMN_G_AGE + " TEXT,"*/
             //+ FormsTable.COLUMN_INFO + " TEXT,"
             + FormsTable.COLUMN_F03 + " TEXT,"
@@ -112,7 +117,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RH_ResultsTable.COLUMN_ISRHCOMPLETED + " TEXT," +
             RH_ResultsTable.COLUMN_RH_STATUS + " TEXT," +
             RH_ResultsTable.COLUMN_GA_WEEKS + " TEXT," +
-            RH_ResultsTable.COLUMN_GA_DAYS + " TEXT"
+            RH_ResultsTable.COLUMN_GA_DAYS + " TEXT,"+
+            RH_ResultsTable.COLUMN_F10_ACCEPTANCE + " TEXT,"+
+            RH_ResultsTable.COLUMN_F15_ADVERSE + " TEXT"
             + " );";
 
 
@@ -222,7 +229,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(RH_ResultsTable.COLUMN_GA_WEEKS, rh.getGa_weeks());
                 values.put(RH_ResultsTable.COLUMN_GA_DAYS, rh.getGa_days());
                 values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
-
+                values.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, rh.getF10_acceptance());
+                values.put(RH_ResultsTable.COLUMN_F15_ADVERSE, rh.getF15_adverse());
 
 
                 db.insert(RH_ResultsTable.TABLE_NAME, null, values);
@@ -271,9 +279,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    public boolean checkFormParticipantID(String participantID, int formType) {
+    public boolean checkFormParticipantID(String participantID, String formType) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + "='" + formType + "'";
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + "=" + formType;
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
@@ -282,6 +290,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return false;
+    }
+    public String getLmp(String participantID, int formType) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String lmp = null;
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + "='" + formType + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                lmp = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_LMP));
+            }
+        }
+        db.close();
+        return lmp;
     }
 
     public boolean checkForRH_Results(String participantID, int formType) {
@@ -336,11 +358,73 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return false;
+    }   public String getlmp(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String lmp = null;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= 'null'";
+        //String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                lmp = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_LMP));
+            }
+        }
+        db.close();
+        return lmp;
     }
 
     public boolean checkForRH_Results(String participantID, String status) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= "+status;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= " + status;
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+
+    public boolean checkForRH_Results(String participantID, String status, String formtype) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_RH_STATUS + "= " + status +" AND "+ FormsTable.COLUMN_FORMTYPE+" = "+formtype;
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean checkForf15Adverse(String participantID, String formtype) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " +  FormsTable.COLUMN_FORMTYPE+" = "+formtype+" AND "+FormsTable.COLUMN_F10_ACCEPTANCE+"= '1' ";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean checkForf15Adverse(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10_ACCEPTANCE+"= '1' ";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean checkForf10Acceptance(String participantID, String formtype) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + FetusTable.TABLE_NAME + " WHERE " + FetusTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND "  + FetusTable.COLUMN_FORMTYPE+" = "+formtype;
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
@@ -365,6 +449,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         // return contact list
         return rh;
+    }
+    public String getRH_Results(String participantID, String status,String formtype) {
+
+        // Select All Query
+        String selectQuery = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + " = " + participantID + " AND " + FormsTable.COLUMN_RH_STATUS + "=" + status+" AND "+FormsTable.COLUMN_FORMTYPE+ " = "+formtype;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+        FormsContract fc = new FormsContract();
+        // looping through all rows and adding to list
+        if (c.moveToFirst()) {
+            fc.Hydrate(c);
+        }
+        // return contact list
+        return fc.getLmp();
     }
 
     public List<FormsContract> getFormsByDSS(String dssID) {
@@ -429,7 +528,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_PARTICIPANTID, fc.getParticipantID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
-    /*    values.put(FormsTable.COLUMN_LMP, fc.getlmp());
+        values.put(FormsTable.COLUMN_LMP, fc.getLmp());
+        values.put(FormsTable.COLUMN_RH_STATUS, fc.getRh_status());
+        values.put(FormsTable.COLUMN_F10_ACCEPTANCE, fc.getF10_acceptance());
+        values.put(FormsTable.COLUMN_F15_ADVERSE, fc.getF15_adverse());
+
+    /*
+
         values.put(FormsTable.COLUMN_G_AGE, fc.getg_age());
 */
         //values.put(FormsTable.COLUMN_INFO, fc.getInfo());
@@ -511,6 +616,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_GA_WEEKS, rh.getGa_weeks());
         values.put(RH_ResultsTable.COLUMN_GA_DAYS, rh.getGa_days());
         values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
+        values.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, rh.getF10_acceptance());
+        values.put(RH_ResultsTable.COLUMN_F15_ADVERSE, rh.getF15_adverse());
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -666,7 +773,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_RH_STATUS,
+                FormsTable.COLUMN_F10_ACCEPTANCE,
+                FormsTable.COLUMN_F15_ADVERSE,
+
+/*
                 FormsTable.COLUMN_G_AGE,*/
 
                 //FormsTable.COLUMN_INFO,
@@ -743,7 +855,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_RH_STATUS,
+                FormsTable.COLUMN_F10_ACCEPTANCE,
+                FormsTable.COLUMN_F15_ADVERSE,
+
+/*
                 FormsTable.COLUMN_G_AGE,*/
 
                 //FormsTable.COLUMN_INFO,
@@ -825,7 +942,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-                /*      FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_RH_STATUS,
+                FormsTable.COLUMN_F10_ACCEPTANCE,
+                FormsTable.COLUMN_F15_ADVERSE,
+
+                /*
                       FormsTable.COLUMN_G_AGE,*/
 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
@@ -958,7 +1080,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_RH_STATUS,
+                FormsTable.COLUMN_F10_ACCEPTANCE,
+                FormsTable.COLUMN_F15_ADVERSE,
+/*
                 FormsTable.COLUMN_G_AGE,*/
 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
@@ -1034,7 +1160,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_RH_STATUS,
+                FormsTable.COLUMN_F10_ACCEPTANCE,
+                FormsTable.COLUMN_F15_ADVERSE,
+/*
                FormsTable.COLUMN_G_AGE,*/
                 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
@@ -1064,7 +1194,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
        /* String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
-        String[] whereArgs = new String[]{"11", "1"};
+        String[] whereArgs = new String[]{MainApp.FORM10, "1"};
         String groupBy = null;
         String having = null;
 
@@ -1111,7 +1241,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_PARTICIPANTID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_FORMTYPE,
-/*                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_LMP,
+                FormsTable.COLUMN_RH_STATUS,
+                FormsTable.COLUMN_F10_ACCEPTANCE,
+                FormsTable.COLUMN_F15_ADVERSE,
+
+/*
                 FormsTable.COLUMN_G_AGE,*/
 //FormsTable.COLUMN_INFO,
                 FormsTable.COLUMN_F03,
@@ -1141,7 +1276,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
        /* String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + " = '' AND "
                 + FormsTable.COLUMN_FORMTYPE + " =?";*/
         String whereClause = FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='' AND " + FormsTable.COLUMN_FORMTYPE + " =? AND " + FormsTable.COLUMN_ISTATUS + "=?";
-        String[] whereArgs = new String[]{"10"};
+        String[] whereArgs = new String[]{MainApp.FORM11,"1"};
         String groupBy = null;
         String having = null;
 
@@ -1603,6 +1738,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_F09, MainApp.fc.getF09());
+        values.put(FormsTable.COLUMN_LMP, MainApp.fc.getLmp());
+        values.put(FormsTable.COLUMN_RH_STATUS, MainApp.fc.getRh_status());
         values.put(FormsTable.COLUMN__UUID, MainApp.fc.get_UUID());
         values.put(FormsTable.COLUMN_ISRHCOMPLETED, "1");
 // Which row to update, based on the ID
@@ -1623,6 +1760,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_F10A, MainApp.fc.getF10a());
+
 
 // Which row to update, based on the ID
         String selection = FormsContract.FormsTable.COLUMN_ID + " = ?";
@@ -1678,7 +1816,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_F11, MainApp.fc.getF11());
-
+        values.put(FormsTable.COLUMN_F10_ACCEPTANCE,"1");
+        values.put(FormsTable.COLUMN_F15_ADVERSE,MainApp.fc.getF15_adverse());
 // Which row to update, based on the ID
         String selection = FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};

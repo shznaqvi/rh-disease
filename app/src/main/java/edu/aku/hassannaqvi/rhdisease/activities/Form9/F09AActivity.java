@@ -36,7 +36,9 @@ public class F09AActivity extends Activity {
     private static final String TAG = F09AActivity.class.getSimpleName();
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     String participantID = null;
+    String lmp = null;
     public static String PARTICIPANT_ID_TAG = "participantID";
+    public static String LMP_TAG = "lmp";
     @BindView(R.id.f09hcwid)
     EditText f09hcwid;
     @BindView(R.id.f09facid)
@@ -307,6 +309,9 @@ public class F09AActivity extends Activity {
         Intent intent = getIntent();
         if (intent.hasExtra(PARTICIPANT_ID_TAG)) {
             participantID = intent.getStringExtra(PARTICIPANT_ID_TAG);
+        }
+        if (intent.hasExtra(LMP_TAG)) {
+            lmp = intent.getStringExtra(LMP_TAG);
         }
 
 
@@ -1109,6 +1114,9 @@ public class F09AActivity extends Activity {
         //MainApp.fc.setParticipantID(participantID.getText().toString());
         MainApp.fc.setFormType(MainApp.FORM9);
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.fc.setLmp(lmp);
+        MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":"2");
+
 
         //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 

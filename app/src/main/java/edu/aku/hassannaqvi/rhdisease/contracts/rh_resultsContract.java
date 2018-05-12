@@ -16,6 +16,8 @@ public class rh_resultsContract {
     private String rh_status = "";
     private String ga_weeks = "";
     private String ga_days = "";
+    private String f10_acceptance = "";
+    private String f15_adverse = "";
 
     public String getIsrhCompleted() {
         return isrhCompleted;
@@ -81,6 +83,22 @@ public class rh_resultsContract {
         this.lmp = lmp;
     }
 
+    public String getF10_acceptance() {
+        return f10_acceptance;
+    }
+
+    public void setF10_acceptance(String f10_acceptance) {
+        this.f10_acceptance = f10_acceptance;
+    }
+
+    public String getF15_adverse() {
+        return f15_adverse;
+    }
+
+    public void setF15_adverse(String f15_adverse) {
+        this.f15_adverse = f15_adverse;
+    }
+
     public rh_resultsContract Sync(JSONObject jsonObject) throws JSONException {
         this.participantid= jsonObject.getString(RH_ResultsTable.COLUMN_PARTICIPANTID);
         this.lmp= jsonObject.getString(RH_ResultsTable.COLUMN_LMP);
@@ -89,6 +107,8 @@ public class rh_resultsContract {
         this.ga_weeks= jsonObject.getString(RH_ResultsTable.COLUMN_GA_WEEKS);
         this.ga_days= jsonObject.getString(RH_ResultsTable.COLUMN_GA_DAYS);
         this.form5_uid= jsonObject.getString(RH_ResultsTable.COLUMN_FORM5_UID);
+        this.f10_acceptance= jsonObject.getString(RH_ResultsTable.COLUMN_F10_ACCEPTANCE);
+        this.f15_adverse= jsonObject.getString(RH_ResultsTable.COLUMN_F15_ADVERSE);
 
 
 
@@ -104,6 +124,8 @@ public class rh_resultsContract {
         this.ga_weeks = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_GA_WEEKS));
         this.ga_days = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_GA_DAYS));
         this.form5_uid = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_FORM5_UID));
+        this.f10_acceptance = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F10_ACCEPTANCE));
+        this.f15_adverse = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F15_ADVERSE));
 
 
         return this;
@@ -119,6 +141,8 @@ public class rh_resultsContract {
         json.put(RH_ResultsTable.COLUMN_GA_WEEKS, this.ga_weeks == null ? JSONObject.NULL : this.ga_weeks);
         json.put(RH_ResultsTable.COLUMN_GA_DAYS, this.ga_days == null ? JSONObject.NULL : this.ga_days);
         json.put(RH_ResultsTable.COLUMN_FORM5_UID, this.form5_uid == null ? JSONObject.NULL : this.form5_uid);
+        json.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, this.f10_acceptance == null ? JSONObject.NULL : this.f10_acceptance);
+        json.put(RH_ResultsTable.COLUMN_F15_ADVERSE, this.f15_adverse == null ? JSONObject.NULL : this.f15_adverse);
 
 
         return json;
@@ -134,6 +158,11 @@ public class rh_resultsContract {
         public static final String COLUMN_RH_STATUS = "rh_status";
         public static final String COLUMN_GA_WEEKS = "ga_weeks";
         public static final String COLUMN_GA_DAYS = "ga_days";
+        public static final String COLUMN_F10_ACCEPTANCE = "f10_acceptance";
+        public static final String COLUMN_F15_ADVERSE = "f15_adverse";
+
+
+
 
         public static String _URL = "rh_results.php";
     }

@@ -18,6 +18,7 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -72,9 +73,9 @@ public class IdentificationActivity extends Activity {
             f08a001.setText(null);
             f08a001999.setChecked(false);
         }
-        if( MainApp.formType.equals("8") || MainApp.formType.equals("9")||MainApp.formType.equals(MainApp.FORM11)) {
-            fldGrpfooter.setVisibility(View.GONE);
-        }
+
+        fldGrpfooter.setVisibility(View.GONE);
+
 
         f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -98,48 +99,83 @@ public class IdentificationActivity extends Activity {
 
             case MainApp.FORM8:
                 formtype = 9;
-               // if (db.checkForRH_Results(participantId.getText().toString(), formtype)||db.checkForRH_Results(participantId.getText().toString())) {
-                if (db.checkForRH_Results(participantId.getText().toString(),"2")) {
-                    rh_resultsContract resultsContract = new rh_resultsContract();
-                    resultsContract = db.getRH_Results(participantId.getText().toString(),"2");
-                    if (!resultsContract.get_id().equals("")) {
-                        try {
-                            DateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
-                            String lmpDate = resultsContract.getLmp();
-                            Date frmDate = sdf.parse(lmpDate);
-                            Date curretDate = new Date();
-                            curretDate.getTime();
-                            int GA = (int) getDateDiff(frmDate,curretDate,TimeUnit.DAYS);
-                            if(GA>=32 && GA <=36){
-                                fldGrpfooter.setVisibility(View.VISIBLE);
-                                Toast.makeText(this,"Gestational age is "+GA,Toast.LENGTH_LONG).show();
+                // if (db.checkForRH_Results(participantId.getText().toString(), formtype)||db.checkForRH_Results(participantId.getText().toString())) {
+                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE, MainApp.FORM9)) {
+                    if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
+                        rh_resultsContract resultsContract = new rh_resultsContract();
+                        resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
+                        if (!resultsContract.get_id().equals("")) {
+                            try {
+                                String lmpDate = resultsContract.getLmp();
+                                DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                                Date frmDate = sdf.parse(lmpDate);
+                                Date curretDate = new Date();
+                                int GA = (int) getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
+                                if (GA >= 32 && GA <= 36) {
+                                    fldGrpfooter.setVisibility(View.VISIBLE);
+                                    Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
 
-                            }else {
-                                Toast.makeText(this,"Gestational age is "+GA+" i:e not in range",Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
                             }
-                        }catch (Exception e){
+                        }
+                    } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE, MainApp.FORM9)) {
+                        String lmp = db.getRH_Results(participantId.getText().toString(),  MainApp.RH_NEGATIVE, MainApp.FORM9);
+                        try {
+                            DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                            Date frmDate = sdf.parse(lmp);
+                            Date curretDate = new Date();
+                            int GA = (int) getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
+                            if (GA >= 32 && GA <= 36) {
+                                fldGrpfooter.setVisibility(View.VISIBLE);
+                                Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
+
+                            } else {
+                                Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
+
                     }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Participant has no RH-Results or has RH-Positive", Toast.LENGTH_LONG).show();
                 }
+
                 break;
             case MainApp.FORM9:
                 formtype = 7;
-                if (db.checkFormParticipantID(participantId.getText().toString(), formtype)||db.checkFormParticipantID(participantId.getText().toString())) {
+                if (db.checkFormParticipantID(participantId.getText().toString(), String.valueOf(formtype)) || db.checkFormParticipantID(participantId.getText().toString())) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
                 }
                 break;
-
-            case MainApp.FORM11:
-                if (db.checkForRH_Results(participantId.getText().toString(),"1")) {
+            case MainApp.FORM10:
+                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)||db.checkForf10Acceptance(participantId.getText().toString(), MainApp.FORM8)) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
-                }else{
+                } else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Participant not found or either RH status is positive", Toast.LENGTH_LONG).show();
+                }
+
+                break;
+            case MainApp.FORM11:
+                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE, MainApp.FORM9)) {
+                    fldGrpfooter.setVisibility(View.VISIBLE);
+                } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE, MainApp.FORM9)) {
+                    if (db.checkForf15Adverse(participantId.getText().toString()) || db.checkForf15Adverse(participantId.getText().toString(), MainApp.FORM10)) {
+                        fldGrpfooter.setVisibility(View.VISIBLE);
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                    }
+                } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
                 }
@@ -156,9 +192,9 @@ public class IdentificationActivity extends Activity {
 
     public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getTime() - date1.getTime();
-        TimeUnit.MILLISECONDS.toDays(diffInMillies);
-        return timeUnit.convert(diffInMillies,TimeUnit.MILLISECONDS)/7;
+        return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
     }
+
     @OnClick(R.id.btn_Continue)
     void onBtnContinueClick() {
 
@@ -172,7 +208,6 @@ public class IdentificationActivity extends Activity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
 
 
         if (UpdateDB()) {
@@ -193,7 +228,15 @@ public class IdentificationActivity extends Activity {
                 startActivity(secB);
             } else if (MainApp.formType.equals("9")) {
                 Intent secB = new Intent(this, F09AActivity.class);
-                secB.putExtra(F09AActivity.PARTICIPANT_ID_TAG,participantId.getText().toString());
+                String lmpDate = null;
+                String lmpResult = db.getLmp(participantId.getText().toString(), Integer.parseInt(MainApp.FORM5));
+                if (lmpResult.equals("") || lmpResult == null) {
+                    lmpDate = db.getlmp(participantId.getText().toString());
+                } else {
+                    lmpDate = lmpResult;
+                }
+                secB.putExtra(F09AActivity.PARTICIPANT_ID_TAG, participantId.getText().toString());
+                secB.putExtra(F09AActivity.LMP_TAG, lmpDate);
                 startActivity(secB);
             } else if (MainApp.formType.equals("11")) {
                 Intent secB = new Intent(this, F10AActivity.class);
@@ -217,6 +260,27 @@ public class IdentificationActivity extends Activity {
 
         //}
 
+    }
+
+    public int getGA(String lmpDate) {
+        try {
+            //lmpDate = "11-12-2017";
+            //current Date
+            Date curretDate = new Date();
+            Calendar calendarCurrent = Calendar.getInstance();
+            calendarCurrent.setTime(curretDate);
+
+            DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            Date frmDate = sdf.parse(lmpDate);
+            Calendar calendarlmp = Calendar.getInstance();
+            calendarlmp.setTime(frmDate);
+            calendarlmp.add(Calendar.WEEK_OF_YEAR, calendarCurrent.get(Calendar.WEEK_OF_YEAR));
+            int GA = calendarlmp.get(Calendar.DAY_OF_YEAR) / 7;
+            return GA;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
 

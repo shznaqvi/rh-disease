@@ -21,7 +21,10 @@ public class FormsContract {
     private String user = ""; // Interviewer
     private String participantID = "";
     private String formType = "";
-    // private String lmp= "";//last menstrual period
+    private String lmp = "";//last menstrual period
+    private String rh_status = "";//rh positive or negative
+    private String f10_acceptance = "";//f10 is accepted
+    private String f15_adverse = "";//adverse reaction or not
     // private String g_age = "";//gestational age
 
     private String info = "";
@@ -64,7 +67,12 @@ public class FormsContract {
         this.participantID = jsonObject.getString(FormsTable.COLUMN_PARTICIPANTID);
         this.formDate = jsonObject.getString(FormsTable.COLUMN_FORMDATE);
         this.formType = jsonObject.getString(FormsTable.COLUMN_FORMTYPE);
-/*        this.lmp= jsonObject.getString(FormsTable.COLUMN_LMP);
+        this.lmp = jsonObject.getString(FormsTable.COLUMN_LMP);
+        this.rh_status = jsonObject.getString(FormsTable.COLUMN_RH_STATUS);
+        this.f10_acceptance = jsonObject.getString(FormsTable.COLUMN_F10_ACCEPTANCE);
+        this.f15_adverse = jsonObject.getString(FormsTable.COLUMN_F15_ADVERSE);
+
+/*
 this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
 */
 
@@ -81,7 +89,7 @@ this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
         this.f10b = jsonObject.getString(FormsTable.COLUMN_F10B);
         this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
         this.f11 = jsonObject.getString(FormsTable.COLUMN_F11);
-        if(!this.isrhCompleted.equals("")){
+        if (!this.isrhCompleted.equals("")) {
             this.isrhCompleted = jsonObject.getString(FormsTable.COLUMN_ISRHCOMPLETED);
         }
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
@@ -109,7 +117,11 @@ this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
         this.participantID = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_PARTICIPANTID));
         this.formDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE));
         this.formType = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMTYPE));
-   /*     this.lmp = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LMP));
+        this.lmp = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_LMP));
+        this.rh_status = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_RH_STATUS));
+        this.f10_acceptance = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10_ACCEPTANCE));
+        this.f15_adverse = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F15_ADVERSE));
+   /*
 this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
 */
         //this.info = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_INFO));
@@ -125,9 +137,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f10b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10B));
         this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
         this.f11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F11));
-        if (!this.isrhCompleted.equals("")) {
-            this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
-        }
+//        this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
         this.gpsLng = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLNG));
@@ -157,13 +167,24 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         json.put(FormsTable.COLUMN_PARTICIPANTID, this.participantID == null ? JSONObject.NULL : this.participantID);
         json.put(FormsTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FormsTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
-     /*   json.put(FormsTable.COLUMN_LMP, this.lmp == null ? JSONObject.NULL : this.lmp);
+     /*
         json.put(FormsTable.COLUMN_G_AGE, this.g_age == null ? JSONObject.NULL : this.g_age);
 */
        /* if (!this.info.equals("")) {
             json.put(FormsTable.COLUMN_INFO, this.info == null ? JSONObject.NULL : this.info);
         }*/
-
+        if (!this.lmp.equals("")) {
+            json.put(FormsTable.COLUMN_LMP, this.lmp == null ? JSONObject.NULL : this.lmp);
+        }
+        if (!this.rh_status.equals("")) {
+            json.put(FormsTable.COLUMN_RH_STATUS, this.rh_status == null ? JSONObject.NULL : this.rh_status);
+        }
+        if (!this.f10_acceptance.equals("")) {
+            json.put(FormsTable.COLUMN_F10_ACCEPTANCE, this.f10_acceptance == null ? JSONObject.NULL : this.f10_acceptance);
+        }
+        if (!this.f15_adverse.equals("")) {
+            json.put(FormsTable.COLUMN_F15_ADVERSE, this.f15_adverse == null ? JSONObject.NULL : this.f15_adverse);
+        }
         if (!this.f03.equals("")) {
             json.put(FormsTable.COLUMN_F03, new JSONObject(this.f03));
         }
@@ -203,9 +224,9 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         if (!this.f11.equals("")) {
             json.put(FormsTable.COLUMN_F10C, new JSONObject(this.f11));
         }
-if (!this.isrhCompleted.equals("")) {
-    json.put(FormsTable.COLUMN_ISRHCOMPLETED, this.isrhCompleted == null ? JSONObject.NULL : this.isrhCompleted);
-}
+        if (!this.isrhCompleted.equals("")) {
+            json.put(FormsTable.COLUMN_ISRHCOMPLETED, this.isrhCompleted == null ? JSONObject.NULL : this.isrhCompleted);
+        }
         json.put(FormsTable.COLUMN_ISTATUS, this.istatus == null ? JSONObject.NULL : this.istatus);
         json.put(FormsTable.COLUMN_GPSLAT, this.gpsLat == null ? JSONObject.NULL : this.gpsLat);
         json.put(FormsTable.COLUMN_GPSLNG, this.gpsLng == null ? JSONObject.NULL : this.gpsLng);
@@ -219,6 +240,38 @@ if (!this.isrhCompleted.equals("")) {
 
 
         return json;
+    }
+
+    public String getRh_status() {
+        return rh_status;
+    }
+
+    public void setRh_status(String rh_status) {
+        this.rh_status = rh_status;
+    }
+
+    public String getF10_acceptance() {
+        return f10_acceptance;
+    }
+
+    public void setF10_acceptance(String f10_acceptance) {
+        this.f10_acceptance = f10_acceptance;
+    }
+
+    public String getF15_adverse() {
+        return f15_adverse;
+    }
+
+    public void setF15_adverse(String f15_adverse) {
+        this.f15_adverse = f15_adverse;
+    }
+
+    public String getLmp() {
+        return lmp;
+    }
+
+    public void setLmp(String lmp) {
+        this.lmp = lmp;
     }
 
     public String getIsrhCompleted() {
@@ -496,10 +549,13 @@ if (!this.isrhCompleted.equals("")) {
         public static final String COLUMN_PARTICIPANTID = "participantid";
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_FORMTYPE = "formtype";
-        /* public static final String COLUMN_LMP = "lmp";
- public static final String COLUMN_G_AGE = "g_age";
- public static final String COLUMN_RH_RESULTS = "rh_resultsContract";
- */
+        public static final String COLUMN_LMP = "lmp";
+        public static final String COLUMN_RH_STATUS = "rh_status";
+        public static final String COLUMN_F10_ACCEPTANCE = "f10_acceptance";
+        public static final String COLUMN_F15_ADVERSE = "f15_adverse";
+
+//        public static final String COLUMN_G_AGE = "g_age";
+
         //public static final String COLUMN_INFO = "info";
         public static final String COLUMN_F03 = "f03";
         public static final String COLUMN_F04 = "f04";

@@ -198,7 +198,7 @@ public class FetusContract
         json.put(FetusTable.COLUMN_FORMDATE, this.formDate == null ? JSONObject.NULL : this.formDate);
         json.put(FetusTable.COLUMN_FORMTYPE, this.formType == null ? JSONObject.NULL : this.formType);
         if (!this.f08.equals("")) {
-            json.put(FetusTable.COLUMN_F08, this.f08 == null ? JSONObject.NULL : this.f08);
+            json.put(FetusTable.COLUMN_F08, this.f08 == null ? JSONObject.NULL : new JSONObject(this.f08));
         }
 
         json.put(FetusTable.COLUMN_DEVICEID, this.deviceID == null ? JSONObject.NULL : this.deviceID);
@@ -216,7 +216,7 @@ public class FetusContract
         public static final String TABLE_NAME = "fetus";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECTNAME = "projectname";
-        public static final String COLUMN_ID = "_id ";
+        public static final String COLUMN_ID = "_id";
         public static final String COLUMN__UID = "_uid";
         public static final String COLUMN__UUID = "_uuid";
         public static final String COLUMN_USER = "user";
@@ -224,10 +224,10 @@ public class FetusContract
         public static final String COLUMN_FORMDATE = "formdate";
         public static final String COLUMN_FORMTYPE = "formtype";
         public static final String COLUMN_F08 = "f08";
-        public static final String COLUMN_DEVICEID = "deviceid ";
-        public static final String COLUMN_DEVICETAGID = "devicetagid ";
-        public static final String COLUMN_SYNCED = "synced ";
-        public static final String COLUMN_SYNCED_DATE = "synced_date ";
+        public static final String COLUMN_DEVICEID = "deviceid";
+        public static final String COLUMN_DEVICETAGID = "devicetagid";
+        public static final String COLUMN_SYNCED = "synced";
+        public static final String COLUMN_SYNCED_DATE = "synced_date";
 
         public static final String COLUMN_APP_VERSION = "app_version";
 

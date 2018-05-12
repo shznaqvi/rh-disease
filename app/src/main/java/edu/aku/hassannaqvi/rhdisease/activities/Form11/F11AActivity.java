@@ -1527,9 +1527,10 @@ public class F11AActivity extends AppCompatActivity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-
+        String adverseaffect = f11b023a.isChecked() ? "1" : f11b023b.isChecked() ? "2" : f11b023999.isChecked() ? "999" : "0";
+                MainApp.fc.setF10_acceptance("1");
+                MainApp.fc.setF15_adverse(adverseaffect);
         int updcount = db.updateF011();
-
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;

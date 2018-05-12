@@ -228,6 +228,7 @@ endintent = new Intent(this, EndingActivity.class);
         //MainApp.fc.setParticipantID(participantID.getText().toString());
         MainApp.fc.setFormType("5");
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
+        MainApp.fc.setLmp(f03a002date.getText().toString());
 
         MainApp.f03 = new JSONObject();
 

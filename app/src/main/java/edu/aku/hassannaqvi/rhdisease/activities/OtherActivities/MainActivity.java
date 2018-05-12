@@ -462,7 +462,7 @@ public class MainActivity extends Activity {
             new SyncAllData(
                     this,
                     "Fetus",
-                    "updateSyncedForms",
+                    "updateSyncedFetus",
                     FetusContract.class,
                     NetworkUtils.buildUrl(FetusContract.FetusTable._URL),
                     db.getUnsyncedFetus(), this.findViewById(R.id.syncStatus)
