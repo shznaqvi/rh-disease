@@ -16,7 +16,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.DoubleBuffer;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -110,7 +112,7 @@ public class IdentificationActivity extends Activity {
                                 DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                                 Date frmDate = sdf.parse(lmpDate);
                                 Date curretDate = new Date();
-                                int GA = (int) getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
+                                Double GA =  getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
                                 if (GA >= 32 && GA <= 36) {
                                     fldGrpfooter.setVisibility(View.VISIBLE);
                                     Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
@@ -128,7 +130,7 @@ public class IdentificationActivity extends Activity {
                             DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                             Date frmDate = sdf.parse(lmp);
                             Date curretDate = new Date();
-                            int GA = (int) getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
+                            Double GA =  getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
                             if (GA >= 32 && GA <= 36) {
                                 fldGrpfooter.setVisibility(View.VISIBLE);
                                 Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
@@ -190,9 +192,12 @@ public class IdentificationActivity extends Activity {
         //TODO implement
     }
 
-    public static long getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
+    public static Double getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
         long diffInMillies = date2.getTime() - date1.getTime();
-        return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
+        long weeks = timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
+        long days = timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) % 7;
+        Double gage =  Double.parseDouble(weeks+"."+days);
+        return gage;
     }
 
     @OnClick(R.id.btn_Continue)
