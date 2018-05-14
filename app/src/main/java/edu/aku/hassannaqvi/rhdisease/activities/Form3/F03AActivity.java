@@ -179,7 +179,7 @@ endintent = new Intent(this, EndingActivity.class);
                         endSec.putExtra("complete", true);
                         startActivity(endSec);
                     }else {
-                        endintent.putExtra("complete", false);
+                        endintent.putExtra("complete", true);
                         startActivity(endintent);
                     }
 
