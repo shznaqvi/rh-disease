@@ -98,7 +98,7 @@ public class IdentificationActivity extends Activity {
         int formtype = 0;
         String formType = MainApp.formType;
         switch (formType) {
-
+            case MainApp.FORM10:
             case MainApp.FORM8:
                 formtype = 9;
                 // if (db.checkForRH_Results(participantId.getText().toString(), formtype)||db.checkForRH_Results(participantId.getText().toString())) {
@@ -116,7 +116,6 @@ public class IdentificationActivity extends Activity {
                                 if (GA >= 32 && GA <= 36) {
                                     fldGrpfooter.setVisibility(View.VISIBLE);
                                     Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
-
                                 } else {
                                     Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
                                 }
@@ -141,7 +140,6 @@ public class IdentificationActivity extends Activity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-
                     }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
@@ -158,7 +156,7 @@ public class IdentificationActivity extends Activity {
                     Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
                 }
                 break;
-            case MainApp.FORM10:
+           /* case MainApp.FORM10:
                 if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)||db.checkForf10Acceptance(participantId.getText().toString(), MainApp.FORM8)) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
                 } else {
@@ -166,7 +164,7 @@ public class IdentificationActivity extends Activity {
                     Toast.makeText(this, "Participant not found or either RH status is positive", Toast.LENGTH_LONG).show();
                 }
 
-                break;
+                break;*/
             case MainApp.FORM11:
                 if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE, MainApp.FORM9)) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
