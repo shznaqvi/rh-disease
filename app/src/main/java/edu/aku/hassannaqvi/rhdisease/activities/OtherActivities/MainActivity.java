@@ -55,8 +55,11 @@ public class MainActivity extends Activity {
     @BindView(R.id.recordSummary)
     TextView recordSummary;
 
+   /* @BindView(R.id.syncDevice)
+    Button syncDevice;*/
     @BindView(R.id.syncDevice)
-    Button syncDevice;
+    LinearLayout syncDevice;
+
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     AlertDialog.Builder builder;
@@ -176,7 +179,7 @@ public class MainActivity extends Activity {
         /*if (MainApp.admin) {
             adminsec.setVisibility(View.VISIBLE);
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-            rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
+            rSumText += "Last Data download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
             rSumText += "\r\n";
             rSumText += "Last Data Upload: \t" + syncPref.getString("LastUpSyncServer", "Never Synced");
             rSumText += "\r\n";
@@ -324,66 +327,12 @@ public class MainActivity extends Activity {
         MainApp.formType = "10";
         startActivity(iA);
     }
-
-    public void openB(View v) {
-        Intent iB = new Intent(this, F04AActivity.class);
-        startActivity(iB);
+    public void openForm15(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "15";
+        startActivity(iA);
     }
 
-    public void openC(View v) {
-        /*Intent iC = new Intent(this, SectionCActivity.class);
-        startActivity(iC);*/
-    }
-
-    public void openD(View v) {
-        /*Intent iD = new Intent(this, SectionDActivity.class);
-        startActivity(iD);*/
-    }
-
-    public void openE(View v) {
-        /*Intent iD = new Intent(this, SectionEActivity.class);
-        startActivity(iD);*/
-    }
-
-    public void openF(View v) {
-        /*Intent iD = new Intent(this, SectionFActivity.class);
-        startActivity(iD);*/
-    }
-
-    public void openG(View v) {
-        /*Intent iG = new Intent(this, SectionGActivity.class);
-        startActivity(iG);*/
-    }
-
-    public void openH(View v) {
-        /*Intent iEnd = new Intent(this, SectionHActivity.class);
-        startActivity(iEnd);*/
-    }
-
-    public void openI(View v) {
-        /*Intent iEnd = new Intent(this, SectionIActivity.class);
-        startActivity(iEnd);*/
-    }
-
-    public void openJ(View v) {
-        /*Intent iEnd = new Intent(this, SectionJActivity.class);
-        startActivity(iEnd);*/
-    }
-
-    public void openK(View v) {
-        /*Intent iEnd = new Intent(this, SectionKActivity.class);
-        startActivity(iEnd);*/
-    }
-
-    public void openL(View v) {
-        /*Intent iEnd = new Intent(this, SectionLActivity.class);
-        startActivity(iEnd);*/
-    }
-
-    public void openM(View v) {
-        /*Intent iEnd = new Intent(this, SectionMActivity.class);
-        startActivity(iEnd);*/
-    }
 
     public void testGPS(View v) {
 
@@ -500,6 +449,16 @@ public class MainActivity extends Activity {
                     NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "11.php")),
                     db.getUnsyncedForms11(), this.findViewById(R.id.syncStatus)
             ).execute();
+//TODO:sync Form 15 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 15", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form15",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "15.php")),
+                    db.getUnsyncedForms15(), this.findViewById(R.id.syncStatus)
+            ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
@@ -561,8 +520,6 @@ public class MainActivity extends Activity {
 
     public void syncDevice(View view) {
         if (isNetworkAvailable()) {
-
-
             GetUsers gu = new GetUsers(this);
             Toast.makeText(getApplicationContext(), "Syncing Users", Toast.LENGTH_SHORT).show();
             gu.execute();

@@ -128,11 +128,11 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             rg.setOnCheckedChangeListener(this);
         }
 
-endintent = new Intent(this, EndingActivity.class);
+        endintent = new Intent(this, EndingActivity.class);
     }
 
     @OnClick(R.id.btn_End)
-    void onBtnEndClick() {
+    public void onBtnEndClick() {
 
 
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
@@ -174,15 +174,14 @@ endintent = new Intent(this, EndingActivity.class);
 
                     finish();
                     //if (MainApp.eligibleFlag) {
-                    if(isInclude()){
+                    if (isInclude()) {
                         Intent endSec = new Intent(this, F04AActivity.class);
                         endSec.putExtra("complete", true);
                         startActivity(endSec);
-                    }else {
+                    } else {
                         endintent.putExtra("complete", true);
                         startActivity(endintent);
                     }
-
 
 
                 } else {
@@ -399,7 +398,6 @@ endintent = new Intent(this, EndingActivity.class);
             f03a002date.setMaxDate(date3Weeks);
             f03a002date.setMinDate(date13Weeks);
         }
-
 
 
     }

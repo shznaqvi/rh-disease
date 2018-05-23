@@ -104,6 +104,7 @@ public class MainApp extends Application {
    final public static String FORM8 = "8";
    final public static String FORM10 = "10";
    final public static String FORM11 = "11";
+   final public static String FORM15 = "15";
    final public static String RH_POSITIVE = "1";
    final public static String RH_NEGATIVE = "2";
 

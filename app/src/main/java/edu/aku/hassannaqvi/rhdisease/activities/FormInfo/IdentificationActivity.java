@@ -30,6 +30,7 @@ import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form10.F10AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form11.F11AActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form15.F15Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form7.F07AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form8.F08AActivity;
@@ -156,15 +157,6 @@ public class IdentificationActivity extends Activity {
                     Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
                 }
                 break;
-           /* case MainApp.FORM10:
-                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)||db.checkForf10Acceptance(participantId.getText().toString(), MainApp.FORM8)) {
-                    fldGrpfooter.setVisibility(View.VISIBLE);
-                } else {
-                    fldGrpfooter.setVisibility(View.GONE);
-                    Toast.makeText(this, "Participant not found or either RH status is positive", Toast.LENGTH_LONG).show();
-                }
-
-                break;*/
             case MainApp.FORM11:
                 if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE, MainApp.FORM9)) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
@@ -178,6 +170,15 @@ public class IdentificationActivity extends Activity {
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
+                }
+                break;
+            case MainApp.FORM15:
+                if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
+                    fldGrpfooter.setVisibility(View.VISIBLE);
+                } else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    //fldGrpfooter.setVisibility(View.VISIBLE);
+                    Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -251,6 +252,9 @@ public class IdentificationActivity extends Activity {
             } else if (MainApp.formType.equals("10")) {
                 Intent secB = new Intent(this, F11AActivity.class);
                 startActivity(secB);
+            } else if (MainApp.formType.equals("15")) {
+                Intent secf15 = new Intent(this, F15Activity.class);
+                startActivity(secf15);
             }
         } else {
             Toast.makeText(this, "Failed to update Database", Toast.LENGTH_SHORT).show();

@@ -12,6 +12,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
     completions."
   </string>
+    <string name="screening">Form#5 Screening</string>
+    <string name="ultrasound">Form#8 Ultrasound</string>
 
     <string name="end_interview"> اختتام </string>
     <string name="start_interview"> انٹرویو شروع کریں </string>
@@ -287,7 +289,7 @@
     <!-- Form 3-->
     <string name="screennum">Screening #</string>
     <string name="participantName">Participant Name</string>
-    <string name="f03heading"> Form 5: Participant Eligibility Screening Form </string>
+    <string name="f03heading"> شموليت ڪندڙ جي اهليت جي جاچ </string>
     <string name="f03a001"> ڇا حصو وٺندڙ حمل سان آهي </string>
     <string name="f03a002"> ڇا شرڪت ڪندڙ جي حمل جي مدت گھٽ ۾ گھٽ 13 هفتا يا ان کان زياده هئي </string>
     <string name="f03a002date"> آخري ماهواري جو پهريون ڏينهن </string>
@@ -309,7 +311,7 @@
 
     <!-- Form 4-->
 
-    <string name="f04heading"> Form 6: Pregnant Women Baseline Knowledge of Rh Disease </string>
+    <string name="f04heading"> -RH  بيماري جي باري ۾ حامله عورتن جي ڄاڻRH-  </string>
     <string name="f04a001"> ڇا توهان ڪڏهن Rh بيماري جي باري ۾ ٻڌو آهي </string>
     <string name="f04a002"> بيماري ڇا آهيRh </string>
     <string name="f04a002a"> نئي ڄاول ٻار کي متاثر ڪرڻ </string>
@@ -608,7 +610,7 @@
     <!-- Form 10-->
 
     <string name="f10heading"> Form 11: Delivery Characteristics and Newborn Assessment </string>
-    <string name="f10sub"> Identification </string>
+    <string name="f10sub">شناختي سيڪشن </string>
     <string name="f10pid"> شموليت ڪندڙ جي شناخت </string>
     <string name="f10rp"> تحقيق ڪندڙ جو نالو ۽ شناخت </string>
     <string name="f10a001"> ويم جي اطلاح جو ذريعو </string>
@@ -739,7 +741,7 @@
     <!-- Form 11-->
 
     <string name="f11heading"> Form 10: Administration and acceptance of prophylaxis(Only complete Form 10 for Rh-negative Woman) </string>
-    <string name="f11sub"> Identification </string>
+    <string name="f11sub"> شناختي سيڪشن</string>
     <string name="f11pid"> شموليت ڪندڙ جي شناخت </string>
     <string name="f11rp"> تحقيق ڪندڙ جو نالو ۽ شناخت </string>
 
@@ -756,7 +758,7 @@
     <string name="f11subheading1"> (احتياط) بيماري کي روڪڻ واري دوا</string>
     <string name="f11a001">تاريخ ۽ ٽائيم معائني وقت</string>
     <string name="f11a002">ڇا عورت جو ويم ٿي ويوآهي</string>
-    <string name="f11a003">ڇااميدوار 28 هفتن تائين آهي</string>
+    <string name="f11a003">ڇااميدوار 32 هفتن تائين آهي</string>
     <string name="f11a004">گهڻو ٽائيم اڳي عورت ويم ڪيو هو</string>
     <string name="f11a004a">24 ڪلاڪن کان گھٽ</string>
     <string name="f11a004b">24 ڪلاڪن ۾</string>
@@ -826,6 +828,42 @@
     <string name="f11b024e">ريش</string>
     <string name="f11b024f">الٽيون</string>
     <string name="f11b024g">هيڊو پيشاب</string>
+    <string name="date"> Date </string>
+    <string name="time"> Time </string>
 
-    <string name="rsvp"> کیا آپ جواب دہندہ ہیں؟ </string>
+    <!-- Form 15-->
+    <string name="f15heading">فارم 15 : ماءُ تي خراب اثر/حادثن جو  </string>
+    <string name="f15sub"> شناختي سيڪشن</string>
+    <string name="f15sub1"> Adverse Events </string>
+    <string name="f15pid"> شموليت ڪندڙ جي شناخت </string>
+    <string name="f15rp"> تحقيق ڪندڙ جو نالو ۽ شناخت </string>
+    <string name="f15rhstatus">  جو نتيجوRh </string>
+    <string name="f15rhnegative">   نگيٽوRh  </string>
+    <string name="f15rhpositive">   پوزيٽوRh </string>
+    <string name="f15rhunknown">  حثيت نامعلوم </string>
+    <string name="f15researchpersonnel"> تحقيق ڪندڙ جو نالو شناخت </string>
+    <string name="f1501">منفي واقعي/حادثي جي اطلاع جي تاريخ  </string>
+    <string name="f1502"> منفي  واقعي/حادثي جي اطلاع ڪنهن ڏني؟ </string>
+    <string name="f1502a"> فون جي ذريعي </string>
+    <string name="f1502b">گھر جي ڀاتي  </string>
+    <string name="f1502c">ٽي ايڇ قيو</string>
+    <string name="f1502888">ڪجھ ٻيو وضاحت ڪريو </string>
+    <string name="f1503"> منفي واقعي/حادثي جي خبر ڪنهن درج ڪئي؟ </string>
+    <string name="f1503a">ماءُ (شرڪت ڪندڙ) </string>
+    <string name="f1503b"> ڊيٽا ڪليڪٽر </string>
+    <string name="f1503c"> هيلٿ ڪيئر ورڪر</string>
+    <string name="f1503d"> گھر جا ڀاتي</string>
+    <string name="f150398"> ڪجھ ٻيو وضاحت ڪريو </string>
+    <string name="f1504"> منفي واقعو/حادثو ڪڏهن پيش آيو </string>
+    <string name="f1505"> ڇا منفي واقعا/حادثي جي علامت ختم ٿي وئي يا ان جو علاج ڪيو ويو هو؟ </string>
+    <string name="f1506">  ڇا اهو منفي واقعو/حادثو ماءَ جي موت هو؟</string>
+    <string name="f1507h"> منفي واقعي/حادثي جي تفصيل  </string>
+    <string name="f1507"> جيترو ٿي سگھي منفي واقعا/حادثا جي متعلق گھڻي کان گھڻي معلومات پيش ڪريو(شروع جي علامت بيماري جو وڌڻ علاج/انتظام وغيره </string>
+    <string name="f1507event">حادثا/واقعا </string>
+    <string name="f1507management">انتظاميا </string>
+    <string name="f1508">ڇا ٻڌايو ويو ته منفي،واقعا/حادثن جي ڪنهن علامت کي توهان(ميڊيڪل آفسر) ذاتي طور تي مشاهدوڪيو هو</string>
+    <string name="f1509"> ڇا توهان کي يقين آهي ته منفي واقعا/حادثن جو ممڪن طور تي هن تحقيق سان تعلق هو؟ </string>
+    <string name="f1510"> اگر مٿي بيان ڪيل سوال 9 جو جواب ها آهي ته وضاحت ڪريو ڇو ته توهان سمجھو ٿا ان واقعي/حادثي جو تعلق تحقيق سان ٿي سگھي ٿو</string>
+
+
 </resources>

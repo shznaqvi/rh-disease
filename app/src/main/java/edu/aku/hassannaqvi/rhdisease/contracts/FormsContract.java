@@ -41,6 +41,7 @@ public class FormsContract {
     private String f10b = "";
     private String f10c = "";
     private String f11 = "";
+    private String f15 = "";
     private String isrhCompleted = "";
 
 
@@ -89,9 +90,8 @@ this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
         this.f10b = jsonObject.getString(FormsTable.COLUMN_F10B);
         this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
         this.f11 = jsonObject.getString(FormsTable.COLUMN_F11);
-        if (!this.isrhCompleted.equals("")) {
+        this.f15= jsonObject.getString(FormsTable.COLUMN_F15);
             this.isrhCompleted = jsonObject.getString(FormsTable.COLUMN_ISRHCOMPLETED);
-        }
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
         this.gpsLng = jsonObject.getString(FormsTable.COLUMN_GPSLNG);
@@ -137,6 +137,8 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f10b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10B));
         this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
         this.f11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F11));
+        this.f15 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F15));
+
 //        this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
         this.gpsLat = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_GPSLAT));
@@ -223,7 +225,11 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
 
         if (!this.f11.equals("")) {
             json.put(FormsTable.COLUMN_F10C, new JSONObject(this.f11));
+        } if (!this.f15.equals("")) {
+            json.put(FormsTable.COLUMN_F15, new JSONObject(this.f15));
+
         }
+
         if (!this.isrhCompleted.equals("")) {
             json.put(FormsTable.COLUMN_ISRHCOMPLETED, this.isrhCompleted == null ? JSONObject.NULL : this.isrhCompleted);
         }
@@ -439,6 +445,13 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f11 = f11;
     }
 
+    public String getF15() {
+        return f15;
+    }
+
+    public void setF15(String f15) {
+        this.f15 = f15;
+    }
 
     public String getFormType() {
         return formType;
@@ -569,6 +582,8 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         public static final String COLUMN_F10B = "f10b";
         public static final String COLUMN_F10C = "f10c";
         public static final String COLUMN_F11 = "f11";
+        public static final String COLUMN_F15 = "f15";
+
 
         public static final String COLUMN_ISRHCOMPLETED = "isrhcompleted";
         public static final String COLUMN_ISTATUS = "istatus";
