@@ -85,13 +85,15 @@
         <RadioGroup
             android:id="@+id/f07d002"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/f07d002a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/yes" />
 
             <RadioButton
@@ -99,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/no" />
 
             <RadioButton
@@ -106,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/dkn" />
 
         </RadioGroup>
@@ -193,13 +197,15 @@
         <RadioGroup
             android:id="@+id/f07d004"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/f07d004a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/yes" />
 
             <RadioButton
@@ -207,6 +213,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/no" />
 
             <RadioButton
@@ -214,6 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/dkn" />
 
         </RadioGroup>

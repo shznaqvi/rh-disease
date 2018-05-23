@@ -165,13 +165,15 @@
                 <RadioGroup
                     android:id="@+id/f03a012"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f03a012a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
@@ -179,6 +181,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                 </RadioGroup>
