@@ -169,6 +169,7 @@ public class IdentificationActivity extends Activity {
                     }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
+                   // fldGrpfooter.setVisibility(View.VISIBLE);
                     Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
                 }
                 break;

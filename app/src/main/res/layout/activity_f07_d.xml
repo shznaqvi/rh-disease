@@ -239,40 +239,43 @@
         <RadioGroup
             android:id="@+id/f07d005"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/f07d005a"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/yes" />
-
-            <EditText
-                android:id="@+id/f07d005aprob"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:hint="@string/f07d005a"
-                android:inputType="textCapWords"
-                android:visibility="gone" />
 
             <RadioButton
                 android:id="@+id/f07d005b"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/no" />
 
             <RadioButton
                 android:id="@+id/f07d005999"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/dkn" />
 
         </RadioGroup>
+        <EditText
+            android:id="@+id/f07d005aprob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:hint="@string/f07d005a"
+            android:inputType="textCapWords"
+            android:visibility="gone" />
 
         <LinearLayout
             android:id="@+id/fldGrp005"

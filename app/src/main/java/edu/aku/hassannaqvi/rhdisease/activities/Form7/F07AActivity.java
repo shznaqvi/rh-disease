@@ -327,7 +327,7 @@ public class F07AActivity extends Activity {
         MainApp.formType = "7";
         MainApp.fc4.setFormType("7");
         MainApp.fc4.setDevicetagID(MainApp.fc.getDevicetagID());
-        MainApp.fc4.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.fc4.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(System.currentTimeMillis()));
         MainApp.fc4.setUser(MainApp.userName);
         MainApp.fc4.setDeviceID(MainApp.fc.getDeviceID());
         MainApp.fc4.setApp_version(MainApp.fc.getApp_version());

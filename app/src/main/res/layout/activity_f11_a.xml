@@ -69,20 +69,23 @@
         <RadioGroup
             android:id="@+id/f11a002"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/f11a002a"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/yes" />
 
             <RadioButton
                 android:id="@+id/f11a002b"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/no" />
 
         </RadioGroup>
@@ -107,20 +110,23 @@
             <RadioGroup
                 android:id="@+id/f11a003"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/f11a003a"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
                     android:id="@+id/f11a003b"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -215,13 +221,15 @@
             <RadioGroup
                 android:id="@+id/f11b001"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/f11b001a"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/yes" />
 
                 <RadioButton
@@ -229,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
+                    android:layout_weight="1"
                     android:text="@string/no" />
 
             </RadioGroup>
@@ -332,13 +341,15 @@
                 <RadioGroup
                     android:id="@+id/f11b003"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b003a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
@@ -346,6 +357,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
@@ -353,6 +365,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -369,27 +382,31 @@
                 <RadioGroup
                     android:id="@+id/f11b004"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b004a"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/f11b004b"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
                         android:id="@+id/f11b004999"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -407,27 +424,31 @@
                 <RadioGroup
                     android:id="@+id/f11b005"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b005a"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/f11b005b"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
                         android:id="@+id/f11b005999"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -444,27 +465,31 @@
                 <RadioGroup
                     android:id="@+id/f11b006"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b006a"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/f11b006b"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
                         android:id="@+id/f11b006999"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -482,7 +507,8 @@
                 <RadioGroup
                     android:id="@+id/f11b007"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <RadioButton
                         android:id="@+id/f11b007a"
@@ -527,27 +553,31 @@
                 <RadioGroup
                     android:id="@+id/f11b008"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b008a"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/f11b008b"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
                         android:id="@+id/f11b008999"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -633,13 +663,15 @@
                 <RadioGroup
                     android:id="@+id/f11b010"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b010a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
@@ -647,6 +679,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
@@ -654,6 +687,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/dkn" />
 
                 </RadioGroup>
@@ -839,27 +873,31 @@
                     <RadioGroup
                         android:id="@+id/f11b013"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/f11b013a"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
                             android:text="@string/yes" />
 
                         <RadioButton
                             android:id="@+id/f11b013b"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
                             android:text="@string/no" />
 
                         <RadioButton
                             android:id="@+id/f11b013999"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
                             android:text="@string/dkn" />
 
                     </RadioGroup>
@@ -884,20 +922,23 @@
                         <RadioGroup
                             android:id="@+id/f11b014"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/f11b014a"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
                                 android:text="@string/yes" />
 
                             <RadioButton
                                 android:id="@+id/f11b014b"
-                                android:layout_width="match_parent"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
                                 android:text="@string/no" />
 
                         </RadioGroup>
@@ -922,18 +963,21 @@
                             <RadioGroup
                                 android:id="@+id/f11b015"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
                                 <RadioButton
                                     android:id="@+id/f11b015a"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="1dp"
+                                    android:layout_weight="1"
                                     android:text="@string/yes" />
 
                                 <RadioButton
                                     android:id="@+id/f11b015b"
-                                    android:layout_width="match_parent"
+                                    android:layout_width="0dp"
+                                    android:layout_weight="1"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="1dp"
                                     android:text="@string/no" />
@@ -960,20 +1004,23 @@
                                 <RadioGroup
                                     android:id="@+id/f11b016"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
 
                                     <RadioButton
                                         android:id="@+id/f11b016a"
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
+                                        android:layout_weight="1"
                                         android:text="@string/yes" />
 
                                     <RadioButton
                                         android:id="@+id/f11b016b"
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="1dp"
+                                        android:layout_weight="1"
                                         android:text="@string/no" />
 
                                 </RadioGroup>
@@ -998,20 +1045,23 @@
                                     <RadioGroup
                                         android:id="@+id/f11b017"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
 
                                         <RadioButton
                                             android:id="@+id/f11b017a"
-                                            android:layout_width="match_parent"
+                                            android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="1dp"
+                                            android:layout_weight="1"
                                             android:text="@string/yes" />
 
                                         <RadioButton
                                             android:id="@+id/f11b017b"
-                                            android:layout_width="match_parent"
+                                            android:layout_width="0dp"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="1dp"
+                                            android:layout_weight="1"
                                             android:text="@string/no" />
 
                                     </RadioGroup>
@@ -1036,20 +1086,23 @@
                                         <RadioGroup
                                             android:id="@+id/f11b018"
                                             android:layout_width="match_parent"
-                                            android:layout_height="wrap_content">
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
 
                                             <RadioButton
                                                 android:id="@+id/f11b018a"
-                                                android:layout_width="match_parent"
+                                                android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginBottom="1dp"
+                                                android:layout_weight="1"
                                                 android:text="@string/yes" />
 
                                             <RadioButton
                                                 android:id="@+id/f11b018b"
-                                                android:layout_width="match_parent"
+                                                android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginBottom="1dp"
+                                                android:layout_weight="1"
                                                 android:text="@string/no" />
 
                                         </RadioGroup>
@@ -1074,13 +1127,15 @@
                                             <RadioGroup
                                                 android:id="@+id/f11b019"
                                                 android:layout_width="match_parent"
-                                                android:layout_height="wrap_content">
+                                                android:layout_height="wrap_content"
+                                                android:orientation="horizontal">
 
                                                 <RadioButton
                                                     android:id="@+id/f11b019a"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="1dp"
+                                                    android:layout_weight="1"
                                                     android:text="@string/yes" />
 
                                                 <RadioButton
@@ -1088,6 +1143,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:layout_marginBottom="1dp"
+                                                    android:layout_weight="1"
                                                     android:text="@string/no" />
 
                                             </RadioGroup>
@@ -1255,26 +1311,30 @@
                 <RadioGroup
                     android:id="@+id/f11b023"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <RadioButton
                         android:id="@+id/f11b023a"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/yes" />
 
                     <RadioButton
                         android:id="@+id/f11b023b"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
+                        android:layout_weight="1"
                         android:text="@string/no" />
 
                     <RadioButton
                         android:id="@+id/f11b023999"
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:layout_marginBottom="1dp"
                         android:text="@string/dkn" />
 

@@ -141,7 +141,7 @@ public class MainActivity extends Activity {
             rSumText += "\tFORMS' LIST: \r\n";
             String iStatus;
             rSumText += "--------------------------------------------------\r\n";
-            rSumText += "[ DSS_ID ] \t[Form Status] \t[Sync Status]----------\r\n";
+            rSumText += "[ Form Type ] \t[Form Status]\t[Sync Status]----------\r\n";
             rSumText += "--------------------------------------------------\r\n";
 
             for (FormsContract fc : todaysForms) {
@@ -166,7 +166,7 @@ public class MainActivity extends Activity {
                     iStatus = "\tN/A";
                 }
 
-                rSumText += fc.getFormType();
+                rSumText += ""+fc.getFormType()+"";
 
                 rSumText += " " + iStatus + " ";
 

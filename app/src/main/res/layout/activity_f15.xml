@@ -60,27 +60,31 @@
             android:id="@+id/f15rhstatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             >
 
             <RadioButton
                 android:id="@+id/f15rhstatusa"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/f15rhnegative" />
 
             <RadioButton
                 android:id="@+id/f15rhstatusb"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/f15rhpositive" />
 
             <RadioButton
                 android:id="@+id/f15rhstatus999"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_weight="1"
                 android:text="@string/f15rhunknown" />
         </RadioGroup>
         <TextView

@@ -1576,11 +1576,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
         String[] columns = {
-                FormsTable.COLUMN_ID
+
         };
 
         String whereClause = FormsTable.COLUMN_FORMDATE + " LIKE ?";
-        String[] whereArgs = {spDateT};
+        String[] whereArgs = {"%" + spDateT.substring(0, 8).trim() + "%"};
         String groupBy = null;
         String having = null;
 
