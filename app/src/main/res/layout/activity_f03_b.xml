@@ -47,7 +47,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:gravity="center"
-                android:text="Completion of Eligibility Assessment and Informed Consent"
+                android:text="@string/f03asub"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold" />

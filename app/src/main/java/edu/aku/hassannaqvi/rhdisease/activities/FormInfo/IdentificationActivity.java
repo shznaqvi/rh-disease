@@ -319,7 +319,7 @@ public class IdentificationActivity extends Activity {
         MainApp.fc = new FormsContract();
 
         MainApp.fc.setDevicetagID(sharedPref.getString("tagName", null));
-        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yyyy HH:mm").format(System.currentTimeMillis()));
+        MainApp.fc.setFormDate(new SimpleDateFormat("dd-MM-yy HH:mm").format(System.currentTimeMillis()));
         MainApp.fc.setUser(MainApp.userName);
         MainApp.fc.setDeviceID(Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID));

@@ -17,7 +17,7 @@
 
     <string name="end_interview"> اختتام </string>
     <string name="start_interview"> انٹرویو شروع کریں </string>
-    <string name="nextSection"> اگلا سیکشن </string>
+    <string name="nextSection"> اڳئين سيڪشن تي وڃو </string>
     <string name="addMember"> افراد کا اندراج </string>
     <string name="dcstatus"> انٹریو کا نتیجہ</string>
     <string name="complete"> مکمل</string>
@@ -51,7 +51,7 @@
     <!--Form 07-->
 
 
-    <string name="f07heading"> Form 7: Baseline Data Pregnant Women </string>
+    <string name="f07heading">حمل واري عورت جي بنيادي معلومات </string>
 
     <string name="sec07ALabel"> آبادي معلومات </string>
     <string name="f07pid"> شموليت ڪندڙ جي شناخت </string>
@@ -287,19 +287,22 @@
 
 
     <!-- Form 3-->
-    <string name="screennum">Screening #</string>
+    <string name="screennum">چڪاسڻ جو نمبر</string>
     <string name="participantName">Participant Name</string>
+    <string name="inclusion">شموليت جو معيار</string>
+    <string name="exclusion">تحقیق سے اخراج جو معيار</string>
     <string name="f03heading"> شموليت ڪندڙ جي اهليت جي جاچ </string>
-    <string name="f03a001"> ڇا حصو وٺندڙ حمل سان آهي </string>
-    <string name="f03a002"> ڇا شرڪت ڪندڙ جي حمل جي مدت گھٽ ۾ گھٽ 13 هفتا يا ان کان زياده هئي </string>
+    <string name="f03a001"> ڇا شرڪت ڪندڙ حمل سان آهي </string>
+    <string name="f03a002"> ڇا شرڪت ڪندڙ جي حمل جو عرصو گھٽ ۾ گھٽ 13 هفتا يا ان کان زياده آهي </string>
     <string name="f03a002date"> آخري ماهواري جو پهريون ڏينهن </string>
-    <string name="f03a003"> ڇا شرڪت ڪندڙ ٽي ايڇ ڪيو مرڪز صحت جي آس پاس 5 يوننين ڪائونسل مان ڪنهن يوسي ۾ مستقل رهيندڙ آهي </string>
-    <string name="f03a004"> حصو وٺندڙ اميدوار جو ٻار تعلقي اسپتال ۾ پيدا ڪرڻ جو ارادو آهي </string>
-    <string name="f03a005"> حصو وٺندڙ جو ٻار پيدا ڪرڻ کان پوءِ گھٽ ۾ گھٽ هڪ مهينو تعليقي اسپتال جي حدود رهڻ جو ارادو آهي </string>
-    <string name="f03a006"> ڇا حصو وٺندڙ اميدوار اڳ ۾ هن تحقيق ۾ حصو ورتو آهي </string>
-    <string name="f03a007"> ڇا شرڪت ڪندڙ کي ري ايڪشن ٿيو هو </string>
-    <string name="f03a008"> ڇا شرڪت ڪندڙ کي دل،جگر،گردي،ڦڦڙن جي متعلق ڪا وڏي بيماري هئي </string>
-    <string name="f03a009"> ڇا حصو وٺندڙ اميدوار گھربل اهليت رکي ٿو </string>
+    <string name="f03a003"> ڇا شرڪت ڪندڙ ٽي ايڇ ڪيو صحت مرڪز جي آس پاس 5 يونين ڪائونسل مان ڪنهن يوسي ۾ مستقل رهندڙ آهي </string>
+    <string name="f03a004"> ڇا شرڪت ڪندڙ تعلقي اسپتال ۾ ٻار ڄڻڻ جو ارادورکي ٿي؟ </string>
+    <string name="f03a005"> ڇا شرڪت ڪندڙ جو ٻار ڄڻڻ کانپوءِ گھٽ ۾ گھٽ هڪ مهينوتعلقي اسپتال جي علائقي ۾ رهڻ جو ارادورکي ٿي؟ </string>
+    <string name="f03a006"> ڇا شرڪت ڪندڙ اميدوار اڳ ۾ هن تحقيق ۾ حصو وٺي چڪو آهي؟ </string>
+    <string name="f03a007"> ڇا شرڪت ڪندڙ کي ري ايڪشن ٿيو هو؟</string>
+    <string name="f03a008"> ڇا شرڪت ڪندڙ کي دل،جگر،گردي،ڦڦڙن جي متعلق ڪا وڏي بيماري آهي؟</string>
+    <string name="f03a009"> ڇا حصو وٺندڙ اميدوار گھربل اهليت رکي ٿو؟ </string>
+    <string name="f03asub">اهليت جي جانچ ۽ اجازت نامي جي تڪميل</string>
     <string name="f03a010"> حصو وٺندڙ اميدوار هن تحقيق ۾ حصو وٺڻ لاءِ اجازت ڏني </string>
     <string name="f03a011"> جيڪڏهن نه ته سبب ڃاڻايو </string>
     <string name="f03a011a"> ذاتي انڪار </string>

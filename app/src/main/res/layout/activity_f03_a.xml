@@ -40,6 +40,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1.5"
+                android:text="@string/screennum"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <!--TODO (1): Apply character limit on screening as per given in form i.e 4 characters. Confirm it is accepting numer or alphanumeric characters-->
             <EditText
@@ -53,13 +60,6 @@
                 android:inputType="number"
                 android:hint="@string/screennum" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_weight="1.5"
-                android:text="@string/screennum"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
         </LinearLayout>
@@ -87,7 +87,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/pink_100"
             android:gravity="center"
-            android:text="Inclusion Criteria"
+            android:text="@string/inclusion"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
@@ -281,7 +281,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/pink_100"
             android:gravity="center"
-            android:text="Exclusion Criteria"
+            android:text="@string/exclusion"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
