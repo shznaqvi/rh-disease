@@ -388,6 +388,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         } else {
             fldGrpf03a002.setVisibility(View.GONE);
             MainApp.eligibleFlag = isInclude();
+            f03a002.clearCheck();
             f03a002date.setText(null);
         }
 
