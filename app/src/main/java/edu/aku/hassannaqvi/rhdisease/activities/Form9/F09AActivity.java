@@ -1115,7 +1115,7 @@ public class F09AActivity extends Activity {
         MainApp.fc.setFormType(MainApp.FORM9);
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setLmp(lmp);
-        MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":"2");
+        MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":f09a003rh02.isChecked()?"2":"0");
 
 
         //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);

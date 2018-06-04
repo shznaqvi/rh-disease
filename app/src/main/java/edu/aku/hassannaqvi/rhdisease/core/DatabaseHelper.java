@@ -59,7 +59,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_RH_STATUS + " TEXT," +
             FormsTable.COLUMN_F10_ACCEPTANCE + " TEXT," +
             FormsTable.COLUMN_F15_ADVERSE + " TEXT,"
-
 /*
 +            FormsTable.COLUMN_G_AGE + " TEXT,"*/
             //+ FormsTable.COLUMN_INFO + " TEXT,"
