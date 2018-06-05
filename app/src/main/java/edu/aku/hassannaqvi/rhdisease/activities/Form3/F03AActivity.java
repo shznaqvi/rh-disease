@@ -248,6 +248,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
             MainApp.f03.put("f03a009", "2");
         }
 
+
         MainApp.fc.setF03(String.valueOf(MainApp.f03));
 
         MainApp.setGPS(this);

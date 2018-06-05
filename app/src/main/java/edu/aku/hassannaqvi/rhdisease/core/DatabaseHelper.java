@@ -20,6 +20,8 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract.FetusTable;
+import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract.FilledFormsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract.RH_ResultsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
@@ -106,7 +108,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FetusContract.FetusTable.COLUMN_SYNCED + " TEXT," +
             FetusContract.FetusTable.COLUMN_APP_VERSION + " TEXT," +
             FetusContract.FetusTable.COLUMN_SYNCED_DATE + " TEXT"
-
             + " );";
     private static final String SQL_CREATE_RHRESULTS = "CREATE TABLE "
             + RH_ResultsTable.TABLE_NAME + "("
@@ -121,6 +122,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RH_ResultsTable.COLUMN_F10_ACCEPTANCE + " TEXT," +
             RH_ResultsTable.COLUMN_F15_ADVERSE + " TEXT"
             + " );";
+    private static final String SQL_CREATE_FILLEDFORMS = "CREATE TABLE "
+            +FilledFormsTable.TABLE_NAME + "("
+            + FilledFormsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+    FilledFormsTable.COLUMN__ID + " TEXT,"+
+    FilledFormsTable.COLUMN_USER + " TEXT,"+
+    FilledFormsTable.COLUMN_PARTICIPANTID + " TEXT,"+
+    FilledFormsTable.COLUMN_RH_STATUS + " TEXT,"+
+    FilledFormsTable.COLUMN_F5 + " TEXT,"+
+    FilledFormsTable.COLUMN_F8 + " TEXT,"+
+    FilledFormsTable.COLUMN_F9 + " TEXT,"+
+    FilledFormsTable.COLUMN_F10FIRST + " TEXT,"+
+    FilledFormsTable.COLUMN_F15FIRST + " TEXT,"+
+    FilledFormsTable.COLUMN_F10SECOND + " TEXT,"+
+    FilledFormsTable.COLUMN_F15SECOND + " TEXT,"+
+    FilledFormsTable.COLUMN_F11 + " TEXT,"+
+    FilledFormsTable.COLUMN_F12 + " TEXT,"+
+    FilledFormsTable.COLUMN_F13 + " TEXT,"+
+    FilledFormsTable.COLUMN_F14 + " TEXT,"+
+    FilledFormsTable.COLUMN_F16 + " TEXT"
+            + " );";
 
 
     private static final String SQL_DELETE_USERS =
@@ -132,6 +153,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + FetusContract.FetusTable.TABLE_NAME;
     private static final String SQL_DELETE_RHRESULTS =
             "DROP TABLE IF EXISTS " + RH_ResultsTable.TABLE_NAME;
+    private static final String SQL_DELETE_FILLEDFORMS =
+            "DROP TABLE IF EXISTS " + FilledFormsTable.TABLE_NAME;
 
     private static final String SQL_SELECT_MOTHER_BY_CHILD =
             "SELECT c.agem cm, c.agey cy, c.aged cd, c.gender, c.serial serial, m.serial serialm, c.name child_name, c.dss_id_member child_id, m.name mother_name, c.dss_id_member mother_id, c.dob date_of_birth FROM census C join census m on c.dss_id_m = m.dss_id_member where c.member_type =? and c.uuid = m.uuid and c.current_status IN ('1', '2') and c.uuid = ? group by mother_id order by substr(c.dob, 7) desc, substr(c.dob, 4,2) desc, substr(c.dob, 1,2) desc;";
@@ -158,6 +181,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_FETUS);
         db.execSQL(SQL_CREATE_RHRESULTS);
+        db.execSQL(SQL_CREATE_FILLEDFORMS);
 
     }
 
@@ -167,6 +191,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_FETUS);
         db.execSQL(SQL_DELETE_RHRESULTS);
+        db.execSQL(SQL_DELETE_FILLEDFORMS);
 
     }
 
@@ -546,10 +571,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public Long addForm(FormsContract fc) {
-
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
-
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECTNAME, fc.getProjectName());
@@ -595,6 +618,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SYNCED_DATE, fc.getSynced_date());
 
         // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                FormsContract.FormsTable.TABLE_NAME,
+                FormsContract.FormsTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+  public Long addFilledForms(FilledFormsContract ffc) {
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+      values.put(FilledFormsTable.COLUMN__ID, ffc.get_id());
+      values.put(FilledFormsTable.COLUMN_USER, ffc.getuser());
+      values.put(FilledFormsTable.COLUMN_PARTICIPANTID, ffc.getparticipantid());
+      values.put(FilledFormsTable.COLUMN_RH_STATUS, ffc.getrh_status());
+      values.put(FilledFormsTable.COLUMN_F5, ffc.getf5());
+      values.put(FilledFormsTable.COLUMN_F8, ffc.getf8());
+      values.put(FilledFormsTable.COLUMN_F9, ffc.getf9());
+      values.put(FilledFormsTable.COLUMN_F10FIRST, ffc.getf10first());
+      values.put(FilledFormsTable.COLUMN_F15FIRST, ffc.getf15first());
+      values.put(FilledFormsTable.COLUMN_F10SECOND, ffc.getf10second());
+      values.put(FilledFormsTable.COLUMN_F15SECOND, ffc.getf15second());
+      values.put(FilledFormsTable.COLUMN_F11, ffc.getf11());
+      values.put(FilledFormsTable.COLUMN_F12, ffc.getf12());
+      values.put(FilledFormsTable.COLUMN_F13, ffc.getf13());
+      values.put(FilledFormsTable.COLUMN_F14, ffc.getf14());
+      values.put(FilledFormsTable.COLUMN_F16, ffc.getf16());
+
+
+      // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
                 FormsContract.FormsTable.TABLE_NAME,
@@ -679,6 +733,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
+
 
     public void updateSyncedFetus(String id) {
         SQLiteDatabase db = this.getReadableDatabase();

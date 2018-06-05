@@ -161,9 +161,6 @@ public class rh_resultsContract {
         public static final String COLUMN_F10_ACCEPTANCE = "f10_acceptance";
         public static final String COLUMN_F15_ADVERSE = "f15_adverse";
 
-
-
-
         public static String _URL = "rh_results.php";
     }
     }
