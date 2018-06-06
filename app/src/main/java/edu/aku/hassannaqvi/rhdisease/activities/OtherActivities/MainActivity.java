@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
@@ -458,6 +459,16 @@ public class MainActivity extends Activity {
                     FormsContract.class,
                     NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "15.php")),
                     db.getUnsyncedForms15(), this.findViewById(R.id.syncStatus)
+            ).execute();
+//TODO:sync Filled Forms sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Filled forms", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "FilledForms",
+                    "updateSyncedFilledForms",
+                    FilledFormsContract.class,
+                    NetworkUtils.buildUrl(FilledFormsContract.FilledFormsTable._URL),
+                    db.getUnsyncedFilledForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);

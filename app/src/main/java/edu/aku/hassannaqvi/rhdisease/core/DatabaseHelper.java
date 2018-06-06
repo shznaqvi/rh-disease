@@ -120,27 +120,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RH_ResultsTable.COLUMN_GA_WEEKS + " TEXT," +
             RH_ResultsTable.COLUMN_GA_DAYS + " TEXT," +
             RH_ResultsTable.COLUMN_F10_ACCEPTANCE + " TEXT," +
-            RH_ResultsTable.COLUMN_F15_ADVERSE + " TEXT"
+            RH_ResultsTable.COLUMN_F15_ADVERSE + " TEXT,"+
+            RH_ResultsTable.COLUMN_F5 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F8 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F9 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F10FIRST + " TEXT,"+
+            RH_ResultsTable.COLUMN_F15FIRST + " TEXT,"+
+            RH_ResultsTable.COLUMN_F10SECOND + " TEXT,"+
+            RH_ResultsTable.COLUMN_F15SECOND + " TEXT,"+
+            RH_ResultsTable.COLUMN_F11 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F12 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F13 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F14 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F16 + " TEXT"
             + " );";
     private static final String SQL_CREATE_FILLEDFORMS = "CREATE TABLE "
-            +FilledFormsTable.TABLE_NAME + "("
-            + FilledFormsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
-    FilledFormsTable.COLUMN__ID + " TEXT,"+
-    FilledFormsTable.COLUMN_USER + " TEXT,"+
-    FilledFormsTable.COLUMN_PARTICIPANTID + " TEXT,"+
-    FilledFormsTable.COLUMN_RH_STATUS + " TEXT,"+
-    FilledFormsTable.COLUMN_F5 + " TEXT,"+
-    FilledFormsTable.COLUMN_F8 + " TEXT,"+
-    FilledFormsTable.COLUMN_F9 + " TEXT,"+
-    FilledFormsTable.COLUMN_F10FIRST + " TEXT,"+
-    FilledFormsTable.COLUMN_F15FIRST + " TEXT,"+
-    FilledFormsTable.COLUMN_F10SECOND + " TEXT,"+
-    FilledFormsTable.COLUMN_F15SECOND + " TEXT,"+
-    FilledFormsTable.COLUMN_F11 + " TEXT,"+
-    FilledFormsTable.COLUMN_F12 + " TEXT,"+
-    FilledFormsTable.COLUMN_F13 + " TEXT,"+
-    FilledFormsTable.COLUMN_F14 + " TEXT,"+
-    FilledFormsTable.COLUMN_F16 + " TEXT"
+            + FilledFormsTable.TABLE_NAME + "("
+            + FilledFormsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            FilledFormsTable.COLUMN_USER + " TEXT," +
+            FilledFormsTable.COLUMN_PARTICIPANTID + " TEXT," +
+            FilledFormsTable.COLUMN_F5 + " TEXT," +
+            FilledFormsTable.COLUMN_F8 + " TEXT," +
+            FilledFormsTable.COLUMN_F9 + " TEXT," +
+            FilledFormsTable.COLUMN_F10FIRST + " TEXT," +
+            FilledFormsTable.COLUMN_F15FIRST + " TEXT," +
+            FilledFormsTable.COLUMN_F10SECOND + " TEXT," +
+            FilledFormsTable.COLUMN_F15SECOND + " TEXT," +
+            FilledFormsTable.COLUMN_F11 + " TEXT," +
+            FilledFormsTable.COLUMN_F12 + " TEXT," +
+            FilledFormsTable.COLUMN_F13 + " TEXT," +
+            FilledFormsTable.COLUMN_F14 + " TEXT," +
+            FilledFormsTable.COLUMN_F16 + " TEXT," +
+            FilledFormsTable.COLUMN_SYNCED + " TEXT," +
+            FilledFormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
 
@@ -316,6 +328,154 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
+    //Todo change filledForms to RH_Result start
+
+    public boolean isF8dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F8 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF9dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F9 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean checkF5filled(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F5 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF10firstdublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10FIRST + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF10seconddublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10SECOND + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF15firstdublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F15FIRST + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF15seconddublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F15SECOND + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF11dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F11 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF12dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F12 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF13dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F13 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF14dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F14 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+    public boolean isF16dublicate(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F16 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
+
+    //Todo change filledForms to RH_Result end
 
     public String getLmp(String participantID, int formType) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -400,7 +560,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return lmp;
     }
+    public String checkParticipantIDExist(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String partID = null;
+        String query = "SELECT * FROM " + FilledFormsTable.TABLE_NAME + " WHERE " + FilledFormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
 
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                partID = mCursor.getString(mCursor.getColumnIndex(FilledFormsTable.COLUMN_PARTICIPANTID));
+            }
+        }
+        db.close();
+        return partID;
+    }
+    public String checkParticipantIDExistinRH(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String partID = null;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                partID = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_PARTICIPANTID));
+            }
+        }
+        db.close();
+        return partID;
+    }
+
+    public boolean checkForRH_Results(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND (" + RH_ResultsTable.COLUMN_RH_STATUS + "= null OR " + RH_ResultsTable.COLUMN_RH_STATUS + "= '')";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return true;
+            }
+        }
+        db.close();
+        return false;
+    }
     public boolean checkForRH_Results(String participantID, String status) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= " + status;
@@ -452,9 +652,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
+
     public boolean isAdverseReaction(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10_ACCEPTANCE + "= '1' AND "+RH_ResultsTable.COLUMN_F15_ADVERSE+" = '1' ";
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10_ACCEPTANCE + "= '1' AND " + RH_ResultsTable.COLUMN_F15_ADVERSE + " = '1' ";
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
@@ -467,7 +668,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public boolean isAdverseReaction(String participantID, String formtype) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + " = " + formtype+" AND "+FormsTable.COLUMN_F15_ADVERSE+" = '1' ";
+        String query = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FormsTable.COLUMN_FORMTYPE + " = " + formtype + " AND " + FormsTable.COLUMN_F15_ADVERSE + " = '1' ";
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
@@ -477,6 +678,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
+
     public boolean checkForf10Acceptance(String participantID, String formtype) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + FetusTable.TABLE_NAME + " WHERE " + FetusTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + FetusTable.COLUMN_FORMTYPE + " = " + formtype;
@@ -490,6 +692,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
+    public String getRH_Results(String participantID) {
+            SQLiteDatabase db = this.getReadableDatabase();
+            String rh = null;
+        String query = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = " + participantID;
+
+        Cursor mCursor = db.rawQuery(query, null);
+            if (mCursor != null) {
+                if (mCursor.getCount() > 0) {
+                    mCursor.moveToFirst();
+                    rh = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_RH_STATUS));
+                }
+            }
+            db.close();
+            return rh;
+
+    }
     public rh_resultsContract getRH_Results(String participantID, String status) {
 
         // Select All Query
@@ -625,30 +843,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
-  public Long addFilledForms(FilledFormsContract ffc) {
+
+    public Long addFilledForms(FilledFormsContract ffc) {
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase();
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-      values.put(FilledFormsTable.COLUMN__ID, ffc.get_id());
-      values.put(FilledFormsTable.COLUMN_USER, ffc.getuser());
-      values.put(FilledFormsTable.COLUMN_PARTICIPANTID, ffc.getparticipantid());
-      values.put(FilledFormsTable.COLUMN_RH_STATUS, ffc.getrh_status());
-      values.put(FilledFormsTable.COLUMN_F5, ffc.getf5());
-      values.put(FilledFormsTable.COLUMN_F8, ffc.getf8());
-      values.put(FilledFormsTable.COLUMN_F9, ffc.getf9());
-      values.put(FilledFormsTable.COLUMN_F10FIRST, ffc.getf10first());
-      values.put(FilledFormsTable.COLUMN_F15FIRST, ffc.getf15first());
-      values.put(FilledFormsTable.COLUMN_F10SECOND, ffc.getf10second());
-      values.put(FilledFormsTable.COLUMN_F15SECOND, ffc.getf15second());
-      values.put(FilledFormsTable.COLUMN_F11, ffc.getf11());
-      values.put(FilledFormsTable.COLUMN_F12, ffc.getf12());
-      values.put(FilledFormsTable.COLUMN_F13, ffc.getf13());
-      values.put(FilledFormsTable.COLUMN_F14, ffc.getf14());
-      values.put(FilledFormsTable.COLUMN_F16, ffc.getf16());
+        values.put(FilledFormsTable.COLUMN_USER, ffc.getuser());
+        values.put(FilledFormsTable.COLUMN_PARTICIPANTID, ffc.getparticipantid());
+        values.put(FilledFormsTable.COLUMN_F5, ffc.getf5());
+        values.put(FilledFormsTable.COLUMN_F8, ffc.getf8());
+        values.put(FilledFormsTable.COLUMN_F9, ffc.getf9());
+        values.put(FilledFormsTable.COLUMN_F10FIRST, ffc.getf10first());
+        values.put(FilledFormsTable.COLUMN_F15FIRST, ffc.getf15first());
+        values.put(FilledFormsTable.COLUMN_F10SECOND, ffc.getf10second());
+        values.put(FilledFormsTable.COLUMN_F15SECOND, ffc.getf15second());
+        values.put(FilledFormsTable.COLUMN_F11, ffc.getf11());
+        values.put(FilledFormsTable.COLUMN_F12, ffc.getf12());
+        values.put(FilledFormsTable.COLUMN_F13, ffc.getf13());
+        values.put(FilledFormsTable.COLUMN_F14, ffc.getf14());
+        values.put(FilledFormsTable.COLUMN_F16, ffc.getf16());
+        values.put(FilledFormsTable.COLUMN_SYNCED, ffc.getsynced());
+        values.put(FilledFormsTable.COLUMN_SYNCED_DATE, ffc.getsynced_date());
 
 
-      // Insert the new row, returning the primary key value of the new row
+        // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
                 FormsContract.FormsTable.TABLE_NAME,
@@ -704,6 +923,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
         values.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, rh.getF10_acceptance());
         values.put(RH_ResultsTable.COLUMN_F15_ADVERSE, rh.getF15_adverse());
+        values.put(RH_ResultsTable.COLUMN_F5, rh.getf5());
+        values.put(RH_ResultsTable.COLUMN_F8, rh.getf8());
+        values.put(RH_ResultsTable.COLUMN_F9, rh.getf9());
+        values.put(RH_ResultsTable.COLUMN_F10FIRST, rh.getf10first());
+        values.put(RH_ResultsTable.COLUMN_F15FIRST, rh.getf15first());
+        values.put(RH_ResultsTable.COLUMN_F10SECOND, rh.getf10second());
+        values.put(RH_ResultsTable.COLUMN_F15SECOND, rh.getf15second());
+        values.put(RH_ResultsTable.COLUMN_F11, rh.getf11());
+        values.put(RH_ResultsTable.COLUMN_F12, rh.getf12());
+        values.put(RH_ResultsTable.COLUMN_F13, rh.getf13());
+        values.put(RH_ResultsTable.COLUMN_F14, rh.getf14());
+        values.put(RH_ResultsTable.COLUMN_F16, rh.getf16());
+
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
@@ -733,7 +965,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+    public void updateSyncedFilledForms(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_SYNCED, true);
+        values.put(FilledFormsTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = FilledFormsTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                FilledFormsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
 
 
     public void updateSyncedFetus(String id) {
@@ -918,6 +1167,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             while (c.moveToNext()) {
                 FormsContract fc = new FormsContract();
                 allFC.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return allFC;
+    }
+    public Collection<FilledFormsContract> getUnsyncedFilledForms() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                FilledFormsTable.COLUMN__ID,
+                FilledFormsTable.COLUMN_USER,
+                FilledFormsTable.COLUMN_PARTICIPANTID,
+                FilledFormsTable.COLUMN_F5,
+                FilledFormsTable.COLUMN_F8,
+                FilledFormsTable.COLUMN_F9,
+                FilledFormsTable.COLUMN_F10FIRST,
+                FilledFormsTable.COLUMN_F15FIRST,
+                FilledFormsTable.COLUMN_F10SECOND,
+                FilledFormsTable.COLUMN_F15SECOND,
+                FilledFormsTable.COLUMN_F11,
+                FilledFormsTable.COLUMN_F12,
+                FilledFormsTable.COLUMN_F13,
+                FilledFormsTable.COLUMN_F14,
+                FilledFormsTable.COLUMN_F16,
+                FilledFormsTable.COLUMN_SYNCED,
+                FilledFormsTable.COLUMN_SYNCED_DATE,
+
+        };
+        String whereClause = FilledFormsTable.COLUMN_SYNCED + " is null OR " + FilledFormsTable.COLUMN_SYNCED + "=''";
+        String[] whereArgs = new String[]{};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                FilledFormsTable._ID + " ASC";
+
+        Collection<FilledFormsContract> allFC = new ArrayList<FilledFormsContract>();
+        try {
+            c = db.query(
+                    FilledFormsTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                FilledFormsContract ffc = new FilledFormsContract();
+                allFC.add(ffc.Hydrate(c));
             }
         } finally {
             if (c != null) {
@@ -1402,6 +1708,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
+
     public Collection<FormsContract> getUnsyncedForms15() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1754,6 +2061,423 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
+    /*todo copy these functions and update Rh table*/
+    public int updatef5filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F5, MainApp.ffc.getf5());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef9filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F9, MainApp.ffc.getf9());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef8filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F8, MainApp.ffc.getf8());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+"= " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef10firstfilled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F10FIRST, MainApp.ffc.getf10first());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef10secondfilled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F10SECOND, MainApp.ffc.getf10second());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef15firstfilled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F15FIRST, MainApp.ffc.getf15first());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef15secondfilled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F15SECOND, MainApp.ffc.getf15second());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef11filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F11, MainApp.ffc.getf11());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef12filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F12, MainApp.ffc.getf12());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef13filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F13, MainApp.ffc.getf13());
+
+// Which row to update, based on the ID
+ String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef14filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F14, MainApp.ffc.getf14());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef16filled() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FilledFormsTable.COLUMN_F16, MainApp.ffc.getf16());
+
+// Which row to update, based on the ID
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
+
+        int count = db.update(FilledFormsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef5filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F5, MainApp.rh.getf5());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef9filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F9, MainApp.rh.getf9());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef8filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F8, MainApp.rh.getf8());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+"= " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef10firstfilledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F10FIRST, MainApp.rh.getf10first());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef10secondfilledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F10SECOND, MainApp.rh.getf10second());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef15firstfilledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F15FIRST, MainApp.rh.getf15first());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef15secondfilledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F15SECOND, MainApp.rh.getf15second());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef11filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F11, MainApp.rh.getf11());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef12filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F12, MainApp.rh.getf12());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef13filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F13, MainApp.rh.getf13());
+
+// Which row to update, based on the ID
+ String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef14filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F14, MainApp.rh.getf14());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updatef16filledinRH() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F16, MainApp.rh.getf16());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    /*todo copy these functions and update Rh table end*/
+
 
 
     public int updateEnding4() {
@@ -2039,6 +2763,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
 
 
 }

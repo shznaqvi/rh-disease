@@ -234,6 +234,7 @@ public class F07DActivity extends Activity {
 
         int updcount = db.updateF07D();
 
+
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;

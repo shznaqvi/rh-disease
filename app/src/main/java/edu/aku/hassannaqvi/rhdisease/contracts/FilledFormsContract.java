@@ -10,7 +10,6 @@ public class FilledFormsContract {
     private String _id = "";
     private String user = "";
     private String participantid = "";
-    private String rh_status = "";
     private String f5 = "";
     private String f8 = "";
     private String f9 = "";
@@ -23,6 +22,8 @@ public class FilledFormsContract {
     private String f13 = "";
     private String f14 = "";
     private String f16 = "";
+    private String synced = "";
+    private String synced_date = "";
 
 
     public FilledFormsContract() {
@@ -32,7 +33,6 @@ public class FilledFormsContract {
         this._id = jsonObject.getString(FilledFormsTable.COLUMN__ID);
         this.user = jsonObject.getString(FilledFormsTable.COLUMN_USER);
         this.participantid = jsonObject.getString(FilledFormsTable.COLUMN_PARTICIPANTID);
-        this.rh_status = jsonObject.getString(FilledFormsTable.COLUMN_RH_STATUS);
         this.f5 = jsonObject.getString(FilledFormsTable.COLUMN_F5);
         this.f8 = jsonObject.getString(FilledFormsTable.COLUMN_F8);
         this.f9 = jsonObject.getString(FilledFormsTable.COLUMN_F9);
@@ -45,6 +45,9 @@ public class FilledFormsContract {
         this.f13 = jsonObject.getString(FilledFormsTable.COLUMN_F13);
         this.f14 = jsonObject.getString(FilledFormsTable.COLUMN_F14);
         this.f16 = jsonObject.getString(FilledFormsTable.COLUMN_F16);
+        this.synced= jsonObject.getString(FilledFormsTable.COLUMN_SYNCED);
+        this.synced_date= jsonObject.getString(FilledFormsTable.COLUMN_SYNCED_DATE);
+
         return this;
     }
 
@@ -52,7 +55,6 @@ public class FilledFormsContract {
         this._id = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN__ID));
         this.user = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_USER));
         this.participantid = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_PARTICIPANTID));
-        this.rh_status = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_RH_STATUS));
         this.f5 = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_F5));
         this.f8 = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_F8));
         this.f9 = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_F9));
@@ -65,6 +67,9 @@ public class FilledFormsContract {
         this.f13 = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_F13));
         this.f14 = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_F14));
         this.f16 = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_F16));
+        this.synced = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_SYNCED));
+        this.synced_date = cursor.getString(cursor.getColumnIndex(FilledFormsTable.COLUMN_SYNCED_DATE));
+
         return this;
     }
 
@@ -74,7 +79,6 @@ public class FilledFormsContract {
         json.put(FilledFormsTable.COLUMN__ID, this._id == null ? JSONObject.NULL : this._id);
         json.put(FilledFormsTable.COLUMN_USER, this.user == null ? JSONObject.NULL : this.user);
         json.put(FilledFormsTable.COLUMN_PARTICIPANTID, this.participantid == null ? JSONObject.NULL : this.participantid);
-        json.put(FilledFormsTable.COLUMN_RH_STATUS, this.rh_status == null ? JSONObject.NULL : this.rh_status);
         json.put(FilledFormsTable.COLUMN_F5, this.f5 == null ? JSONObject.NULL : this.f5);
         json.put(FilledFormsTable.COLUMN_F8, this.f8 == null ? JSONObject.NULL : this.f8);
         json.put(FilledFormsTable.COLUMN_F9, this.f9 == null ? JSONObject.NULL : this.f9);
@@ -87,6 +91,8 @@ public class FilledFormsContract {
         json.put(FilledFormsTable.COLUMN_F13, this.f13 == null ? JSONObject.NULL : this.f13);
         json.put(FilledFormsTable.COLUMN_F14, this.f14 == null ? JSONObject.NULL : this.f14);
         json.put(FilledFormsTable.COLUMN_F16, this.f16 == null ? JSONObject.NULL : this.f16);
+        json.put(FilledFormsTable.COLUMN_SYNCED, this.synced == null ? JSONObject.NULL : this.synced);
+        json.put(FilledFormsTable.COLUMN_SYNCED_DATE, this.synced_date == null ? JSONObject.NULL : this.synced_date);
         return json;
     }
 
@@ -114,13 +120,6 @@ public class FilledFormsContract {
         this.participantid = participantid;
     }
 
-    public String getrh_status() {
-        return rh_status;
-    }
-
-    public void setrh_status(String rh_status) {
-        this.rh_status = rh_status;
-    }
 
     public String getf5() {
         return f5;
@@ -218,13 +217,28 @@ public class FilledFormsContract {
         this.f16 = f16;
     }
 
+    public String getsynced() {
+        return synced;
+    }
+
+    public void setsynced(String synced) {
+        this.synced = synced;
+    }
+
+    public String getsynced_date() {
+        return synced_date;
+    }
+
+    public void setsynced_date(String synced_date) {
+        this.synced_date = synced_date;
+    }
+
     public static abstract class FilledFormsTable implements BaseColumns {
         public static final String TABLE_NAME = "filledforms";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN__ID = "_id";
         public static final String COLUMN_USER = "user";
         public static final String COLUMN_PARTICIPANTID = "participantid";
-        public static final String COLUMN_RH_STATUS = "rh_status";
         public static final String COLUMN_F5 = "f5";
         public static final String COLUMN_F8 = "f8";
         public static final String COLUMN_F9 = "f9";
@@ -237,7 +251,8 @@ public class FilledFormsContract {
         public static final String COLUMN_F13 = "f13";
         public static final String COLUMN_F14 = "f14";
         public static final String COLUMN_F16 = "f16";
-
+        public static final String COLUMN_SYNCED = "synced";
+        public static final String COLUMN_SYNCED_DATE = "synced_date";
 
         public static String _URL = "filledforms.php";
 

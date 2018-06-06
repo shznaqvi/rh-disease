@@ -145,10 +145,22 @@ public class F03BActivity extends Activity
 
     private boolean UpdateDB() {
         DatabaseHelper db = new DatabaseHelper(this);
-
+        MainApp.ffc.setparticipantid(MainApp.fc.getParticipantID());
+        MainApp.rh.setParticipantid(MainApp.fc.getParticipantID());
         int updcount = db.updateF03();
 
         if (updcount == 1) {
+            String participantID = db.checkParticipantIDExist(MainApp.fc.getParticipantID());
+            String participantIDinRH = db.checkParticipantIDExistinRH(MainApp.fc.getParticipantID());
+
+            if (participantID.equals(null)) {
+                long filledformid = db.addFilledForms(MainApp.ffc);
+                MainApp.ffc.set_id(String.valueOf(filledformid));
+            }
+            if (participantIDinRH.equals(null)) {
+                long filledformid = db.addRhResults(MainApp.rh);
+                MainApp.rh.set_id(String.valueOf(filledformid));
+            }
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {

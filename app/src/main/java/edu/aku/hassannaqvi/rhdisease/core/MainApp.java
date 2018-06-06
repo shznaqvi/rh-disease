@@ -27,7 +27,9 @@ import java.util.List;
 
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
 /**
@@ -77,6 +79,8 @@ public class MainApp extends Application {
     public static int loginFieldArea = -1;
     public static String child_name = "TEST";
     public static FormsContract fc = new FormsContract();
+    public static FilledFormsContract ffc = new FilledFormsContract();
+    public static rh_resultsContract rh = new rh_resultsContract();
     public static FormsContract fc4 = new FormsContract();
     public static FetusContract fec;
     public static JSONObject f03;
@@ -100,13 +104,22 @@ public class MainApp extends Application {
     public static String versionName;
 
    final public static String FORM5 = "5";
+   final public static String FORM7 = "7";
    final public static String FORM9 = "9";
    final public static String FORM8 = "8";
    final public static String FORM10 = "10";
    final public static String FORM11 = "11";
+   final public static String FORM12 = "12";
+   final public static String FORM13 = "13";
+   final public static String FORM14 = "14";
    final public static String FORM15 = "15";
+   final public static String FORM16 = "16";
    final public static String RH_POSITIVE = "1";
    final public static String RH_NEGATIVE = "2";
+  public static boolean F10First = false;
+   public static boolean F10Second = false;
+   public static boolean F15First = false;
+   public static boolean F15Second = false;
 
 
     //    Total No of Alive members got from Section B

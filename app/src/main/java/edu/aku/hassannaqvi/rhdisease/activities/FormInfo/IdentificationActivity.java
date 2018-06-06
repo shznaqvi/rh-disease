@@ -79,7 +79,6 @@ public class IdentificationActivity extends Activity {
 
         fldGrpfooter.setVisibility(View.GONE);
 
-
         f08a001999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -91,7 +90,6 @@ public class IdentificationActivity extends Activity {
                 }
             }
         });
-
     }
 
     @OnClick(R.id.btnCheck)
@@ -100,90 +98,176 @@ public class IdentificationActivity extends Activity {
         String formType = MainApp.formType;
         switch (formType) {
             case MainApp.FORM10:
-            case MainApp.FORM8:
-                formtype = 9;
-                // if (db.checkForRH_Results(participantId.getText().toString(), formtype)||db.checkForRH_Results(participantId.getText().toString())) {
-                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE, MainApp.FORM9)) {
-                    if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
-                        rh_resultsContract resultsContract = new rh_resultsContract();
-                        resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
-                        if (!resultsContract.get_id().equals("")) {
-                            try {
-                                String lmpDate = resultsContract.getLmp();
-                                DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                                Date frmDate = sdf.parse(lmpDate);
-                                Date curretDate = new Date();
-                                Double GA =  getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
-                                if (GA >= 32 && GA <= 36) {
-                                    fldGrpfooter.setVisibility(View.VISIBLE);
-                                    Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
-                                } else {
-                                    Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
-                                }
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE, MainApp.FORM9)) {
-                        String lmp = db.getRH_Results(participantId.getText().toString(),  MainApp.RH_NEGATIVE, MainApp.FORM9);
-                        try {
-                            DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                            Date frmDate = sdf.parse(lmp);
-                            Date curretDate = new Date();
-                            Double GA =  getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
-                            if (GA >= 32 && GA <= 36) {
+                if (!db.isF10firstdublicate(participantId.getText().toString())) {
+                    if (db.isF8dublicate(participantId.getText().toString())) {
+                        if (db.checkForRH_Results(participantId.getText().toString())) {
+                            if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
+                                MainApp.F10First = true;
                                 fldGrpfooter.setVisibility(View.VISIBLE);
-                                Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
-
                             } else {
-                                Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
+                                fldGrpfooter.setVisibility(View.GONE);
+                                Toast.makeText(this, "Rh is positive!", Toast.LENGTH_LONG).show();
                             }
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Rh status not found: Participant is not Eligible !", Toast.LENGTH_LONG).show();
                         }
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Please fill Form 8 first", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    if (!db.isF10seconddublicate(participantId.getText().toString())) {
+//                        if (db.isF8dublicate(participantId.getText().toString())) {
+                            if (db.checkForRH_Results(participantId.getText().toString())) {
+                                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
+                                    MainApp.F10Second = true;
+                                    fldGrpfooter.setVisibility(View.VISIBLE);
+                                } else {
+                                    fldGrpfooter.setVisibility(View.GONE);
+                                    Toast.makeText(this, "Rh is positive!", Toast.LENGTH_LONG).show();
+                                }
+                            } else {
+                                fldGrpfooter.setVisibility(View.GONE);
+                                Toast.makeText(this, "Rh status not found: Participant is not Eligible !", Toast.LENGTH_LONG).show();
+                            }
+                       /* } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Please fill Form 8 first", Toast.LENGTH_LONG).show();
+                        }*/
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Already filled form 10 two times for this participant!", Toast.LENGTH_LONG).show();
+                    }
+                }
+                break;
+            case MainApp.FORM8:
+                if (!db.isF8dublicate(participantId.getText().toString())) {
+                    if (db.isF9dublicate(participantId.getText().toString())) {
+                        if (db.checkForRH_Results(participantId.getText().toString())) {
+                            if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
+                                rh_resultsContract resultsContract = new rh_resultsContract();
+                                resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
+                                if (!resultsContract.get_id().equals("")) {
+                                    try {
+                                        String lmpDate = resultsContract.getLmp();
+                                        DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                                        Date frmDate = sdf.parse(lmpDate);
+                                        Date curretDate = new Date();
+                                        Double GA = getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
+                                        if (GA >= 32 && GA <= 36) {
+                                            fldGrpfooter.setVisibility(View.VISIBLE);
+                                            Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE)) {
+                                fldGrpfooter.setVisibility(View.VISIBLE);
+                            }
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Rh status not found: Participant is not Eligible !", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Form 9 of this Participant ID is not Filled!", Toast.LENGTH_LONG).show();
                     }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
-                    Toast.makeText(this, "Participant has no RH-Results or has RH-Positive", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Form 8 of this Participant ID is already Filled!", Toast.LENGTH_LONG).show();
                 }
-
                 break;
             case MainApp.FORM9:
-                formtype = 7;
-                if (db.checkFormParticipantID(participantId.getText().toString(), String.valueOf(formtype)) || db.checkFormParticipantID(participantId.getText().toString())) {
-                    fldGrpfooter.setVisibility(View.VISIBLE);
+//                formtype = 7;
+                if (!db.isF9dublicate(participantId.getText().toString())) {
+                    if (db.checkF5filled(participantId.getText().toString())) {
+//                    if (db.checkFormParticipantID(participantId.getText().toString(), String.valueOf(formtype)) || db.checkFormParticipantID(participantId.getText().toString())) {
+                        fldGrpfooter.setVisibility(View.VISIBLE);
+                   /* } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
+                    }*/
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Form 5 of this Participant ID is not Filled yet or is not eligible!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
-                    Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Form 9 of this Participant ID is already Filled!", Toast.LENGTH_LONG).show();
                 }
                 break;
             case MainApp.FORM11:
-                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE, MainApp.FORM9)) {
-                    fldGrpfooter.setVisibility(View.VISIBLE);
-                } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE) || db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE, MainApp.FORM9)) {
-                    if (db.checkForf15Adverse(participantId.getText().toString()) || db.checkForf15Adverse(participantId.getText().toString(), MainApp.FORM10)) {
-                        fldGrpfooter.setVisibility(View.VISIBLE);
+                if (!db.isF11dublicate(participantId.getText().toString())) {
+                    if (db.checkForRH_Results(participantId.getText().toString())) {
+                    String rhResults = db.getRH_Results(participantId.getText().toString());
+                    if (rhResults.equals(MainApp.RH_NEGATIVE)) {
+                        if (db.isF10firstdublicate(participantId.getText().toString())) {
+//                            if (db.checkForf15Adverse(participantId.getText().toString()) || db.checkForf15Adverse(participantId.getText().toString(), MainApp.FORM10)) {
+                            if (db.checkForf15Adverse(participantId.getText().toString())) {
+                                fldGrpfooter.setVisibility(View.VISIBLE);
+                            } else {
+                                fldGrpfooter.setVisibility(View.GONE);
+                                Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                            }
+
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Rh-Results is negative fill form 10 first", Toast.LENGTH_LONG).show();
+                        }
+
+                    } else if (rhResults.equals(MainApp.RH_POSITIVE)) {
+                        if (db.isF8dublicate(participantId.getText().toString())) {
+                            fldGrpfooter.setVisibility(View.VISIBLE);
+
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Rh-Results is positive fill form 8 first", Toast.LENGTH_LONG).show();
+                        }
                     } else {
                         fldGrpfooter.setVisibility(View.GONE);
-                        Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this, "Rh-Results not found!", Toast.LENGTH_LONG).show();
+
                     }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
-                   // fldGrpfooter.setVisibility(View.VISIBLE);
-                    Toast.makeText(this, "Participant is already Enrolled or Participant ID is not allocated yet!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Rh results empty or Please fill previous form first ", Toast.LENGTH_LONG).show();
+                }
+                } else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Form 11 of this Participant ID is already Filled!", Toast.LENGTH_LONG).show();
                 }
                 break;
             case MainApp.FORM15:
-                if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
-                    fldGrpfooter.setVisibility(View.VISIBLE);
+                if (!db.isF15firstdublicate(participantId.getText().toString())) {
+                    if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
+                        MainApp.F15First = true;
+                        fldGrpfooter.setVisibility(View.VISIBLE);
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        //fldGrpfooter.setVisibility(View.VISIBLE);
+                        Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                    }
                 } else {
-                    fldGrpfooter.setVisibility(View.GONE);
-                    //fldGrpfooter.setVisibility(View.VISIBLE);
-                    Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                    if (!db.isF15seconddublicate(participantId.getText().toString())) {
+                        if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
+                            MainApp.F15Second = true;
+                            fldGrpfooter.setVisibility(View.VISIBLE);
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            //fldGrpfooter.setVisibility(View.VISIBLE);
+                            Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Form 15 of this Participant ID is already Filled two times!", Toast.LENGTH_LONG).show();
+                    }
                 }
                 break;
         }
-
     }
 
 
@@ -196,7 +280,7 @@ public class IdentificationActivity extends Activity {
         long diffInMillies = date2.getTime() - date1.getTime();
         long weeks = timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) / 7;
         long days = timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) % 7;
-        Double gage =  Double.parseDouble(weeks+"."+days);
+        Double gage = Double.parseDouble(weeks + "." + days);
         return gage;
     }
 
@@ -346,13 +430,26 @@ public class IdentificationActivity extends Activity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-
+        MainApp.ffc.setuser(MainApp.userName);
+        MainApp.ffc.setparticipantid(MainApp.fc.getParticipantID());
+        MainApp.rh.setParticipantid(MainApp.fc.getParticipantID());
         long updcount = db.addForm(MainApp.fc);
 
         MainApp.fc.set_ID(String.valueOf(updcount));
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+            String participantID = db.checkParticipantIDExist(participantId.getText().toString());
+            String participantIDinRH = db.checkParticipantIDExistinRH(participantId.getText().toString());
+
+            if (participantID.equals(null)) {
+                long filledformid = db.addFilledForms(MainApp.ffc);
+                MainApp.ffc.set_id(String.valueOf(filledformid));
+            }
+            if (participantIDinRH.equals(null)) {
+                long filledformid = db.addRhResults(MainApp.rh);
+                MainApp.rh.set_id(String.valueOf(filledformid));
+            }
 
             MainApp.fc.set_UID(
                     (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));

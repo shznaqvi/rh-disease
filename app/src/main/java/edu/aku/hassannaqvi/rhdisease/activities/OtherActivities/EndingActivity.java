@@ -3,10 +3,12 @@ package edu.aku.hassannaqvi.rhdisease.activities.OtherActivities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -96,13 +98,102 @@ public class EndingActivity extends Activity {
     }
 
     private boolean UpdateDB() {
+        String completeStatus = dcstatus01.isChecked() ? "1" : dcstatus02.isChecked() ? "0" : "99";
         DatabaseHelper db = new DatabaseHelper(this);
+        if (!TextUtils.isEmpty(MainApp.fc.getParticipantID())) {
+            switch (MainApp.formType) {
+                //todo implement save it temporarely in Rh table as well!
+                case MainApp.FORM16:
+                    MainApp.ffc.setf16(completeStatus);
+                    MainApp.rh.setf16(completeStatus);
+                    db.updatef16filled();
+                    db.updatef16filledinRH();
+                    break;
 
+                case MainApp.FORM14:
+                    MainApp.ffc.setf14(completeStatus);
+                    MainApp.rh.setf14(completeStatus);
+                    db.updatef14filled();
+                    db.updatef14filledinRH();
+                    break;
+
+                case MainApp.FORM13:
+                    MainApp.ffc.setf13(completeStatus);
+                    db.updatef13filled();
+                    db.updatef13filledinRH();
+                    break;
+                case MainApp.FORM12:
+                    MainApp.ffc.setf12(completeStatus);
+                    db.updatef12filled();
+                    db.updatef12filledinRH();
+                    break;
+
+                case MainApp.FORM11:
+                    MainApp.ffc.setf11(completeStatus);
+                    db.updatef11filled();
+                    db.updatef11filledinRH();
+                    break;
+
+                case MainApp.FORM15:
+                    //Todo: should implement a condition of defining its first time insertion or second
+                    if (MainApp.F15First) {
+                    MainApp.ffc.setf15first(completeStatus);
+                    db.updatef15firstfilled();
+                    db.updatef15firstfilledinRH();
+                        MainApp.F15First = false;
+                        MainApp.F15Second = false;
+                    }
+                    else if (MainApp.F15Second) {
+                        MainApp.ffc.setf15second(completeStatus);
+                        db.updatef15secondfilled();
+                        db.updatef15secondfilledinRH();
+                        MainApp.F15First = false;
+                        MainApp.F15Second = false;
+                    }
+                    break;
+
+                case MainApp.FORM10:
+                    //Todo: should implement a condition of defining its first time insertion or second
+                    if (MainApp.F10First) {
+                        MainApp.ffc.setf10first(completeStatus);
+                        db.updatef10firstfilled();
+                        db.updatef10firstfilledinRH();
+                        MainApp.F10First = false;
+                        MainApp.F10Second = false;
+                    }
+                    else if (MainApp.F10Second){
+                    MainApp.ffc.setf10second(completeStatus);
+                    db.updatef10secondfilled();
+                    db.updatef10secondfilledinRH();
+                        MainApp.F10First = false;
+                        MainApp.F10Second = false;
+                    }
+                    break;
+
+                case MainApp.FORM8:
+                    MainApp.ffc.setf8(completeStatus);
+                    db.updatef8filled();
+                    db.updatef8filledinRH();
+                    break;
+                case MainApp.FORM9:
+                    MainApp.ffc.setf9(completeStatus);
+                    db.updatef9filled();
+                    db.updatef9filledinRH();
+
+                    break;
+                case MainApp.FORM7:
+                    MainApp.ffc.setf5(completeStatus);
+                    db.updatef5filled();
+                    db.updatef5filledinRH();
+                    break;
+            }
+        }
         int updcount = db.updateEnding();
         int updcount1 = 0;
         if (MainApp.formType.equals("7")) {
             updcount1 = db.updateEnding4();
         }
+
 
         if (updcount == 1 || updcount1 == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
