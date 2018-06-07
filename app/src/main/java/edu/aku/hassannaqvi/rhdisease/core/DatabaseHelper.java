@@ -265,9 +265,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(RH_ResultsTable.COLUMN_RH_STATUS, rh.getRh_status());
                 values.put(RH_ResultsTable.COLUMN_GA_WEEKS, rh.getGa_weeks());
                 values.put(RH_ResultsTable.COLUMN_GA_DAYS, rh.getGa_days());
-                values.put(RH_ResultsTable.COLUMN_FORM5_UID, rh.getForm5_uid());
                 values.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, rh.getF10_acceptance());
                 values.put(RH_ResultsTable.COLUMN_F15_ADVERSE, rh.getF15_adverse());
+                values.put(RH_ResultsTable.COLUMN_F5, rh.getf5());
+                values.put(RH_ResultsTable.COLUMN_F8, rh.getf8());
+                values.put(RH_ResultsTable.COLUMN_F9, rh.getf9());
+                values.put(RH_ResultsTable.COLUMN_F10FIRST, rh.getf10first());
+                values.put(RH_ResultsTable.COLUMN_F15FIRST, rh.getf15first());
+                values.put(RH_ResultsTable.COLUMN_F10SECOND, rh.getf10second());
+                values.put(RH_ResultsTable.COLUMN_F15SECOND, rh.getf15second());
+                values.put(RH_ResultsTable.COLUMN_F11, rh.getf11());
+                values.put(RH_ResultsTable.COLUMN_F12, rh.getf12());
+                values.put(RH_ResultsTable.COLUMN_F13, rh.getf13());
+                values.put(RH_ResultsTable.COLUMN_F14, rh.getf14());
+                values.put(RH_ResultsTable.COLUMN_F16, rh.getf16());
+
 
 
                 db.insert(RH_ResultsTable.TABLE_NAME, null, values);
@@ -554,6 +566,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
                 lmp = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_LMP));
             }
         }
@@ -568,11 +581,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
                 partID = mCursor.getString(mCursor.getColumnIndex(FilledFormsTable.COLUMN_PARTICIPANTID));
             }
         }
         db.close();
         return partID;
+    }
+    public String getidof(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String ID = null;
+        String query = "SELECT * FROM " + FilledFormsTable.TABLE_NAME + " WHERE " + FilledFormsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                ID = mCursor.getString(mCursor.getColumnIndex(FilledFormsTable.COLUMN__ID));
+            }
+        }
+        db.close();
+        return ID;
+    }
+    public String getRhidof(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String ID = null;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                ID = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN__ID));
+            }
+        }
+        db.close();
+        return ID;
     }
     public String checkParticipantIDExistinRH(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -582,6 +626,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
             if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
                 partID = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_PARTICIPANTID));
             }
         }
@@ -851,6 +896,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FilledFormsTable.COLUMN_USER, ffc.getuser());
         values.put(FilledFormsTable.COLUMN_PARTICIPANTID, ffc.getparticipantid());
+        values.put(FilledFormsTable.COLUMN_FORMDATE, ffc.getformDate());
         values.put(FilledFormsTable.COLUMN_F5, ffc.getf5());
         values.put(FilledFormsTable.COLUMN_F8, ffc.getf8());
         values.put(FilledFormsTable.COLUMN_F9, ffc.getf9());
@@ -863,6 +909,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F13, ffc.getf13());
         values.put(FilledFormsTable.COLUMN_F14, ffc.getf14());
         values.put(FilledFormsTable.COLUMN_F16, ffc.getf16());
+        values.put(FilledFormsTable.COLUMN_DEVICEID, ffc.getdeviceID());
         values.put(FilledFormsTable.COLUMN_SYNCED, ffc.getsynced());
         values.put(FilledFormsTable.COLUMN_SYNCED_DATE, ffc.getsynced_date());
 
@@ -870,8 +917,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
         newRowId = db.insert(
-                FormsContract.FormsTable.TABLE_NAME,
-                FormsContract.FormsTable.COLUMN_NAME_NULLABLE,
+                FilledFormsTable.TABLE_NAME,
+                FilledFormsTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -1186,6 +1233,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FilledFormsTable.COLUMN__ID,
                 FilledFormsTable.COLUMN_USER,
                 FilledFormsTable.COLUMN_PARTICIPANTID,
+                FilledFormsTable.COLUMN_FORMDATE,
                 FilledFormsTable.COLUMN_F5,
                 FilledFormsTable.COLUMN_F8,
                 FilledFormsTable.COLUMN_F9,
@@ -1198,6 +1246,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FilledFormsTable.COLUMN_F13,
                 FilledFormsTable.COLUMN_F14,
                 FilledFormsTable.COLUMN_F16,
+                FilledFormsTable.COLUMN_DEVICEID,
                 FilledFormsTable.COLUMN_SYNCED,
                 FilledFormsTable.COLUMN_SYNCED_DATE,
 
@@ -2275,6 +2324,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(RH_ResultsTable.COLUMN_F5, MainApp.rh.getf5());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
+    public int updaterhstatus() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_RH_STATUS, MainApp.rh.getRh_status());
 
 // Which row to update, based on the ID
         String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();

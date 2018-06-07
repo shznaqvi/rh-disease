@@ -100,7 +100,7 @@ public class IdentificationActivity extends Activity {
             case MainApp.FORM10:
                 if (!db.isF10firstdublicate(participantId.getText().toString())) {
                     if (db.isF8dublicate(participantId.getText().toString())) {
-                        if (db.checkForRH_Results(participantId.getText().toString())) {
+                        if (!db.checkForRH_Results(participantId.getText().toString())) {
                             if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
                                 MainApp.F10First = true;
                                 fldGrpfooter.setVisibility(View.VISIBLE);
@@ -119,18 +119,18 @@ public class IdentificationActivity extends Activity {
                 } else {
                     if (!db.isF10seconddublicate(participantId.getText().toString())) {
 //                        if (db.isF8dublicate(participantId.getText().toString())) {
-                            if (db.checkForRH_Results(participantId.getText().toString())) {
-                                if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
-                                    MainApp.F10Second = true;
-                                    fldGrpfooter.setVisibility(View.VISIBLE);
-                                } else {
-                                    fldGrpfooter.setVisibility(View.GONE);
-                                    Toast.makeText(this, "Rh is positive!", Toast.LENGTH_LONG).show();
-                                }
+                        if (!db.checkForRH_Results(participantId.getText().toString())) {
+                            if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
+                                MainApp.F10Second = true;
+                                fldGrpfooter.setVisibility(View.VISIBLE);
                             } else {
                                 fldGrpfooter.setVisibility(View.GONE);
-                                Toast.makeText(this, "Rh status not found: Participant is not Eligible !", Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Rh is positive!", Toast.LENGTH_LONG).show();
                             }
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Rh status not found: Participant is not Eligible !", Toast.LENGTH_LONG).show();
+                        }
                        /* } else {
                             fldGrpfooter.setVisibility(View.GONE);
                             Toast.makeText(this, "Please fill Form 8 first", Toast.LENGTH_LONG).show();
@@ -144,7 +144,7 @@ public class IdentificationActivity extends Activity {
             case MainApp.FORM8:
                 if (!db.isF8dublicate(participantId.getText().toString())) {
                     if (db.isF9dublicate(participantId.getText().toString())) {
-                        if (db.checkForRH_Results(participantId.getText().toString())) {
+                        if (!db.checkForRH_Results(participantId.getText().toString())) {
                             if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
                                 rh_resultsContract resultsContract = new rh_resultsContract();
                                 resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
@@ -202,40 +202,41 @@ public class IdentificationActivity extends Activity {
                 break;
             case MainApp.FORM11:
                 if (!db.isF11dublicate(participantId.getText().toString())) {
-                    if (db.checkForRH_Results(participantId.getText().toString())) {
-                    String rhResults = db.getRH_Results(participantId.getText().toString());
-                    if (rhResults.equals(MainApp.RH_NEGATIVE)) {
-                        if (db.isF10firstdublicate(participantId.getText().toString())) {
+                    if (!db.checkForRH_Results(participantId.getText().toString())) {
+                        String rhResults = db.getRH_Results(participantId.getText().toString());
+                        if (rhResults.equals(MainApp.RH_NEGATIVE)) {
+                            if (db.isF10firstdublicate(participantId.getText().toString())) {
 //                            if (db.checkForf15Adverse(participantId.getText().toString()) || db.checkForf15Adverse(participantId.getText().toString(), MainApp.FORM10)) {
-                            if (db.checkForf15Adverse(participantId.getText().toString())) {
-                                fldGrpfooter.setVisibility(View.VISIBLE);
+                                if (db.checkForf15Adverse(participantId.getText().toString())) {
+                                    fldGrpfooter.setVisibility(View.VISIBLE);
+                                } else {
+                                    fldGrpfooter.setVisibility(View.GONE);
+                                    fldGrpfooter.setVisibility(View.GONE);
+                                    Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                                }
+
                             } else {
                                 fldGrpfooter.setVisibility(View.GONE);
-                                Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(this, "Rh-Results is negative fill form 10 first", Toast.LENGTH_LONG).show();
                             }
 
+                        } else if (rhResults.equals(MainApp.RH_POSITIVE)) {
+                            if (db.isF8dublicate(participantId.getText().toString())) {
+                                fldGrpfooter.setVisibility(View.VISIBLE);
+
+                            } else {
+                                fldGrpfooter.setVisibility(View.GONE);
+                                Toast.makeText(this, "Rh-Results is positive fill form 8 first", Toast.LENGTH_LONG).show();
+                            }
                         } else {
                             fldGrpfooter.setVisibility(View.GONE);
-                            Toast.makeText(this, "Rh-Results is negative fill form 10 first", Toast.LENGTH_LONG).show();
-                        }
+                            Toast.makeText(this, "Rh-Results not found!", Toast.LENGTH_LONG).show();
 
-                    } else if (rhResults.equals(MainApp.RH_POSITIVE)) {
-                        if (db.isF8dublicate(participantId.getText().toString())) {
-                            fldGrpfooter.setVisibility(View.VISIBLE);
-
-                        } else {
-                            fldGrpfooter.setVisibility(View.GONE);
-                            Toast.makeText(this, "Rh-Results is positive fill form 8 first", Toast.LENGTH_LONG).show();
                         }
                     } else {
                         fldGrpfooter.setVisibility(View.GONE);
-                        Toast.makeText(this, "Rh-Results not found!", Toast.LENGTH_LONG).show();
-
+                        Toast.makeText(this, "Rh results empty or Please fill previous form first ", Toast.LENGTH_LONG).show();
                     }
-                } else {
-                    fldGrpfooter.setVisibility(View.GONE);
-                    Toast.makeText(this, "Rh results empty or Please fill previous form first ", Toast.LENGTH_LONG).show();
-                }
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Form 11 of this Participant ID is already Filled!", Toast.LENGTH_LONG).show();
@@ -243,23 +244,34 @@ public class IdentificationActivity extends Activity {
                 break;
             case MainApp.FORM15:
                 if (!db.isF15firstdublicate(participantId.getText().toString())) {
-                    if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
-                        MainApp.F15First = true;
-                        fldGrpfooter.setVisibility(View.VISIBLE);
-                    } else {
-                        fldGrpfooter.setVisibility(View.GONE);
-                        //fldGrpfooter.setVisibility(View.VISIBLE);
-                        Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
-                    }
-                } else {
-                    if (!db.isF15seconddublicate(participantId.getText().toString())) {
+                    if (db.isF10firstdublicate(participantId.getText().toString())) {
                         if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
-                            MainApp.F15Second = true;
+                            MainApp.F15First = true;
                             fldGrpfooter.setVisibility(View.VISIBLE);
                         } else {
                             fldGrpfooter.setVisibility(View.GONE);
                             //fldGrpfooter.setVisibility(View.VISIBLE);
                             Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Form 10 of this Participant ID is not filled!", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    if (!db.isF15seconddublicate(participantId.getText().toString())) {
+                        if (db.isF10seconddublicate(participantId.getText().toString())) {
+                            if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
+                                MainApp.F15Second = true;
+                                fldGrpfooter.setVisibility(View.VISIBLE);
+                            } else {
+                                fldGrpfooter.setVisibility(View.GONE);
+                                //fldGrpfooter.setVisibility(View.VISIBLE);
+                                Toast.makeText(this, "This Participant has no adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                            }
+                        } else {
+                            fldGrpfooter.setVisibility(View.GONE);
+                            Toast.makeText(this, "Form 10 of this Participant ID is not filled!", Toast.LENGTH_LONG).show();
                         }
                     } else {
                         fldGrpfooter.setVisibility(View.GONE);
@@ -432,6 +444,8 @@ public class IdentificationActivity extends Activity {
         DatabaseHelper db = new DatabaseHelper(this);
         MainApp.ffc.setuser(MainApp.userName);
         MainApp.ffc.setparticipantid(MainApp.fc.getParticipantID());
+        MainApp.ffc.setformDate(MainApp.fc.getFormDate());
+        MainApp.ffc.setdeviceID(MainApp.fc.getDeviceID());
         MainApp.rh.setParticipantid(MainApp.fc.getParticipantID());
         long updcount = db.addForm(MainApp.fc);
 
@@ -439,16 +453,21 @@ public class IdentificationActivity extends Activity {
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-            String participantID = db.checkParticipantIDExist(participantId.getText().toString());
+            //String participantID = db.checkParticipantIDExist(participantId.getText().toString());
             String participantIDinRH = db.checkParticipantIDExistinRH(participantId.getText().toString());
 
-            if (participantID.equals(null)) {
+          //  if (participantID.equals(null)) {
                 long filledformid = db.addFilledForms(MainApp.ffc);
                 MainApp.ffc.set_id(String.valueOf(filledformid));
-            }
+          /*  } else {
+                MainApp.ffc.set_id(db.getidof(participantId.getText().toString()));
+            }*/
+
             if (participantIDinRH.equals(null)) {
-                long filledformid = db.addRhResults(MainApp.rh);
-                MainApp.rh.set_id(String.valueOf(filledformid));
+                long filledformidrh = db.addRhResults(MainApp.rh);
+                MainApp.rh.set_id(String.valueOf(filledformidrh));
+            } else {
+                MainApp.rh.set_id(db.getRhidof(participantId.getText().toString()));
             }
 
             MainApp.fc.set_UID(

@@ -632,6 +632,7 @@ public class F09AActivity extends Activity {
 
 
         if (updcount == 1) {
+            db.updaterhstatus();
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
         } else {
@@ -1116,7 +1117,15 @@ public class F09AActivity extends Activity {
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setLmp(lmp);
         MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":f09a003rh02.isChecked()?"2":"0");
-
+        String rhResult;
+        if (f09a003rh01.isChecked()) {
+            rhResult = "1";
+        }else if(f09a003rh02.isChecked()){
+           rhResult = "2";
+        }else {
+            rhResult = "0";
+        }
+MainApp.rh.setRh_status(rhResult);
 
         //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 

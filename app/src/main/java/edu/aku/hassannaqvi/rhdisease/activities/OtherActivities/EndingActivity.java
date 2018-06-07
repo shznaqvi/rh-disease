@@ -119,25 +119,23 @@ public class EndingActivity extends Activity {
 
                 case MainApp.FORM13:
                     MainApp.ffc.setf13(completeStatus);
+                    MainApp.rh.setf13(completeStatus);
                     db.updatef13filled();
                     db.updatef13filledinRH();
                     break;
                 case MainApp.FORM12:
                     MainApp.ffc.setf12(completeStatus);
+                    MainApp.rh.setf12(completeStatus);
                     db.updatef12filled();
                     db.updatef12filledinRH();
                     break;
 
-                case MainApp.FORM11:
-                    MainApp.ffc.setf11(completeStatus);
-                    db.updatef11filled();
-                    db.updatef11filledinRH();
-                    break;
 
                 case MainApp.FORM15:
                     //Todo: should implement a condition of defining its first time insertion or second
                     if (MainApp.F15First) {
                     MainApp.ffc.setf15first(completeStatus);
+                    MainApp.rh.setf15first(completeStatus);
                     db.updatef15firstfilled();
                     db.updatef15firstfilledinRH();
                         MainApp.F15First = false;
@@ -145,17 +143,18 @@ public class EndingActivity extends Activity {
                     }
                     else if (MainApp.F15Second) {
                         MainApp.ffc.setf15second(completeStatus);
+                        MainApp.rh.setf15second(completeStatus);
                         db.updatef15secondfilled();
                         db.updatef15secondfilledinRH();
                         MainApp.F15First = false;
                         MainApp.F15Second = false;
                     }
-                    break;
 
                 case MainApp.FORM10:
                     //Todo: should implement a condition of defining its first time insertion or second
                     if (MainApp.F10First) {
                         MainApp.ffc.setf10first(completeStatus);
+                        MainApp.rh.setf10first(completeStatus);
                         db.updatef10firstfilled();
                         db.updatef10firstfilledinRH();
                         MainApp.F10First = false;
@@ -163,26 +162,32 @@ public class EndingActivity extends Activity {
                     }
                     else if (MainApp.F10Second){
                     MainApp.ffc.setf10second(completeStatus);
+                    MainApp.rh.setf10second(completeStatus);
                     db.updatef10secondfilled();
                     db.updatef10secondfilledinRH();
                         MainApp.F10First = false;
                         MainApp.F10Second = false;
                     }
-                    break;
-
+                case MainApp.FORM11:
+                    if(!MainApp.formType.equals(MainApp.FORM10)||!MainApp.formType.equals(MainApp.FORM15)){
+                        MainApp.ffc.setf11(completeStatus);
+                        MainApp.rh.setf11(completeStatus);
+                        db.updatef11filled();
+                        db.updatef11filledinRH();
+                    }
                 case MainApp.FORM8:
                     MainApp.ffc.setf8(completeStatus);
+                    MainApp.rh.setf8(completeStatus);
                     db.updatef8filled();
                     db.updatef8filledinRH();
-                    break;
                 case MainApp.FORM9:
                     MainApp.ffc.setf9(completeStatus);
+                    MainApp.rh.setf9(completeStatus);
                     db.updatef9filled();
                     db.updatef9filledinRH();
-
-                    break;
                 case MainApp.FORM7:
                     MainApp.ffc.setf5(completeStatus);
+                    MainApp.rh.setf5(completeStatus);
                     db.updatef5filled();
                     db.updatef5filledinRH();
                     break;

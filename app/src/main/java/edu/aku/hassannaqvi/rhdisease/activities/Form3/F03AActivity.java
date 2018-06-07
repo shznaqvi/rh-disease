@@ -228,7 +228,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         MainApp.fc.setFormType("5");
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setLmp(f03a002date.getText().toString());
-
+        MainApp.rh.setLmp(f03a002date.getText().toString());
         MainApp.f03 = new JSONObject();
 
         MainApp.f03.put("screennum", screeningnum.getText().toString());
@@ -389,7 +389,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         } else {
             fldGrpf03a002.setVisibility(View.GONE);
             MainApp.eligibleFlag = isInclude();
-            f03a002.clearCheck();
+//            f03a002.clearCheck();
             f03a002date.setText(null);
         }
 
