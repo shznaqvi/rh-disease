@@ -24,6 +24,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 
 public class F07BActivity extends Activity
@@ -1503,6 +1504,9 @@ public class F07BActivity extends Activity
             } else {
                 f07b01901.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f07b01901,0,20,getString(R.string.f07b01901)," number")) {
+                return false;
+            }
 
             if (f07b01902.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01902), Toast.LENGTH_SHORT).show();
@@ -1513,6 +1517,9 @@ public class F07BActivity extends Activity
                 f07b01902.setError(null);
             }
 
+            if (!validatorClass.RangeTextBox(this,f07b01902,0,20,getString(R.string.f07b01902)," number")) {
+                return false;
+            }
             if (f07b01903.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01903), Toast.LENGTH_SHORT).show();
                 f07b01903.setError("This data is required");
@@ -1522,6 +1529,9 @@ public class F07BActivity extends Activity
                 f07b01903.setError(null);
             }
 
+            if (!validatorClass.RangeTextBox(this,f07b01903,0,20,getString(R.string.f07b01903)," number")) {
+                return false;
+            }
             if (f07b01904.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01904), Toast.LENGTH_SHORT).show();
                 f07b01904.setError("This data is required");
@@ -1531,6 +1541,9 @@ public class F07BActivity extends Activity
                 f07b01904.setError(null);
             }
 
+            if (!validatorClass.RangeTextBox(this,f07b01904,0,20,getString(R.string.f07b01904)," number")) {
+                return false;
+            }
             if (f07b01905.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01905), Toast.LENGTH_SHORT).show();
                 f07b01905.setError("This data is required");
@@ -1540,6 +1553,9 @@ public class F07BActivity extends Activity
                 f07b01905.setError(null);
             }
 
+            if (!validatorClass.RangeTextBox(this,f07b01905,0,20,getString(R.string.f07b01905)," number")) {
+                return false;
+            }
             if (f07b01906.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01906), Toast.LENGTH_SHORT).show();
                 f07b01906.setError("This data is required");
@@ -1549,6 +1565,9 @@ public class F07BActivity extends Activity
                 f07b01906.setError(null);
             }
 
+            if (!validatorClass.RangeTextBox(this,f07b01906,0,20,getString(R.string.f07b01906)," number")) {
+                return false;
+            }
             if (f07b01907.getText().toString().isEmpty()) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07b01907), Toast.LENGTH_SHORT).show();
                 f07b01907.setError("This data is required");
@@ -1556,6 +1575,10 @@ public class F07BActivity extends Activity
                 return false;
             } else {
                 f07b01907.setError(null);
+            }
+
+            if (!validatorClass.RangeTextBox(this,f07b01907,0,20,getString(R.string.f07b01907)," number")) {
+                return false;
             }
         }
 

@@ -24,6 +24,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 public class F07DActivity extends Activity {
 
@@ -281,6 +282,9 @@ public class F07DActivity extends Activity {
             } else {
                 f07d001.setError(null);
             }
+        }
+        if (!validatorClass.RangeTextBox(this,f07d001,1,9,getString(R.string.f07d001)," visits")) {
+            return false;
         }
 
         //=================== f07d002 ==============

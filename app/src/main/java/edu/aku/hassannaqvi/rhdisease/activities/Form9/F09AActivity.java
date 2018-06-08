@@ -29,6 +29,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 
 public class F09AActivity extends Activity {
@@ -680,6 +681,9 @@ public class F09AActivity extends Activity {
         } else {
             f09gawk.setError(null);
         }
+        if (!validatorClass.RangeTextBox(this,f09gawk,0,42,getString(R.string.f09gawk)," weeks")) {
+            return false;
+        }
 
 
         //f09gad
@@ -692,6 +696,20 @@ public class F09AActivity extends Activity {
             f09gad.setError(null);
         }
 
+        if (!validatorClass.RangeTextBox(this,f09gad,0,6,getString(R.string.f09gad)," days")) {
+            return false;
+        }
+        if (f09gawk.getText().toString().equals("0")&& f09gad.getText().toString().equals("0")) {
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.f09gawk), Toast.LENGTH_SHORT).show();
+            f09gawk.setError("Weeks and days both cannot be zero at the same time!");    // Set Error on last radio button
+            f09gad.setError("Weeks and days both cannot be zero at the same time!");    // Set Error on last radio button
+            Log.i(TAG, "f09gawk:Weeks and days both cannot be zero at the same time!");
+            Log.i(TAG, "f09gad: Weeks and days both cannot be zero at the same time!");
+            return false;
+        }else {
+            f09gawk.setError(null);
+            f09gad.setError(null);
+        }
 
         //f09a001
         if (f09a001.getCheckedRadioButtonId() == -1) {

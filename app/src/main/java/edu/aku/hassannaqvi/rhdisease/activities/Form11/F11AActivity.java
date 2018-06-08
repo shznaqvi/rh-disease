@@ -30,7 +30,10 @@ import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
+
+import static android.view.View.GONE;
 
 public class F11AActivity extends AppCompatActivity {
 
@@ -136,6 +139,8 @@ public class F11AActivity extends AppCompatActivity {
     RadioButton f11b008b;
     @BindView(R.id.f11b008999)
     RadioButton f11b008999;
+    @BindView(R.id.fldGrpf11b008)
+    LinearLayout fldGrpf11b008;
     @BindView(R.id.f11b009)
     RadioGroup f11b009;
     @BindView(R.id.f11b009a)
@@ -275,23 +280,23 @@ public class F11AActivity extends AppCompatActivity {
     @BindView(R.id.f11b023999)
     RadioButton f11b023999;
     @BindView(R.id.f11b024)
-    RadioGroup f11b024;
+    LinearLayout f11b024;
     @BindView(R.id.f11b024a)
-    RadioButton f11b024a;
+    CheckBox f11b024a;
     @BindView(R.id.f11b024b)
-    RadioButton f11b024b;
+    CheckBox f11b024b;
     @BindView(R.id.f11b024c)
-    RadioButton f11b024c;
+    CheckBox f11b024c;
     @BindView(R.id.f11b024d)
-    RadioButton f11b024d;
+    CheckBox f11b024d;
     @BindView(R.id.f11b024e)
-    RadioButton f11b024e;
+    CheckBox f11b024e;
     @BindView(R.id.f11b024f)
-    RadioButton f11b024f;
+    CheckBox f11b024f;
     @BindView(R.id.f11b024g)
-    RadioButton f11b024g;
+    CheckBox f11b024g;
     @BindView(R.id.f11b024888)
-    RadioButton f11b024888;
+    CheckBox f11b024888;
     @BindView(R.id.f11b024888x)
     EditText f11b024888x;
 
@@ -366,12 +371,12 @@ public class F11AActivity extends AppCompatActivity {
                     f11a004.clearCheck();
 
                     fldGrpf11a003.setVisibility(View.VISIBLE);
-                    fldGrpf11a004.setVisibility(View.GONE);
+                    fldGrpf11a004.setVisibility(GONE);
                 } else {
 
                     f11a003.clearCheck();
 
-                    fldGrpf11a003.setVisibility(View.GONE);
+                    fldGrpf11a003.setVisibility(GONE);
                     fldGrpf11a004.setVisibility(View.VISIBLE);
                 }
             }
@@ -432,10 +437,16 @@ public class F11AActivity extends AppCompatActivity {
                     f11b022888x.setText(null);
 
                     f11b023.clearCheck();
-                    f11b024.clearCheck();
+                    f11b024a.setChecked(false);
+                    f11b024b.setChecked(false);
+                    f11b024c.setChecked(false);
+                    f11b024d.setChecked(false);
+                    f11b024e.setChecked(false);
+                    f11b024f.setChecked(false);
+                    f11b024g.setChecked(false);
                     f11b024888x.setText(null);
 
-                    fldGrpf11b001.setVisibility(View.GONE);
+                    fldGrpf11b001.setVisibility(GONE);
 
                 } else {
 
@@ -461,7 +472,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b002888x.setText(null);
 
                     fldGrpf11b002a.setVisibility(View.VISIBLE);
-                    fldGrpf11b003.setVisibility(View.GONE);
+                    fldGrpf11b003.setVisibility(GONE);
                 } else {
 
                     f11b003.clearCheck();
@@ -503,10 +514,16 @@ public class F11AActivity extends AppCompatActivity {
                     f11b022888x.setText(null);
 
                     f11b023.clearCheck();
-                    f11b024.clearCheck();
+                    f11b024a.setChecked(false);
+                    f11b024b.setChecked(false);
+                    f11b024c.setChecked(false);
+                    f11b024d.setChecked(false);
+                    f11b024e.setChecked(false);
+                    f11b024f.setChecked(false);
+                    f11b024g.setChecked(false);
                     f11b024888x.setText(null);
 
-                    fldGrpf11b002a.setVisibility(View.GONE);
+                    fldGrpf11b002a.setVisibility(GONE);
                     fldGrpf11b003.setVisibility(View.VISIBLE);
                 }
             }
@@ -521,12 +538,24 @@ public class F11AActivity extends AppCompatActivity {
                     f11b002888x.requestFocus();
                 } else {
                     f11b002888x.setText(null);
-                    f11b002888x.setVisibility(View.GONE);
+                    f11b002888x.setVisibility(GONE);
                 }
             }
         });
 
 
+        f11b008.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i != R.id.f11b008b) {
+                    fldGrpf11b008.setVisibility(GONE);
+                    f11b009.clearCheck();
+                    f11b009888x.setText(null);
+                } else {
+                    fldGrpf11b008.setVisibility(View.VISIBLE);
+                }
+            }
+        });
         f11b009888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -535,7 +564,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b009888x.requestFocus();
                 } else {
                     f11b009888x.setText(null);
-                    f11b009888x.setVisibility(View.GONE);
+                    f11b009888x.setVisibility(GONE);
                 }
             }
         });
@@ -546,10 +575,10 @@ public class F11AActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (f11b010b.isChecked()) {
                     fldGrpf11b011.setVisibility(View.VISIBLE);
-                    fldGrpf11b012.setVisibility(View.GONE);
+                    fldGrpf11b012.setVisibility(GONE);
                 } else {
                     f11b011.clearCheck();
-                    fldGrpf11b011.setVisibility(View.GONE);
+                    fldGrpf11b011.setVisibility(GONE);
                     fldGrpf11b012.setVisibility(View.VISIBLE);
                 }
             }
@@ -585,7 +614,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b022888.setChecked(false);
                     f11b022888x.setText(null);
 
-                    fldGrpf11b012.setVisibility(View.GONE);
+                    fldGrpf11b012.setVisibility(GONE);
                 }
             }
         });
@@ -599,7 +628,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b011888x.requestFocus();
                 } else {
                     f11b011888x.setText(null);
-                    f11b011888x.setVisibility(View.GONE);
+                    f11b011888x.setVisibility(GONE);
                 }
             }
         });
@@ -613,7 +642,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b012888x.requestFocus();
                 } else {
                     f11b012888x.setText(null);
-                    f11b012888x.setVisibility(View.GONE);
+                    f11b012888x.setVisibility(GONE);
                 }
             }
         });
@@ -636,12 +665,12 @@ public class F11AActivity extends AppCompatActivity {
                     f11b021.clearCheck();
                     f11b021888x.setText(null);
 
-                    fldGrpf11b014.setVisibility(View.GONE);
+                    fldGrpf11b014.setVisibility(GONE);
 
                     fldGrpf11b022.setVisibility(View.VISIBLE);
                 } else {
                     fldGrpf11b014.setVisibility(View.VISIBLE);
-                    fldGrpf11b022.setVisibility(View.GONE);
+                    fldGrpf11b022.setVisibility(GONE);
                     f11b022a.setChecked(false);
                     f11b022b.setChecked(false);
                     f11b022c.setChecked(false);
@@ -664,8 +693,8 @@ public class F11AActivity extends AppCompatActivity {
                     f11b018.clearCheck();
                     f11b019.clearCheck();
 
-                    fldGrpf11b015.setVisibility(View.GONE);
-                    fldGrpf11b019.setVisibility(View.GONE);
+                    fldGrpf11b015.setVisibility(GONE);
+                    fldGrpf11b019.setVisibility(GONE);
                 } else {
                     fldGrpf11b015.setVisibility(View.VISIBLE);
                     fldGrpf11b019.setVisibility(View.VISIBLE);
@@ -684,8 +713,8 @@ public class F11AActivity extends AppCompatActivity {
                     f11b018.clearCheck();
                     f11b019.clearCheck();
 
-                    fldGrpf11b016.setVisibility(View.GONE);
-                    fldGrpf11b019.setVisibility(View.GONE);
+                    fldGrpf11b016.setVisibility(GONE);
+                    fldGrpf11b019.setVisibility(GONE);
                 } else {
                     fldGrpf11b016.setVisibility(View.VISIBLE);
                     fldGrpf11b019.setVisibility(View.VISIBLE);
@@ -703,7 +732,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b018.clearCheck();
                     f11b019.clearCheck();
 
-                    fldGrpf11b017.setVisibility(View.GONE);
+                    fldGrpf11b017.setVisibility(GONE);
                 } else {
                     fldGrpf11b017.setVisibility(View.VISIBLE);
                 }
@@ -719,7 +748,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b018.clearCheck();
                     f11b019.clearCheck();
 
-                    fldGrpf11b018.setVisibility(View.GONE);
+                    fldGrpf11b018.setVisibility(GONE);
                 } else {
                     fldGrpf11b018.setVisibility(View.VISIBLE);
                 }
@@ -732,7 +761,7 @@ public class F11AActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (f11b018b.isChecked()) {
                     f11b019.clearCheck();
-                    fldGrpf11b019.setVisibility(View.GONE);
+                    fldGrpf11b019.setVisibility(GONE);
                 } else {
                     fldGrpf11b019.setVisibility(View.VISIBLE);
                 }
@@ -748,7 +777,7 @@ public class F11AActivity extends AppCompatActivity {
 
                 } else {
                     f11b021888x.setText(null);
-                    f11b021888x.setVisibility(View.GONE);
+                    f11b021888x.setVisibility(GONE);
 
                 }
             }
@@ -763,7 +792,7 @@ public class F11AActivity extends AppCompatActivity {
                     f11b022888x.requestFocus();
                 } else {
                     f11b022888x.setText(null);
-                    f11b022888x.setVisibility(View.GONE);
+                    f11b022888x.setVisibility(GONE);
                 }
             }
         });
@@ -773,28 +802,32 @@ public class F11AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (f11b023b.isChecked()) {
-                    f11b024.clearCheck();
-                    fldGrpf11b024.setVisibility(View.GONE);
+                    f11b024a.setChecked(false);
+                    f11b024b.setChecked(false);
+                    f11b024c.setChecked(false);
+                    f11b024d.setChecked(false);
+                    f11b024e.setChecked(false);
+                    f11b024f.setChecked(false);
+                    f11b024g.setChecked(false);
+                    fldGrpf11b024.setVisibility(GONE);
                 } else {
                     fldGrpf11b024.setVisibility(View.VISIBLE);
                 }
             }
         });
 
-        f11b024.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        f11b024888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if (f11b024888.isChecked()) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
                     f11b024888.setVisibility(View.VISIBLE);
                     f11b024888.requestFocus();
-                } else {
+                }else {
                     f11b024888.setText(null);
-                    f11b024888.setVisibility(View.GONE);
+                    f11b024888.setVisibility(GONE);
                 }
             }
         });
-
-
     }
 
     private boolean formValidation() {
@@ -965,28 +998,30 @@ public class F11AActivity extends AppCompatActivity {
         } else {
             f11b008a.setError(null);
         }
+        if (f11b008b.isChecked()) {
 
 
-        //f11b009
-        if (f11b009.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.f11b009), Toast.LENGTH_SHORT).show();
-            f11b009a.setError("This data is Required!");    // Set Error on last radio button
-            Log.i(TAG, "f11b009: This data is Required!");
-            return false;
-        } else {
-            f11b009a.setError(null);
-        }
-
-
-        if (f11b009888.isChecked()) {
-            //f11b009888x
-            if (f11b009888x.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                f11b009888x.setError("This data is Required!");    // Set Error on last radio button
-                Log.i(TAG, "f11b009888x: This data is Required!");
+            //f11b009
+            if (f11b009.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f11b009), Toast.LENGTH_SHORT).show();
+                f11b009a.setError("This data is Required!");    // Set Error on last radio button
+                Log.i(TAG, "f11b009: This data is Required!");
                 return false;
             } else {
-                f11b009888x.setError(null);
+                f11b009a.setError(null);
+            }
+
+
+            if (f11b009888.isChecked()) {
+                //f11b009888x
+                if (f11b009888x.getText().toString().isEmpty()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                    f11b009888x.setError("This data is Required!");    // Set Error on last radio button
+                    Log.i(TAG, "f11b009888x: This data is Required!");
+                    return false;
+                } else {
+                    f11b009888x.setError(null);
+                }
             }
         }
 
@@ -1279,28 +1314,9 @@ public class F11AActivity extends AppCompatActivity {
         if (f11b023a.isChecked() || f11b023999.isChecked()) {
 
             //f11b024
-            if (f11b024.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this, "ERROR(empty): " + getString(R.string.f11b024), Toast.LENGTH_SHORT).show();
-                f11b024a.setError("This data is Required!");    // Set Error on last radio button
-                Log.i(TAG, "f11b024: This data is Required!");
+            if (!validatorClass.EmptyCheckBox(this,f11b024,f11b024888,f11b024888x,getString(R.string.f11b024))) {
                 return false;
-            } else {
-                f11b024a.setError(null);
             }
-
-
-            if (f11b024888.isChecked()) {
-                //f11b024888x
-                if (f11b024888x.getText().toString().isEmpty()) {
-                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                    f11b024888x.setError("This data is Required!");    // Set Error on last radio button
-                    Log.i(TAG, "f11b024888x: This data is Required!");
-                    return false;
-                } else {
-                    f11b024888x.setError(null);
-                }
-            }
-
         }
 
 
@@ -1475,17 +1491,14 @@ public class F11AActivity extends AppCompatActivity {
                 : "0");
 
 
-        f11.put("f11b024", f11b024a.isChecked() ? "1"
-                : f11b024b.isChecked() ? "2"
-                : f11b024b.isChecked() ? "3"
-                : f11b024c.isChecked() ? "4"
-                : f11b024d.isChecked() ? "5"
-                : f11b024e.isChecked() ? "6"
-                : f11b024f.isChecked() ? "7"
-                : f11b024g.isChecked() ? "8"
-                : f11b024888.isChecked() ? "888"
-                : "0");
-
+        f11.put("f11b024a", f11b024a.isChecked() ? "1":"0");
+        f11.put("f11b024b", f11b024b.isChecked() ? "2":"0");
+        f11.put("f11b024c", f11b024c.isChecked() ? "3":"0");
+        f11.put("f11b024d", f11b024d.isChecked() ? "4":"0");
+        f11.put("f11b024e", f11b024e.isChecked() ? "5":"0");
+        f11.put("f11b024f", f11b024f.isChecked() ? "6":"0");
+        f11.put("f11b024g", f11b024g.isChecked() ? "7":"0");
+        f11.put("f11b024888", f11b024888.isChecked() ? "888":"0");
         f11.put("f11b024888x", f11b024888x.getText().toString());
 
         MainApp.fc.setF11(String.valueOf(f11));
@@ -1528,8 +1541,8 @@ public class F11AActivity extends AppCompatActivity {
 
         DatabaseHelper db = new DatabaseHelper(this);
         String adverseaffect = f11b023a.isChecked() ? "1" : f11b023b.isChecked() ? "2" : f11b023999.isChecked() ? "999" : "0";
-                MainApp.fc.setF10_acceptance("1");
-                MainApp.fc.setF15_adverse(adverseaffect);
+        MainApp.fc.setF10_acceptance("1");
+        MainApp.fc.setF15_adverse(adverseaffect);
         int updcount = db.updateF011();
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();

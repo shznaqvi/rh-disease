@@ -26,6 +26,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
 
 public class F07CActivity extends AppCompatActivity
@@ -62,6 +63,10 @@ public class F07CActivity extends AppCompatActivity
     EditText f07c006aage;
     @BindView(R.id.f07c006b)
     RadioButton f07c006b;
+    @BindView(R.id.f07c006bage)
+    EditText f07c006bage;
+    @BindView(R.id.f07c00698)
+    RadioButton f07c00698;
     @BindView(R.id.f07c006999)
     RadioButton f07c006999;
     @BindView(R.id.f07c007)
@@ -72,6 +77,10 @@ public class F07CActivity extends AppCompatActivity
     EditText f07c007aage;
     @BindView(R.id.f07c007b)
     RadioButton f07c007b;
+    @BindView(R.id.f07c007bage)
+    EditText f07c007bage;
+    @BindView(R.id.f07c00798)
+    RadioButton f07c00798;
     @BindView(R.id.f07c007999)
     RadioButton f07c007999;
     @BindView(R.id.f07c008)
@@ -184,6 +193,18 @@ public class F07CActivity extends AppCompatActivity
                 }
             }
         });
+        //=================== f07c006b ==============
+        f07c006b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    f07c006bage.setVisibility(View.VISIBLE);
+                } else {
+                    f07c006bage.setVisibility(View.GONE);
+                    f07c006bage.setText(null);
+                }
+            }
+        });
 
         //=================== f07c007a ==============
         f07c007a.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -194,6 +215,19 @@ public class F07CActivity extends AppCompatActivity
                 } else {
                     f07c007aage.setVisibility(View.GONE);
                     f07c007aage.setText(null);
+                }
+            }
+        });
+
+        //=================== f07c007b ==============
+        f07c007b.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    f07c007bage.setVisibility(View.VISIBLE);
+                } else {
+                    f07c007bage.setVisibility(View.GONE);
+                    f07c007bage.setText(null);
                 }
             }
         });
@@ -294,10 +328,12 @@ public class F07CActivity extends AppCompatActivity
         f07c.put("f07c004999", f07c004999.isChecked() ? "999" : "0");
         f07c.put("f07c005", f07c005.getText().toString());
         f07c.put("f07c005999", f07c005999.isChecked() ? "999" : "0");
-        f07c.put("f07c006", f07c006a.isChecked() ? "1" : f07c006b.isChecked() ? "2" : f07c006999.isChecked() ? "999" : "0");
+        f07c.put("f07c006", f07c006a.isChecked() ? "1" : f07c006b.isChecked() ? "2" : f07c00698.isChecked() ? "98" :f07c006999.isChecked() ? "999" : "0");
         f07c.put("f07c006a", f07c006aage.getText().toString());
-        f07c.put("f07c007", f07c007a.isChecked() ? "1" : f07c007b.isChecked() ? "2" : f07c007999.isChecked() ? "999" : "0");
+        f07c.put("f07c006b", f07c006bage.getText().toString());
+        f07c.put("f07c007", f07c007a.isChecked() ? "1" : f07c007b.isChecked() ? "2" : f07c00798.isChecked() ? "98" :f07c007999.isChecked() ? "999" : "0");
         f07c.put("f07c007a", f07c007aage.getText().toString());
+        f07c.put("f07c007b", f07c007bage.getText().toString());
         f07c.put("f07c008", f07c008.getText().toString());
         f07c.put("f07c009", f07c009a.isChecked() ? "1" : f07c009b.isChecked() ? "2" : f07c009c.isChecked() ? "3" : f07c009d.isChecked() ? "4" : f07c009e.isChecked() ? "5" : f07c009f.isChecked() ? "6" : f07c009888.isChecked() ? "888" : f07c009999.isChecked() ? "999" : "0");
         f07c.put("f07c009888x", f07c009888x.getText().toString());
@@ -321,7 +357,11 @@ public class F07CActivity extends AppCompatActivity
             } else {
                 f07c001.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f07c001,1,15,getString(R.string.f07c001)," Number")) {
+                return false;
+            }
         }
+
 
         // ====================== f07c002 ===================
         if (!f07c002999.isChecked()) {
@@ -333,7 +373,12 @@ public class F07CActivity extends AppCompatActivity
             } else {
                 f07c002.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f07c002,1,15,getString(R.string.f07c002)," Number")) {
+                return false;
+            }
         }
+
+
         // ====================== f07c003 ===================
         if (!f07c003999.isChecked()) {
             if (f07c003.getText().toString().isEmpty()) {
@@ -343,6 +388,9 @@ public class F07CActivity extends AppCompatActivity
                 return false;
             } else {
                 f07c003.setError(null);
+            }
+            if (!validatorClass.RangeTextBox(this,f07c003,1,15,getString(R.string.f07c003)," Number")) {
+                return false;
             }
         }
 
@@ -358,6 +406,10 @@ public class F07CActivity extends AppCompatActivity
             } else {
                 f07c004.setError(null);
             }
+
+            if (!validatorClass.RangeTextBox(this,f07c004,1,15,getString(R.string.f07c004)," Number")) {
+                return false;
+            }
         }
 
         // ====================== f07c005 ===================
@@ -369,6 +421,10 @@ public class F07CActivity extends AppCompatActivity
                 return false;
             } else {
                 f07c005.setError(null);
+            }
+
+            if (!validatorClass.RangeTextBox(this,f07c005,1,15,getString(R.string.f07c005)," Number")) {
+                return false;
             }
         }
         //=================== f07c006 ==============
@@ -389,6 +445,14 @@ public class F07CActivity extends AppCompatActivity
         } else {
             f07c006aage.setError(null);
         }
+        if (f07c006b.isChecked() && f07c006bage.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07c006b), Toast.LENGTH_SHORT).show();
+            f07c006bage.setError("This data is required");
+            Log.d(TAG, " f07c006bage :empty ");
+            return false;
+        } else {
+            f07c006bage.setError(null);
+        }
 
         //=================== f07c007 ==============
         if (f07c007.getCheckedRadioButtonId() == -1) {
@@ -407,6 +471,14 @@ public class F07CActivity extends AppCompatActivity
             return false;
         } else {
             f07c007aage.setError(null);
+        }
+        if (f07c007b.isChecked() && f07c007bage.getText().toString().isEmpty()) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07c007b), Toast.LENGTH_SHORT).show();
+            f07c007bage.setError("This data is required");
+            Log.d(TAG, " f07c007bage :empty ");
+            return false;
+        } else {
+            f07c007bage.setError(null);
         }
 
         //=================== f07c009 ==============

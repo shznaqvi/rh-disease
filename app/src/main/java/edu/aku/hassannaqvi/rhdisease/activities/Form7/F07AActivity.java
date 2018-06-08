@@ -28,6 +28,7 @@ import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 public class F07AActivity extends Activity {
 
@@ -379,6 +380,9 @@ public class F07AActivity extends Activity {
             } else {
                 f07a001.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f07a001,15,49,getString(R.string.f07a001)," Age")) {
+                return false;
+            }
         }
 
 //        02
@@ -507,6 +511,9 @@ public class F07AActivity extends Activity {
             } else {
                 f07a009.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f07a009,0,7,getString(R.string.f07a009)," Days")) {
+                return false;
+            }
 
 //            10
             if (f07a010.getText().toString().isEmpty()) {
@@ -517,6 +524,9 @@ public class F07AActivity extends Activity {
                 return false;
             } else {
                 f07a010.setError(null);
+            }
+            if (!validatorClass.RangeTextBox(this,f07a010,1,16,getString(R.string.f07a010)," Hours")) {
+                return false;
             }
         }
 
