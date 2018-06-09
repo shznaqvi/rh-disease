@@ -239,14 +239,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f07c006b" />
+                android:text="@string/f07c006c" />
 
             <RadioButton
                 android:id="@+id/f07c006999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f07c006c" />
+                android:text="@string/f07c006d" />
 
         </RadioGroup>
 
@@ -304,14 +304,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f07c007b" />
+                android:text="@string/f07c007c" />
 
             <RadioButton
                 android:id="@+id/f07c007999"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/f07c007c" />
+                android:text="@string/f07c007d" />
 
         </RadioGroup>
 

@@ -282,10 +282,11 @@ public class F07DActivity extends Activity {
             } else {
                 f07d001.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f07d001,1,9,getString(R.string.f07d001)," visits")) {
+                return false;
+            }
         }
-        if (!validatorClass.RangeTextBox(this,f07d001,1,9,getString(R.string.f07d001)," visits")) {
-            return false;
-        }
+
 
         //=================== f07d002 ==============
         if (f07d002.getCheckedRadioButtonId() == -1) {
