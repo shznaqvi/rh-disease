@@ -756,7 +756,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public rh_resultsContract getRH_Results(String participantID, String status) {
 
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = " + participantID + " AND " + RH_ResultsTable.COLUMN_RH_STATUS + "=" + status;
+        String selectQuery = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = '" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "=" + status;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor c = db.rawQuery(selectQuery, null);
