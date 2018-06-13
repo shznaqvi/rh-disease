@@ -169,11 +169,13 @@ public class EndingActivity extends Activity {
                         MainApp.F10Second = false;
                     }
                 case MainApp.FORM11:
-                    if(!MainApp.formType.equals(MainApp.FORM10)||!MainApp.formType.equals(MainApp.FORM15)){
-                        MainApp.ffc.setf11(completeStatus);
-                        MainApp.rh.setf11(completeStatus);
-                        db.updatef11filled();
-                        db.updatef11filledinRH();
+                    if(!MainApp.formType.equals(MainApp.FORM10)){
+                        if (!MainApp.formType.equals(MainApp.FORM15)) {
+                            MainApp.ffc.setf11(completeStatus);
+                            MainApp.rh.setf11(completeStatus);
+                            db.updatef11filled();
+                            db.updatef11filledinRH();
+                        }
                     }
                 case MainApp.FORM8:
                     MainApp.ffc.setf8(completeStatus);

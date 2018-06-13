@@ -139,6 +139,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FilledFormsTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             FilledFormsTable.COLUMN_USER + " TEXT," +
             FilledFormsTable.COLUMN_PARTICIPANTID + " TEXT," +
+            FilledFormsTable.COLUMN_FORMDATE + " TEXT," +
             FilledFormsTable.COLUMN_F5 + " TEXT," +
             FilledFormsTable.COLUMN_F8 + " TEXT," +
             FilledFormsTable.COLUMN_F9 + " TEXT," +
@@ -151,6 +152,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FilledFormsTable.COLUMN_F13 + " TEXT," +
             FilledFormsTable.COLUMN_F14 + " TEXT," +
             FilledFormsTable.COLUMN_F16 + " TEXT," +
+            FilledFormsTable.COLUMN_DEVICEID + " TEXT," +
             FilledFormsTable.COLUMN_SYNCED + " TEXT," +
             FilledFormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
@@ -740,7 +742,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String getRH_Results(String participantID) {
             SQLiteDatabase db = this.getReadableDatabase();
             String rh = null;
-        String query = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = " + participantID;
+        String query = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = '" + participantID+"'";
 
         Cursor mCursor = db.rawQuery(query, null);
             if (mCursor != null) {

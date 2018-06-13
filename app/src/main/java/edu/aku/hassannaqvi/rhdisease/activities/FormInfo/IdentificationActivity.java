@@ -211,7 +211,6 @@ public class IdentificationActivity extends Activity {
                                     fldGrpfooter.setVisibility(View.VISIBLE);
                                 } else {
                                     fldGrpfooter.setVisibility(View.GONE);
-                                    fldGrpfooter.setVisibility(View.GONE);
                                     Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
                                 }
 
