@@ -530,7 +530,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:onClick="@{() -> callback.BtnContinue()}"
-                android:text="@string/start_interview"
+                android:text="@string/nextSection"
                 android:layout_weight="1"
                 android:textColor="#1ed61e" />
             <!--'onClick' for btn_Continue will call next section form e.g.: openSection2-->

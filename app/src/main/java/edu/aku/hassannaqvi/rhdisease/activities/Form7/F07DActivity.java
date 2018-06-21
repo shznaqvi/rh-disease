@@ -43,17 +43,17 @@ public class F07DActivity extends Activity {
     @BindView(R.id.f07d002999)
     RadioButton f07d002999;
     @BindView(R.id.f07d003)
-    RadioGroup f07d003;
+    LinearLayout f07d003;
     @BindView(R.id.f07d003a)
-    RadioButton f07d003a;
+    CheckBox f07d003a;
     @BindView(R.id.f07d003b)
-    RadioButton f07d003b;
+    CheckBox f07d003b;
     @BindView(R.id.f07d003c)
-    RadioButton f07d003c;
+    CheckBox f07d003c;
     @BindView(R.id.f07d003d)
-    RadioButton f07d003d;
+    CheckBox f07d003d;
     @BindView(R.id.f07d003888)
-    RadioButton f07d003888;
+    CheckBox f07d003888;
     @BindView(R.id.f07d003888x)
     EditText f07d003888x;
     @BindView(R.id.f07d004)
@@ -122,7 +122,11 @@ public class F07DActivity extends Activity {
                     fldGrp002.setVisibility(View.VISIBLE);
                 } else {
                     fldGrp002.setVisibility(View.GONE);
-                    f07d003.clearCheck();
+                    f07d003a.setChecked(false);
+                    f07d003b.setChecked(false);
+                    f07d003c.setChecked(false);
+                    f07d003d.setChecked(false);
+                    f07d003888.setChecked(false);
                     f07d003888x.setText(null);
 
                 }
@@ -254,14 +258,17 @@ public class F07DActivity extends Activity {
         f07d.put("f07d001", f07d001.getText().toString());
         f07d.put("f07d001999", f07d001999.isChecked() ? "999" : "0");
         f07d.put("f07d002", f07d002a.isChecked() ? "1" : f07d002b.isChecked() ? "2" : f07d002999.isChecked() ? "999" : "0");
-        f07d.put("f07d003", f07d003a.isChecked() ? "1" : f07d003b.isChecked() ? "2" : f07d003c.isChecked() ? "3" : f07d003d.isChecked() ? "4" : f07d003888.isChecked() ? "888" : "0");
+        f07d.put("f07d003a", f07d003a.isChecked() ? "1" : "0");
+        f07d.put("f07d003b", f07d003b.isChecked() ? "2" : "0");
+        f07d.put("f07d003c", f07d003c.isChecked() ? "3" : "0");
+        f07d.put("f07d003d", f07d003d.isChecked() ? "4" : "0");
+        f07d.put("f07d003888", f07d003888.isChecked() ? "888" : "0");
         f07d.put("f07d003888x", f07d003888x.getText().toString());
         f07d.put("f07d004", f07d004a.isChecked() ? "1" : f07d004b.isChecked() ? "2" : f07d004999.isChecked() ? "999" : "0");
         f07d.put("f07d005", f07d005a.isChecked() ? "1" : f07d005b.isChecked() ? "2" : f07d005999.isChecked() ? "999" : "0");
         f07d.put("f07d005aprob", f07d005aprob.getText().toString());
         f07d.put("f07d006", f07d006a.isChecked() ? "1" : f07d006b.isChecked() ? "2" : f07d006c.isChecked() ? "3" : f07d006d.isChecked() ? "4" : f07d006e.isChecked() ? "5" : f07d006f.isChecked() ? "6" : f07d006888.isChecked() ? "888" : "0");
         f07d.put("f07d006888x", f07d006888x.getText().toString());
-
 
         MainApp.fc4.setF07d(String.valueOf(f07d));
 
@@ -300,22 +307,8 @@ public class F07DActivity extends Activity {
 
         if (f07d002a.isChecked()) {
             //=================== f07d003 ==============
-            if (f07d003.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07d003), Toast.LENGTH_SHORT).show();
-                f07d003888.setError("This data is Required!");
-                Log.i(TAG, "f07d003: This Data is Required!");
+            if (!validatorClass.EmptyCheckBox(this,f07d003,f07d003888,f07d003888x, getString(R.string.f07d003))){
                 return false;
-            } else {
-                f07d003888.setError(null);
-            }
-
-            if (f07d003888.isChecked() && f07d003888x.getText().toString().isEmpty()) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07d003) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                f07d003888x.setError("This data is required");
-                Log.d(TAG, " f07d003888x :empty ");
-                return false;
-            } else {
-                f07d003888x.setError(null);
             }
         }
         //=================== f07d004 ==============

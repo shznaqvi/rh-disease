@@ -56,8 +56,8 @@ public class MainActivity extends Activity {
     @BindView(R.id.recordSummary)
     TextView recordSummary;
 
-   /* @BindView(R.id.syncDevice)
-    Button syncDevice;*/
+    /* @BindView(R.id.syncDevice)
+     Button syncDevice;*/
     @BindView(R.id.syncDevice)
     LinearLayout syncDevice;
 
@@ -167,7 +167,7 @@ public class MainActivity extends Activity {
                     iStatus = "\tN/A";
                 }
 
-                rSumText += ""+fc.getFormType()+"";
+                rSumText += "" + fc.getFormType() + "";
 
                 rSumText += " " + iStatus + " ";
 
@@ -328,6 +328,7 @@ public class MainActivity extends Activity {
         MainApp.formType = "10";
         startActivity(iA);
     }
+
     public void openForm15(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
         MainApp.formType = "15";

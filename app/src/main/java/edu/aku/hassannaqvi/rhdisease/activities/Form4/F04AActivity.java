@@ -326,6 +326,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
     RadioButton f04a011999;
     @BindView(R.id.f04a011888x)
     EditText f04a011888x;
+
     @BindView(R.id.f04a012a)
     CheckBox f04a012a;
     @BindView(R.id.f04a012b)
@@ -901,7 +902,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
         });
 
 
-       /* //=================== f04a012m ==============
+        //=================== f04a012m ==============
         f04a012m.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -916,7 +917,7 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
                 }
             }
         });
-*/
+
         //=================== f04a012n ==============
         f04a012n.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -1766,6 +1767,77 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
             }
         });
 
+        f04a012q.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    f04a012a.setEnabled(false);
+                    f04a012b.setEnabled(false);
+                    f04a012c.setEnabled(false);
+                    f04a012d.setEnabled(false);
+                    f04a012e.setEnabled(false);
+                    f04a012f.setEnabled(false);
+                    f04a012g.setEnabled(false);
+                    f04a012h.setEnabled(false);
+                    f04a012i.setEnabled(false);
+                    f04a012j.setEnabled(false);
+                    f04a012k.setEnabled(false);
+                    f04a012l.setEnabled(false);
+                    f04a012m.setEnabled(false);
+                    f04a012n.setEnabled(false);
+                    f04a012o.setEnabled(false);
+                    f04a012p.setEnabled(false);
+                    f04a012r.setEnabled(false);
+                    f04a012777.setEnabled(false);
+                    f04a012888.setEnabled(false);
+                    f04a012999.setEnabled(false);
+                    f04a012a.setChecked(false);
+                    f04a012b.setChecked(false);
+                    f04a012c.setChecked(false);
+                    f04a012d.setChecked(false);
+                    f04a012e.setChecked(false);
+                    f04a012f.setChecked(false);
+                    f04a012g.setChecked(false);
+                    f04a012h.setChecked(false);
+                    f04a012i.setChecked(false);
+                    f04a012j.setChecked(false);
+                    f04a012k.setChecked(false);
+                    f04a012l.setChecked(false);
+                    f04a012m.setChecked(false);
+                    f04a012n.setChecked(false);
+                    f04a012o.setChecked(false);
+                    f04a012p.setChecked(false);
+                    f04a012r.setChecked(false);
+                    f04a012777.setChecked(false);
+                    f04a012888.setChecked(false);
+                    f04a012999.setChecked(false);
+                    f04a012888x.setText(null);
+
+                } else {
+                    f04a012a.setEnabled(true);
+                    f04a012b.setEnabled(true);
+                    f04a012c.setEnabled(true);
+                    f04a012d.setEnabled(true);
+                    f04a012e.setEnabled(true);
+                    f04a012f.setEnabled(true);
+                    f04a012g.setEnabled(true);
+                    f04a012h.setEnabled(true);
+                    f04a012i.setEnabled(true);
+                    f04a012j.setEnabled(true);
+                    f04a012k.setEnabled(true);
+                    f04a012l.setEnabled(true);
+                    f04a012m.setEnabled(true);
+                    f04a012n.setEnabled(true);
+                    f04a012o.setEnabled(true);
+                    f04a012p.setEnabled(true);
+                    f04a012r.setEnabled(true);
+                    f04a012777.setEnabled(true);
+                    f04a012888.setEnabled(true);
+                    f04a012999.setEnabled(true);
+                }
+            }
+        });
         f04a012999.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
         {
             @Override

@@ -429,7 +429,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/green"
-                android:text="@string/start_interview"
+                android:text="@string/nextSection"
                 android:textColor="#1ed61e" />
 
             <Button

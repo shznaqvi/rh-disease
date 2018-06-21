@@ -1268,6 +1268,17 @@ MainApp.rh.setRh_status(rhResult);
         f9.put("f09b009888x", f09b009888x.getText().toString());
 
 
+        f9.put("f09b010", f09b010a.isChecked() ? "1"
+                : f09b010b.isChecked() ? "2"
+                : f09b010c.isChecked() ? "3"
+                : f09b010d.isChecked() ? "4"
+                : f09b010e.isChecked() ? "5"
+                : f09b010f.isChecked() ? "6"
+                : f09b010g.isChecked() ? "7"
+                : f09b010888.isChecked() ? "888"
+                : 0);
+        f9.put("f09b010888x", f09b010888x.getText().toString());
+
         f9.put("f09b011", f09b011a.isChecked() ? "1"
                 : f09b011b.isChecked() ? "2"
                 : f09b011999.isChecked() ? "999"

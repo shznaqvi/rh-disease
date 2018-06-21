@@ -1208,7 +1208,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:layout_marginBottom="2dp"
-
                 android:background="@color/colorPrimaryAlpha"
                 android:text="@string/f07b00716"
                 android:textAppearance="?android:attr/textAppearanceLarge"
@@ -1555,6 +1554,17 @@
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
             android:text="@string/f07b011"
+            android:layout_marginBottom="0dp"
+            android:paddingBottom="0dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:paddingTop="0dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/f07b01102"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
 
@@ -1921,7 +1931,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/f07b008"
+            android:text="@string/f07b016"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
         <!--16.01-->
@@ -2391,7 +2401,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="@color/green"
-                android:text="@string/start_interview"
+                android:text="@string/nextSection"
                 android:textColor="#1ed61e" />
 
             <Button

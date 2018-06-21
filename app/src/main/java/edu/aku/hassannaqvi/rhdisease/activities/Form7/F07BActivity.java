@@ -946,6 +946,8 @@ public class F07BActivity extends Activity
                 : f07b009888.isChecked() ? "888"
                 : f07b00718999.isChecked() ? "999"
                 : "0");
+        f07.put("f07b009888x", f07b009888x.getText().toString());
+
         //10
         f07.put("f07b010", f07b010a.isChecked() ? "1"
                 : f07b010b.isChecked() ? "2"

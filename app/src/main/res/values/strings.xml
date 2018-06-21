@@ -163,7 +163,8 @@
 	<string name="f07b009b">الڳ بلڊ نگ ۾</string>
 	<string name="f07b009c">گھر کان ٻاهر</string>
 	<string name="f07b010">ڇا توهان کي الڳ مخصوص جڳھ آهي رڌ پچاءُ لاءِ جيئين بورچيخانو؟</string>
-	<string name="f07b011">ڪيتري وقت کانپوءِ توهان جي گهر ۾ تمباڪو نوشي ڪئي ويندي آهي؟ توهان ٻڌائي سگهو ٿا ته هفتي ، مهيني ، مهيني کان گهٽ يا ڪڏهن به نه ؟</string>
+	<string name="f07b011">ڪيتري وقت کانپوءِ توهان جي گهر ۾ تمباڪو نوشي ڪئي ويندي آهي؟ </string>
+	<string name="f07b01102">توهان ٻڌائي سگهو ٿا ته هفتي ، مهيني ، مهيني کان گهٽ يا ڪڏهن به نه ؟</string>
 	<string name="f07b011a">روزانو</string>
 	<string name="f07b011b">هفتي ۾</string>
 	<string name="f07b011c">مهيني ۾</string>
@@ -320,7 +321,7 @@
 	<string name="f04a003d">نون ڄاول Rh +ve ٻارن کان Rh –ve عورتن کي</string>
 	<string name="f04a003e">نون ڄاول  RH-ve ٻارن کان Rh –ve عورتن کي</string>
 	<string name="f04a003f">نون ڄاول Rh –ve ٻارن کان Rh +ve عورتن کي </string>
-	<string name="f04a003g"> عورتن مان پهرئين حمل واري ٻار کي زياده خطرو آهيRH-Ve</string>
+	<string name="f04a003g">ا RH-Ve عورتن مان پهرئين حمل واري ٻار کي زياده خطرو آهي</string>
 	<string name="f04a003h">صرف پهريون پيدا ٿيل نئون ٻار</string>
 	<string name="f04a003i">صرف پهرين ٻار کان علاوه نئين ڄاول ٻار کي</string>
 	<string name="f04a003j">ٻار جي ماءُ کي</string>
@@ -333,9 +334,9 @@
 	<string name="f04a003q">ڪنهن به بالغ مرد کي</string>
 	<string name="f04a004">ريسس  (RH ) بيماري ڇو ٿيندي آهي؟</string>
 	<string name="f04a004a">نئي ڄاول جو رت ماءُ جي رت  سان مطابقت نٿو رکي</string>
-	<string name="f04a004b"> RH-ve ماءُ کي پنهنجي Rh+ve ٻار جي رت مان خطرو آهي</string>
+	<string name="f04a004b">ا RH-ve ماءُ کي پنهنجي Rh+ve  ٻار جي رت مان خطرو آهي</string>
 	<string name="f04a004c">ماءُ جي مدافعتي نظام abs  پيدا ڪري ٿي جيڪا ٻار تي حملو ڪري سگهي ٿي</string>
-	<string name="f04a004d">Rh-ve عورت جيڪڏهن Rh+ve  مرد جي سار سنڀال ڪري يا ڄڻي ته</string>
+	<string name="f04a004d"> ا Rh-ve عورت جيڪڏهن Rh+ve  مرد جي سار سنڀال ڪري يا ڄڻي ته</string>
 	<string name="f04a004e">قوت مدافلعت جي بيماري</string>
 	<string name="f04a004f">رت جي بيماري</string>
 	<string name="f04a004g">خراب يا شيطاني خيالن جي ڪري</string>
@@ -363,7 +364,7 @@
 	<string name="f04a005m">زباني ڪمزوري (ڳالهائڻ)</string>
 	<string name="f04a005n">ٻار کي سوڄ جو ٿيڻ</string>
 	<string name="f04a005o">ٻار جو بيمار رهڻ</string>
-	<string name="f04a006">ريسس  (RH ) بيماريءَ بابت معلومات هجڻ ڪنهن جي لاءِ ضروري آهي؟</string>
+	<string name="f04a006">ريسس  (RH ) بيماريءَ بابت معلومات هجڻ ڪنهن جي لاءِ ضروري آهي؟ ضروري جواب زور سان نه پڙهو</string>
 	<string name="f04a006a">ماءُ</string>
 	<string name="f04a006b">ٻار</string>
 	<string name="f04a006c">پيءُ</string>
@@ -380,7 +381,7 @@
 	<string name="f04a007f">پوائنٽ آف ڪيئر ايلڊن ڪارڊ</string>
 	<string name="f04a008">ريسس (RH ) بيماري کان ڪيئن بچي سگھو ٿا؟</string>
 	<string name="f04a008a">حامله عورت جي Rh جي حيثيت جو تعين ڪيو</string>
-	<string name="f04a008b">Rh-ve عورت کي بيماري کان بچاءُ لاءِ Rhlgلڳايو </string>
+	<string name="f04a008b">نگراني ڪيو Rhlg prophylaxis  بيماري کان Rh-ve  حاملا عورت جي</string>
 	<string name="f04a008c">نئين ڄاول ٻارن جي Rh  جو تعين ڪري</string>
 	<string name="f04a008d">تعين ڪيو ته عورتRh-ve   جي ڪري مايوس آهي </string>
 	<string name="f04a008e">دوائون</string>
@@ -393,7 +394,9 @@
 	<string name="f04a009b">ٻه</string>
 	<string name="f04a009c">ٽي</string>
 	<string name="f04a009d">چار</string>
-	<string name="f04a010">جيڪڏهن توهان کي اها خبر هجي ته توهان جو ٻار ريسس (RH) بيماري جي رسڪ تي آهي ته اهو گھڻن هفتن جي حمل جو هجي جڏهن توهان کي Rhlg جي خوراڪ حاصل ڪرڻ گهرجي؟</string>
+	<string name="f04a010">جيڪڏهن توهان کي اها خبر هجي ته توهان جو ٻار ريسس (RH) بيماري جي رسڪ تي آهي ته اهو گھڻن هفتن جي حمل جو هجي </string>
+	<string name="f04a01002">جڏهن توهان کي Rhlg جي خوراڪ حاصل ڪرڻ گهرجي؟</string>
+	<string name="f04a010sub"> ضروري جواب زور سان نه پڙهو (صحيح جواب تي نشان لڳايو هڪ کان وڌيڪ جواب ملي سگھن ٿا)</string>
 	<string name="f04a010a">ڪو به مسئلو ناهي - حمل جي دوران ڪنهن به وقت</string>
 	<string name="f04a010b">حمل جي 32 هفتن وقت يا ان کانپوءِ</string>
 	<string name="f04a010c">حمل جي 32 هفتن کان پهرئين</string>
@@ -500,14 +503,15 @@
 	<string name="f08a009i">High right lateral</string>
 	<string name="f08a009j">Unknown</string>
 	<string name="f08a010">20 کان 35 هفتن ۾ پاڻي جي چڪاس</string>
-	<string name="f08a010a">(&gt;5cm )نارمل</string>
+	<string name="f08a010a">(&gt;5cm ) نارمل</string>
 	<string name="f08a010b">4 کان 5 سينٽي ميٽر </string>
 	<string name="f08a010c">2 کان 4 سينٽي ميٽر</string>
 	<string name="f08a010d">تمام گهٽ ( 2 سينٽي ميٽر کان گهٽ)</string>
 	<string name="f08a010e">چڪاس نه ڪرائي</string>
 	<string name="f08a011">ڪا پيدائشي خرابي بيماري آهي؟</string>
 	<string name="f08a012">پيدائشي خرابي / بيماري جي وضاحت ڪريو؟</string>
-	<string name="f08a013">اندازي مطابق ٻار جو وزن (جيڪڏهن اندازو نه آهي ته ۹۹۹۹   لکو)</string>
+	<string name="f08a013">اندازي مطابق ٻار جو وزن </string>
+	<string name="f08a013sub">اندازي مطابق جيڪڏهن نه، لکڻ: ۹۹۹۹ </string>
 	<string name="f09hcwid">ايڇ سي ڊبليو آئي ڊي</string>
 	<string name="f09facid">سهولت ڪار جو نالو ۽ شناخت نمبر</string>
 	<string name="hcw">ايڇ سي ڊبليو آئي ڊي</string>

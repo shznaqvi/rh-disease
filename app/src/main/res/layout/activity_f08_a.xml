@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:layoutDirection="rtl"
+        android:layoutDirection="ltr"
         android:orientation="vertical">
 
         <View
@@ -420,13 +420,15 @@
         <RadioGroup
             android:id="@+id/f08a010"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            >
 
             <RadioButton
                 android:id="@+id/f08a010a"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:gravity="right"
                 android:text="@string/f08a010a" />
 
             <RadioButton
@@ -528,7 +530,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimary"
-            android:text="@string/f08a012"
+            android:text="@string/f08a013"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
 
@@ -539,7 +541,7 @@
             android:layout_marginBottom="1dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:hint="@string/f08a013"
+            android:hint="@string/f08a013sub"
             android:inputType="numberDecimal"
             android:maxLength="4" />
 

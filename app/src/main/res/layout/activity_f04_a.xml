@@ -1039,11 +1039,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="0dp"
+                android:paddingBottom="0dp"
                 android:background="@color/colorPrimary"
                 android:text="@string/f04a010"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@android:color/white" />
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="@string/f04a01002"
+                android:layout_marginTop="0dp"
+                android:paddingTop="0dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pink_100"
+                android:text="@string/f04a010sub"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/colorPrimaryDark" />
             <CheckBox
                 android:id="@+id/f04a010a"
                 android:layout_width="match_parent"
@@ -1202,6 +1219,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@android:color/white" />
 
+
             <CheckBox
                 android:id="@+id/f04a012a"
                 android:layout_width="match_parent"
@@ -1349,6 +1367,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/dkn" />
+
 
             <EditText
                 android:id="@+id/f04a012888x"

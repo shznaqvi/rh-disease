@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form7;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -10,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -373,7 +375,7 @@ public class F07CActivity extends AppCompatActivity
             } else {
                 f07c002.setError(null);
             }
-            if (!validatorClass.RangeTextBox(this,f07c002,1,15,getString(R.string.f07c002)," Number")) {
+            if (!validatorClass.RangeTextBox(this,f07c002,0,15,getString(R.string.f07c002)," Number")) {
                 return false;
             }
         }
@@ -389,7 +391,7 @@ public class F07CActivity extends AppCompatActivity
             } else {
                 f07c003.setError(null);
             }
-            if (!validatorClass.RangeTextBox(this,f07c003,1,15,getString(R.string.f07c003)," Number")) {
+            if (!validatorClass.RangeTextBox(this,f07c003,0,15,getString(R.string.f07c003)," Number")) {
                 return false;
             }
         }
@@ -407,10 +409,40 @@ public class F07CActivity extends AppCompatActivity
                 f07c004.setError(null);
             }
 
-            if (!validatorClass.RangeTextBox(this,f07c004,1,15,getString(R.string.f07c004)," Number")) {
+            if (!validatorClass.RangeTextBox(this,f07c004,0,15,getString(R.string.f07c004)," Number")) {
+                return false;
+            }
+            int _f07c001 = 0;
+            int _f07c002 = 0;
+            int _f07c003 = 0;
+            int _f07c004 = 0;
+
+            if (!TextUtils.isEmpty(f07c001.getText().toString()))
+                _f07c001 = Integer.parseInt(f07c001.getText().toString());
+            if (!TextUtils.isEmpty(f07c002.getText().toString()))
+                _f07c002 = Integer.parseInt(f07c002.getText().toString());
+            if (!TextUtils.isEmpty(f07c003.getText().toString()))
+                _f07c003 = Integer.parseInt(f07c003.getText().toString());
+            if (!TextUtils.isEmpty(f07c004.getText().toString()))
+                _f07c004 = Integer.parseInt(f07c004.getText().toString());
+
+            int sum = _f07c002+ _f07c003+ _f07c004;
+
+            if(_f07c001 >= sum){
+                f07c001.setError(null);
+                f07c002.setError(null);
+                f07c003.setError(null);
+                f07c004.setError(null);
+            }else {
+                Toast.makeText(this,"Error: Total number of pregnancies are less than live and still birth and early pregnancy terminations",Toast.LENGTH_LONG).show();
+                f07c001.setError("Total number of pregnancies are less than live and still birth and early pregnancy terminations");
+                f07c002.setError("Total number of pregnancies are less than live and still birth and early pregnancy terminations");
+                f07c003.setError("Total number of pregnancies are less than live and still birth and early pregnancy terminations");
+                f07c004.setError("Total number of pregnancies are less than live and still birth and early pregnancy terminations");
                 return false;
             }
         }
+
 
         // ====================== f07c005 ===================
         if (!f07c005999.isChecked()) {
@@ -423,10 +455,27 @@ public class F07CActivity extends AppCompatActivity
                 f07c005.setError(null);
             }
 
-            if (!validatorClass.RangeTextBox(this,f07c005,1,15,getString(R.string.f07c005)," Number")) {
+            if (!validatorClass.RangeTextBox(this,f07c005,0,15,getString(R.string.f07c005)," Number")) {
+                return false;
+            }
+            int _f07c003 = 0;
+            int _f07c005 = 0;
+            if (!TextUtils.isEmpty(f07c003.getText().toString()))
+                _f07c003 = Integer.parseInt(f07c003.getText().toString());
+            if (!TextUtils.isEmpty(f07c005.getText().toString()))
+                _f07c005 = Integer.parseInt(f07c005.getText().toString());
+
+            if(_f07c003 >= _f07c005){
+                f07c003.setError(null);
+                f07c005.setError(null);
+            }else{
+                Toast.makeText(this,"Error: Total number of live births should be equal to or greater than total number of children living today!",Toast.LENGTH_LONG).show();
+                f07c003.setError("Error: Total number of live births should be equal to or greater than total number of children living today!");
+                f07c005.setError("Error: Total number of live births should be equal to or greater than total number of children living today!");
                 return false;
             }
         }
+
         //=================== f07c006 ==============
         if (f07c006.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f07c006), Toast.LENGTH_SHORT).show();
