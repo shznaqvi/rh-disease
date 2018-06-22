@@ -1227,39 +1227,7 @@ public class F11AActivity extends AppCompatActivity {
                 }
 
 
-                if (f11b021a.isChecked()
-                        || f11b021b.isChecked()
-                        || f11b021c.isChecked()
-                        || f11b021888.isChecked()) {
 
-                    //f11b022
-                    if (!f11b022a.isChecked()
-                            && !f11b022b.isChecked()
-                            && !f11b022c.isChecked()
-                            && !f11b022d.isChecked()
-                            && !f11b022888.isChecked()) {
-                        Toast.makeText(this, "ERROR(empty): " + getString(R.string.f11b022), Toast.LENGTH_SHORT).show();
-                        f11b022a.setError("This data is Required!");    // Set Error on last radio button
-                        Log.i(TAG, "f11b022: This data is Required!");
-                        return false;
-                    } else {
-                        f11b022a.setError(null);
-                    }
-
-
-                    if (f11b022888.isChecked()) {
-                        //f11b022888x
-                        if (f11b022888x.getText().toString().isEmpty()) {
-                            Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
-                            f11b022888x.setError("This data is Required!");    // Set Error on last radio button
-                            Log.i(TAG, "f11b022888x: This data is Required!");
-                            return false;
-                        } else {
-                            f11b022888x.setError(null);
-                        }
-                    }
-
-                }
 
 
             }
@@ -1269,7 +1237,39 @@ public class F11AActivity extends AppCompatActivity {
 
 
         if (f11b013b.isChecked()) {
+            if (f11b021a.isChecked()
+                    || f11b021b.isChecked()
+                    || f11b021c.isChecked()
+                    || f11b021888.isChecked()) {
 
+                //f11b022
+                if (!f11b022a.isChecked()
+                        && !f11b022b.isChecked()
+                        && !f11b022c.isChecked()
+                        && !f11b022d.isChecked()
+                        && !f11b022888.isChecked()) {
+                    Toast.makeText(this, "ERROR(empty): " + getString(R.string.f11b022), Toast.LENGTH_SHORT).show();
+                    f11b022a.setError("This data is Required!");    // Set Error on last radio button
+                    Log.i(TAG, "f11b022: This data is Required!");
+                    return false;
+                } else {
+                    f11b022a.setError(null);
+                }
+
+
+                if (f11b022888.isChecked()) {
+                    //f11b022888x
+                    if (f11b022888x.getText().toString().isEmpty()) {
+                        Toast.makeText(this, "ERROR(empty): " + getString(R.string.other), Toast.LENGTH_SHORT).show();
+                        f11b022888x.setError("This data is Required!");    // Set Error on last radio button
+                        Log.i(TAG, "f11b022888x: This data is Required!");
+                        return false;
+                    } else {
+                        f11b022888x.setError(null);
+                    }
+                }
+
+            }
             //f11b022
             if (!f11b022a.isChecked()
                     && !f11b022b.isChecked()

@@ -42,7 +42,7 @@
             android:layout_marginTop="16dp"
             android:background="@color/pink_100"
             android:gravity="center"
-            android:text="@string/sec07DLabel"
+            android:text="@string/f09ALabel"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="32sp"

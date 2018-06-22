@@ -522,7 +522,7 @@
 	<string name="f09gawk">هفتا</string>
 	<string name="f09gad">ڏينهن</string>
 	<string name="f09heading">فارم 9:  سارسنڀال ٽيسٽ : نتيجا ۽ قبوليت</string>
-	<string name="f09ALabel">فارم 9:  سارسنڀال ٽيسٽ : نتيجا ۽ قبوليت</string>
+	<string name="f09ALabel"> (سارسنڀال) ٽيسٽ</string>
 	<string name="f09a001">ڇا اميدوار سارسنڀال ٽيسٽ ڪرائڻ جي لاءِ راضي آهي؟</string>
 	<string name="f09a002">جيڪڏهن نه ته،  ان کي رد ڪرڻ جو ڪهڙو اهم سبب آهي؟</string>
 	<string name="f09a002a">ٽائيم نه آهي</string>
@@ -580,8 +580,8 @@
 	<string name="f09b019">هن ٽيسٽ تي پيئسا خرچ نه ڪرڻ جي سب کان اهم وجه ڇا آهي؟</string>
 	<string name="f09b019a">هن جي قيمت زياده آهي مان برداشت نه ٿو/ٿي ڪري سگهان</string>
 	<string name="f09b019b">مون کي يقين نه آهي ته هن سان فائدو ٿيندو</string>
-	<string name="f09b019c">مون کي يقين نه آهي ته هن سان منهنجي ٻار کي فائدو ٿيندو</string>
-	<string name="f09b019d">گھر جا ڀاتي مون کي هن تي خرچ ڪرڻ نٿا ڏين</string>
+	<string name="f09b019c">مون کي يقين نه آهي ته هن سان منهنجي ٻار کي  فائدو ٿيندو</string>
+	<string name="f09b019d">گھر جا ماڻهون مون کي هن تي خرچ ڪرڻ نه ڏيندا</string>
 	<string name="f10heading"> فارم 11:   ويم ۽ نئين ڄاول ٻار جو معائنو</string>
 	<string name="f10sub"> سڃاڻپ جي معلومات  </string>
 	<string name="f10pid">شموليت ڪندڙ جي شناخت</string>
