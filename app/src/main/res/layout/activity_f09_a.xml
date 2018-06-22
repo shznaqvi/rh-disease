@@ -246,6 +246,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@color/pink_100"
                 android:text="@string/f09a003"
+                android:gravity="right"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/colorPrimaryDark" />
 
@@ -271,6 +272,8 @@
                     android:layout_marginBottom="1dp"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg01" />
 
                 <RadioButton
@@ -280,6 +283,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:layout_marginLeft="2dp"
+                    android:gravity="right"
 
                     android:text="@string/f09a003bg02" />
 
@@ -290,6 +294,7 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="1dp"
                     android:layout_marginLeft="2dp"
+                    android:gravity="right"
 
                     android:text="@string/f09a003bg03" />
 
@@ -300,6 +305,7 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="1dp"
                     android:layout_marginLeft="2dp"
+                    android:gravity="right"
 
                     android:text="@string/f09a003bg04" />
 
@@ -368,6 +374,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
+                    android:gravity="right"
                     android:text="@string/f09a003bg01" />
 
                 <RadioButton
@@ -376,6 +383,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg02" />
 
                 <RadioButton
@@ -384,6 +393,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg03" />
 
                 <RadioButton
@@ -392,6 +403,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginBottom="1dp"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg04" />
 
             </RadioGroup>
@@ -428,6 +441,16 @@
                     android:text="@string/f09a003rh02" />
 
             </RadioGroup>
+            <Button
+                android:id="@+id/captureEldonCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Capture Eldon Card"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                />
 
             <TextView
                 android:layout_width="match_parent"

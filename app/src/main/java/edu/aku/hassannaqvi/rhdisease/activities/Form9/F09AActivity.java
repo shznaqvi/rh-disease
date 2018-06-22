@@ -3,11 +3,16 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form9;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.annotation.IdRes;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -19,6 +24,7 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -40,6 +46,8 @@ public class F09AActivity extends Activity {
     String lmp = null;
     public static String PARTICIPANT_ID_TAG = "participantID";
     public static String LMP_TAG = "lmp";
+    private static final int CONTENT_REQUEST = 1337;
+    private File output = null;
     @BindView(R.id.f09hcwid)
     EditText f09hcwid;
     @BindView(R.id.f09facid)
@@ -300,6 +308,9 @@ public class F09AActivity extends Activity {
 
     @BindView(R.id.fldGrpf09b022)
     LinearLayout fldGrpf09b022;
+
+    @BindView(R.id.captureEldonCard)
+    Button captureEldonCard;
 
 
     @Override
@@ -585,8 +596,50 @@ public class F09AActivity extends Activity {
                 }
             }
         });
+        captureEldonCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                String path = Environment.getExternalStorageDirectory()
+                        + File.separator + MainApp.FILENAME + File.separator + "EldonCardImages";
+                String imagename = MainApp.fc.get_UID() + "_" + MainApp.fc.getParticipantID();
+                // uid_participantID.jpeg
+                output = new File(path, imagename + ".jpeg");
+                MainApp.imgl.setuuid(MainApp.fc.get_UID());
+                MainApp.imgl.setimagename(imagename);
+                MainApp.imgl.setimagetype("jpeg");
+                MainApp.imgl.setdeviceid(MainApp.fc.getDeviceID());
+                MainApp.imgl.setuser(MainApp.fc.getUser());
+                i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output));
+                startActivityForResult(i, CONTENT_REQUEST);
+            }
+        });
 
+    }
 
+    public void createFolder() {
+        // here PictureFolder is the folder name you can change it offcourse
+        String RootDir = Environment.getExternalStorageDirectory()
+                + File.separator + MainApp.FILENAME + File.separator + "EldonCardImages";
+        File RootFile = new File(RootDir);
+        RootFile.mkdir();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        if (requestCode == CONTENT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                createFolder();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setDataAndType(Uri.fromFile(output), "image/jpeg");
+                startActivity(i);
+                MainApp.imgl.setparticipantid(MainApp.fc.getParticipantID());
+
+//                finish();
+            }
+        }
     }
 
     @OnClick(R.id.btn_End)
@@ -624,12 +677,19 @@ public class F09AActivity extends Activity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-          // MainApp.fc.set_UUID(db.getForm5_UID(participantID));
-            if(MainApp.fc.get_UUID().equals("") || MainApp.fc.get_UUID() == null) {
-                MainApp.fc.set_UUID(db.getForm5_UID(participantID,MainApp.FORM5));
-            }
+        // MainApp.fc.set_UUID(db.getForm5_UID(participantID));
+        if (MainApp.fc.get_UUID().equals("") || MainApp.fc.get_UUID() == null) {
+            MainApp.fc.set_UUID(db.getForm5_UID(participantID, MainApp.FORM5));
+        }
 
         int updcount = db.updateF09();
+
+        long imageid = 0;
+        imageid = db.addImageLog(MainApp.imgl);
+        if (imageid != 0) {
+            MainApp.imgl.set_uid(MainApp.fc.getDeviceID() + "" + imageid);
+            db.updateImageLog();
+        }
 
 
         if (updcount == 1) {
@@ -681,7 +741,7 @@ public class F09AActivity extends Activity {
         } else {
             f09gawk.setError(null);
         }
-        if (!validatorClass.RangeTextBox(this,f09gawk,0,42,getString(R.string.f09gawk)," weeks")) {
+        if (!validatorClass.RangeTextBox(this, f09gawk, 0, 42, getString(R.string.f09gawk), " weeks")) {
             return false;
         }
 
@@ -696,17 +756,17 @@ public class F09AActivity extends Activity {
             f09gad.setError(null);
         }
 
-        if (!validatorClass.RangeTextBox(this,f09gad,0,6,getString(R.string.f09gad)," days")) {
+        if (!validatorClass.RangeTextBox(this, f09gad, 0, 6, getString(R.string.f09gad), " days")) {
             return false;
         }
-        if (f09gawk.getText().toString().equals("0")&& f09gad.getText().toString().equals("0")) {
+        if (f09gawk.getText().toString().equals("0") && f09gad.getText().toString().equals("0")) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.f09gawk), Toast.LENGTH_SHORT).show();
             f09gawk.setError("Weeks and days both cannot be zero at the same time!");    // Set Error on last radio button
             f09gad.setError("Weeks and days both cannot be zero at the same time!");    // Set Error on last radio button
             Log.i(TAG, "f09gawk:Weeks and days both cannot be zero at the same time!");
             Log.i(TAG, "f09gad: Weeks and days both cannot be zero at the same time!");
             return false;
-        }else {
+        } else {
             f09gawk.setError(null);
             f09gad.setError(null);
         }
@@ -1117,6 +1177,13 @@ public class F09AActivity extends Activity {
             }
 
         }
+        if (f09a001a.isChecked()) {
+            if (TextUtils.isEmpty(MainApp.imgl.getparticipantid())) {
+                Toast.makeText(this, "Please capture an image of eldon card!", Toast.LENGTH_LONG).show();
+                captureEldonCard.requestFocus();
+                return false;
+            }
+        }
 
         return true;
     }
@@ -1134,16 +1201,16 @@ public class F09AActivity extends Activity {
         MainApp.fc.setFormType(MainApp.FORM9);
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setLmp(lmp);
-        MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":f09a003rh02.isChecked()?"2":"0");
+        MainApp.fc.setRh_status(f09a003rh01.isChecked() ? "1" : f09a003rh02.isChecked() ? "2" : "0");
         String rhResult;
         if (f09a003rh01.isChecked()) {
             rhResult = "1";
-        }else if(f09a003rh02.isChecked()){
-           rhResult = "2";
-        }else {
+        } else if (f09a003rh02.isChecked()) {
+            rhResult = "2";
+        } else {
             rhResult = "0";
         }
-MainApp.rh.setRh_status(rhResult);
+        MainApp.rh.setRh_status(rhResult);
 
         //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 

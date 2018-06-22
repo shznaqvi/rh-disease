@@ -29,6 +29,7 @@ import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.ImagesLogContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.MothersLst;
 
@@ -41,7 +42,7 @@ public class MainApp extends Application {
     public static final String _IP = "43.245.131.159"; // Test PHP server
     public static final Integer _PORT = 8080; // Port - with colon (:)
     public static final String _HOST_URL = "http://" + MainApp._IP + ":" + MainApp._PORT + "/rhd/api/";
-
+    public static final String FILENAME = "DMU-RH_DISEASE";
     /*
         public static final String _IP = "43.245.131.159"; // Test server
     */
@@ -79,6 +80,7 @@ public class MainApp extends Application {
     public static int loginFieldArea = -1;
     public static String child_name = "TEST";
     public static FormsContract fc = new FormsContract();
+    public static ImagesLogContract imgl = new ImagesLogContract();
     public static FilledFormsContract ffc = new FilledFormsContract();
     public static rh_resultsContract rh = new rh_resultsContract();
     public static FormsContract fc4 = new FormsContract();
@@ -103,23 +105,23 @@ public class MainApp extends Application {
     public static int versionCode;
     public static String versionName;
 
-   final public static String FORM5 = "5";
-   final public static String FORM7 = "7";
-   final public static String FORM9 = "9";
-   final public static String FORM8 = "8";
-   final public static String FORM10 = "10";
-   final public static String FORM11 = "11";
-   final public static String FORM12 = "12";
-   final public static String FORM13 = "13";
-   final public static String FORM14 = "14";
-   final public static String FORM15 = "15";
-   final public static String FORM16 = "16";
-   final public static String RH_POSITIVE = "1";
-   final public static String RH_NEGATIVE = "2";
-  public static boolean F10First = false;
-   public static boolean F10Second = false;
-   public static boolean F15First = false;
-   public static boolean F15Second = false;
+    final public static String FORM5 = "5";
+    final public static String FORM7 = "7";
+    final public static String FORM9 = "9";
+    final public static String FORM8 = "8";
+    final public static String FORM10 = "10";
+    final public static String FORM11 = "11";
+    final public static String FORM12 = "12";
+    final public static String FORM13 = "13";
+    final public static String FORM14 = "14";
+    final public static String FORM15 = "15";
+    final public static String FORM16 = "16";
+    final public static String RH_POSITIVE = "1";
+    final public static String RH_NEGATIVE = "2";
+    public static boolean F10First = false;
+    public static boolean F10Second = false;
+    public static boolean F15First = false;
+    public static boolean F15Second = false;
 
 
     //    Total No of Alive members got from Section B
@@ -173,6 +175,7 @@ public class MainApp extends Application {
         monthsBetween += (end.get(Calendar.YEAR) - start.get(Calendar.YEAR)) * 12;
         return monthsBetween;
     }
+
     public static Calendar getCalendarDate(String value) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         Calendar calendar = Calendar.getInstance();
@@ -188,6 +191,7 @@ public class MainApp extends Application {
 
         return calendar;
     }
+
     public static void errorCheck(final Context context, String error) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
                 context);

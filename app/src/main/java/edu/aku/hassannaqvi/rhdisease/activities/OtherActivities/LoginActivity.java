@@ -233,7 +233,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                 editor.commit();
             }
 
-            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "DMU-DSSCENSUS");
+//            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + "DMU-DSSCENSUS");
+            File folder = new File(Environment.getExternalStorageDirectory() + File.separator + MainApp.FILENAME);
+
             boolean success = true;
             if (!folder.exists()) {
                 success = folder.mkdirs();

@@ -43,6 +43,7 @@ import edu.aku.hassannaqvi.rhdisease.get.GetForm5;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.NetworkUtils;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncAllData;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncImages;
 
 public class MainActivity extends Activity {
 
@@ -368,14 +369,6 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
             DatabaseHelper db = new DatabaseHelper(this);
 
-/*           new SyncForms(this).execute();
-            new SyncForms3(this).execute();
-            new SyncForms8(this).execute();
-            new SyncFetus(this).execute();
-            new SyncForms9(this).execute();
-            new SyncForms10(this).execute();
-            new SyncForm11(this).execute();
-            */
             //TODO:sync Form 5 and 6 sync to server
             Toast.makeText(getApplicationContext(), "Syncing Form# 5 and 6", Toast.LENGTH_SHORT).show();
             new SyncAllData(
@@ -472,6 +465,8 @@ public class MainActivity extends Activity {
                     db.getUnsyncedFilledForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
+            new SyncImages(this).execute();
+
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
 
@@ -484,51 +479,7 @@ public class MainActivity extends Activity {
         }
 
     }
-/*    public void syncServer(View view) {
-        Log.e(TAG, "syncServer: 1");
-        // Require permissions INTERNET & ACCESS_NETWORK_STATE
-        ConnectivityManager connMgr = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        Log.e(TAG, "syncServer: 2");
-        if (networkInfo != null && networkInfo.isConnected()) {
-            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
 
-*//*           new SyncForms(this).execute();
-            new SyncForms3(this).execute();
-            new SyncForms8(this).execute();
-            new SyncFetus(this).execute();
-            new SyncForms9(this).execute();
-            new SyncForms10(this).execute();
-            new SyncForm11(this).execute();
-*//*
-            //new SyncForms3(this).execute();
-            //new SyncForms8(this).execute();
-            ////new SyncFetus(this).execute();
-            //new SyncForms9(this).execute();
-            //new SyncForms10(this).execute();
-            //new SyncForm11(this).execute();
-
-           *//* Toast.makeText(getApplicationContext(), "Syncing Participants", Toast.LENGTH_SHORT).show();
-            new SyncParticipants(this).execute();*//*
-
-
-//            Toast.makeText(getApplicationContext(), "Syncing Mother", Toast.LENGTH_SHORT).show();
-//            new SyncMother(this).execute();
-
-
-            SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = syncPref.edit();
-
-            editor.putString("LastUpSyncServer", dtToday);
-
-            editor.apply();
-
-        } else {
-            Toast.makeText(this, "No network connection available.", Toast.LENGTH_SHORT).show();
-        }
-
-    }*/
 
     public void syncDevice(View view) {
         if (isNetworkAvailable()) {

@@ -20,21 +20,19 @@ import java.net.URL;
 import java.util.Collection;
 
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.ImagesLogContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.ImagesLogContract.ImagesLogTable;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
-/**
- * Created by javed.khan on 9/28/2017.
- */
+public class SyncImages extends AsyncTask<Void, Void, String> {
 
-public class SyncForms extends AsyncTask<Void, Void, String> {
-
-    private static final String TAG = "SyncForms5";
+    private static final String TAG = "SyncImages";
     private Context mContext;
     private ProgressDialog pd;
 
 
-    public SyncForms(Context context) {
+    public SyncImages(Context context) {
         mContext = context;
     }
 
@@ -59,7 +57,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
     protected String doInBackground(Void... params) {
         try {
 
-            String url = MainApp._HOST_URL + FormsContract.FormsTable._URL;
+            String url = MainApp._HOST_URL + ImagesLogTable._URL;
 
             Log.d(TAG, "doInBackground: URL " + url);
             return downloadUrl(url);
@@ -72,11 +70,11 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
         String line = "No Response";
 
         DatabaseHelper db = new DatabaseHelper(mContext);
-        Collection<FormsContract> Forms = db.getUnsyncedForms();
+        Collection<ImagesLogContract> images = db.getUnsyncedImages();
 
-        Log.d(TAG, String.valueOf(Forms.size()));
+        Log.d(TAG, String.valueOf(images.size()));
 
-        if (Forms.size() > 0) {
+        if (images.size() > 0) {
 
             HttpURLConnection connection = null;
             try {
@@ -95,7 +93,7 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
                     connection.setDoInput(true);
                     connection.setInstanceFollowRedirects(false);
                     connection.setRequestMethod("POST");
-                    connection.setRequestProperty("Content-Type", "application/json");
+//                    connection.setRequestProperty("Content-Type", "application/json");
                     connection.setRequestProperty("charset", "utf-8");
                     connection.setUseCaches(false);
                     connection.connect();
@@ -105,9 +103,9 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
 
 //            pd.setMessage("Total Forms: " );
 
-                    for (FormsContract fc : Forms) {
+                    for (ImagesLogContract imglc : images) {
                         //if (fc.getIstatus().equals("1")) {
-                        jsonSync.put(fc.toJSONObject());
+                        jsonSync.put(imglc.toJSONObject());
                         //}
                     }
                     wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
@@ -163,26 +161,26 @@ public class SyncForms extends AsyncTask<Void, Void, String> {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
                 if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
-                    db.updateSyncedForms(jsonObject.getString("id"));  // UPDATE SYNCED
+                    db.updateSyncedImages(jsonObject.getString("id"));  // UPDATE SYNCED
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
-                    db.updateSyncedForms(jsonObject.getString("id")); // UPDATE DUPLICATES
+                    db.updateSyncedImages(jsonObject.getString("id")); // UPDATE DUPLICATES
                     sDuplicate++;
                 } else {
                     sSyncedError += "\nError: " + jsonObject.getString("message");
                 }
             }
-            Toast.makeText(mContext, sSynced + " Forms 5 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, sSynced + " Images synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
 
-            pd.setMessage(sSynced + " Forms 5 synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
-            pd.setTitle("Done uploading Forms 5 data");
+            pd.setMessage(sSynced + " Images synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
+            pd.setTitle("Done uploading Images");
             pd.show();
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
 
             pd.setMessage(result);
-            pd.setTitle("Forms 5 Sync Failed");
+            pd.setTitle("Images Sync Failed");
             pd.show();
         }
     }

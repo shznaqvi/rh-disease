@@ -22,6 +22,8 @@ import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract.FetusTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract.FilledFormsTable;
+import edu.aku.hassannaqvi.rhdisease.contracts.ImagesLogContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.ImagesLogContract.ImagesLogTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract.RH_ResultsTable;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
@@ -157,6 +159,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FilledFormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
+    private static final String SQL_CREATE_IMAGESLOG = "CREATE TABLE "
+            +ImagesLogTable.TABLE_NAME + "("
+            + ImagesLogTable.COLUMN__ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+            ImagesLogTable.COLUMN__UID + " TEXT,"+
+            ImagesLogTable.COLUMN_UUID + " TEXT,"+
+            ImagesLogTable.COLUMN_DEVICEID + " TEXT,"+
+            ImagesLogTable.COLUMN_USER + " TEXT,"+
+            ImagesLogTable.COLUMN_PARTICIPANTID + " TEXT,"+
+            ImagesLogTable.COLUMN_IMAGENAME + " TEXT,"+
+            ImagesLogTable.COLUMN_IMAGETYPE + " TEXT,"+
+            ImagesLogTable.COLUMN_ISUPLOADED + " TEXT,"+
+            ImagesLogTable.COLUMN_SYNCED + " TEXT,"+
+            ImagesLogTable.COLUMN_SYNCED_DATE + " TEXT"
+            + " );";
+
 
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
@@ -169,6 +186,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "DROP TABLE IF EXISTS " + RH_ResultsTable.TABLE_NAME;
     private static final String SQL_DELETE_FILLEDFORMS =
             "DROP TABLE IF EXISTS " + FilledFormsTable.TABLE_NAME;
+    private static final String SQL_DELETE_IMAGESLOG=
+            "DROP TABLE IF EXISTS " + ImagesLogTable.TABLE_NAME;
 
     private static final String SQL_SELECT_MOTHER_BY_CHILD =
             "SELECT c.agem cm, c.agey cy, c.aged cd, c.gender, c.serial serial, m.serial serialm, c.name child_name, c.dss_id_member child_id, m.name mother_name, c.dss_id_member mother_id, c.dob date_of_birth FROM census C join census m on c.dss_id_m = m.dss_id_member where c.member_type =? and c.uuid = m.uuid and c.current_status IN ('1', '2') and c.uuid = ? group by mother_id order by substr(c.dob, 7) desc, substr(c.dob, 4,2) desc, substr(c.dob, 1,2) desc;";
@@ -196,6 +215,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FETUS);
         db.execSQL(SQL_CREATE_RHRESULTS);
         db.execSQL(SQL_CREATE_FILLEDFORMS);
+        db.execSQL(SQL_CREATE_IMAGESLOG);
 
     }
 
@@ -206,6 +226,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_DELETE_FETUS);
         db.execSQL(SQL_DELETE_RHRESULTS);
         db.execSQL(SQL_DELETE_FILLEDFORMS);
+        db.execSQL(SQL_DELETE_IMAGESLOG);
 
     }
 
@@ -222,7 +243,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
         }
     }
-
     public void syncUsers(JSONArray userlist) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(UsersTable.TABLE_NAME, null, null);
@@ -890,6 +910,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values);
         return newRowId;
     }
+    public Long addImageLog(ImagesLogContract imgl) {
+        // Gets the data repository in write mode
+        SQLiteDatabase db = this.getWritableDatabase();
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(ImagesLogTable.COLUMN__UID, imgl.get_uid());
+        values.put(ImagesLogTable.COLUMN_UUID, imgl.getuuid());
+        values.put(ImagesLogTable.COLUMN_DEVICEID, imgl.getdeviceid());
+        values.put(ImagesLogTable.COLUMN_IMAGEURI, imgl.getimageuri());
+        values.put(ImagesLogTable.COLUMN_USER, imgl.getuser());
+        values.put(ImagesLogTable.COLUMN_PARTICIPANTID, imgl.getparticipantid());
+        values.put(ImagesLogTable.COLUMN_IMAGENAME, imgl.getimagename());
+        values.put(ImagesLogTable.COLUMN_IMAGETYPE, imgl.getimagetype());
+        values.put(ImagesLogTable.COLUMN_ISUPLOADED, imgl.getisuploaded());
+        values.put(ImagesLogTable.COLUMN_SYNCED, imgl.getsynced());
+        values.put(ImagesLogTable.COLUMN_SYNCED_DATE, imgl.getsynced_date());
+
+
+        // Insert the new row, returning the primary key value of the new row
+        long newRowId;
+        newRowId = db.insert(
+                ImagesLogTable.TABLE_NAME,
+                ImagesLogTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
 
     public Long addFilledForms(FilledFormsContract ffc) {
         // Gets the data repository in write mode
@@ -1010,6 +1056,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         int count = db.update(
                 FormsTable.TABLE_NAME,
+                values,
+                where,
+                whereArgs);
+    }
+
+    public void updateSyncedImages(String id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(ImagesLogTable.COLUMN_ISUPLOADED, "1");
+        values.put(ImagesLogTable.COLUMN_SYNCED, true);
+        values.put(ImagesLogTable.COLUMN_SYNCED_DATE, new Date().toString());
+
+// Which row to update, based on the title
+        String where = ImagesLogTable.COLUMN__ID + " = ?";
+        String[] whereArgs = {id};
+
+        int count = db.update(
+                ImagesLogTable.TABLE_NAME,
                 values,
                 where,
                 whereArgs);
@@ -1226,6 +1292,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
         return allFC;
+    }
+    public Collection<ImagesLogContract> getUnsyncedImages() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = null;
+        String[] columns = {
+
+                ImagesLogTable.COLUMN__ID,
+                ImagesLogTable.COLUMN__UID,
+                ImagesLogTable.COLUMN_UUID,
+                ImagesLogTable.COLUMN_DEVICEID,
+                ImagesLogTable.COLUMN_IMAGEURI,
+                ImagesLogTable.COLUMN_USER,
+                ImagesLogTable.COLUMN_PARTICIPANTID,
+                ImagesLogTable.COLUMN_IMAGENAME,
+                ImagesLogTable.COLUMN_IMAGETYPE,
+                ImagesLogTable.COLUMN_ISUPLOADED,
+                ImagesLogTable.COLUMN_SYNCED,
+                ImagesLogTable.COLUMN_SYNCED_DATE,
+
+        };
+        String whereClause ="("+ FormsTable.COLUMN_SYNCED + " is null OR " + FormsTable.COLUMN_SYNCED + "='') AND (" +ImagesLogTable.COLUMN_ISUPLOADED + " is null OR " + ImagesLogTable.COLUMN_ISUPLOADED + "='' )";
+        String[] whereArgs = new String[]{};
+        String groupBy = null;
+        String having = null;
+
+        String orderBy =
+                ImagesLogTable._ID + " ASC";
+
+        Collection<ImagesLogContract> imglc = new ArrayList<ImagesLogContract>();
+        try {
+            c = db.query(
+                    ImagesLogTable.TABLE_NAME,  // The table to query
+                    columns,                   // The columns to return
+                    whereClause,               // The columns for the WHERE clause
+                    whereArgs,                 // The values for the WHERE clause
+                    groupBy,                   // don't group the rows
+                    having,                    // don't filter by row groups
+                    orderBy                    // The sort order
+            );
+            while (c.moveToNext()) {
+                ImagesLogContract fc = new ImagesLogContract();
+                imglc.add(fc.Hydrate(c));
+            }
+        } finally {
+            if (c != null) {
+                c.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+        return imglc;
     }
     public Collection<FilledFormsContract> getUnsyncedFilledForms() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2714,6 +2832,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
 
         int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+    public int updateImageLog() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(ImagesLogTable.COLUMN__UID, MainApp.imgl.get_uid());
+// Which row to update, based on the ID
+        String selection = ImagesLogTable.COLUMN__ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.imgl.get_id())};
+
+        int count = db.update(ImagesLogTable.TABLE_NAME,
                 values,
                 selection,
                 selectionArgs);
