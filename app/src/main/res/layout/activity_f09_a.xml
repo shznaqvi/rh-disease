@@ -272,6 +272,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
+                    android:gravity="right"
                     android:text="@string/f09a003bg01" />
 
                 <RadioButton
@@ -281,7 +282,7 @@
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
                     android:layout_marginLeft="2dp"
-
+                    android:gravity="right"
                     android:text="@string/f09a003bg02" />
 
                 <RadioButton
@@ -291,7 +292,7 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="1dp"
                     android:layout_marginLeft="2dp"
-
+                    android:gravity="right"
                     android:text="@string/f09a003bg03" />
 
                 <RadioButton
@@ -301,7 +302,7 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="1dp"
                     android:layout_marginLeft="2dp"
-
+                    android:gravity="right"
                     android:text="@string/f09a003bg04" />
 
             </RadioGroup>
@@ -369,6 +370,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg01" />
 
                 <RadioButton
@@ -377,6 +380,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg02" />
 
                 <RadioButton
@@ -385,6 +390,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
                     android:layout_weight="1"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg03" />
 
                 <RadioButton
@@ -393,6 +400,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_marginBottom="1dp"
+                    android:gravity="right"
+
                     android:text="@string/f09a003bg04" />
 
             </RadioGroup>
