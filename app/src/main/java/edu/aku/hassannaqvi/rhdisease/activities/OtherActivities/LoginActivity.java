@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -65,6 +66,7 @@ import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.get.GetForm5;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
+import edu.aku.hassannaqvi.rhdisease.sync.SyncImages;
 
 
 /**
@@ -308,6 +310,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      * If there are form errors (invalid email, missing fields, etc.), the
      * errors are presented and no actual login attempt is made.
      */
+
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;

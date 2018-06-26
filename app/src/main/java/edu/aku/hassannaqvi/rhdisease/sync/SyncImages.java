@@ -2,22 +2,42 @@ package edu.aku.hassannaqvi.rhdisease.sync;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Environment;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.ImagesLogContract;
@@ -47,9 +67,10 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        pd = new ProgressDialog(mContext);
+      /*  pd = new ProgressDialog(mContext);
         pd.setTitle("Please wait... Processing Forms");
         pd.show();
+        */
     }
 
 
@@ -65,7 +86,115 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
             return "Unable to upload data. Server may be down.";
         }
     }
+    public String getStringImage(Bitmap bmp) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] imageBytes = baos.toByteArray();
+        String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+        return encodedImage;
 
+    }
+    private void updateProfile(final String image) {
+        // Tag used to cancel the request
+        String tag_string_req = "req_register";
+
+//        String url = MainApp._HOST_URL + ImagesLogTable._URL;
+        String url = "http://10.1.42.101/testapi/" + ImagesLogTable._URL;
+        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                   boolean error = jObj.getBoolean("status");
+//                    message = jObj.getString("message");
+                    if (error) {
+
+
+
+                    } else {
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }) {
+
+            @Override
+            protected Map<String
+                    , String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("image", image);
+
+                return params;
+            }
+
+        };
+        int socketTimeout = 60000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        strReq.setRetryPolicy(policy);
+        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        requestQueue.add(strReq);
+        // Adding request to request queue
+//        AppController.getInstance().addToRequestQueue(strReq, tag_string_req);
+    }
+
+   /* private void SendImage( final String[] image, final String[] name) {
+        String url = MainApp._HOST_URL + ImagesLogTable._URL;
+        final StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("upload",response);
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+    },
+            new Response.ErrorListener() {
+        @Override
+        public void onErrorResponse(VolleyError error) {
+           Log.e(TAG, "No internet connection");
+        }
+    }) {
+        @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+
+            Map<String, String> params = new Hashtable<String, String>();
+            for (String img:
+                 image) {
+                params.put("image", img);
+            } for (String img:
+                 name) {
+                params.put("name", img);
+            }
+
+            return params;
+        }
+    };
+    {
+        int socketTimeout = 30000;
+        RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+        stringRequest.setRetryPolicy(policy);
+        RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+        requestQueue.add(stringRequest);
+    }
+}*/
     private String downloadUrl(String myurl) throws IOException {
         String line = "No Response";
 
@@ -76,13 +205,13 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
 
         if (images.size() > 0) {
 
-            HttpURLConnection connection = null;
+        //    HttpURLConnection connection = null;
             try {
                 String request = myurl;
                 //String request = "http://10.1.42.30:3000/Forms";
 
                 URL url = new URL(request);
-                connection = (HttpURLConnection) url.openConnection();
+               /* connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
                 int HttpResult = connection.getResponseCode();
                 if (HttpResult == HttpURLConnection.HTTP_OK) {
@@ -101,14 +230,32 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
 
                     DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
-//            pd.setMessage("Total Forms: " );
+//            pd.setMessage("Total Forms: " );*/
+                    String encodedString;
 
                     for (ImagesLogContract imglc : images) {
                         //if (fc.getIstatus().equals("1")) {
-                        jsonSync.put(imglc.toJSONObject());
+//                        jsonSync.put(imglc.toJSONObject());
                         //}
+                       String imagename = imglc.getimagename()+".jpeg";
+                        File sdCard = Environment.getExternalStorageDirectory();
+                        File directory = new File (sdCard.getAbsolutePath() +File.separator+ MainApp.FILENAME+File.separator+"EldonCardImages"+File.separator);
+                        File file = new File(directory, imagename); //or any other format supported
+
+                        FileInputStream streamIn = new FileInputStream(file);
+
+                        Bitmap bitmap = BitmapFactory.decodeStream(streamIn); //This gets the image
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 60, stream);
+                        byte[] byte_arr = stream.toByteArray();
+                        // Encode Image to String
+                        encodedString = Base64.encodeToString(byte_arr, 0);
+
+                        updateProfile(encodedString);
+                        streamIn.close();
                     }
-                    wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
+                  /*  wr.writeBytes(jsonSync.toString().replace("\uFEFF", "") + "\n");
                     longInfo(jsonSync.toString().replace("\uFEFF", "") + "\n");
                     wr.flush();
 
@@ -127,19 +274,13 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
                 } else {
                     System.out.println(connection.getResponseMessage());
                     return connection.getResponseMessage();
-                }
+                }*/
             } catch (MalformedURLException e) {
 
                 e.printStackTrace();
             } catch (IOException e) {
 
                 e.printStackTrace();
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } finally {
-                if (connection != null)
-                    connection.disconnect();
             }
         } else {
             return "No new records to sync";
@@ -159,8 +300,8 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
             DatabaseHelper db = new DatabaseHelper(mContext);
             for (int i = 0; i < json.length(); i++) {
                 JSONObject jsonObject = new JSONObject(json.getString(i));
-                if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
 
+                if (jsonObject.getString("status").equals("1") && jsonObject.getString("error").equals("0")) {
                     db.updateSyncedImages(jsonObject.getString("id"));  // UPDATE SYNCED
                     sSynced++;
                 } else if (jsonObject.getString("status").equals("2") && jsonObject.getString("error").equals("0")) {
@@ -171,17 +312,17 @@ public class SyncImages extends AsyncTask<Void, Void, String> {
                 }
             }
             Toast.makeText(mContext, sSynced + " Images synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError, Toast.LENGTH_SHORT).show();
-
+/*
             pd.setMessage(sSynced + " Images synced." + String.valueOf(json.length() - sSynced) + " Errors: " + sSyncedError);
             pd.setTitle("Done uploading Images");
-            pd.show();
+            pd.show();*/
         } catch (JSONException e) {
             e.printStackTrace();
             Toast.makeText(mContext, "Failed Sync " + result, Toast.LENGTH_SHORT).show();
-
+/*
             pd.setMessage(result);
             pd.setTitle("Images Sync Failed");
-            pd.show();
+            pd.show();*/
         }
     }
 

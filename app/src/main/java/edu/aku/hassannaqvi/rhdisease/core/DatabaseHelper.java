@@ -167,6 +167,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ImagesLogTable.COLUMN_DEVICEID + " TEXT,"+
             ImagesLogTable.COLUMN_USER + " TEXT,"+
             ImagesLogTable.COLUMN_PARTICIPANTID + " TEXT,"+
+            ImagesLogTable.COLUMN_IMAGEURI + " TEXT,"+
             ImagesLogTable.COLUMN_IMAGENAME + " TEXT,"+
             ImagesLogTable.COLUMN_IMAGETYPE + " TEXT,"+
             ImagesLogTable.COLUMN_ISUPLOADED + " TEXT,"+
@@ -1080,6 +1081,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
+
+
     public void updateSyncedFilledForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 

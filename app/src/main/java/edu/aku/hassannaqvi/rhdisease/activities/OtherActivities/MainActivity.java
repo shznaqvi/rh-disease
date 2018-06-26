@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -57,6 +61,10 @@ public class MainActivity extends Activity {
     @BindView(R.id.recordSummary)
     TextView recordSummary;
 
+    @BindView(R.id.CaptureImage)
+    Button CaptureImage;
+    @BindView(R.id.uploadImage)
+    Button uploadImage;
     /* @BindView(R.id.syncDevice)
      Button syncDevice;*/
     @BindView(R.id.syncDevice)
@@ -69,6 +77,30 @@ public class MainActivity extends Activity {
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
+
+    private static final int CONTENT_REQUEST = 1337;
+    private File output = null;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CONTENT_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                DatabaseHelper db = new DatabaseHelper(this);
+                long imageid = 0;
+                imageid = db.addImageLog(MainApp.imgl);
+                if (imageid != 0) {
+                    MainApp.imgl.set_uid(MainApp.fc.getDeviceID() + "" + imageid);
+                    db.updateImageLog();
+                }
+                createFolder();
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setDataAndType(Uri.fromFile(output), "image/jpeg");
+                startActivity(i);
+//                MainApp.imgl.setparticipantid(MainApp.fc.getParticipantID());
+//                finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +155,36 @@ public class MainActivity extends Activity {
             builder.show();
         }
         /*TagID End*/
+        CaptureImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createFolder();
+                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                File dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+                String path = Environment.getExternalStorageDirectory()
+                        + File.separator + MainApp.FILENAME + File.separator + "EldonCardImages";
+//                String imagename = MainApp.fc.get_UID() + "_" + MainApp.fc.getParticipantID();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String timeStamp = dateFormat.format(new Date());
+                String imagename = timeStamp;
+                // uid_participantID.jpeg
+                output = new File(path, imagename + ".jpeg");
 
+                MainApp.imgl.setuuid(MainApp.fc.get_UID());
+                MainApp.imgl.setimagename(imagename);
+                MainApp.imgl.setimagetype("jpeg");
+                MainApp.imgl.setdeviceid(MainApp.fc.getDeviceID());
+                MainApp.imgl.setuser(MainApp.fc.getUser());
+                i.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(output));
+                startActivityForResult(i, CONTENT_REQUEST);
+            }
+        });
+        uploadImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new SyncImages(getApplicationContext()).execute();
+            }
+        });
 
         DatabaseHelper db = new DatabaseHelper(this);
         Collection<FormsContract> todaysForms = db.getTodayForms();
@@ -245,6 +306,14 @@ public class MainActivity extends Activity {
 
             builder.show();
         }
+    }
+
+    public void createFolder() {
+        // here PictureFolder is the folder name you can change it offcourse
+        String RootDir = Environment.getExternalStorageDirectory()
+                + File.separator + MainApp.FILENAME + File.separator + "EldonCardImages";
+        File RootFile = new File(RootDir);
+        RootFile.mkdir();
     }
 
     /*public void motherForm(View v) {
@@ -465,7 +534,7 @@ public class MainActivity extends Activity {
                     db.getUnsyncedFilledForms(), this.findViewById(R.id.syncStatus)
             ).execute();
 
-            new SyncImages(this).execute();
+//            new SyncImages(this).execute();
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();

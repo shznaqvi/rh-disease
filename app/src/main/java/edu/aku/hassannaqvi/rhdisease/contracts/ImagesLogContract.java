@@ -191,7 +191,8 @@ public class ImagesLogContract {
         public static final String COLUMN_SYNCED = "synced";
         public static final String COLUMN_SYNCED_DATE = "synced_date";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
-        public static String _URL = "uploadimage.php";
+//        public static String _URL = "uploadimage.php";
+        public static String _URL = "uploadImage.php";
 
     }
 
