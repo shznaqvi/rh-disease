@@ -820,11 +820,11 @@ public class F11AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    f11b024888.setVisibility(View.VISIBLE);
-                    f11b024888.requestFocus();
+                    f11b024888x.setVisibility(View.VISIBLE);
+                    f11b024888x.requestFocus();
                 }else {
-                    f11b024888.setText(null);
-                    f11b024888.setVisibility(GONE);
+                    f11b024888x.setText(null);
+                    f11b024888x.setVisibility(GONE);
                 }
             }
         });
