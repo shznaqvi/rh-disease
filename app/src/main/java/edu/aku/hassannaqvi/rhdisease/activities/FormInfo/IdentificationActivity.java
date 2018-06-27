@@ -265,7 +265,7 @@ public class IdentificationActivity extends Activity {
                         if (db.isF10seconddublicate(participantId.getText().toString())) {
                             if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
                                 MainApp.rh.setf10_uid(db.getRHF10UidSecond(participantId.getText().toString()));
-                                MainApp.fc.set_UUID(MainApp.rh.getf10_uid());
+
                                 MainApp.F15Second = true;
                                 fldGrpfooter.setVisibility(View.VISIBLE);
                             } else {
@@ -427,7 +427,7 @@ public class IdentificationActivity extends Activity {
         MainApp.fc.setParticipantID(participantId.getText().toString());
         //MainApp.fc.setDeviceID(MainApp.deviceId);
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
-
+        MainApp.fc.set_UUID(MainApp.rh.getf10_uid());
         JSONObject sInfo = new JSONObject();
 
         sInfo.put("f08a001", f08a001999.isChecked() ? "999" : f08a001.getText().toString());
