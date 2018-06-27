@@ -1132,6 +1132,7 @@ public class F09AActivity extends Activity {
                 Settings.Secure.ANDROID_ID));
         //MainApp.fc.setParticipantID(participantID.getText().toString());
         MainApp.fc.setFormType(MainApp.FORM9);
+
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setLmp(lmp);
         MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":f09a003rh02.isChecked()?"2":"0");

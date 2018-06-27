@@ -25,6 +25,7 @@ public class rh_resultsContract {
     private String f15first = "";
     private String f10second = "";
     private String f15second = "";
+    private String f10_uid = "";
     private String f11 = "";
     private String f12 = "";
     private String f13 = "";
@@ -208,6 +209,14 @@ public class rh_resultsContract {
         this.f16 = f16;
     }
 
+    public String getf10_uid() {
+        return f10_uid;
+    }
+
+    public void setf10_uid(String f10_uid) {
+        this.f10_uid = f10_uid;
+    }
+
     public rh_resultsContract Sync(JSONObject jsonObject) throws JSONException {
         this.participantid= jsonObject.getString(RH_ResultsTable.COLUMN_PARTICIPANTID);
         this.lmp= jsonObject.getString(RH_ResultsTable.COLUMN_LMP);
@@ -225,6 +234,7 @@ public class rh_resultsContract {
         this.f15first= jsonObject.getString(RH_ResultsTable.COLUMN_F15FIRST);
         this.f10second= jsonObject.getString(RH_ResultsTable.COLUMN_F10SECOND);
         this.f15second= jsonObject.getString(RH_ResultsTable.COLUMN_F15SECOND);
+        this.f10_uid= jsonObject.getString(RH_ResultsTable.COLUMN_F10_UID);
         this.f11= jsonObject.getString(RH_ResultsTable.COLUMN_F11);
         this.f12= jsonObject.getString(RH_ResultsTable.COLUMN_F12);
         this.f13= jsonObject.getString(RH_ResultsTable.COLUMN_F13);
@@ -247,6 +257,7 @@ public class rh_resultsContract {
         this.form5_uid = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_FORM5_UID));
         this.f10_acceptance = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F10_ACCEPTANCE));
         this.f15_adverse = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F15_ADVERSE));
+        this.f10_uid = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F10_UID));
         this.f5 = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F5));
         this.f8 = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F8));
         this.f9 = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F9));
@@ -276,6 +287,7 @@ public class rh_resultsContract {
         json.put(RH_ResultsTable.COLUMN_FORM5_UID, this.form5_uid == null ? JSONObject.NULL : this.form5_uid);
         json.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, this.f10_acceptance == null ? JSONObject.NULL : this.f10_acceptance);
         json.put(RH_ResultsTable.COLUMN_F15_ADVERSE, this.f15_adverse == null ? JSONObject.NULL : this.f15_adverse);
+        json.put(RH_ResultsTable.COLUMN_F10_UID, this.f10_uid == null ? JSONObject.NULL : this.f10_uid);
         json.put(RH_ResultsTable.COLUMN_F5, this.f5 == null ? JSONObject.NULL : this.f5);
         json.put(RH_ResultsTable.COLUMN_F8, this.f8 == null ? JSONObject.NULL : this.f8);
         json.put(RH_ResultsTable.COLUMN_F9, this.f9 == null ? JSONObject.NULL : this.f9);
@@ -305,6 +317,7 @@ public class rh_resultsContract {
         public static final String COLUMN_GA_DAYS = "ga_days";
         public static final String COLUMN_F10_ACCEPTANCE = "f10_acceptance";
         public static final String COLUMN_F15_ADVERSE = "f15_adverse";
+        public static final String COLUMN_F10_UID = "f10_uid";
         public static final String COLUMN_F5 = "f5";
         public static final String COLUMN_F8 = "f8";
         public static final String COLUMN_F9 = "f9";

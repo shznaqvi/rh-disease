@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "rhdisease.db";
     public static final String DB_NAME = "rhdisease_copy.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -115,6 +115,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + RH_ResultsTable.COLUMN_PARTICIPANTID + " TEXT," +
             RH_ResultsTable.COLUMN_LMP + " TEXT," +
             RH_ResultsTable.COLUMN_FORM5_UID + " TEXT," +
+            RH_ResultsTable.COLUMN_F10_UID + " TEXT,"+
             RH_ResultsTable.COLUMN_ISRHCOMPLETED + " TEXT," +
             RH_ResultsTable.COLUMN_RH_STATUS + " TEXT," +
             RH_ResultsTable.COLUMN_GA_WEEKS + " TEXT," +
@@ -157,7 +158,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FilledFormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
 
-
+    private static final String SQL_ALTER_RHTABLE_F10_UID = "ALTER TABLE " +
+            RH_ResultsTable.TABLE_NAME + " ADD COLUMN " +
+            RH_ResultsTable.COLUMN_F10_UID + " TEXT";
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
@@ -196,16 +199,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_FETUS);
         db.execSQL(SQL_CREATE_RHRESULTS);
         db.execSQL(SQL_CREATE_FILLEDFORMS);
-
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL(SQL_DELETE_USERS);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+       /* db.execSQL(SQL_DELETE_USERS);
         db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_FETUS);
         db.execSQL(SQL_DELETE_RHRESULTS);
-        db.execSQL(SQL_DELETE_FILLEDFORMS);
+        db.execSQL(SQL_DELETE_FILLEDFORMS);*/
+        Log.w(DatabaseHelper.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will alter and add new coloumn!");
+        switch (oldVersion) {
+            case 1:
+                db.execSQL(SQL_ALTER_RHTABLE_F10_UID);
+        }
 
     }
 
@@ -355,6 +364,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return false;
+    }
+    public boolean isparticipantUnique(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F5 + "= '1'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                return false;
+            }
+        }
+        db.close();
+        return true;
     }
     public boolean isF9dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -575,6 +596,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return lmp;
     }
+    public String getRHF10Uid(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String uid = null;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10FIRST + "= '1'";
+        //String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                uid = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_F10_UID));
+            }
+        }
+        db.close();
+        return uid;
+    }
+    public String getRHF10UidSecond(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String uid = null;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10SECOND + "= '1'";
+        //String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                uid = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_F10_UID));
+            }
+        }
+        db.close();
+        return uid;
+    }
     public String checkParticipantIDExist(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String partID = null;
@@ -634,6 +685,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return partID;
+    }
+    public String getForm5UUID(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String form5uid = null;
+        String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "'";
+
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                form5uid = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_FORM5_UID));
+            }
+        }
+        db.close();
+        return form5uid;
     }
 
     public boolean checkForRH_Results(String participantID) {
@@ -2130,6 +2196,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
+    public int updatef10RhTable() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(RH_ResultsTable.COLUMN_F10_UID, MainApp.rh.getf10_uid());
+
+// Which row to update, based on the ID
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())
+        };
+
+        int count = db.update(RH_ResultsTable.TABLE_NAME,
+                values,
+                selection,
+                null);
+        return count;
+    }
     public int updatef9filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2414,7 +2498,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 // Which row to update, based on the ID
         String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
-        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
+        String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())
+        };
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
                 values,
@@ -2445,7 +2530,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(RH_ResultsTable.COLUMN_F15SECOND, MainApp.rh.getf15second());
-
 // Which row to update, based on the ID
         String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};

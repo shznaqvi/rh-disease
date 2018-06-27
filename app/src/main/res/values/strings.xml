@@ -486,12 +486,14 @@
 	<string name="f08a002d">Oblique</string>
 	<string name="f08a002e">خبر ناهي</string>
 	<string name="f08a003">ٻار جي دل جي ڌڙڪن (bpm) جي  في منٽ رفتار</string>
+
 	<string name="f08a004">پيٽ جي اندر ٻار جي ماپ (mm)</string>
 	<string name="f08a005">32 هفتن تي ٻار جو وزن ۽ ماپ (mm)</string>
 	<string name="f08a006">ڊيگھ – مٿي کان پير تائين (mm)</string>
 	<string name="f08a007">ڊگھي هڏي ۽ سٿر جي ڊيگھ (mm)</string>
 	<string name="f08a008">اندازي مطابق حمل جو عرصو</string>
-	<string name="f08a009">پيٽ ۾ ٻار جي جڳھ</string>
+	<!--<string name="f08a009">پيٽ ۾ ٻار جي جڳھ</string>-->
+	<string name="f08a009">پيٽ ۾ آنول ( ناڙي ) جي جڳهه  </string>
 	<string name="f08a009a">Fundal</string>
 	<string name="f08a009b">Low anterior</string>
 	<string name="f08a009c">High anterior</string>

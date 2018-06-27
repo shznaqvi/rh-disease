@@ -149,6 +149,7 @@ public class IdentificationActivity extends Activity {
                                 rh_resultsContract resultsContract = new rh_resultsContract();
                                 resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
                                 if (!resultsContract.get_id().equals("")) {
+
                                     try {
                                         String lmpDate = resultsContract.getLmp();
                                         DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
@@ -245,6 +246,8 @@ public class IdentificationActivity extends Activity {
                 if (!db.isF15firstdublicate(participantId.getText().toString())) {
                     if (db.isF10firstdublicate(participantId.getText().toString())) {
                         if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
+                            MainApp.rh.setf10_uid(db.getRHF10Uid(participantId.getText().toString()));
+                            MainApp.fc.set_UUID(MainApp.rh.getf10_uid());
                             MainApp.F15First = true;
                             fldGrpfooter.setVisibility(View.VISIBLE);
                         } else {
@@ -261,6 +264,8 @@ public class IdentificationActivity extends Activity {
                     if (!db.isF15seconddublicate(participantId.getText().toString())) {
                         if (db.isF10seconddublicate(participantId.getText().toString())) {
                             if (db.isAdverseReaction(participantId.getText().toString()) || db.isAdverseReaction(participantId.getText().toString(), MainApp.FORM10)) {
+                                MainApp.rh.setf10_uid(db.getRHF10UidSecond(participantId.getText().toString()));
+                                MainApp.fc.set_UUID(MainApp.rh.getf10_uid());
                                 MainApp.F15Second = true;
                                 fldGrpfooter.setVisibility(View.VISIBLE);
                             } else {
@@ -446,9 +451,14 @@ public class IdentificationActivity extends Activity {
         MainApp.ffc.setformDate(MainApp.fc.getFormDate());
         MainApp.ffc.setdeviceID(MainApp.fc.getDeviceID());
         MainApp.rh.setParticipantid(MainApp.fc.getParticipantID());
+        MainApp.rh.setForm5_uid(db.getForm5UUID(MainApp.rh.getParticipantid()));
+        if(!MainApp.formType.equals(MainApp.FORM15))
+        MainApp.fc.set_UUID(MainApp.rh.getForm5_uid());
+
         long updcount = db.addForm(MainApp.fc);
 
         MainApp.fc.set_ID(String.valueOf(updcount));
+
 
         if (updcount != 0) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -471,6 +481,12 @@ public class IdentificationActivity extends Activity {
 
             MainApp.fc.set_UID(
                     (MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
+            if(MainApp.formType.equals(MainApp.FORM10)){
+                MainApp.rh.setf10_uid(MainApp.fc.get_UID());
+                db.updatef10RhTable();
+            }
+
+
             db.updateFormID();
         } else {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();

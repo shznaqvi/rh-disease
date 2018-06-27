@@ -150,6 +150,7 @@ public class F03BActivity extends Activity
         MainApp.ffc.setformDate(MainApp.fc.getFormDate());
         MainApp.ffc.setdeviceID(MainApp.fc.getDeviceID());
         MainApp.rh.setParticipantid(MainApp.fc.getParticipantID());
+        MainApp.rh.setForm5_uid(MainApp.fc.get_UID());
         int updcount = db.updateF03();
 
         if (updcount == 1) {
@@ -164,6 +165,7 @@ public class F03BActivity extends Activity
                 MainApp.ffc.set_id(db.getidof(MainApp.fc.getParticipantID()));
             }*/
             if (participantIDinRH == null) {
+
                 long _filledformid = db.addRhResults(MainApp.rh);
                 MainApp.rh.set_id(String.valueOf(_filledformid));
             }else{
@@ -190,10 +192,7 @@ public class F03BActivity extends Activity
         MainApp.f03.put("f03a013", new Date().toString());
         MainApp.fc.setParticipantID(participantID.getText().toString());
         MainApp.fc4.setParticipantID(participantID.getText().toString());
-
-
         MainApp.participantID = participantID.getText().toString();
-
 
         MainApp.fc.setF03(String.valueOf(MainApp.f03));
 
@@ -252,6 +251,15 @@ public class F03BActivity extends Activity
                     Log.d(TAG, "participantID:empty ");
                     return false;
                 } else {
+                    participantID.setError(null);
+                }
+                DatabaseHelper db = new DatabaseHelper(this);
+                if (!db.isparticipantUnique(participantID.getText().toString())) {
+                    Toast.makeText(this,"This participant Id is already assigned. Please Enter a unique Participant ID",Toast.LENGTH_LONG).show();
+                    participantID.setError("This participant Id is already assigned. Please Enter a unique Participant ID");
+                    Log.d(TAG, "This participant Id is already assigned. Please Enter a unique Participant ID!");
+                    return false;
+                }else {
                     participantID.setError(null);
                 }
             }

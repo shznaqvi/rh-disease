@@ -27,6 +27,7 @@ import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 public class F08AActivity extends Activity {
 
@@ -272,6 +273,9 @@ public class F08AActivity extends Activity {
                 return false;
             } else {
                 f08a003.setError(null);
+            }
+            if (!validatorClass.RangeTextBox(this,f08a003,30,120,getString(R.string.f08a003)," mm")) {
+                return false;
             }
         }
 

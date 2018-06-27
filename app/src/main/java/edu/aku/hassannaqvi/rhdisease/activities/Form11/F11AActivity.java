@@ -1544,6 +1544,7 @@ public class F11AActivity extends AppCompatActivity {
         MainApp.fc.setF10_acceptance("1");
         MainApp.fc.setF15_adverse(adverseaffect);
         int updcount = db.updateF011();
+
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
             return true;
