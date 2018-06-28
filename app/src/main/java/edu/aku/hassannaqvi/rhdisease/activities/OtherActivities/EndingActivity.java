@@ -18,7 +18,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -75,6 +77,8 @@ public class EndingActivity extends Activity {
                 MainApp.formType = "";
                 MainApp.fc = new FormsContract();
                 MainApp.fc4 = new FormsContract();
+                MainApp.rh = new rh_resultsContract();
+                MainApp.ffc = new FilledFormsContract();
 
                 Intent endSec = new Intent(this, MainActivity.class);
                 endSec.putExtra("complete", false);
@@ -129,8 +133,6 @@ public class EndingActivity extends Activity {
                     db.updatef12filled();
                     db.updatef12filledinRH();
                     break;
-
-
                 case MainApp.FORM15:
                     //Todo: should implement a condition of defining its first time insertion or second
                     if (MainApp.F15First) {
