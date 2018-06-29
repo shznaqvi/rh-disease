@@ -53,7 +53,6 @@ public class EndingActivity extends Activity {
             dcstatus01.setEnabled(false);
             dcstatus02.setEnabled(true);
 
-
         }
 
     }
@@ -142,6 +141,7 @@ public class EndingActivity extends Activity {
                     db.updatef15firstfilledinRH();
                         MainApp.F15First = false;
                         MainApp.F15Second = false;
+
                     }
                     else if (MainApp.F15Second) {
                         MainApp.ffc.setf15second(completeStatus);
@@ -150,6 +150,9 @@ public class EndingActivity extends Activity {
                         db.updatef15secondfilledinRH();
                         MainApp.F15First = false;
                         MainApp.F15Second = false;
+                    }
+                    if (completeStatus.equals("0")){
+                        completeStatus = "1";
                     }
 
                 case MainApp.FORM10:
@@ -161,6 +164,9 @@ public class EndingActivity extends Activity {
                         db.updatef10firstfilledinRH();
                         MainApp.F10First = false;
                         MainApp.F10Second = false;
+                        if (completeStatus.equals("0")){
+                            completeStatus = "1";
+                        }
                     }
                     else if (MainApp.F10Second){
                     MainApp.ffc.setf10second(completeStatus);
@@ -169,6 +175,9 @@ public class EndingActivity extends Activity {
                     db.updatef10secondfilledinRH();
                         MainApp.F10First = false;
                         MainApp.F10Second = false;
+                        if (completeStatus.equals("0")){
+                            completeStatus = "1";
+                        }
                     }
                 case MainApp.FORM11:
                     if(!MainApp.formType.equals(MainApp.FORM10)){
@@ -177,6 +186,9 @@ public class EndingActivity extends Activity {
                             MainApp.rh.setf11(completeStatus);
                             db.updatef11filled();
                             db.updatef11filledinRH();
+                            if (completeStatus.equals("0")){
+                                completeStatus = "1";
+                            }
                         }
                     }
                 case MainApp.FORM8:
@@ -184,16 +196,23 @@ public class EndingActivity extends Activity {
                     MainApp.rh.setf8(completeStatus);
                     db.updatef8filled();
                     db.updatef8filledinRH();
+                    if (completeStatus.equals("0")){
+                        completeStatus = "1";
+                    }
                 case MainApp.FORM9:
                     MainApp.ffc.setf9(completeStatus);
                     MainApp.rh.setf9(completeStatus);
                     db.updatef9filled();
                     db.updatef9filledinRH();
+                    if (completeStatus.equals("0")){
+                        completeStatus = "1";
+                    }
                 case MainApp.FORM7:
                     MainApp.ffc.setf5(completeStatus);
                     MainApp.rh.setf5(completeStatus);
                     db.updatef5filled();
                     db.updatef5filledinRH();
+
                     break;
             }
         }

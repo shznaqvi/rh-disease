@@ -149,7 +149,6 @@ public class IdentificationActivity extends Activity {
                                 rh_resultsContract resultsContract = new rh_resultsContract();
                                 resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
                                 if (!resultsContract.get_id().equals("")) {
-
                                     try {
                                         String lmpDate = resultsContract.getLmp();
                                         DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
