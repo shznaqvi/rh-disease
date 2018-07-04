@@ -80,8 +80,6 @@ public class MainActivity extends Activity {
      Button syncDevice;*/
     @BindView(R.id.syncDevice)
     LinearLayout syncDevice;
-    @BindView(R.id.menu_grid)
-    GridView menuGrid;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -90,7 +88,6 @@ public class MainActivity extends Activity {
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
-    MainMenuAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,9 +108,7 @@ public class MainActivity extends Activity {
         com.bumptech.glide.Glide.with(this).load(getImage(MenuData.mName[i])).into(mimgName[i]);
         }
         lblheader.setText("Welcome! You're assigned to block ' " + MainApp.regionDss + " '" + MainApp.userName);
-        adapter = new MainMenuAdapter(MainActivity.this);
-        menuGrid.setVerticalScrollBarEnabled(false);
-        menuGrid.setAdapter(adapter);
+
         if (MainApp.admin) {
             adminsec.setVisibility(View.VISIBLE);
         } else {
