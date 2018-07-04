@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FetusContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FilledFormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
+import edu.aku.hassannaqvi.rhdisease.contracts.MenuData;
 import edu.aku.hassannaqvi.rhdisease.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
@@ -43,6 +45,8 @@ import edu.aku.hassannaqvi.rhdisease.get.GetForm5;
 import edu.aku.hassannaqvi.rhdisease.get.GetUsers;
 import edu.aku.hassannaqvi.rhdisease.otherClasses.NetworkUtils;
 import edu.aku.hassannaqvi.rhdisease.sync.SyncAllData;
+
+import static edu.aku.hassannaqvi.rhdisease.contracts.MenuData.mimgName;
 
 public class MainActivity extends Activity {
 
@@ -55,11 +59,29 @@ public class MainActivity extends Activity {
     TextView lblheader;
     @BindView(R.id.recordSummary)
     TextView recordSummary;
+    @BindView(R.id.img5)
+    ImageView img5;
+    @BindView(R.id.img8)
+    ImageView img8;
+    @BindView(R.id.img9)
+    ImageView img9;
+    @BindView(R.id.img10)
+    ImageView img10;
+    @BindView(R.id.img11)
+    ImageView img11;
+    @BindView(R.id.img15)
+    ImageView img15;
+    @BindView(R.id.imgupload)
+    ImageView imgupload;
+    @BindView(R.id.imgdownload)
+    ImageView imgdownload;
 
     /* @BindView(R.id.syncDevice)
      Button syncDevice;*/
     @BindView(R.id.syncDevice)
     LinearLayout syncDevice;
+    @BindView(R.id.menu_grid)
+    GridView menuGrid;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -68,16 +90,30 @@ public class MainActivity extends Activity {
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
-
+    MainMenuAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+        mimgName[0] = img5;
+        mimgName[1] = img8;
+        mimgName[2] = img9;
+        mimgName[3] = img10;
+        mimgName[4] = img11;
+        mimgName[5] = img15;
+        mimgName[6] = imgupload;
+        mimgName[7] = imgdownload;
 
+
+        for(int i = 0; i< MenuData.mName.length; i++){
+        com.bumptech.glide.Glide.with(this).load(getImage(MenuData.mName[i])).into(mimgName[i]);
+        }
         lblheader.setText("Welcome! You're assigned to block ' " + MainApp.regionDss + " '" + MainApp.userName);
-
+        adapter = new MainMenuAdapter(MainActivity.this);
+        menuGrid.setVerticalScrollBarEnabled(false);
+        menuGrid.setAdapter(adapter);
         if (MainApp.admin) {
             adminsec.setVisibility(View.VISIBLE);
         } else {
@@ -201,7 +237,12 @@ public class MainActivity extends Activity {
 
 
     }
+ public int getImage(String imageName) {
 
+    int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
+
+    return drawableResourceId;
+}
     public void openForm(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             Intent oF = new Intent(MainActivity.this, F03AActivity.class);
@@ -579,5 +620,6 @@ public class MainActivity extends Activity {
 
         }
     }
+
 
 }
