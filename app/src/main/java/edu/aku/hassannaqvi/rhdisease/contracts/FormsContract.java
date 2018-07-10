@@ -41,6 +41,7 @@ public class FormsContract {
     private String f10b = "";
     private String f10c = "";
     private String f11 = "";
+    private String f12 = "";
     private String f15 = "";
     private String isrhCompleted = "";
 
@@ -72,12 +73,6 @@ public class FormsContract {
         this.rh_status = jsonObject.getString(FormsTable.COLUMN_RH_STATUS);
         this.f10_acceptance = jsonObject.getString(FormsTable.COLUMN_F10_ACCEPTANCE);
         this.f15_adverse = jsonObject.getString(FormsTable.COLUMN_F15_ADVERSE);
-
-/*
-this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
-*/
-
-        //this.info = jsonObject.getString(FormsTable.COLUMN_INFO);
         this.f03 = jsonObject.getString(FormsTable.COLUMN_F03);
         this.f04 = jsonObject.getString(FormsTable.COLUMN_F04);
         this.f07a = jsonObject.getString(FormsTable.COLUMN_F07A);
@@ -90,6 +85,7 @@ this.g_age= jsonObject.getString(FormsTable.COLUMN_G_AGE);
         this.f10b = jsonObject.getString(FormsTable.COLUMN_F10B);
         this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
         this.f11 = jsonObject.getString(FormsTable.COLUMN_F11);
+        this.f12 = jsonObject.getString(FormsTable.COLUMN_F12);
         this.f15= jsonObject.getString(FormsTable.COLUMN_F15);
         this.isrhCompleted = jsonObject.getString(FormsTable.COLUMN_ISRHCOMPLETED);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
@@ -137,6 +133,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f10b = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10B));
         this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
         this.f11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F11));
+        this.f12 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F12));
         this.f15 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F15));
 
 //        this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
@@ -225,7 +222,11 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
 
         if (!this.f11.equals("")) {
             json.put(FormsTable.COLUMN_F10C, new JSONObject(this.f11));
-        } if (!this.f15.equals("")) {
+        }
+        if (!this.f12.equals("")) {
+            json.put(FormsTable.COLUMN_F12, new JSONObject(this.f12));
+        }
+        if (!this.f15.equals("")) {
             json.put(FormsTable.COLUMN_F15, new JSONObject(this.f15));
 
         }
@@ -445,6 +446,14 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f11 = f11;
     }
 
+    public String getF12() {
+        return f12;
+    }
+
+    public void setF12(String f12) {
+        this.f12 = f12;
+    }
+
     public String getF15() {
         return f15;
     }
@@ -566,10 +575,6 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         public static final String COLUMN_RH_STATUS = "rh_status";
         public static final String COLUMN_F10_ACCEPTANCE = "f10_acceptance";
         public static final String COLUMN_F15_ADVERSE = "f15_adverse";
-
-//        public static final String COLUMN_G_AGE = "g_age";
-
-        //public static final String COLUMN_INFO = "info";
         public static final String COLUMN_F03 = "f03";
         public static final String COLUMN_F04 = "f04";
         public static final String COLUMN_F07A = "f07a";
@@ -582,6 +587,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         public static final String COLUMN_F10B = "f10b";
         public static final String COLUMN_F10C = "f10c";
         public static final String COLUMN_F11 = "f11";
+        public static final String COLUMN_F12 = "f12";
         public static final String COLUMN_F15 = "f15";
 
 

@@ -37,105 +37,11 @@ public class F15Activity extends AppCompatActivity {
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
     String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
     ActivityF15Binding bi;
-/*
-    @BindView(R.id.f15rhstatus)
-    RadioGroup f15rhstatus;
-    @BindView(R.id.f15rhstatusa)
-    RadioButton f15rhstatusa;
-    @BindView(R.id.f15rhstatusb)
-    RadioButton f15rhstatusb;
-    @BindView(R.id.f15rhstatus999)
-    RadioButton f15rhstatus999;
-    @BindView(R.id.f15researchpersonnel)
-    EditText f15researchpersonnel;
 
-    @BindView(R.id.f1502)
-    RadioGroup f1502;
-    @BindView(R.id.f1502a)
-    RadioButton f1502a;
-    @BindView(R.id.f1502b)
-    RadioButton f1502b;
-    @BindView(R.id.f1502c)
-    RadioButton f1502c;
-    @BindView(R.id.f1502888)
-    RadioButton f1502888;
-    @BindView(R.id.f1502888x)
-    EditText f1502888x;
-
-    @BindView(R.id.f1503)
-    RadioGroup f1503;
-    @BindView(R.id.f1503a)
-    RadioButton f1503a;
-    @BindView(R.id.f1503b)
-    RadioButton f1503b;
-    @BindView(R.id.f1503c)
-    RadioButton f1503c;
-    @BindView(R.id.f1503d)
-    RadioButton f1503d;
-    @BindView(R.id.f1503888)
-    RadioButton f1503888;
-    @BindView(R.id.f1503cx)
-    EditText f1503cx;
-    @BindView(R.id.f1503dx)
-    EditText f1503dx;
-    @BindView(R.id.f1503888x)
-    EditText f1503888x;
-
-    @BindView(R.id.f1504date)
-    DatePickerInputEditText f1504date;
-    @BindView(R.id.f1504time)
-    TimePickerEditText f1504time;
-
-     @BindView(R.id.f1505)
-    RadioGroup f1505;
-    @BindView(R.id.f1505a)
-    RadioButton f1505a;
-    @BindView(R.id.f1505b)
-    RadioButton f1505b;
-    @BindView(R.id.f1505999)
-    RadioButton f1505999;
-
-     @BindView(R.id.f1506)
-    RadioGroup f1506;
-    @BindView(R.id.f1506a)
-    RadioButton f1506a;
-    @BindView(R.id.f1506b)
-    RadioButton f1506b;
-
-
-    @BindView(R.id.f1507event)
-    EditText f1507event;
-    @BindView(R.id.f1507management)
-    EditText f1507management;
-
-      @BindView(R.id.f1508)
-    RadioGroup f1508;
-        @BindView(R.id.f1508a)
-    RadioButton f1508a;
-    @BindView(R.id.f1508b)
-    RadioButton f1508b;
-
-    @BindView(R.id.f1509)
-    RadioGroup f1509;
-    @BindView(R.id.f1509a)
-    RadioButton f1509a;
-   @BindView(R.id.f1509b)
-    RadioButton f1509b;
-    @BindView(R.id.f1509999)
-    RadioButton f1509999;
-
-     @BindView(R.id.f1510)
-    EditText f1510;
-     @BindView(R.id.fldGrpf1510)
-    LinearLayout fldGrpf1510;
-
-*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_f15);
-//        ButterKnife.bind(this);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_f15);
         bi.setCallback(this);
         bi.f1504date.setManager(getSupportFragmentManager());

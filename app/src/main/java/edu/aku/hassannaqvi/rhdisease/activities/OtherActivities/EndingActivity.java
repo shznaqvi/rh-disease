@@ -131,7 +131,6 @@ public class EndingActivity extends Activity {
                     MainApp.rh.setf12(completeStatus);
                     db.updatef12filled();
                     db.updatef12filledinRH();
-                    break;
                 case MainApp.FORM15:
                     //Todo: should implement a condition of defining its first time insertion or second
                     if (MainApp.F15First) {
@@ -141,7 +140,6 @@ public class EndingActivity extends Activity {
                     db.updatef15firstfilledinRH();
                         MainApp.F15First = false;
                         MainApp.F15Second = false;
-
                     }
                     else if (MainApp.F15Second) {
                         MainApp.ffc.setf15second(completeStatus);

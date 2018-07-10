@@ -12,6 +12,7 @@ import android.util.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.Normalizer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -45,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "rhdisease.db";
     public static final String DB_NAME = "rhdisease_copy.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -75,7 +76,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_F10A + " TEXT,"
             + FormsTable.COLUMN_F10B + " TEXT,"
             + FormsTable.COLUMN_F10C + " TEXT,"
-            + FormsTable.COLUMN_F11 + " TEXT," +
+            + FormsTable.COLUMN_F11 + " TEXT,"
+            + FormsTable.COLUMN_F12 + " TEXT," +
             FormsTable.COLUMN_F15 + " TEXT,"
             + FormsTable.COLUMN_ISRHCOMPLETED + " TEXT,"
             + FormsTable.COLUMN_ISTATUS + " TEXT,"
@@ -161,6 +163,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_RHTABLE_F10_UID = "ALTER TABLE " +
             RH_ResultsTable.TABLE_NAME + " ADD COLUMN " +
             RH_ResultsTable.COLUMN_F10_UID + " TEXT";
+    private static final String SQL_ALTER_FORM_ADD_F12 = "ALTER TABLE " +
+            FormsTable.TABLE_NAME + " ADD COLUMN " +
+            FormsTable.COLUMN_F12+ " TEXT";
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
@@ -214,6 +219,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         switch (oldVersion) {
             case 1:
                 db.execSQL(SQL_ALTER_RHTABLE_F10_UID);
+            case 2:
+                db.execSQL(SQL_ALTER_FORM_ADD_F12);
         }
 
     }
@@ -937,6 +944,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F10B, fc.getF10b());
         values.put(FormsTable.COLUMN_F10C, fc.getF10c());
         values.put(FormsTable.COLUMN_F11, fc.getF11());
+        values.put(FormsTable.COLUMN_F12, fc.getF12());
         values.put(FormsTable.COLUMN_F15, fc.getF15());
         values.put(FormsTable.COLUMN_ISRHCOMPLETED, fc.getIsrhCompleted());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
@@ -1249,6 +1257,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1391,6 +1400,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1478,6 +1488,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1616,6 +1627,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1697,6 +1709,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1780,6 +1793,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1862,6 +1876,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10B,
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
+                FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -2872,6 +2887,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F11, MainApp.fc.getF11());
         values.put(FormsTable.COLUMN_F10_ACCEPTANCE, "1");
         values.put(FormsTable.COLUMN_F15_ADVERSE, MainApp.fc.getF15_adverse());
+// Which row to update, based on the ID
+        String selection = FormsTable.COLUMN_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+    public int updateF012() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_F12, MainApp.fc.getF12());
 // Which row to update, based on the ID
         String selection = FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};

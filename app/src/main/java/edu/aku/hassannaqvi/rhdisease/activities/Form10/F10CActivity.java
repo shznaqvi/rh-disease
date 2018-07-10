@@ -517,8 +517,6 @@ public class F10CActivity extends Activity {
 
 
         }
-
-
         return true;
     }
 

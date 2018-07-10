@@ -364,6 +364,16 @@ public class MainActivity extends Activity {
         MainApp.formType = "10";
         startActivity(iA);
     }
+    public void openForm12(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "12";
+        startActivity(iA);
+    }
+    public void openForm13(View v) {
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "13";
+        startActivity(iA);
+    }
 
     public void openForm15(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);

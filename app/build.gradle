@@ -5,9 +5,9 @@ android {
     buildToolsVersion '26.0.3'
     def versionPropsFile = file('version.properties')
 
-   dataBinding{
-       enabled = true
-   }
+    dataBinding {
+        enabled = true
+    }
     if (versionPropsFile.canRead()) {
         Properties versionProps = new Properties()
 
@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
