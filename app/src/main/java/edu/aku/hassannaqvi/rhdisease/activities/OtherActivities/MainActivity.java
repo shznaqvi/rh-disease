@@ -69,6 +69,10 @@ public class MainActivity extends Activity {
     ImageView img10;
     @BindView(R.id.img11)
     ImageView img11;
+    @BindView(R.id.img12)
+    ImageView img12;
+    @BindView(R.id.img13)
+    ImageView img13;
     @BindView(R.id.img15)
     ImageView img15;
     @BindView(R.id.imgupload)
@@ -88,25 +92,15 @@ public class MainActivity extends Activity {
     private ProgressDialog pd;
     private Boolean exit = false;
     private String rSumText = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-        mimgName[0] = img5;
-        mimgName[1] = img8;
-        mimgName[2] = img9;
-        mimgName[3] = img10;
-        mimgName[4] = img11;
-        mimgName[5] = img15;
-        mimgName[6] = imgupload;
-        mimgName[7] = imgdownload;
+        settingupIcons();
 
-
-        for(int i = 0; i< MenuData.mName.length; i++){
-        com.bumptech.glide.Glide.with(this).load(getImage(MenuData.mName[i])).into(mimgName[i]);
-        }
         lblheader.setText("Welcome! You're assigned to block ' " + MainApp.regionDss + " '" + MainApp.userName);
 
         if (MainApp.admin) {
@@ -232,12 +226,32 @@ public class MainActivity extends Activity {
 
 
     }
- public int getImage(String imageName) {
 
-    int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
+    private void settingupIcons() {
+        mimgName[0] = img5;
+        mimgName[1] = img8;
+        mimgName[2] = img9;
+        mimgName[3] = img10;
+        mimgName[4] = img11;
+        mimgName[5] = img15;
+        mimgName[6] = img12;
+        mimgName[7] = img13;
+        mimgName[8] = imgupload;
+        mimgName[9] = imgdownload;
 
-    return drawableResourceId;
-}
+
+        for (int i = 0; i < MenuData.mName.length; i++) {
+            com.bumptech.glide.Glide.with(this).load(getImage(MenuData.mName[i])).into(mimgName[i]);
+        }
+    }
+
+    public int getImage(String imageName) {
+
+        int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
+
+        return drawableResourceId;
+    }
+
     public void openForm(View v) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null && !MainApp.userName.equals("0000")) {
             Intent oF = new Intent(MainActivity.this, F03AActivity.class);
@@ -364,15 +378,18 @@ public class MainActivity extends Activity {
         MainApp.formType = "10";
         startActivity(iA);
     }
+
     public void openForm12(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
         MainApp.formType = "12";
         startActivity(iA);
     }
+
     public void openForm13(View v) {
-        Intent iA = new Intent(this, IdentificationActivity.class);
+        Toast.makeText(this, "This Form is currently not available", Toast.LENGTH_LONG).show();
+      /*  Intent iA = new Intent(this, IdentificationActivity.class);
         MainApp.formType = "13";
-        startActivity(iA);
+        startActivity(iA);*/
     }
 
     public void openForm15(View v) {
@@ -414,14 +431,6 @@ public class MainActivity extends Activity {
         if (networkInfo != null && networkInfo.isConnected()) {
             DatabaseHelper db = new DatabaseHelper(this);
 
-/*           new SyncForms(this).execute();
-            new SyncForms3(this).execute();
-            new SyncForms8(this).execute();
-            new SyncFetus(this).execute();
-            new SyncForms9(this).execute();
-            new SyncForms10(this).execute();
-            new SyncForm11(this).execute();
-            */
             //TODO:sync Form 5 and 6 sync to server
             Toast.makeText(getApplicationContext(), "Syncing Form# 5 and 6", Toast.LENGTH_SHORT).show();
             new SyncAllData(
@@ -497,7 +506,7 @@ public class MainActivity extends Activity {
                     NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "11.php")),
                     db.getUnsyncedForms11(), this.findViewById(R.id.syncStatus)
             ).execute();
-//TODO:sync Form 15 sync to server
+//            TODO:sync Form 15 sync to server
             Toast.makeText(getApplicationContext(), "Syncing Form 15", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,
@@ -507,7 +516,19 @@ public class MainActivity extends Activity {
                     NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "15.php")),
                     db.getUnsyncedForms15(), this.findViewById(R.id.syncStatus)
             ).execute();
-//TODO:sync Filled Forms sync to server
+
+//            TODO:sync Form 12 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 12", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form12",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "12.php")),
+                    db.getUnsyncedForms12(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+//            TODO:sync Filled Forms sync to server
             Toast.makeText(getApplicationContext(), "Syncing Filled forms", Toast.LENGTH_SHORT).show();
             new SyncAllData(
                     this,

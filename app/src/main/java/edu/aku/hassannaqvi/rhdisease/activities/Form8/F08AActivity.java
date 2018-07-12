@@ -274,7 +274,7 @@ public class F08AActivity extends Activity {
             } else {
                 f08a003.setError(null);
             }
-            if (!validatorClass.RangeTextBox(this,f08a003,30,120,getString(R.string.f08a003)," mm")) {
+            if (!validatorClass.RangeTextBox(this,f08a003,100,170,getString(R.string.f08a003)," bpm")) {
                 return false;
             }
         }

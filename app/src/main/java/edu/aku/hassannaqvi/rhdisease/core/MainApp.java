@@ -116,7 +116,7 @@ public class MainApp extends Application {
    final public static String FORM16 = "16";
    final public static String RH_POSITIVE = "1";
    final public static String RH_NEGATIVE = "2";
-  public static boolean F10First = false;
+   public static boolean F10First = false;
    public static boolean F10Second = false;
    public static boolean F15First = false;
    public static boolean F15Second = false;

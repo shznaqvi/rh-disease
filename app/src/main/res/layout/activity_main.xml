@@ -290,7 +290,7 @@
                             android:id="@+id/img11"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            tools:src="@drawable/newborn" />
+                            tools:src="@drawable/delivery" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -435,7 +435,7 @@
                     android:clickable="true"
                     android:background="@color/dullWhileOverlay"
                     android:orientation="vertical"
-                    android:onClick="openForm15">
+                    android:onClick="openForm13">
                     <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp">
@@ -443,7 +443,7 @@
                         android:id="@+id/img13"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        tools:src="@drawable/adverse" />
+                        tools:src="@drawable/pw_uptake" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -530,9 +530,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         tools:src="@drawable/download" />
-
-
-
 
                     <TextView
                         android:layout_width="match_parent"
