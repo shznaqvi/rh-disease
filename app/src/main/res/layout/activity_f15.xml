@@ -263,7 +263,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/year"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/date"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@android:color/white" />
@@ -291,7 +291,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/year"
+                    android:background="@color/colorPrimaryAlpha"
                     android:text="@string/time"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@android:color/white" />

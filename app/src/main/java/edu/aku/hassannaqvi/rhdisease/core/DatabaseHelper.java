@@ -285,8 +285,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(RH_ResultsTable.COLUMN_GA_DAYS, rh.getGa_days());
                 values.put(RH_ResultsTable.COLUMN_F10_ACCEPTANCE, rh.getF10_acceptance());
                 values.put(RH_ResultsTable.COLUMN_F15_ADVERSE, rh.getF15_adverse());
-                values.put(RH_ResultsTable.COLUMN_F10_UID, rh.getF15_adverse());
-
+                values.put(RH_ResultsTable.COLUMN_F10_UID, rh.getf10_uid());
                 values.put(RH_ResultsTable.COLUMN_F5, rh.getf5());
                 values.put(RH_ResultsTable.COLUMN_F8, rh.getf8());
                 values.put(RH_ResultsTable.COLUMN_F9, rh.getf9());

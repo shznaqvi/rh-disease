@@ -353,7 +353,7 @@ public class IdentificationActivity extends Activity {
                 Intent secB = new Intent(this, F09AActivity.class);
                 String lmpDate = null;
                 String lmpResult = db.getLmp(participantId.getText().toString(), Integer.parseInt(MainApp.FORM5));
-                if (lmpResult.equals("") || lmpResult == null) {
+                if (lmpResult == null) {
                     lmpDate = db.getlmp(participantId.getText().toString());
                 } else {
                     lmpDate = lmpResult;

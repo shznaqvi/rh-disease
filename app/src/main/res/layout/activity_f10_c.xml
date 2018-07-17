@@ -72,12 +72,13 @@
                 android:layout_marginBottom="1dp"
                 android:text="@string/f10c001b" />
 
+
             <RadioButton
                 android:id="@+id/f10c001888"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
-                android:text="@string/other" />
+                android:text="@string/f10c001c" />
 
         </RadioGroup>
 
@@ -87,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-            android:hint="@string/other"
+            android:hint="@string/f10c001888"
             android:inputType="textCapWords"
             android:visibility="gone" />
 

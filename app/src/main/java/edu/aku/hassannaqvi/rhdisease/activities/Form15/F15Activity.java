@@ -52,7 +52,7 @@ public class F15Activity extends AppCompatActivity {
         bi.f1509.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if (i != R.id.f1509b) {
+                if (!bi.f1509a.isChecked()) {
                     bi.fldGrpf1510.setVisibility(View.GONE);
                     bi.f1510.setText(null);
                 } else {
@@ -182,7 +182,7 @@ public class F15Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, bi.f1509, bi.f1509a, getString(R.string.f1509))) {
             return false;
         }
-        if (bi.f1509b.isChecked()) {
+        if (bi.f1509a.isChecked()) {
             if (!validatorClass.EmptyTextBox(this, bi.f1510, getString(R.string.f1510))) {
                 return false;
             }

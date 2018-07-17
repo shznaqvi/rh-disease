@@ -162,7 +162,7 @@ public class F12Activity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
-        if (!validatorClass.EmptyRadioButton(this, bi.f1201, bi.f1201a, getString(R.string.f1201))) {
+        if (!validatorClass.EmptyRadioButton(this, bi.f12loc, bi.f12loc888, bi.f12loc888x, getString(R.string.f12loc))) {
             return false;
         }
         if (!validatorClass.EmptyRadioButton(this, bi.f1201, bi.f1201a, getString(R.string.f1201))) {

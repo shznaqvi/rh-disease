@@ -16,13 +16,17 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import javax.xml.validation.Validator;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
+import io.blackbox_vision.datetimepickeredittext.view.TimePickerEditText;
 
 /**
  * Created by gul.sanober on 13-Sep-17.
@@ -61,8 +65,12 @@ public class F10AActivity extends AppCompatActivity {
     EditText f10a002888x;
     @BindView(R.id.f10a003)
     DatePickerInputEditText f10a003;
+    @BindView(R.id.f10a003time)
+    TimePickerEditText f10a003time;
     @BindView(R.id.f10a004)
     DatePickerInputEditText f10a004;
+    @BindView(R.id.f10a004time)
+    TimePickerEditText f10a004time;
     @BindView(R.id.f10a005)
     RadioGroup f10a005;
     @BindView(R.id.f10a005a)
@@ -287,7 +295,10 @@ public class F10AActivity extends AppCompatActivity {
 
         f10a003.setManager(getSupportFragmentManager());
         f10a004.setManager(getSupportFragmentManager());
-
+        f10a003time.setManager(getSupportFragmentManager());
+        f10a003time.setTimeFormat("HH:mm");
+        f10a004time.setManager(getSupportFragmentManager());
+        f10a004time.setTimeFormat("HH:mm");
         f10a001888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -351,7 +362,7 @@ public class F10AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    f10a007888.setVisibility(View.VISIBLE);
+                    f10a007888x.setVisibility(View.VISIBLE);
                 } else {
                     f10a007888x.setVisibility(View.GONE);
                     f10a007888x.setText(null);
@@ -362,7 +373,7 @@ public class F10AActivity extends AppCompatActivity {
         f10a008.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
-                if (!f10a008a.isChecked()) {
+                if (!f10a008b.isChecked()) {
                     fldGrpf10a009.setVisibility(View.GONE);
                     f10a009.clearCheck();
                     f10a009888x.setText(null);
@@ -377,7 +388,7 @@ public class F10AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    f10a009888.setVisibility(View.VISIBLE);
+                    f10a009888x.setVisibility(View.VISIBLE);
                 } else {
                     f10a009888x.setVisibility(View.GONE);
                     f10a009888x.setText(null);
@@ -475,7 +486,9 @@ public class F10AActivity extends AppCompatActivity {
         f10a.put("f10a002888x", f10a002888x.getText().toString());
 
         f10a.put("f10a003", f10a003.getText().toString());
+        f10a.put("f10a003time", f10a003time.getText().toString());
         f10a.put("f10a004", f10a004.getText().toString());
+        f10a.put("f10a004time", f10a004time.getText().toString());
         f10a.put("f10a005", f10a005a.isChecked() ? "1" : f10a005b.isChecked() ? "2" : f10a005c.isChecked() ? "3"
                 : f10a005888.isChecked() ? "888" : "0");
         f10a.put("f10a005888x", f10a005888x.getText().toString());
@@ -587,15 +600,22 @@ public class F10AActivity extends AppCompatActivity {
         } else {
             f10a003.setError(null);
         }
+        if (!validatorClass.EmptyTextBox(this,f10a003time,getString(R.string.f10a003)+" "+ getString(R.string.time))) {
+            return false;
+        }
+
 
         if (f10a004.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a004), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a004)+" "+ getString(R.string.date), Toast.LENGTH_SHORT).show();
             f10a004.setError("This data is Required!");
 
             Log.i(TAG, "f10a004: This Data is Required!");
             return false;
         } else {
             f10a004.setError(null);
+        }
+        if (!validatorClass.EmptyTextBox(this,f10a004time,getString(R.string.f10a004)+" "+ getString(R.string.time))) {
+            return false;
         }
 
         if (f10a005.getCheckedRadioButtonId() == -1) {

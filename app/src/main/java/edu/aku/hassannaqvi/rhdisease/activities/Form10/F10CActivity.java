@@ -7,6 +7,7 @@ import android.support.annotation.IdRes;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -25,6 +26,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 public class F10CActivity extends Activity {
 
@@ -171,6 +173,17 @@ public class F10CActivity extends Activity {
                     f10c013888x.setText(null);
                     f10c014.clearCheck();
                     f10c015.setText(null);
+                }
+            }
+        });
+        f10c001888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    f10c001888x.setVisibility(View.VISIBLE);
+                }else {
+                    f10c001888x.setVisibility(View.GONE);
+                    f10c001888x.setText(null);
                 }
             }
         });
@@ -323,8 +336,10 @@ public class F10CActivity extends Activity {
     }
 
     public boolean ValidateForm() {
-
-        if (f10c001.getCheckedRadioButtonId() == -1) {
+        if (!validatorClass.EmptyRadioButton(this,f10c001,f10c001888,f10c001888x,getString(R.string.f10c001))) {
+            return false;
+        }
+       /* if (f10c001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10c001), Toast.LENGTH_SHORT).show();
             f10c001a.setError("This data is Required!");
 
@@ -332,7 +347,7 @@ public class F10CActivity extends Activity {
             return false;
         } else {
             f10c001a.setError(null);
-        }
+        }*/
 
         if (f10c001a.isChecked()) {
             if (f10c002a.getText().toString().isEmpty()) {

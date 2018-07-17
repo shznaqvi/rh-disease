@@ -599,7 +599,7 @@
     <string name="f10a002">ٻار جي معائني جي جڳھ ۽ ٽائيم</string>
     <string name="f10a002a">ٽي ايڇ ڪيو سهولت</string>
     <string name="f10a002b">گھر</string>
-    <string name="f10a003">ٻار جي معائني جي جڳھ ۽ ٽائيم</string>
+    <string name="f10a003">معائني جي تاريخ ۽ ٽائيم</string>
     <string name="f10asub">ويم جي معلومات</string>
     <string name="f10a004">ويم جي تاريخ ۽ ٽائيم</string>
     <string name="f10a005">اهو ويم ڪٿي ٿيو</string>
@@ -632,7 +632,8 @@
     <string name="f10a009g">اوزار جي مدد سان ويم نه ٿيڻ جي صورت ۾</string>
     <string name="f10a010">ڇا ان ۾ ڪي پيچيدگيون هيون؟</string>
     <string name="f10a011">جيڪڏهن ها ته ڪهڙيون هيون؟</string>
-    <string name="f10a01101">حمل جي دوران بلڊ پريشر جو وڌي وڃڻ جي ڪري پيشاب ۾ پروٽين جو شامل ٿيڻ</string>
+    <!--<string name="f10a01101">حمل جي دوران بلڊ پريشر جو وڌي وڃڻ جي ڪري پيشاب ۾ پروٽين جو شامل ٿيڻ</string>-->
+    <string name="f10a01101">پري ايڪليپسيا </string>
     <string name="f10a01102">رت جو گھڻو ضايع ٿيڻ</string>
     <string name="f10a01103">اوڙهه جو ڌار ٿي وڃڻ </string>
     <string name="f10a01104">ساه جو مسئلو</string>
@@ -641,8 +642,10 @@
     <string name="f10a01107">تيز بخار</string>
     <string name="f10a01108">ماءُ کي دوران حمل جهٽڪن جو اچڻ</string>
     <string name="f10a01109">بيهوشي</string>
-    <string name="f10a01110">حمل جي دوران بلڊ پريشر جو وڌي وڃڻ جي ڪري پيشاب ۾ پروٽين جو شامل ٿيڻ</string>
-    <string name="f10a01111"> سنڊروم (ٽن مختلف بيمارين وارو مرضHELLP</string>
+    <!--<string name="f10a01110">حمل جي دوران بلڊ پريشر جو وڌي وڃڻ جي ڪري پيشاب ۾ پروٽين جو شامل ٿيڻ</string>-->
+    <string name="f10a01110">وڌيڪ بلڊ پريشر</string>
+    <!--<string name="f10a01111"> سنڊروم (ٽن مختلف بيمارين وارو مرضHELLP</string>-->
+    <string name="f10a01111">ا HELLP سنڊروم</string>
     <string name="f10a01112">پيٽ ۾ شديد سور</string>
     <string name="f10a01113">اوڙهه جو گڏجي وڃڻ</string>
     <string name="f10a01114">جھٽڪو لڳڻ /ڪري پوڻ</string>
@@ -652,11 +655,7 @@
     <string name="f10b001a">زنده</string>
     <string name="f10b001b">مرده</string>
     <string name="f10b002">جنس</string>
-    <string name="f10b002m">مرد</string>
-    <string name="f10b002f">عورت</string>
     <string name="f10b003">ڇا ٻار پيدائش کان پوءِ هڪ دم رنو؟</string>
-    <string name="f10b003m">نه</string>
-    <string name="f10b003f">ها</string>
     <string name="f10b004">پيدائشي نخس آهي</string>
     <string name="f10b004a">جيڪڏهن ها ته بيان ڪريو</string>
     <string name="f10b005">بچاءُ جي ڪهڙا لاءِ اپاءُ ورتا؟</string>
@@ -674,8 +673,9 @@
     <string name="f10b008b">مرده</string>
     <string name="f10csub">نئين ڄاول ٻارجو جسماني معائنو</string>
     <string name="f10c001">ڇا ٻارجو اڄ معائنو ٿي سگهي ٿو؟</string>
-    <string name="f10c001a">نه، سار سنڀال ڪرڻ واري منع ڪري ڇڏي</string>
-    <string name="f10c001b">نه،  ٻي ڪا وجهه آهي </string>
+    <string name="f10c001b">نه، سار سنڀال ڪرڻ واري منع ڪري ڇڏي</string>
+    <string name="f10c001c">نه،  ٻي ڪا وجهه آهي </string>
+    <string name="f10c001888">جيڪڏهن ٻيو ڪجھ ته وضاحت ڪريو </string>
     <string name="f10c002">ساھ جي رفتار منٽ ۾ </string>
     <string name="f10c002a">ساھ جي رفتار منٽ 1</string>
     <string name="f10c002b">ساھ جي رفتار منٽ 2</string>
@@ -849,7 +849,7 @@
     <string name="f15sub1">فارم 15 : ويم جي متعلق حادثا</string>
     <string name="f15pid">شموليت ڪندڙ جي شناخت آءِ ڊي</string>
     <string name="f15rp">تحقيق ڪندڙ جو نالو ۽ شناخت</string>
-    <string name="f15rhstatus">جو نتيجوRh</string>
+    <string name="f15rhstatus">ا Rh جو نتيجو</string>
     <string name="f15rhnegative">نگيٽوRh</string>
     <string name="f15rhpositive">پوزيٽوRh</string>
     <string name="f15rhunknown">حيثيت نامعلوم</string>
