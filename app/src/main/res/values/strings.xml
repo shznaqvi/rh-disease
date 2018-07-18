@@ -603,7 +603,8 @@
     <string name="f10asub">ويم جي معلومات</string>
     <string name="f10a004">ويم جي تاريخ ۽ ٽائيم</string>
     <string name="f10a005">اهو ويم ڪٿي ٿيو</string>
-    <string name="f10a005a">تحقيقي صحت مرڪز (ٽي ايڇ ڪيو)</string>
+    <!--<string name="f10a005a">تحقيقي صحت مرڪز (ٽي ايڇ ڪيو)</string>-->
+    <string name="f10a005a">ڪجھ نه</string>
     <string name="f10a005b">گھر</string>
     <string name="f10a005c">غير تحقيقي صحت مرڪز </string>
     <string name="f10a006">جيڪڏهن ويم تحقيق جي علائقي کان ٻاهر ٿيو آهي ته ڪهڙي قسم جي صحت جي سهولت تي ويم ٿيو آهي؟</string>

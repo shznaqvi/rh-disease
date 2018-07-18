@@ -31,6 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.rhdisease.FormsList;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.activities.Form10.F10AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
@@ -375,6 +376,7 @@ public class MainActivity extends Activity {
 
     public void openForm11(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
+        //        Intent iA = new Intent(this, F10AActivity.class);
         MainApp.formType = "10";
         startActivity(iA);
     }

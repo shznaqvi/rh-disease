@@ -16,6 +16,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.xml.validation.Validator;
 
 import butterknife.BindView;
@@ -37,6 +42,10 @@ public class F10AActivity extends AppCompatActivity {
     private static final String TAG = F10AActivity.class.getSimpleName();
     //String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
 
+    @BindView(R.id.f10a000d)
+    DatePickerInputEditText f10a000d;
+    @BindView(R.id.f10a000t)
+    TimePickerEditText f10a000t;
     @BindView(R.id.f10a001)
     RadioGroup f10a001;
     @BindView(R.id.f10a001a)
@@ -285,20 +294,32 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a011888999;
     @BindView(R.id.f10a011888x)
     EditText f10a011888x;
-
+    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
+    Date date = new GregorianCalendar(2018, Calendar.JUNE, 27).getTime(); // as told by amjad bhai
+    String fixedminDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_f10_a);
         ButterKnife.bind(this);
+        f10a000d.setManager(getSupportFragmentManager());
+        f10a000t.setManager(getSupportFragmentManager());
 
+        f10a000t.setTimeFormat("HH:mm");
         f10a003.setManager(getSupportFragmentManager());
         f10a004.setManager(getSupportFragmentManager());
         f10a003time.setManager(getSupportFragmentManager());
         f10a003time.setTimeFormat("HH:mm");
         f10a004time.setManager(getSupportFragmentManager());
         f10a004time.setTimeFormat("HH:mm");
+        f10a000d.setMinDate(fixedminDate);
+        f10a000d.setMaxDate(dateToday);
+        f10a003.setMinDate(fixedminDate);
+        f10a003.setMaxDate(dateToday);
+        f10a004.setMinDate(fixedminDate);
+        f10a004.setMaxDate(dateToday);
+
         f10a001888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -478,6 +499,8 @@ public class F10AActivity extends AppCompatActivity {
 
         JSONObject f10a = new JSONObject();
 
+        f10a.put("f10a000d", f10a000d.getText().toString());
+        f10a.put("f10a000t", f10a000t.getText().toString());
         f10a.put("f10a001", f10a001a.isChecked() ? "1" : f10a001b.isChecked() ? "2" : f10a001c.isChecked() ? "3"
                 : f10a001d.isChecked() ? "4" : f10a001e.isChecked() ? "5" : f10a001888.isChecked() ? "888" : "0");
         f10a.put("f10a001888x", f10a001888x.getText().toString());
@@ -550,6 +573,12 @@ public class F10AActivity extends AppCompatActivity {
     }
 
     public boolean ValidateForm() {
+        if (!validatorClass.EmptyTextBox(this,f10a000d,getString(R.string.f10a001)+" "+getString(R.string.date))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this,f10a000t,getString(R.string.f10a001)+" "+getString(R.string.time))) {
+            return false;
+        }
 
         if (f10a001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a001), Toast.LENGTH_SHORT).show();

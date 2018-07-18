@@ -303,6 +303,9 @@ public class F08AActivity extends Activity {
             } else {
                 f08a005.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f08a005,300,400,getString(R.string.f08a005)," mm")) {
+               return false;
+            }
         }
 
 

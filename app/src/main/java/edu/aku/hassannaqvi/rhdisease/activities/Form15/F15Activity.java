@@ -107,7 +107,7 @@ public class F15Activity extends AppCompatActivity {
         JSONObject f15 = new JSONObject();
 
         f15.put("f15rhstatus", bi.f15rhstatusa.isChecked() ? "1" : bi.f15rhstatusb.isChecked() ? "2" : bi.f15rhstatus999.isChecked() ? "999" : "0");
-        f15.put("f15researchpersonnel", bi.f15researchpersonnel.getText().toString());
+//        f15.put("f15researchpersonnel", bi.f15researchpersonnel.getText().toString());
         f15.put("f1501dt", dtToday);
         f15.put("f1502", bi.f1502a.isChecked() ? "1" : bi.f1502b.isChecked() ? "2" : bi.f1502c.isChecked() ? "3" : bi.f1502888.isChecked() ? "888" : "0");
         f15.put("f1502888x", bi.f1502888x.getText().toString());
@@ -134,10 +134,10 @@ public class F15Activity extends AppCompatActivity {
         if (!validatorClass.EmptyRadioButton(this, bi.f15rhstatus, bi.f15rhstatusa, getString(R.string.f15rhstatus))) {
             return false;
         }
-        if (!validatorClass.EmptyTextBox(this, bi.f15researchpersonnel, getString(R.string.f15researchpersonnel))) {
+       /* if (!validatorClass.EmptyTextBox(this, bi.f15researchpersonnel, getString(R.string.f15researchpersonnel))) {
             return false;
         }
-
+*/
         if (!validatorClass.EmptyRadioButton(this, bi.f1502, bi.f1502888, bi.f1502888x, getString(R.string.f1502))) {
             return false;
         }
