@@ -78,6 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_F10C + " TEXT,"
             + FormsTable.COLUMN_F11 + " TEXT,"
             + FormsTable.COLUMN_F12 + " TEXT," +
+            FormsTable.COLUMN_F13 + " TEXT," +
             FormsTable.COLUMN_F15 + " TEXT,"
             + FormsTable.COLUMN_ISRHCOMPLETED + " TEXT,"
             + FormsTable.COLUMN_ISTATUS + " TEXT,"
@@ -166,6 +167,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_FORM_ADD_F12 = "ALTER TABLE " +
             FormsTable.TABLE_NAME + " ADD COLUMN " +
             FormsTable.COLUMN_F12+ " TEXT";
+    private static final String SQL_ALTER_FORM_ADD_F13 = "ALTER TABLE " +
+            FormsTable.TABLE_NAME + " ADD COLUMN " +
+            FormsTable.COLUMN_F13 + " TEXT";
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
@@ -221,6 +225,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.execSQL(SQL_ALTER_RHTABLE_F10_UID);
             case 2:
                 db.execSQL(SQL_ALTER_FORM_ADD_F12);
+                db.execSQL(SQL_ALTER_FORM_ADD_F13);
         }
 
     }
@@ -944,6 +949,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F10C, fc.getF10c());
         values.put(FormsTable.COLUMN_F11, fc.getF11());
         values.put(FormsTable.COLUMN_F12, fc.getF12());
+        values.put(FormsTable.COLUMN_F13, fc.getF13());
         values.put(FormsTable.COLUMN_F15, fc.getF15());
         values.put(FormsTable.COLUMN_ISRHCOMPLETED, fc.getIsrhCompleted());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
@@ -1257,6 +1263,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1400,6 +1407,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1488,6 +1496,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1627,6 +1636,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1709,6 +1719,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1793,6 +1804,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1875,6 +1887,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -1956,6 +1969,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F10C,
                 FormsTable.COLUMN_F11,
                 FormsTable.COLUMN_F12,
+                FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
@@ -2982,6 +2996,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 // New value for one column
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_F12, MainApp.fc.getF12());
+// Which row to update, based on the ID
+        String selection = FormsTable.COLUMN_ID + " = ?";
+        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
+
+        int count = db.update(FormsTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+        return count;
+    }
+    public int updatef13() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+// New value for one column
+        ContentValues values = new ContentValues();
+        values.put(FormsTable.COLUMN_F13, MainApp.fc.getF13());
 // Which row to update, based on the ID
         String selection = FormsTable.COLUMN_ID + " = ?";
         String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};

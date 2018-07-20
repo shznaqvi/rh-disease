@@ -42,6 +42,7 @@ public class FormsContract {
     private String f10c = "";
     private String f11 = "";
     private String f12 = "";
+    private String f13 = "";
     private String f15 = "";
     private String isrhCompleted = "";
 
@@ -86,6 +87,7 @@ public class FormsContract {
         this.f10c = jsonObject.getString(FormsTable.COLUMN_F10C);
         this.f11 = jsonObject.getString(FormsTable.COLUMN_F11);
         this.f12 = jsonObject.getString(FormsTable.COLUMN_F12);
+        this.f13 = jsonObject.getString(FormsTable.COLUMN_F13);
         this.f15= jsonObject.getString(FormsTable.COLUMN_F15);
         this.isrhCompleted = jsonObject.getString(FormsTable.COLUMN_ISRHCOMPLETED);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
@@ -134,6 +136,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f10c = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F10C));
         this.f11 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F11));
         this.f12 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F12));
+        this.f13 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F13));
         this.f15 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F15));
 
 //        this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
@@ -225,6 +228,9 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         }
         if (!this.f12.equals("")) {
             json.put(FormsTable.COLUMN_F12, new JSONObject(this.f12));
+        }
+        if (!this.f13.equals("")) {
+            json.put(FormsTable.COLUMN_F13, new JSONObject(this.f13));
         }
         if (!this.f15.equals("")) {
             json.put(FormsTable.COLUMN_F15, new JSONObject(this.f15));
@@ -450,6 +456,14 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         return f12;
     }
 
+    public String getF13() {
+        return f13;
+    }
+
+    public void setF13(String f13) {
+        this.f13 = f13;
+    }
+
     public void setF12(String f12) {
         this.f12 = f12;
     }
@@ -588,6 +602,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         public static final String COLUMN_F10C = "f10c";
         public static final String COLUMN_F11 = "f11";
         public static final String COLUMN_F12 = "f12";
+        public static final String COLUMN_F13 = "f13";
         public static final String COLUMN_F15 = "f15";
 
 

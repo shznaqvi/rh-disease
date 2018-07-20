@@ -14,6 +14,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import edu.aku.hassannaqvi.rhdisease.R;
@@ -26,6 +31,9 @@ import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 public class F12Activity extends AppCompatActivity {
     ActivityF12Binding bi;
+    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
+    Date date = new GregorianCalendar(2018, Calendar.JUNE, 27).getTime(); // as told by amjad bhai
+    String fixedminDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,11 @@ public class F12Activity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_f12);
         bi.setCallback(this);
         setupView();
+        bi.f12d.setManager(getSupportFragmentManager());
+        bi.f12t.setManager(getSupportFragmentManager());
+        bi.f12t.setTimeFormat("HH:mm");
+        bi.f12d.setMinDate(fixedminDate);
+        bi.f12d.setMaxDate(dateToday);
 
     }
 
@@ -162,6 +175,12 @@ public class F12Activity extends AppCompatActivity {
     }
 
     private boolean formValidation() {
+        if (!validatorClass.EmptyTextBox(this, bi.f12d, getString(R.string.f12dt)+" "+getString(R.string.date))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.f12t, getString(R.string.f12dt)+" "+getString(R.string.time))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, bi.f12loc, bi.f12loc888, bi.f12loc888x, getString(R.string.f12loc))) {
             return false;
         }
@@ -246,6 +265,8 @@ public class F12Activity extends AppCompatActivity {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
 
         JSONObject f12 = new JSONObject();
+        f12.put("f12deld", bi.f12d.getText().toString());
+        f12.put("f12delt", bi.f12t.getText().toString());
         f12.put("f12loc",bi.f12loc1.isChecked() ? "1" : bi.f12loc2.isChecked() ? "2" : bi.f12loc888.isChecked() ? "888" : "0");
         f12.put("f12loc888x", bi.f12loc888x.getText().toString());
         f12.put("f1201",bi.f1201a.isChecked() ? "1" : bi.f1201b.isChecked() ? "2" : bi.f1201999.isChecked() ? "999" : "0");

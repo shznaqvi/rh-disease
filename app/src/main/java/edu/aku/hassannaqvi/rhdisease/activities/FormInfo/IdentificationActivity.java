@@ -223,34 +223,40 @@ public class IdentificationActivity extends Activity {
                 if (!db.isF11dublicate(participantId.getText().toString())) {
                     if (!db.checkForRH_Results(participantId.getText().toString())) {
                         String rhResults = db.getRH_Results(participantId.getText().toString());
-                        if (rhResults.equals(MainApp.RH_NEGATIVE)) {
-                            if (db.isF10firstdublicate(participantId.getText().toString())) {
+                        if (rhResults != null){
+                            if (rhResults.equals(MainApp.RH_NEGATIVE)) {
+                                if (db.isF10firstdublicate(participantId.getText().toString())) {
 //                            if (db.checkForf15Adverse(participantId.getText().toString()) || db.checkForf15Adverse(participantId.getText().toString(), MainApp.FORM10)) {
-                                if (db.checkForf15Adverse(participantId.getText().toString())) {
-                                    fldGrpfooter.setVisibility(View.VISIBLE);
+                                    if (db.checkForf15Adverse(participantId.getText().toString())) {
+                                        fldGrpfooter.setVisibility(View.VISIBLE);
+                                    } else {
+                                        fldGrpfooter.setVisibility(View.GONE);
+                                        Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                                    }
+
                                 } else {
                                     fldGrpfooter.setVisibility(View.GONE);
-                                    Toast.makeText(this, "This Participant has an adverse reaction after taking injection or Form 10 is not filled yet!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(this, "Rh-Results is negative fill form 10 first", Toast.LENGTH_LONG).show();
                                 }
 
+                            } else if (rhResults.equals(MainApp.RH_POSITIVE)) {
+                                if (db.isF8dublicate(participantId.getText().toString())) {
+                                    fldGrpfooter.setVisibility(View.VISIBLE);
+
+                                } else {
+                                    fldGrpfooter.setVisibility(View.GONE);
+                                    Toast.makeText(this, "Rh-Results is positive fill form 8 first", Toast.LENGTH_LONG).show();
+                                }
                             } else {
                                 fldGrpfooter.setVisibility(View.GONE);
-                                Toast.makeText(this, "Rh-Results is negative fill form 10 first", Toast.LENGTH_LONG).show();
-                            }
+                                Toast.makeText(this, "Rh-Results not found!", Toast.LENGTH_LONG).show();
 
-                        } else if (rhResults.equals(MainApp.RH_POSITIVE)) {
-                            if (db.isF8dublicate(participantId.getText().toString())) {
-                                fldGrpfooter.setVisibility(View.VISIBLE);
-
-                            } else {
-                                fldGrpfooter.setVisibility(View.GONE);
-                                Toast.makeText(this, "Rh-Results is positive fill form 8 first", Toast.LENGTH_LONG).show();
                             }
-                        } else {
+                        }else {
                             fldGrpfooter.setVisibility(View.GONE);
-                            Toast.makeText(this, "Rh-Results not found!", Toast.LENGTH_LONG).show();
-
+                            Toast.makeText(this, "Rh results not found!! form 9 is used to record Rh results ", Toast.LENGTH_LONG).show();
                         }
+
                     } else {
                         fldGrpfooter.setVisibility(View.GONE);
                         Toast.makeText(this, "Rh results empty or Please fill previous form first ", Toast.LENGTH_LONG).show();

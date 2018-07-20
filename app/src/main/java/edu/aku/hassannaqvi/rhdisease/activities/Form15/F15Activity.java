@@ -20,7 +20,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,12 +40,20 @@ public class F15Activity extends AppCompatActivity {
     String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
     ActivityF15Binding bi;
 
+    Date date = new GregorianCalendar(2018, Calendar.JUNE, 27).getTime(); // as told by amjad bhai
+    String fixedminDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_f15);
         bi.setCallback(this);
+        bi.f15d.setManager(getSupportFragmentManager());
+        bi.f15t.setManager(getSupportFragmentManager());
+        bi.f15t.setTimeFormat("HH:mm");
+        bi.f15d.setMinDate(fixedminDate);
+        bi.f15d.setMaxDate(dateToday);
+
         bi.f1504date.setManager(getSupportFragmentManager());
         bi.f1504date.setMaxDate(dateToday);
         bi.f1504time.setManager(getSupportFragmentManager());
@@ -105,7 +115,8 @@ public class F15Activity extends AppCompatActivity {
         MainApp.fc.setFormType(MainApp.FORM15);
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         JSONObject f15 = new JSONObject();
-
+        f15.put("f15adversed", bi.f15d.getText().toString());
+        f15.put("f15adverset", bi.f15t.getText().toString());
         f15.put("f15rhstatus", bi.f15rhstatusa.isChecked() ? "1" : bi.f15rhstatusb.isChecked() ? "2" : bi.f15rhstatus999.isChecked() ? "999" : "0");
 //        f15.put("f15researchpersonnel", bi.f15researchpersonnel.getText().toString());
         f15.put("f1501dt", dtToday);
@@ -138,6 +149,12 @@ public class F15Activity extends AppCompatActivity {
             return false;
         }
 */
+        if (!validatorClass.EmptyTextBox(this, bi.f15d, getString(R.string.f15dt) +" "+getString(R.string.date))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.f15t, getString(R.string.f15dt) +" "+getString(R.string.time))) {
+            return false;
+        }
         if (!validatorClass.EmptyRadioButton(this, bi.f1502, bi.f1502888, bi.f1502888x, getString(R.string.f1502))) {
             return false;
         }

@@ -226,7 +226,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:text="@string/f10a005a" />
+            android:text="@string/f10b005a" />
 
         <CheckBox
             android:id="@+id/f10b005b"

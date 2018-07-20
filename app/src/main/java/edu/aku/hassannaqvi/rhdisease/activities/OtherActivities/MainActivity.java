@@ -32,6 +32,8 @@ import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.rhdisease.FormsList;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form10.F10AActivity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form12.F12Activity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form13.F13Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
@@ -370,6 +372,7 @@ public class MainActivity extends Activity {
 
     public void openForm10(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
+//        Intent iA = new Intent(this, F10AActivity.class);
         MainApp.formType = "11";
         startActivity(iA);
     }
@@ -383,13 +386,15 @@ public class MainActivity extends Activity {
 
     public void openForm12(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
+//        Intent iA = new Intent(this, F12Activity.class);
         MainApp.formType = "12";
         startActivity(iA);
     }
 
     public void openForm13(View v) {
         Toast.makeText(this, "This Form is currently not available", Toast.LENGTH_LONG).show();
-      /*  Intent iA = new Intent(this, IdentificationActivity.class);
+//       Intent iA = new Intent(this, IdentificationActivity.class);
+     /*  Intent iA = new Intent(this, F13Activity.class);
         MainApp.formType = "13";
         startActivity(iA);*/
     }

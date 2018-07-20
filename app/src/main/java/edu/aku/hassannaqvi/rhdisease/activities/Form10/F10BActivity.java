@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
+import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 
@@ -157,11 +158,15 @@ public class F10BActivity extends Activity {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
 
                 finish();
-
-                Intent endSec = new Intent(this, F10CActivity.class);
-                endSec.putExtra("complete", false);
-                startActivity(endSec);
-
+                if (!f10b008b.isChecked()) {
+                    Intent endSec = new Intent(this, F10CActivity.class);
+                    endSec.putExtra("complete", false);
+                    startActivity(endSec);
+                } else {
+                    Intent endSec = new Intent(this, EndingActivity.class);
+                    endSec.putExtra("complete", true);
+                    startActivity(endSec);
+                }
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();

@@ -284,6 +284,22 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a01114b;
     @BindView(R.id.f10a01114999)
     RadioButton f10a01114999;
+    @BindView(R.id.f10a01115)
+    RadioGroup f10a01115;
+    @BindView(R.id.f10a01115a)
+    RadioButton f10a01115a;
+    @BindView(R.id.f10a01115b)
+    RadioButton f10a01115b;
+    @BindView(R.id.f10a01115999)
+    RadioButton f10a01115999;
+    @BindView(R.id.f10a01116)
+    RadioGroup f10a01116;
+    @BindView(R.id.f10a01116a)
+    RadioButton f10a01116a;
+    @BindView(R.id.f10a01116b)
+    RadioButton f10a01116b;
+    @BindView(R.id.f10a01116999)
+    RadioButton f10a01116999;
     @BindView(R.id.f10a011888)
     RadioGroup f10a011888;
     @BindView(R.id.f10a011888a)
@@ -305,16 +321,16 @@ public class F10AActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         f10a000d.setManager(getSupportFragmentManager());
         f10a000t.setManager(getSupportFragmentManager());
-
         f10a000t.setTimeFormat("HH:mm");
+        f10a000d.setMinDate(fixedminDate);
+        f10a000d.setMaxDate(dateToday);
         f10a003.setManager(getSupportFragmentManager());
         f10a004.setManager(getSupportFragmentManager());
         f10a003time.setManager(getSupportFragmentManager());
         f10a003time.setTimeFormat("HH:mm");
         f10a004time.setManager(getSupportFragmentManager());
         f10a004time.setTimeFormat("HH:mm");
-        f10a000d.setMinDate(fixedminDate);
-        f10a000d.setMaxDate(dateToday);
+
         f10a003.setMinDate(fixedminDate);
         f10a003.setMaxDate(dateToday);
         f10a004.setMinDate(fixedminDate);
@@ -371,7 +387,7 @@ public class F10AActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    f10a006888.setVisibility(View.VISIBLE);
+                    f10a006888x.setVisibility(View.VISIBLE);
                 } else {
                     f10a006888x.setVisibility(View.GONE);
                     f10a006888x.setText(null);
@@ -436,6 +452,8 @@ public class F10AActivity extends AppCompatActivity {
                     f10a01112.clearCheck();
                     f10a01113.clearCheck();
                     f10a01114.clearCheck();
+                    f10a01115.clearCheck();
+                    f10a01116.clearCheck();
                     f10a011888.clearCheck();
                     f10a011888x.setText(null);
 
@@ -545,6 +563,8 @@ public class F10AActivity extends AppCompatActivity {
         f10a.put("f10a01112", f10a01112a.isChecked() ? "1" : f10a01112b.isChecked() ? "2" : f10a01112999.isChecked() ? "999" : "0");
         f10a.put("f10a01113", f10a01113a.isChecked() ? "1" : f10a01113b.isChecked() ? "2" : f10a01113999.isChecked() ? "999" : "0");
         f10a.put("f10a01114", f10a01114a.isChecked() ? "1" : f10a01114b.isChecked() ? "2" : f10a01114999.isChecked() ? "999" : "0");
+        f10a.put("f10a01115", f10a01115a.isChecked() ? "1" : f10a01115b.isChecked() ? "2" : f10a01115999.isChecked() ? "999" : "0");
+        f10a.put("f10a01116", f10a01116a.isChecked() ? "1" : f10a01116b.isChecked() ? "2" : f10a01116999.isChecked() ? "999" : "0");
         f10a.put("f10a011888", f10a011888a.isChecked() ? "1" : f10a011888b.isChecked() ? "2" : f10a011888999.isChecked() ? "999" : "0");
         f10a.put("f10a011888x", f10a011888x.getText().toString());
 
@@ -890,6 +910,24 @@ public class F10AActivity extends AppCompatActivity {
                 return false;
             } else {
                 f10a01114a.setError(null);
+            }
+            if (f10a01115.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a01115), Toast.LENGTH_SHORT).show();
+                f10a01115a.setError("This data is Required!");
+
+                Log.i(TAG, "f10a01115: This Data is Required!");
+                return false;
+            } else {
+                f10a01115a.setError(null);
+            }
+            if (f10a01116.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a01116), Toast.LENGTH_SHORT).show();
+                f10a01116a.setError("This data is Required!");
+
+                Log.i(TAG, "f10a01116: This Data is Required!");
+                return false;
+            } else {
+                f10a01116a.setError(null);
             }
 
             if (f10a011888.getCheckedRadioButtonId() == -1) {
