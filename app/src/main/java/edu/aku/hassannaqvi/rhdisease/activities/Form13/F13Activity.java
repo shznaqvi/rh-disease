@@ -1631,7 +1631,7 @@ public class F13Activity extends AppCompatActivity {
 
 
     }
-
+/*
     @OnClick(R.id.btn_End)
     void onBtnEndClick() {
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
@@ -1653,12 +1653,15 @@ public class F13Activity extends AppCompatActivity {
         }
         /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
-        }*/
+        }
+    }*/
+    public void BtnEnd() {
+        Toast.makeText(this, "Not Processing This Section", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
+        MainApp.endActivity(this, this);
     }
 
-
-    @OnClick(R.id.btn_Continue)
-    void onBtnContinueClick() {
+    public void BtnContinue() {
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -1668,13 +1671,9 @@ public class F13Activity extends AppCompatActivity {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
                 finish();
-
-
                 Intent secNext = new Intent(this, EndingActivity.class);
                 secNext.putExtra("complete", true);
                 startActivity(secNext);
-
-
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -1700,8 +1699,6 @@ public class F13Activity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
-
-
         //MainApp.fc4 = new FormsContract();
 
         /*MainApp.formType = "4";
