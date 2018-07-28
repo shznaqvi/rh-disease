@@ -359,8 +359,6 @@ public class F10AActivity extends AppCompatActivity {
                 }
             }
         });
-
-
         f10a005.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
@@ -371,18 +369,14 @@ public class F10AActivity extends AppCompatActivity {
                     f10a006.clearCheck();
                     f10a006888x.setText(null);
                 }
-
                 if (f10a005888.isChecked()) {
                     f10a005888x.setVisibility(View.VISIBLE);
                 } else {
                     f10a005888x.setVisibility(View.GONE);
                     f10a005888x.setText(null);
                 }
-
-
             }
         });
-
         f10a006888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -394,7 +388,6 @@ public class F10AActivity extends AppCompatActivity {
                 }
             }
         });
-
         f10a007888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -406,7 +399,6 @@ public class F10AActivity extends AppCompatActivity {
                 }
             }
         });
-
         f10a008.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
@@ -420,7 +412,6 @@ public class F10AActivity extends AppCompatActivity {
 
             }
         });
-
         f10a009888.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {

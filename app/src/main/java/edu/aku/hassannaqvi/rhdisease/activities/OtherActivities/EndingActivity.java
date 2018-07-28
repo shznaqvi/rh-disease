@@ -125,12 +125,17 @@ public class EndingActivity extends Activity {
                     MainApp.rh.setf13(completeStatus);
                     db.updatef13filled();
                     db.updatef13filledinRH();
-                    break;
+                    if (completeStatus.equals("0")){
+                        completeStatus = "1";
+                    }
                 case MainApp.FORM12:
                     MainApp.ffc.setf12(completeStatus);
                     MainApp.rh.setf12(completeStatus);
                     db.updatef12filled();
                     db.updatef12filledinRH();
+                    if (completeStatus.equals("0")){
+                        completeStatus = "1";
+                    }
                 case MainApp.FORM15:
                     //Todo: should implement a condition of defining its first time insertion or second
                     if (MainApp.F15First) {

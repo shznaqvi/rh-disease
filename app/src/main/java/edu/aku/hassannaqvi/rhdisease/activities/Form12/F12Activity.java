@@ -254,8 +254,6 @@ public class F12Activity extends AppCompatActivity {
                         return false;
                     }
                 }
-
-
             }
         }
         return true;

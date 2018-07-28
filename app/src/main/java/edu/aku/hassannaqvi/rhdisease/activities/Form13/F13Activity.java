@@ -15,6 +15,11 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03BActivity;
@@ -23,17 +28,25 @@ import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.databinding.ActivityF13Binding;
+import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
 
 public class F13Activity extends AppCompatActivity {
     ActivityF13Binding bi;
     private static final String TAG = F13Activity.class.getSimpleName();
-
+    String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
+    Date date = new GregorianCalendar(2018, Calendar.JUNE, 27).getTime(); // as told by amjad bhai
+    String fixedminDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_f13);
         bi = DataBindingUtil.setContentView(this, R.layout.activity_f13);
         bi.setCallback(this);
+        bi.f13exd.setManager(getSupportFragmentManager());
+        bi.f13ext.setManager(getSupportFragmentManager());
+        bi.f13ext.setTimeFormat("HH:mm");
+        bi.f13exd.setMinDate(fixedminDate);
+        bi.f13exd.setMaxDate(dateToday);
         //=================== bi.f13a001b ==============
         bi.f13a001.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -1631,7 +1644,7 @@ public class F13Activity extends AppCompatActivity {
 
 
     }
-
+/*
     @OnClick(R.id.btn_End)
     void onBtnEndClick() {
         Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
@@ -1653,12 +1666,15 @@ public class F13Activity extends AppCompatActivity {
         }
         /*} else {
             Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
-        }*/
+        }
+    }*/
+    public void BtnEnd() {
+        Toast.makeText(this, "Not Processing This Section", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
+        MainApp.endActivity(this, this);
     }
 
-
-    @OnClick(R.id.btn_Continue)
-    void onBtnContinueClick() {
+    public void BtnContinue() {
         if (ValidateForm()) {
             try {
                 SaveDraft();
@@ -1668,13 +1684,9 @@ public class F13Activity extends AppCompatActivity {
             if (UpdateDB()) {
                 Toast.makeText(this, "Starting Next Section", Toast.LENGTH_SHORT).show();
                 finish();
-
-
                 Intent secNext = new Intent(this, EndingActivity.class);
                 secNext.putExtra("complete", true);
                 startActivity(secNext);
-
-
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
             }
@@ -1700,8 +1712,6 @@ public class F13Activity extends AppCompatActivity {
 
     private void SaveDraft() throws JSONException {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
-
-
         //MainApp.fc4 = new FormsContract();
 
         /*MainApp.formType = "4";
@@ -1716,6 +1726,9 @@ public class F13Activity extends AppCompatActivity {
 
         JSONObject f13 = new JSONObject();
 
+        f13.put("f13exd", bi.f13exd.getText().toString());
+        f13.put("f13ext", bi.f13ext.getText().toString());
+        f13.put("f13a000", bi.f13a000.getText().toString());
         f13.put("f13a001", bi.f13a001a.isChecked() ? "1" : bi.f13a001b.isChecked() ? "2" : "0");
         f13.put("f13a002a", bi.f13a002a.isChecked() ? "1" : "0");
         f13.put("f13a002b", bi.f13a002b.isChecked() ? "2" : "0");
@@ -1915,7 +1928,15 @@ public class F13Activity extends AppCompatActivity {
 
     public boolean ValidateForm() {
 
-
+        if (!validatorClass.EmptyTextBox(this, bi.f13exd,getString(R.string.f13exdt)+" "+getString(R.string.date))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.f13ext,getString(R.string.f13exdt)+" "+getString(R.string.time))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.f13a000,getString(R.string.f13a000))) {
+            return false;
+        }
         //=================== bi.f13a001 ==============
         if (bi.f13a001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f13a001), Toast.LENGTH_SHORT).show();

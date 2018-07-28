@@ -31,6 +31,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form10.F10AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form11.F11AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form12.F12Activity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form13.F13Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form15.F15Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form7.F07AActivity;
@@ -99,6 +100,20 @@ public class IdentificationActivity extends Activity {
         int formtype = 0;
         String formType = MainApp.formType;
         switch (formType) {
+            case MainApp.FORM13:
+                if (!db.isF13dublicate(participantId.getText().toString())) {
+                    if(db.isF12dublicate(participantId.getText().toString())){
+                        fldGrpfooter.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Please fill form 12 first!", Toast.LENGTH_LONG).show();
+                    }
+                }else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Form 13 is already filled!", Toast.LENGTH_LONG).show();
+                }
+                break;
             case MainApp.FORM12:
                 if (!db.isF12dublicate(participantId.getText().toString())) {
                     if(db.isF11dublicate(participantId.getText().toString())){
@@ -112,9 +127,6 @@ public class IdentificationActivity extends Activity {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Form 12 is already filled!", Toast.LENGTH_LONG).show();
                 }
-                break;
-            case MainApp.FORM13:
-                fldGrpfooter.setVisibility(View.VISIBLE);
                 break;
             case MainApp.FORM10:
                 if (!db.isF10firstdublicate(participantId.getText().toString())) {
@@ -381,9 +393,8 @@ public class IdentificationActivity extends Activity {
                 Intent secB = new Intent(this, F12Activity.class);
                 startActivity(secB);
             }else if(MainApp.formType.equals("13")){
-
-                /*Intent secB = new Intent(this, F11AActivity.class);
-                startActivity(secB);*/
+                Intent secB = new Intent(this, F13Activity.class);
+                startActivity(secB);
             }
             else if (MainApp.formType.equals("15")) {
                 Intent secf15 = new Intent(this, F15Activity.class);

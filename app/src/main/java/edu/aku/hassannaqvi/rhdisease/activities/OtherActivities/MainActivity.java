@@ -251,7 +251,6 @@ public class MainActivity extends Activity {
     public int getImage(String imageName) {
 
         int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
-
         return drawableResourceId;
     }
 
@@ -392,11 +391,11 @@ public class MainActivity extends Activity {
     }
 
     public void openForm13(View v) {
-        Toast.makeText(this, "This Form is currently not available", Toast.LENGTH_LONG).show();
-//       Intent iA = new Intent(this, IdentificationActivity.class);
-     /*  Intent iA = new Intent(this, F13Activity.class);
+//        Toast.makeText(this, "This Form is currently not available", Toast.LENGTH_LONG).show();
+       Intent iA = new Intent(this, IdentificationActivity.class);
+//       Intent iA = new Intent(this, F13Activity.class);
         MainApp.formType = "13";
-        startActivity(iA);*/
+        startActivity(iA);
     }
 
     public void openForm15(View v) {
@@ -533,6 +532,17 @@ public class MainActivity extends Activity {
                     FormsContract.class,
                     NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "12.php")),
                     db.getUnsyncedForms12(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+//            TODO:sync Form 13 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 13", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form13",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "13.php")),
+                    db.getUnsyncedForms13(), this.findViewById(R.id.syncStatus)
             ).execute();
 
 //            TODO:sync Filled Forms sync to server

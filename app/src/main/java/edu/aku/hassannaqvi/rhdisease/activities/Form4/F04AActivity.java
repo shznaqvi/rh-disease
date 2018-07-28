@@ -326,7 +326,6 @@ public class F04AActivity extends Activity implements CompoundButton.OnCheckedCh
     RadioButton f04a011999;
     @BindView(R.id.f04a011888x)
     EditText f04a011888x;
-
     @BindView(R.id.f04a012a)
     CheckBox f04a012a;
     @BindView(R.id.f04a012b)
