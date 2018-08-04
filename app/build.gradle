@@ -4,9 +4,9 @@ android {
     compileSdkVersion 27
     def versionPropsFile = file('version.properties')
 
-   dataBinding{
-       enabled = true
-   }
+    dataBinding {
+        enabled = true
+    }
     if (versionPropsFile.canRead()) {
         Properties versionProps = new Properties()
 
@@ -20,10 +20,10 @@ android {
         defaultConfig {
             applicationId "edu.aku.hassannaqvi.rhdisease"
             minSdkVersion 22
-            targetSdkVersion 23
+            targetSdkVersion 22
 
             versionCode code
-            versionName "1.11"
+            versionName "1.12"
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
     } else {
@@ -40,7 +40,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.jakewharton:butterknife:8.8.1'
@@ -49,7 +50,7 @@ dependencies {
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
-    testCompile 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.github.bumptech.glide:glide:4.7.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'

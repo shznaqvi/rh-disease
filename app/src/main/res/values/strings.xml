@@ -1066,4 +1066,40 @@
     <string name="f1508">ڇا توهان(ميڊيڪل آفسر) ذاتي طور تي منفي واقعي/حادثي جي ڪنهن علامت جو مشاهدوڪيو هو؟</string>
     <string name="f1509">ڇا توهان کي يقين آهي ته منفي واقعن/حادثن جو ممڪن طور تي هن تحقيق سان تعلق هو؟</string>
     <string name="f1510">جيڪڏهن مٿي بيان ڪيل سوال 9 جو جواب ها آهي ته وضاحت ڪريو ته توهان ڇو سمجھو ٿا ته ان واقعي/حادثي جو تعلق تحقيق سان ٿي سگھي ٿو </string>
+
+
+    <!--========================Form 16=======================-->
+
+    <string name="f16Heading">Anti-D Rh Antibody Assessment </string>
+    <string name="f16Instruction">هي فارم صرف Rh منفي عورتن جو ڀريو جيڪي ٻڌائين ته هنن جو ٻار 20 هفتن کان پهرين ضايح ٿيو، يا دوران
+پيدائش ضايح ٿيو يا پيدائش جي هڪ مهيني ۾ ضايح ٿيو    </string>
+
+    <string name="f16h">عورت جو Rh اسٽيٽس جي پڪ ڪريو</string>
+    <string name="f16ha"> هاڪاريRh +Ve </string>
+    <string name="f16hb"> منفيRh- Ve</string>
+    <string name="f16death">پڪ ڪريو ته ٻار ضايع ٿي ويو،ٻار مئل ڄائو، يا نئو ڄاول ٻار فوت ٿي ويو</string>
+    <string name="f16deatha">ٻار ضايح ٿي ويو</string>
+    <string name="f16deathb">ٻار مئل ڄائو </string>
+    <string name="f16deathc">نئو ڄاول ٻار فوت ٿيو</string>
+    <string name="f16rid">تحيق ڪندڙ جو نالو ۽ شناخت</string>
+    <string name="f16facid">سهولتڪار جو نالو ۽ شناخت</string>
+
+    <string name="f16Heading02">Blood Collection For Antibody Assessment</string>
+    <string name="f16label">ڇا توهان راضي آهيو رت جو نمونو ڏيڻ لاءِ؟</string>
+
+    <!--===========Form 16 Questions and Answers======================-->
+
+    <string name="f1601">ڇا شرڪت ڪندڙ زباني طور تي رت جو نمونو ڏيڻ لاءِ راضي ٿي؟</string>
+    <string name="f1601a">ھا</string>
+    <string name="f1601b">نہ</string>
+
+    <string name="f1602">رت جو مقدار</string>
+    <string name="f1603">رت حاصل ڪرڻ جي تاريخ ۽ وقت</string>
+    <string name="f1604">رت جو نمونو آغاخان ليب دادو موڪلڻ جو ٽائيم ۽ وقت</string>
+    <string name="f1605">اينٽي باڊي ٽيسٽ جو نتيجو</string>
+    <string name="f1605a">رت ۾ اينٽي باڊي جو مقدار</string>
+    <string name="f1605note">اهو نوٽيس شامل ڪريو جيڪو رت جي نتيجي سان گڏ آهي</string>
+    <string name="f1606">شرڪت ڪندڙ کي ٽيسٽ جو نتيجو ٻڌايو ويو؟</string>
+    <string name="f1606a">ھا</string>
+    <string name="f1606b">نہ</string>
 </resources>

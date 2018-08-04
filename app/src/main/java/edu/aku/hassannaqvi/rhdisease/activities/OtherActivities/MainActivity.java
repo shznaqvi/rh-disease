@@ -34,6 +34,7 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.Form10.F10AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form12.F12Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form13.F13Activity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form16.Form16Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.FormInfo.IdentificationActivity;
@@ -78,6 +79,8 @@ public class MainActivity extends Activity {
     ImageView img13;
     @BindView(R.id.img15)
     ImageView img15;
+    @BindView(R.id.img16)
+    ImageView img16;
     @BindView(R.id.imgupload)
     ImageView imgupload;
     @BindView(R.id.imgdownload)
@@ -239,8 +242,9 @@ public class MainActivity extends Activity {
         mimgName[5] = img15;
         mimgName[6] = img12;
         mimgName[7] = img13;
-        mimgName[8] = imgupload;
-        mimgName[9] = imgdownload;
+        mimgName[8] = img16;
+        mimgName[9] = imgupload;
+        mimgName[10] = imgdownload;
 
 
         for (int i = 0; i < MenuData.mName.length; i++) {
@@ -401,6 +405,13 @@ public class MainActivity extends Activity {
     public void openForm15(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
         MainApp.formType = "15";
+        startActivity(iA);
+    }
+
+    public void openForm16(View v){
+
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = "16";
         startActivity(iA);
     }
 
