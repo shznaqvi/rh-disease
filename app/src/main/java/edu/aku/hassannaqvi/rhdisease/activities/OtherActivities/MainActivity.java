@@ -410,9 +410,10 @@ public class MainActivity extends Activity {
 
     public void openForm16(View v){
 
-        Intent iA = new Intent(this, IdentificationActivity.class);
+        /*Intent iA = new Intent(this, IdentificationActivity.class);
         MainApp.formType = "16";
-        startActivity(iA);
+        startActivity(iA);*/
+        Toast.makeText(this, "This form is under construction!", Toast.LENGTH_SHORT).show();
     }
 
 

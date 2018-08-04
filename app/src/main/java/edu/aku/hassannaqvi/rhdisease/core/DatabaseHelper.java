@@ -80,7 +80,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_F12 + " TEXT," +
             FormsTable.COLUMN_F13 + " TEXT," +
             FormsTable.COLUMN_F15 + " TEXT,"
-            + FormsTable.COLUMN_F16 + " TEXT,"
             + FormsTable.COLUMN_ISRHCOMPLETED + " TEXT,"
             + FormsTable.COLUMN_ISTATUS + " TEXT,"
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
@@ -119,24 +118,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + RH_ResultsTable.COLUMN_PARTICIPANTID + " TEXT," +
             RH_ResultsTable.COLUMN_LMP + " TEXT," +
             RH_ResultsTable.COLUMN_FORM5_UID + " TEXT," +
-            RH_ResultsTable.COLUMN_F10_UID + " TEXT," +
+            RH_ResultsTable.COLUMN_F10_UID + " TEXT,"+
             RH_ResultsTable.COLUMN_ISRHCOMPLETED + " TEXT," +
             RH_ResultsTable.COLUMN_RH_STATUS + " TEXT," +
             RH_ResultsTable.COLUMN_GA_WEEKS + " TEXT," +
             RH_ResultsTable.COLUMN_GA_DAYS + " TEXT," +
             RH_ResultsTable.COLUMN_F10_ACCEPTANCE + " TEXT," +
-            RH_ResultsTable.COLUMN_F15_ADVERSE + " TEXT," +
-            RH_ResultsTable.COLUMN_F5 + " TEXT," +
-            RH_ResultsTable.COLUMN_F8 + " TEXT," +
-            RH_ResultsTable.COLUMN_F9 + " TEXT," +
-            RH_ResultsTable.COLUMN_F10FIRST + " TEXT," +
-            RH_ResultsTable.COLUMN_F15FIRST + " TEXT," +
-            RH_ResultsTable.COLUMN_F10SECOND + " TEXT," +
-            RH_ResultsTable.COLUMN_F15SECOND + " TEXT," +
-            RH_ResultsTable.COLUMN_F11 + " TEXT," +
-            RH_ResultsTable.COLUMN_F12 + " TEXT," +
-            RH_ResultsTable.COLUMN_F13 + " TEXT," +
-            RH_ResultsTable.COLUMN_F14 + " TEXT," +
+            RH_ResultsTable.COLUMN_F15_ADVERSE + " TEXT,"+
+            RH_ResultsTable.COLUMN_F5 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F8 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F9 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F10FIRST + " TEXT,"+
+            RH_ResultsTable.COLUMN_F15FIRST + " TEXT,"+
+            RH_ResultsTable.COLUMN_F10SECOND + " TEXT,"+
+            RH_ResultsTable.COLUMN_F15SECOND + " TEXT,"+
+            RH_ResultsTable.COLUMN_F11 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F12 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F13 + " TEXT,"+
+            RH_ResultsTable.COLUMN_F14 + " TEXT,"+
             RH_ResultsTable.COLUMN_F16 + " TEXT"
             + " );";
     private static final String SQL_CREATE_FILLEDFORMS = "CREATE TABLE "
@@ -167,7 +166,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RH_ResultsTable.COLUMN_F10_UID + " TEXT";
     private static final String SQL_ALTER_FORM_ADD_F12 = "ALTER TABLE " +
             FormsTable.TABLE_NAME + " ADD COLUMN " +
-            FormsTable.COLUMN_F12 + " TEXT";
+            FormsTable.COLUMN_F12+ " TEXT";
     private static final String SQL_ALTER_FORM_ADD_F13 = "ALTER TABLE " +
             FormsTable.TABLE_NAME + " ADD COLUMN " +
             FormsTable.COLUMN_F13 + " TEXT";
@@ -306,6 +305,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(RH_ResultsTable.COLUMN_F16, rh.getf16());
 
 
+
                 db.insert(RH_ResultsTable.TABLE_NAME, null, values);
             }
         } catch (Exception e) {
@@ -378,7 +378,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isparticipantUnique(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F5 + "= '1'";
@@ -391,7 +390,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return true;
     }
-
     public boolean isF9dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F9 + "= '1'";
@@ -404,7 +402,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean checkF5filled(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F5 + "= '1'";
@@ -417,7 +414,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF10firstdublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10FIRST + "= '1'";
@@ -430,7 +426,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF10seconddublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F10SECOND + "= '1'";
@@ -443,7 +438,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF15firstdublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F15FIRST + "= '1'";
@@ -456,7 +450,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF15seconddublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F15SECOND + "= '1'";
@@ -469,7 +462,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF11dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F11 + "= '1'";
@@ -482,7 +474,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF12dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F12 + "= '1'";
@@ -495,7 +486,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF13dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F13 + "= '1'";
@@ -508,7 +498,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF14dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F14 + "= '1'";
@@ -521,7 +510,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean isF16dublicate(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_F16 + "= '1'";
@@ -621,7 +609,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return lmp;
     }
-
     public String getRHF10Uid(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String uid = null;
@@ -637,7 +624,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return uid;
     }
-
     public String getRHF10UidSecond(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String uid = null;
@@ -653,7 +639,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return uid;
     }
-
     public String checkParticipantIDExist(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String partID = null;
@@ -669,7 +654,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return partID;
     }
-
     public String getidof(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String ID = null;
@@ -685,7 +669,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return ID;
     }
-
     public String getRhidof(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String ID = null;
@@ -701,7 +684,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return ID;
     }
-
     public String checkParticipantIDExistinRH(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String partID = null;
@@ -717,7 +699,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return partID;
     }
-
     public String getForm5UUID(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String form5uid = null;
@@ -746,7 +727,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return false;
     }
-
     public boolean checkForRH_Results(String participantID, String status) {
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + "='" + participantID + "' AND " + RH_ResultsTable.COLUMN_RH_STATUS + "= " + status;
@@ -841,7 +821,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public String getRH_Results(String participantID) {
         SQLiteDatabase db = this.getReadableDatabase();
         String rh = null;
-        String query = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = '" + participantID + "'";
+        String query = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = '" + participantID+"'";
 
         Cursor mCursor = db.rawQuery(query, null);
         if (mCursor != null) {
@@ -854,7 +834,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rh;
 
     }
-
     public rh_resultsContract getRH_Results(String participantID, String status) {
 
         // Select All Query
@@ -972,7 +951,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_F12, fc.getF12());
         values.put(FormsTable.COLUMN_F13, fc.getF13());
         values.put(FormsTable.COLUMN_F15, fc.getF15());
-        values.put(FormsTable.COLUMN_F16, fc.getF16());
         values.put(FormsTable.COLUMN_ISRHCOMPLETED, fc.getIsrhCompleted());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
@@ -1118,7 +1096,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 where,
                 whereArgs);
     }
-
     public void updateSyncedFilledForms(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -1288,7 +1265,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1335,7 +1311,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
     public Collection<FilledFormsContract> getUnsyncedFilledForms() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -1434,7 +1409,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1524,7 +1498,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1665,7 +1638,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1749,7 +1721,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1835,7 +1806,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1919,7 +1889,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1967,7 +1936,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
     public Collection<FormsContract> getUnsyncedForms12() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -2003,7 +1971,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -2051,7 +2018,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return allFC;
     }
-
     public Collection<FormsContract> getUnsyncedForms13() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -2084,7 +2050,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_F12,
                 FormsTable.COLUMN_F13,
                 FormsTable.COLUMN_F15,
-                FormsTable.COLUMN_F16,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -2402,7 +2367,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     /*todo copy these functions and update Rh table*/
     public int updatef5filled() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -2412,7 +2376,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F5, MainApp.ffc.getf5());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2421,7 +2385,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef10RhTable() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2430,7 +2393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F10_UID, MainApp.rh.getf10_uid());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())
         };
 
@@ -2440,7 +2403,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef9filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2449,7 +2411,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F9, MainApp.ffc.getf9());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2458,7 +2420,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef8filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2467,7 +2428,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F8, MainApp.ffc.getf8());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + "= " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+"= " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2476,7 +2437,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef10firstfilled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2485,7 +2445,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F10FIRST, MainApp.ffc.getf10first());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2494,7 +2454,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef10secondfilled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2503,7 +2462,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F10SECOND, MainApp.ffc.getf10second());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2512,7 +2471,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef15firstfilled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2521,7 +2479,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F15FIRST, MainApp.ffc.getf15first());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2530,7 +2488,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef15secondfilled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2539,7 +2496,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F15SECOND, MainApp.ffc.getf15second());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2548,7 +2505,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef11filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2557,7 +2513,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F11, MainApp.ffc.getf11());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
 
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
@@ -2567,7 +2523,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef12filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2576,7 +2531,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F12, MainApp.ffc.getf12());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
 
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
@@ -2586,7 +2541,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef13filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2595,7 +2549,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F13, MainApp.ffc.getf13());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2604,7 +2558,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef14filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2613,7 +2566,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F14, MainApp.ffc.getf14());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
 
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
@@ -2623,7 +2576,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef16filled() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2632,7 +2584,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FilledFormsTable.COLUMN_F16, MainApp.ffc.getf16());
 
 // Which row to update, based on the ID
-        String selection = FilledFormsTable.COLUMN__ID + " = " + MainApp.ffc.get_id();
+        String selection = FilledFormsTable.COLUMN__ID+" = " + MainApp.ffc.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.ffc.get_id())};
 
         int count = db.update(FilledFormsTable.TABLE_NAME,
@@ -2641,7 +2593,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef5filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2650,7 +2601,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F5, MainApp.rh.getf5());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2659,7 +2610,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updaterhstatus() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2668,7 +2618,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_RH_STATUS, MainApp.rh.getRh_status());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2677,7 +2627,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef9filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2686,7 +2635,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F9, MainApp.rh.getf9());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2695,7 +2644,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef8filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2704,7 +2652,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F8, MainApp.rh.getf8());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + "= " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+"= " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2713,7 +2661,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef10firstfilledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2722,7 +2669,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F10FIRST, MainApp.rh.getf10first());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2731,7 +2678,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef10secondfilledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2740,7 +2686,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F10SECOND, MainApp.rh.getf10second());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())
         };
 
@@ -2750,7 +2696,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef15firstfilledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2759,7 +2704,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F15FIRST, MainApp.rh.getf15first());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2768,7 +2713,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef15secondfilledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2776,7 +2720,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(RH_ResultsTable.COLUMN_F15SECOND, MainApp.rh.getf15second());
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2785,7 +2729,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef11filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2794,7 +2737,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F11, MainApp.rh.getf11());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
 
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
@@ -2804,7 +2747,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef12filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2813,7 +2755,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F12, MainApp.rh.getf12());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
 
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
@@ -2823,7 +2765,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef13filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2832,7 +2773,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F13, MainApp.rh.getf13());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2841,7 +2782,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef14filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2850,7 +2790,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F14, MainApp.rh.getf14());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
 
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
@@ -2860,7 +2800,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 null);
         return count;
     }
-
     public int updatef16filledinRH() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -2869,7 +2808,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F16, MainApp.rh.getf16());
 
 // Which row to update, based on the ID
-        String selection = RH_ResultsTable.COLUMN__ID + " = " + MainApp.rh.get_id();
+        String selection = RH_ResultsTable.COLUMN__ID+" = " + MainApp.rh.get_id();
         String[] selectionArgs = {String.valueOf(MainApp.rh.get_id())};
 
         int count = db.update(RH_ResultsTable.TABLE_NAME,
@@ -2879,6 +2818,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
     /*todo copy these functions and update Rh table end*/
+
 
 
     public int updateEnding4() {
@@ -3128,7 +3068,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
     public int updateF012() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -3145,7 +3084,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
-
     public int updatef13() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -3180,23 +3118,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return count;
     }
 
-    public int updateF016() {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-// New value for one column
-        ContentValues values = new ContentValues();
-        values.put(FormsTable.COLUMN_F16, MainApp.fc.getF16());
-// Which row to update, based on the ID
-        String selection = FormsTable.COLUMN_ID + " = ?";
-        String[] selectionArgs = {String.valueOf(MainApp.fc.get_ID())};
-
-        int count = db.update(FormsTable.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-        return count;
-    }
-
     public int updateF03() {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -3215,6 +3136,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
         return count;
     }
+
 
 
 }

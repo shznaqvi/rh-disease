@@ -233,25 +233,25 @@ public class Form16Activity extends AppCompatActivity {
         f16.put("f1606", bi.f1606a.isChecked() ? "1" : bi.f1606b.isChecked() ? "2" : "0");
 
 
-        MainApp.fc.setF16(String.valueOf(f16));
+//        MainApp.fc.setF16(String.valueOf(f16));
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 
     private boolean UpdateDB() {
-
-        DatabaseHelper db = new DatabaseHelper(this);
-
-        int updcount = db.updateF016();
-
-        if (updcount == 1) {
-            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
-            return true;
-        } else {
-            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
+//
+//        DatabaseHelper db = new DatabaseHelper(this);
+//
+//        int updcount = db.updateF016();
+//
+//        if (updcount == 1) {
+//            Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
+//            return true;
+//        } else {
+//            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
+//            return false;
+//        }
+return true;
 
     }
 

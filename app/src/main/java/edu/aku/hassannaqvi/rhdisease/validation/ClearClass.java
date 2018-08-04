@@ -74,7 +74,6 @@ public class ClearClass {
                 }
                 for (int j = 0; j < ((RadioGroup) v).getChildCount(); j++) {
                     ((RadioGroup) v).getChildAt(j).setEnabled(flag);
-                    ((RadioGroup) v).getChildAt(j).setEnabled(flag);
                 }
             } else if (v instanceof EditText) {
                 ((EditText) v).setText(null);
