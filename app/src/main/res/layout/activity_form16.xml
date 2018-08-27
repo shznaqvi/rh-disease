@@ -376,12 +376,27 @@
                             android:text="@string/f1605"
                             android:textAppearance="?android:attr/textAppearanceLarge" />
 
-
-                        <EditText
-                            android:id="@+id/f1605level"
+                        <RadioGroup
+                            android:id="@+id/f1605"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/f1605a" />
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/f1605a"
+                                android:text="Positive"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                            <RadioButton
+                                android:id="@+id/f1605b"
+                                android:text="Negative"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+                        </RadioGroup>
+                        <!--<EditText-->
+                            <!--android:id="@+id/f1605level"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:hint="@string/f1605a" />-->
 
 
                         <EditText
