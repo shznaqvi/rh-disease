@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "rhdisease.db";
     public static final String DB_NAME = "rhdisease_copy.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -79,7 +79,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + FormsTable.COLUMN_F11 + " TEXT,"
             + FormsTable.COLUMN_F12 + " TEXT," +
             FormsTable.COLUMN_F13 + " TEXT," +
-            FormsTable.COLUMN_F15 + " TEXT,"
+            FormsTable.COLUMN_F15 + " TEXT,"+
+            FormsTable.COLUMN_F16 + " TEXT,"
             + FormsTable.COLUMN_ISRHCOMPLETED + " TEXT,"
             + FormsTable.COLUMN_ISTATUS + " TEXT,"
             + FormsTable.COLUMN_GPSLAT + " TEXT,"
@@ -170,6 +171,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_FORM_ADD_F13 = "ALTER TABLE " +
             FormsTable.TABLE_NAME + " ADD COLUMN " +
             FormsTable.COLUMN_F13 + " TEXT";
+    private static final String SQL_ALTER_FORM_ADD_F16 = "ALTER TABLE " +
+            FormsTable.TABLE_NAME + " ADD COLUMN " +
+            FormsTable.COLUMN_F16 + " TEXT";
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
     private static final String SQL_DELETE_FORMS =
@@ -226,6 +230,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 2:
                 db.execSQL(SQL_ALTER_FORM_ADD_F12);
                 db.execSQL(SQL_ALTER_FORM_ADD_F13);
+            case 3:
+                db.execSQL(SQL_ALTER_FORM_ADD_F16);
+
         }
 
     }

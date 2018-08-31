@@ -44,6 +44,7 @@ public class FormsContract {
     private String f12 = "";
     private String f13 = "";
     private String f15 = "";
+    private String f16 = "";
     private String isrhCompleted = "";
 
 
@@ -89,6 +90,7 @@ public class FormsContract {
         this.f12 = jsonObject.getString(FormsTable.COLUMN_F12);
         this.f13 = jsonObject.getString(FormsTable.COLUMN_F13);
         this.f15= jsonObject.getString(FormsTable.COLUMN_F15);
+        this.f16= jsonObject.getString(FormsTable.COLUMN_F16);
         this.isrhCompleted = jsonObject.getString(FormsTable.COLUMN_ISRHCOMPLETED);
         this.istatus = jsonObject.getString(FormsTable.COLUMN_ISTATUS);
         this.gpsLat = jsonObject.getString(FormsTable.COLUMN_GPSLAT);
@@ -138,6 +140,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         this.f12 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F12));
         this.f13 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F13));
         this.f15 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F15));
+        this.f16 = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_F16));
 
 //        this.isrhCompleted = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISRHCOMPLETED));
         this.istatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
@@ -156,6 +159,14 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
 
     }
 
+
+    public String getf16() {
+        return f16;
+    }
+
+    public void setf16(String f16) {
+        this.f16 = f16;
+    }
 
     public JSONObject toJSONObject() throws JSONException {
 
@@ -234,8 +245,12 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         }
         if (!this.f15.equals("")) {
             json.put(FormsTable.COLUMN_F15, new JSONObject(this.f15));
+        }
+        if (!this.f16.equals("")) {
+            json.put(FormsTable.COLUMN_F16, new JSONObject(this.f16));
 
         }
+
 
         if (!this.isrhCompleted.equals("")) {
             json.put(FormsTable.COLUMN_ISRHCOMPLETED, this.isrhCompleted == null ? JSONObject.NULL : this.isrhCompleted);
@@ -604,6 +619,7 @@ this.g_age = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_G_AGE));
         public static final String COLUMN_F12 = "f12";
         public static final String COLUMN_F13 = "f13";
         public static final String COLUMN_F15 = "f15";
+        public static final String COLUMN_F16 = "f16";
         public static final String COLUMN_ISRHCOMPLETED = "isrhcompleted";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_GPSLAT = "gpslat";
