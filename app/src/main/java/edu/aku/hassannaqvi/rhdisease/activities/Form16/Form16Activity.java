@@ -291,6 +291,10 @@ public class Form16Activity extends AppCompatActivity {
 
             if (!bi.f1601b.isChecked()) {
 
+                if (!validatorClass.EmptyTextBox(this, bi.f1602, getString(R.string.f1602))) {
+
+                    return false;
+                }
                 if (!validatorClass.RangeTextBox(this, bi.f1602, 2.0, 6.0, getString(R.string.f1602), "Decimal")) {
 
                     return false;
