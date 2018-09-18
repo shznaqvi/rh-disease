@@ -224,12 +224,12 @@ public class Form16Activity extends AppCompatActivity {
         f16.put("f16facid", bi.f16facidx.getText().toString());
         f16.put("f1601", bi.f1601a.isChecked() ? "1" : bi.f1601b.isChecked() ? "2" : "0");
         f16.put("f1602", bi.f1602.getText().toString());
-        f16.put("f1603", bi.f1603date.getText().toString());
-        f16.put("f1603", bi.f1603time.getText().toString());
-        f16.put("f1604", bi.f1604date.getText().toString());
-        f16.put("f1604", bi.f1604time.getText().toString());
+        f16.put("f1603dt", bi.f1603date.getText().toString());
+        f16.put("f1603t", bi.f1603time.getText().toString());
+        f16.put("f1604dt", bi.f1604date.getText().toString());
+        f16.put("f1604t", bi.f1604time.getText().toString());
         f16.put("f1605", bi.f1605level.getText().toString());
-        f16.put("f1605", bi.f1605note.getText().toString());
+        f16.put("f1605note", bi.f1605note.getText().toString());
         f16.put("f1606", bi.f1606a.isChecked() ? "1" : bi.f1606b.isChecked() ? "2" : "0");
 
 

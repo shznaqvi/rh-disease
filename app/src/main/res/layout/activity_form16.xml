@@ -6,7 +6,6 @@
     <data>
 
         <import type="android.view.View" />
-
         <variable
             name="callback"
             type="edu.aku.hassannaqvi.rhdisease.activities.Form16.Form16Activity" />
@@ -158,11 +157,11 @@
 
 
                     <EditText
-                        android:inputType="text"
                         android:id="@+id/f16ridx"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/f16rid" />
+                        android:hint="@string/f16rid"
+                        android:inputType="text" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -181,11 +180,11 @@
 
 
                     <EditText
-                        android:inputType="text"
                         android:id="@+id/f16facidx"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="@string/f16facid" />
+                        android:hint="@string/f16facid"
+                        android:inputType="text" />
                 </LinearLayout>
 
                 <TextView
