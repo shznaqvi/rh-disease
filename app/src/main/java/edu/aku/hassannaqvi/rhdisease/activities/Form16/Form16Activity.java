@@ -224,11 +224,11 @@ public class Form16Activity extends AppCompatActivity {
         f16.put("f16facid", bi.f16facidx.getText().toString());
         f16.put("f1601", bi.f1601a.isChecked() ? "1" : bi.f1601b.isChecked() ? "2" : "0");
         f16.put("f1602", bi.f1602.getText().toString());
-        f16.put("f1603dt", bi.f1603date.getText().toString());
+        f16.put("f1603d", bi.f1603date.getText().toString());
         f16.put("f1603t", bi.f1603time.getText().toString());
-        f16.put("f1604dt", bi.f1604date.getText().toString());
+        f16.put("f1604d", bi.f1604date.getText().toString());
         f16.put("f1604t", bi.f1604time.getText().toString());
-        f16.put("f1605", bi.f1605level.getText().toString());
+        f16.put("f1605", bi.f1605a.isChecked() ? "1" : bi.f1605b.isChecked() ? "2" : "0");
         f16.put("f1605note", bi.f1605note.getText().toString());
         f16.put("f1606", bi.f1606a.isChecked() ? "1" : bi.f1606b.isChecked() ? "2" : "0");
 
@@ -251,7 +251,7 @@ public class Form16Activity extends AppCompatActivity {
 //            Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
 //            return false;
 //        }
-return true;
+        return true;
 
     }
 
@@ -291,7 +291,7 @@ return true;
 
             if (!bi.f1601b.isChecked()) {
 
-                if (!validatorClass.EmptyTextBox(this, bi.f1602, getString(R.string.f1602))) {
+                if (!validatorClass.RangeTextBox(this, bi.f1602, 2.0, 6.0, getString(R.string.f1602), "Decimal")) {
 
                     return false;
                 }
@@ -320,10 +320,11 @@ return true;
 
                     return false;
                 }
-                if (!validatorClass.EmptyTextBox(this, bi.f1605level, getString(R.string.f1605))) {
+                if (!validatorClass.EmptyRadioButton(this, bi.f1605, bi.f1605a ,getString(R.string.f1605))) {
 
                     return false;
                 }
+
                 if (!validatorClass.EmptyTextBox(this, bi.f1605note, getString(R.string.f1605))) {
 
                     return false;
