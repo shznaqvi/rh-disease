@@ -135,10 +135,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".activities.Form16.Form16Activity"
+        <activity
+            android:name=".activities.Form16.Form16Activity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme1"
-            android:windowSoftInputMode="adjustResize|stateHidden"   />
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".activities.Form17.Form17Activity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme1"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

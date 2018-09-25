@@ -1102,4 +1102,29 @@
     <string name="f1606">شرڪت ڪندڙ کي ٽيسٽ جو نتيجو ٻڌايو ويو؟</string>
     <string name="f1606a">ھا</string>
     <string name="f1606b">نہ</string>
+
+    <!--========================Form 17=======================-->
+
+    <string name="f17heading">Confirm Rh Status via Standard Lab Methods </string>
+    <string name="f17subheading">Routine Blood Collection to Confirm Rh Status</string>
+
+    <string name="f17rh">عورت جي تصديق شده ڪيفيت</string>
+    <string name="f17rha">Rh positive</string>
+    <string name="f17rhb">Rh negative</string>
+    <string name="f17research">تحقيق ڪندڙ جو نالو ۽ شناخت</string>
+    <string name="f17hcwid">هيلٿ ڪيئر ورڪر</string>
+    <string name="f17facility">سهولتڪار جو نالو ۽ شناخت</string>
+    <string name="f17date">عورت جي تصديق شده ڪيفيت</string>
+    <string name="f17instruction">توهان جي رت جي نموني مان معلوم ٿيو آهي ته توهان کي RH جي بيماري آهي ۽ جنهن لاءِ رت جو نمونو درڪار آهي ۽ اها ٽيسٽ آغاخان ليبارٽري مان ڪرائي ويندي.رت جا سڀ نمونا آغاخان ليبارٽري موڪليا ويندا جتي جديد طريقي سان توهان جي رت جو معائنو ڪيو ويندو جيئين ئي ٽيسٽ جا نتيجا ايندا انهن بابت توهان کي پڻ آگاه ڪيو ويندو ۽ اسان توهان جي رت جا نتيجا پنهنجي تحقيقي رڪارڊ ۾ پڻ رکنداسين.</string>
+    <string name="f17consent">ڇا توهان رت جو نمونو ڏيڻ لاءِ تيار آهيو؟ ڇا توهان اجازت ڏيندا ته اسين اهي نتيجا پنهنجي رڪارڊ ۾ رکون؟</string>
+
+    <string name="f1701">ڇا شرڪت ڪندڙ زباني طور تي رت جو نمونو ڏيڻ لاءِ راضي آهي؟</string>
+    <string name="f1702">ڇا شموليت ڪندڙ زباني طور تي راضي آهي ته اسان سندس رت جو نمونو رڪارڊ ۾ رکون؟</string>
+    <string name="f1703">رت جي جمح ڪرڻ جي تاريخ ۽ وقت </string>
+    <string name="f1704">تاريخ ۽ وقت جڏهن رت آغاخان ليب موڪليو ويندو؟</string>
+    <string name="f1705">رت جي نموني جو نتيجو؟</string>
+    <string name="f1705a">Rh positive</string>
+    <string name="f1705b">Rh negative</string>
+    <string name="f1706">شرڪت ڪندڙ کي ٽيسٽ جو نتيجو ڏنو ويو؟</string>
+
 </resources>

@@ -181,10 +181,10 @@
 
 
                     <EditText
-                        android:inputType="text"
                         android:id="@+id/f16facidx"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:inputType="text"
                         android:hint="@string/f16facid" />
                 </LinearLayout>
 
@@ -220,17 +220,17 @@
                         android:textAppearance="?android:attr/textAppearanceLarge" />
 
                     <RadioGroup
-
                         android:id="@+id/f1601"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/f1601a"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
                             android:text="@string/f1601a" />
 
                         <RadioButton
@@ -238,6 +238,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
+                            android:layout_weight="1"
                             android:text="@string/f1601b" />
 
                     </RadioGroup>
@@ -271,6 +272,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="_._ml"
+                            android:layout_gravity="right"
+                            android:gravity="right"
                             android:inputType="numberDecimal"
                             android:maxLength="3" />
 
@@ -412,13 +415,14 @@
                             android:id="@+id/f1606"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
                             <RadioButton
                                 android:id="@+id/f1606a"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
                                 android:text="@string/f1606a" />
 
                             <RadioButton
@@ -426,6 +430,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
+                                android:layout_weight="1"
                                 android:text="@string/f1606b" />
 
                         </RadioGroup>

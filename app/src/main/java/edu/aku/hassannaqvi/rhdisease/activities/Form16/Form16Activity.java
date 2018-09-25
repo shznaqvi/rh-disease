@@ -72,7 +72,6 @@ public class Form16Activity extends AppCompatActivity {
                     bi.f1604date.setMaxDate(null);
                     bi.f1604date.setMinDate(null);
 
-
                 } else {
                     bi.mainContainer.setVisibility(View.VISIBLE);
                     ClearClass.ClearAllFields(bi.mainContainer, true);
@@ -219,7 +218,7 @@ public class Form16Activity extends AppCompatActivity {
         Toast.makeText(this, "Saving Draft for this Section", Toast.LENGTH_SHORT).show();
 
         JSONObject f16 = new JSONObject();
-        f16.put("f16rh", bi.f16ha.isChecked() ? "1" : bi.f16hb.isChecked() ? "2" : "0");
+       /* f16.put("f16rh", bi.f16ha.isChecked() ? "1" : bi.f16hb.isChecked() ? "2" : "0");
         f16.put("f16death", bi.f16deatha.isChecked() ? "1" : bi.f16deathb.isChecked() ? "2" : bi.f16deathc.isChecked() ? "3" : "0");
         f16.put("f16facid", bi.f16facidx.getText().toString());
         f16.put("f1601", bi.f1601a.isChecked() ? "1" : bi.f1601b.isChecked() ? "2" : "0");
@@ -231,18 +230,29 @@ public class Form16Activity extends AppCompatActivity {
         f16.put("f1605", bi.f1605level.getText().toString());
         f16.put("f1605", bi.f1605note.getText().toString());
         f16.put("f1606", bi.f1606a.isChecked() ? "1" : bi.f1606b.isChecked() ? "2" : "0");
+*/
+        f16.put("f16rh", bi.f16ha.isChecked() ? "1" : bi.f16hb.isChecked() ? "2" : "0");
+        f16.put("f16death", bi.f16deatha.isChecked() ? "1" : bi.f16deathb.isChecked() ? "2" : bi.f16deathc.isChecked() ? "3" : "0");
+        f16.put("f16facid", bi.f16facidx.getText().toString());
+        f16.put("f1601", bi.f1601a.isChecked() ? "1" : bi.f1601b.isChecked() ? "2" : "0");
+        f16.put("f1602", bi.f1602.getText().toString());
+        f16.put("f1603d", bi.f1603date.getText().toString());
+        f16.put("f1603t", bi.f1603time.getText().toString());
+        f16.put("f1604d", bi.f1604date.getText().toString());
+        f16.put("f1604t", bi.f1604time.getText().toString());
+        f16.put("f1605level", bi.f1605level.getText().toString());
+        f16.put("f1605note", bi.f1605note.getText().toString());
+        f16.put("f1606", bi.f1606a.isChecked() ? "1" : bi.f1606b.isChecked() ? "2" : "0");
 
-
-//        MainApp.fc.setF16(String.valueOf(f16));
+        MainApp.fc.setf16(String.valueOf(f16));
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
 
     }
 
     private boolean UpdateDB() {
-
         DatabaseHelper db = new DatabaseHelper(this);
 
-        int updcount = db.updateF016();
+        int updcount = db.updateF16();
 
         if (updcount == 1) {
             Toast.makeText(this, "Updating Database... Successful!", Toast.LENGTH_SHORT).show();
@@ -251,7 +261,6 @@ public class Form16Activity extends AppCompatActivity {
             Toast.makeText(this, "Updating Database... ERROR!", Toast.LENGTH_SHORT).show();
             return false;
         }
-return true;
 
     }
 
@@ -298,6 +307,8 @@ return true;
                 if (!bi.f1602.getText().toString().contains(".")) {
                     bi.f1602.setError("Decimal value required");
                     bi.f1602.requestFocus();
+                    return false;
+
 
                 } else {
                     bi.f1602.setError(null);

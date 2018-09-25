@@ -404,16 +404,23 @@ public class MainActivity extends Activity {
 
     public void openForm15(View v) {
         Intent iA = new Intent(this, IdentificationActivity.class);
-        MainApp.formType = "15";
+        MainApp.formType = MainApp.FORM15;
         startActivity(iA);
     }
 
     public void openForm16(View v){
 
-        /*Intent iA = new Intent(this, IdentificationActivity.class);
-        MainApp.formType = "16";
-        startActivity(iA);*/
-        Toast.makeText(this, "This form is under construction!", Toast.LENGTH_SHORT).show();
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = MainApp.FORM16;
+        startActivity(iA);
+        //Toast.makeText(this, "This form is under construction!", Toast.LENGTH_SHORT).show();
+    }
+    public void openForm17(View v){
+
+        Intent iA = new Intent(this, IdentificationActivity.class);
+        MainApp.formType = MainApp.FORM17;
+        startActivity(iA);
+       // Toast.makeText(this, "This form is under construction!", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -555,6 +562,28 @@ public class MainActivity extends Activity {
                     FormsContract.class,
                     NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "13.php")),
                     db.getUnsyncedForms13(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+//            TODO:sync Form 16 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 16", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form16",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "16.php")),
+                    db.getUnsyncedForms16(), this.findViewById(R.id.syncStatus)
+            ).execute();
+
+//            TODO:sync Form 17 sync to server
+            Toast.makeText(getApplicationContext(), "Syncing Form 17", Toast.LENGTH_SHORT).show();
+            new SyncAllData(
+                    this,
+                    "Form17",
+                    "updateSyncedForms",
+                    FormsContract.class,
+                    NetworkUtils.buildUrl(FormsContract.FormsTable._URL.replace(".php", "17.php")),
+                    db.getUnsyncedForms17(), this.findViewById(R.id.syncStatus)
             ).execute();
 
 //            TODO:sync Filled Forms sync to server

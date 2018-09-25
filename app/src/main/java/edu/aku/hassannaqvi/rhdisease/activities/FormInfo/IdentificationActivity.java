@@ -33,6 +33,8 @@ import edu.aku.hassannaqvi.rhdisease.activities.Form11.F11AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form12.F12Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form13.F13Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form15.F15Activity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form16.Form16Activity;
+import edu.aku.hassannaqvi.rhdisease.activities.Form17.Form17Activity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form7.F07AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form8.F08AActivity;
@@ -100,6 +102,15 @@ public class IdentificationActivity extends Activity {
         int formtype = 0;
         String formType = MainApp.formType;
         switch (formType) {
+            case MainApp.FORM16:
+                if(db.isF12dublicate(participantId.getText().toString())){
+                    fldGrpfooter.setVisibility(View.VISIBLE);
+                }
+                else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Please fill form 12 first!", Toast.LENGTH_LONG).show();
+                }
+                break;
             case MainApp.FORM13:
                 if (!db.isF13dublicate(participantId.getText().toString())) {
                     if(db.isF12dublicate(participantId.getText().toString())){
@@ -170,6 +181,41 @@ public class IdentificationActivity extends Activity {
                         fldGrpfooter.setVisibility(View.GONE);
                         Toast.makeText(this, "Already filled form 10 two times for this participant!", Toast.LENGTH_LONG).show();
                     }
+                }
+                break;
+            case MainApp.FORM17:
+                if (db.isF9dublicate(participantId.getText().toString())) {
+                    if (!db.checkForRH_Results(participantId.getText().toString())) {
+                        if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
+                            rh_resultsContract resultsContract = new rh_resultsContract();
+                            resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
+                            if (!resultsContract.get_id().equals("")) {
+                                try {
+                                    String lmpDate = resultsContract.getLmp();
+                                    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                                    Date frmDate = sdf.parse(lmpDate);
+                                    Date curretDate = new Date();
+                                    Double GA = getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
+                                    if (GA >= 32 && GA <= 36) {
+                                        fldGrpfooter.setVisibility(View.VISIBLE);
+                                        Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE)) {
+                            fldGrpfooter.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        fldGrpfooter.setVisibility(View.GONE);
+                        Toast.makeText(this, "Rh status not found: Participant is not Eligible !", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    fldGrpfooter.setVisibility(View.GONE);
+                    Toast.makeText(this, "Form 9 of this Participant ID is not Filled!", Toast.LENGTH_LONG).show();
                 }
                 break;
             case MainApp.FORM8:
@@ -399,6 +445,14 @@ public class IdentificationActivity extends Activity {
             else if (MainApp.formType.equals("15")) {
                 Intent secf15 = new Intent(this, F15Activity.class);
                 startActivity(secf15);
+            }
+            else if(MainApp.formType.equals("16")){
+                Intent secf16 = new Intent(this, Form16Activity.class);
+                startActivity(secf16);
+            }
+            else if(MainApp.formType.equals("17")){
+                Intent secf17 = new Intent(this, Form17Activity.class);
+                startActivity(secf17);
             }
         } else {
             Toast.makeText(this, "Failed to update Database", Toast.LENGTH_SHORT).show();
