@@ -1431,7 +1431,12 @@ public class F11AActivity extends AppCompatActivity {
                 : f11b012f.isChecked() ? "6"
                 : f11b012g.isChecked() ? "7"
                 : f11b012888.isChecked() ? "888"
+
                 : "0");
+
+        f11.put("f11b012888x", f11b012888x.getText().toString());
+
+
 
 
         f11.put("f11b013", f11b013a.isChecked() ? "1" : f11b013b.isChecked() ? "2"
