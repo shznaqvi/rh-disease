@@ -143,6 +143,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/fldgrpf16rid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -163,6 +164,29 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/f16rid" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/fldgrpf16hcw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/f16hcw"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+                    <EditText
+                        android:inputType="text"
+                        android:id="@+id/f16hcwx"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/f16hcw" />
                 </LinearLayout>
 
                 <LinearLayout

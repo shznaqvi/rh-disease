@@ -233,6 +233,7 @@ public class Form16Activity extends AppCompatActivity {
 */
         f16.put("f16rh", bi.f16ha.isChecked() ? "1" : bi.f16hb.isChecked() ? "2" : "0");
         f16.put("f16death", bi.f16deatha.isChecked() ? "1" : bi.f16deathb.isChecked() ? "2" : bi.f16deathc.isChecked() ? "3" : "0");
+        f16.put("f16hcw", bi.f16hcwx.getText().toString());
         f16.put("f16facid", bi.f16facidx.getText().toString());
         f16.put("f1601", bi.f1601a.isChecked() ? "1" : bi.f1601b.isChecked() ? "2" : "0");
         f16.put("f1602", bi.f1602.getText().toString());
@@ -243,6 +244,7 @@ public class Form16Activity extends AppCompatActivity {
         f16.put("f1605level", bi.f1605level.getText().toString());
         f16.put("f1605note", bi.f1605note.getText().toString());
         f16.put("f1606", bi.f1606a.isChecked() ? "1" : bi.f1606b.isChecked() ? "2" : "0");
+        f16.put("f16researchName",MainApp.userName);
 
         MainApp.fc.setf16(String.valueOf(f16));
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -283,8 +285,13 @@ public class Form16Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, bi.f16ridx, getString(R.string.f16rid))) {
+//            if (!validatorClass.EmptyTextBox(this, bi.f16ridx, getString(R.string.f16rid))) {
+//
+//
+//                return false;
+//            }
 
+            if (!validatorClass.EmptyTextBox(this, bi.f16hcwx, getString(R.string.f16hcw))) {
 
                 return false;
             }

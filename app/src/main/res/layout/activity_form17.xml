@@ -77,11 +77,29 @@
 
             </RadioGroup>
 
+
+
             <LinearLayout
                 android:id="@+id/fldGrp001"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/f17hcwid"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <EditText
+                    android:id="@+id/f17hcwidx"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="@string/f17hcwid"
+                    android:inputType="text" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -109,6 +127,7 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView
+                    android:gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"

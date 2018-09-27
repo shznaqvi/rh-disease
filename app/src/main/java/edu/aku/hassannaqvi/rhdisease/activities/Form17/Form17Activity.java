@@ -133,6 +133,7 @@ public class Form17Activity extends AppCompatActivity {
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         JSONObject f17 = new JSONObject();
         f17.put("f17rhstatus", bi.f17rha.isChecked() ? "1" : bi.f17rhb.isChecked() ? "2" : "0");
+        f17.put("f17hcwid", bi.f17hcwidx.getText().toString());
         f17.put("f17facilityid", bi.f17facility.getText().toString());
         f17.put("f17dt", dtToday);
         f17.put("f1701", bi.f1701a.isChecked() ? "1" : bi.f1701b.isChecked() ? "2" : "0");
@@ -143,6 +144,7 @@ public class Form17Activity extends AppCompatActivity {
         f17.put("f1704t", bi.f1704t.getText().toString());
         f17.put("f1705", bi.f1705a.isChecked() ? "1" : bi.f1705b.isChecked() ? "2" : "0");
         f17.put("f1706", bi.f1706a.isChecked() ? "1" : bi.f1706b.isChecked() ? "2" : "0");
+        f17.put("f17researchName",MainApp.userName);
 
         MainApp.fc.setf17(String.valueOf(f17));
         Toast.makeText(this, "Validation Successful! - Saving Draft...", Toast.LENGTH_SHORT).show();
@@ -154,6 +156,10 @@ public class Form17Activity extends AppCompatActivity {
             return false;
         }
         if (!bi.f17rha.isChecked()) {
+
+            if (!validatorClass.EmptyTextBox(this, bi.f17hcwidx, getString(R.string.f17hcwid))) {
+                return false;
+            }
 
             if (!validatorClass.EmptyTextBox(this, bi.f17facility, getString(R.string.f17facility))) {
                 return false;
