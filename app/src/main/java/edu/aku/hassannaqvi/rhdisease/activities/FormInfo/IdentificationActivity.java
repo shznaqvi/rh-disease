@@ -196,7 +196,8 @@ public class IdentificationActivity extends Activity {
                                     Date frmDate = sdf.parse(lmpDate);
                                     Date curretDate = new Date();
                                     Double GA = getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
-                                    if (GA >= 32 && GA <= 36) {
+//                                    if (GA >= 32 && GA <= 36) {
+                                    if (GA >= 20 && GA <= 42) {
                                         fldGrpfooter.setVisibility(View.VISIBLE);
                                         Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
                                     } else {
