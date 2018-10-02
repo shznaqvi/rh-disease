@@ -548,7 +548,7 @@
                             android:id="@+id/img17"
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            tools:src="@drawable/assess" />
+                            tools:src="@drawable/rhstatusconfirmation" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

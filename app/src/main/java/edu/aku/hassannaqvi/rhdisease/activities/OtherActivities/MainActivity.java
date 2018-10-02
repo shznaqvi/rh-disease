@@ -81,6 +81,8 @@ public class MainActivity extends Activity {
     ImageView img15;
     @BindView(R.id.img16)
     ImageView img16;
+    @BindView(R.id.img17)
+    ImageView img17;
     @BindView(R.id.imgupload)
     ImageView imgupload;
     @BindView(R.id.imgdownload)
@@ -243,8 +245,9 @@ public class MainActivity extends Activity {
         mimgName[6] = img12;
         mimgName[7] = img13;
         mimgName[8] = img16;
-        mimgName[9] = imgupload;
-        mimgName[10] = imgdownload;
+        mimgName[9] = img17;
+        mimgName[10] = imgupload;
+        mimgName[11] = imgdownload;
 
 
         for (int i = 0; i < MenuData.mName.length; i++) {
