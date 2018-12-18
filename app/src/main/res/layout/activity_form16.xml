@@ -48,11 +48,12 @@
                 android:background="@color/colorPrimary" />
 
             <TextView
+                android:padding="5dp"
+                android:gravity="center_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/f16Instruction"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
+                android:text="@string/f16Instruction" />
 
 
             <LinearLayout
@@ -204,12 +205,26 @@
                         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 
-                    <EditText
-                        android:id="@+id/f16facidx"
+                    <RadioGroup
+                        android:id="@+id/facilityName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:hint="@string/f16facid" />
+                        android:layout_height="wrap_content">
+
+                        <RadioButton
+                            android:id="@+id/facilityName1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:text="@string/facilityName1" />
+
+                        <RadioButton
+                            android:id="@+id/facilityName2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:text="@string/facilityName2" />
+
+                    </RadioGroup>
                 </LinearLayout>
 
                 <TextView
@@ -219,6 +234,15 @@
                     android:background="@color/colorPrimaryDark"
                     android:gravity="center"
                     android:text="@string/f16Heading02"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:lineSpacingExtra="1dp"
+                    android:text="@string/f16consent"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <TextView

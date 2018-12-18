@@ -140,6 +140,13 @@
                     android:text="@string/f12loc2" />
 
                 <RadioButton
+                    android:id="@+id/f12loc3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:text="@string/f12loc3" />
+
+                <RadioButton
                     android:id="@+id/f12loc888"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -213,6 +213,13 @@
                 android:text="@string/f1502c" />
 
             <RadioButton
+                android:id="@+id/f1502d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f1502d" />
+
+            <RadioButton
                 android:id="@+id/f1502888"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

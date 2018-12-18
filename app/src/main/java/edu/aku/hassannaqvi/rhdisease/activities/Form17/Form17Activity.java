@@ -3,10 +3,9 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form17;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
-import android.opengl.Visibility;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -134,7 +133,7 @@ public class Form17Activity extends AppCompatActivity {
         JSONObject f17 = new JSONObject();
         f17.put("f17rhstatus", bi.f17rha.isChecked() ? "1" : bi.f17rhb.isChecked() ? "2" : "0");
         f17.put("f17hcwid", bi.f17hcwidx.getText().toString());
-        f17.put("f17facilityid", bi.f17facility.getText().toString());
+        f17.put("f17facilityid", bi.facilityName1.isChecked() ? "1" : bi.facilityName2.isChecked() ? "2" : "0");
         f17.put("f17dt", dtToday);
         f17.put("f1701", bi.f1701a.isChecked() ? "1" : bi.f1701b.isChecked() ? "2" : "0");
         f17.put("f1702", bi.f1702a.isChecked() ? "1" : bi.f1702b.isChecked() ? "2" : "0");
@@ -161,7 +160,7 @@ public class Form17Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, bi.f17facility, getString(R.string.f17facility))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.facilityName, bi.facilityName1, getString(R.string.f17facility))) {
                 return false;
             }
 
@@ -188,9 +187,7 @@ public class Form17Activity extends AppCompatActivity {
                     if (!validatorClass.EmptyRadioButton(this, bi.f1705, bi.f1705a, getString(R.string.f1705))) {
                         return false;
                     }
-                    if (!validatorClass.EmptyRadioButton(this, bi.f1706, bi.f1706a, getString(R.string.f1706))) {
-                        return false;
-                    }
+                    return validatorClass.EmptyRadioButton(this, bi.f1706, bi.f1706a, getString(R.string.f1706));
                 }
             }
 

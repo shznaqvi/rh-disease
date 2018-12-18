@@ -21,6 +21,9 @@
     <string name="complete">مڪمل</string>
     <string name="incomplete">نا مڪمل</string>
     <string name="participant_id">شرڪت ڪندڙ جي آءِ ڊي</string>
+    <string name="facilityName">سهولت ڪار جو نالو ۽ شناخت</string>
+    <string name="facilityName1">ٽي ايڇ ڪيو جوهي</string>
+    <string name="facilityName2">ڊي ايڇ ڪيو دادو</string>
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -249,6 +252,7 @@
     <string name="f07c009d">ميٽرنٽي هوم</string>
     <string name="f07c009e">والدين جو گھر</string>
     <string name="f07c009f">سس سهري جي گھر</string>
+    <string name="f07c009g">ڊي ايڇ ڪيو سهولت</string>
     <string name="sec07DLabel"> موجوده حمل ۽ صحت جي معلومات </string>
     <string name="f07d001">هن موجوده حمل جي دوران توهان پنهنجو معائنو ڪيترا دفعا  ڪرايو آهي؟(اڄ جي دوري کي شامل ڪريو)</string>
     <string name="f07d001a">تمام دورن جي تعداد</string>
@@ -274,15 +278,20 @@
     <string name="f07dmnt">رايا / موقف</string>
     <string name="screennum">چڪاسڻ جو نمبر</string>
     <string name="participantName">شرڪت ڪندڙ جو نالو</string>
+    <string name="locationOfScreening">اسڪرينگ جي جڳهه</string>
+    <string name="locationOfScreening1">ٽي ايڇ ڪيو جوهي</string>
+    <string name="locationOfScreening2">ڊي ايڇ ڪيو دادو</string>
     <string name="inclusion">شرڪت ڪرڻ جي اهليت يا معيار</string>
     <string name="exclusion">تحقيق مان نڪرڻ / خارج ٿيڻ جو معيار</string>
     <string name="f03heading">شرڪت ڪندڙ جي اهليت جي جاچ </string>
     <string name="f03a001">ڇا شرڪت ڪندڙ حمل سان آهي</string>
     <string name="f03a002">ڇا شرڪت ڪندڙ جي حمل جو عرصو گھٽ ۾ گھٽ 13 هفتا يا ان کان زياده آهي</string>
     <string name="f03a002date">آخري ماهواري جو پهريون ڏينهن</string>
-    <string name="f03a003">ڇا شرڪت ڪندڙ ٽي ايڇ ڪيو صحت مرڪز جي آس پاس 5 يونين ڪائونسل مان ڪنهن يوسي ۾ مستقل رهندڙ آهي</string>
-    <string name="f03a004">ڇا شرڪت ڪندڙ تعلقي اسپتال ۾ ٻار ڄڻڻ جو ارادورکي ٿي؟</string>
-    <string name="f03a005">ڇا شرڪت ڪندڙ ٻار ڄڻڻ کانپوءِ گھٽ ۾ گھٽ هڪ مهينوتعلقي اسپتال جي علائقي ۾ رهڻ جو ارادورکي ٿي؟</string>
+    <string name="f03a003">ڇا شرڪت ڪندڙ ٽي ايڇ ڪيو صحت مرڪز جي آس پاس 5 يونين ڪائونسل مان ڪنهن يوسي ۾ مستقل رهندڙ آهي يا
+دادو شهر جي 24 وارڊن ۾ يا ان جي ويجهين ( نزديڪي) 8 يونين ڪائونسل ۾ مستقل رهندڙ آهي.
+ </string>
+    <string name="f03a004">ڇا شرڪت ڪندڙ تعلقي اسپتال  يا ضلعي اسپتال ۾ ٻارڄڻڻ جو ارادورکي ٿي</string>
+    <string name="f03a005">ڇا شرڪت ڪندڙ جو ٻار ڄڻڻکانپوءِ گھٽ ۾ گھٽ هڪ مهينوتعلقي اسپتال يا ضلعي اسپتال جي علائقي ۾ رهڻ جو ارادورکي ٿي؟</string>
     <string name="f03a006">ڇا شرڪت ڪندڙ اميدوار اڳ ۾ هن تحقيق ۾ حصو وٺي چڪو آهي؟</string>
     <string name="f03a007">ڇا شرڪت ڪندڙ کي ري ايڪشن ٿيو هو؟</string>
     <string name="f03a008">ڇا شرڪت ڪندڙ کي دل،جگر،گردي،ڦڦڙن جي متعلق ڪا وڏي بيماري آهي؟</string>
@@ -517,7 +526,7 @@
     <string name="f09hcwid">ايڇ سي ڊبليو آئي ڊي</string>
     <string name="f09facid">سهولت ڪار جو نالو ۽ شناخت نمبر</string>
     <string name="hcw">ايڇ سي ڊبليو آئي ڊي</string>
-    <string name="facility">سهولت ڪار جو نالو ۽ شناخت نمبر</string>
+    <string name="facility">سهولت ڪار جو نالو ۽ شناخت </string>
     <string name="ga">شرڪت ڪندڙ جي حمل جو عرصو لکو</string>
     <string name="weeks">هفتا</string>
     <string name="days">ڏينهن</string>
@@ -600,6 +609,7 @@
     <string name="f10a002">ٻار جي معائني جي جڳھ ۽ ٽائيم</string>
     <string name="f10a002a">ٽي ايڇ ڪيو سهولت</string>
     <string name="f10a002b">گھر</string>
+    <string name="f10a002c">ڊي ايڇ ڪيو دادو سهولت</string>
     <string name="f10a003">معائني جي تاريخ ۽ ٽائيم</string>
     <string name="f10asub">ويم جي معلومات</string>
     <string name="f10a004">ويم جي تاريخ ۽ ٽائيم</string>
@@ -608,12 +618,14 @@
     <!--<string name="f10a005a">ڪجھ نه</string>-->
     <string name="f10a005b">گھر</string>
     <string name="f10a005c">غير تحقيقي صحت مرڪز </string>
+    <string name="f10a005d">تحقيقي مرڪز (ڊي ايڇ ڪيو) </string>
     <string name="f10a006">جيڪڏهن ويم تحقيق جي علائقي کان ٻاهر ٿيو آهي ته ڪهڙي قسم جي صحت جي سهولت تي ويم ٿيو آهي؟</string>
     <string name="f10a006a">بي ايڇ يو</string>
     <string name="f10a006b">آر ايڇ سي</string>
     <string name="f10a006c">ميٽرنٽي هوم</string>
     <string name="f10a006d">ٽي ايڇ ڪيو</string>
     <string name="f10a006e">پرائيوٽ ڪلينڪ/اسپتال</string>
+    <string name="f10a006f">ڊي ايڇ ڪيو</string>
     <string name="f10a007">ويم ڪنهن ڪرايو؟</string>
     <string name="f10a007a">ڊاڪٽر</string>
     <string name="f10a007b">نرس</string>
@@ -635,21 +647,21 @@
     <string name="f10a010">ڇا ان ۾ ڪي پيچيدگيون هيون؟</string>
     <string name="f10a011">جيڪڏهن ها ته ڪهڙيون هيون؟</string>
     <!--<string name="f10a01101">حمل جي دوران بلڊ پريشر جو وڌي وڃڻ جي ڪري پيشاب ۾ پروٽين جو شامل ٿيڻ</string>-->
-    <string name="f10a01101">پري ايڪليپسيا </string>
+    <string name="f10a01101"> ويم جو ڊگهو ٿيڻ </string>
     <string name="f10a01102">رت جو گھڻو ضايح ٿيڻ</string>
-    <string name="f10a01103">سازش جي بيماري </string>
+    <string name="f10a01103">ٿڌو ۽ نيرو ٿيڻ  </string>
     <string name="f10a01104">ساه جو مسئلو</string>
     <string name="f10a01105">ٻچي داني جو ڦاٽڻ</string>
     <string name="f10a01106">جراثيم جو رت ۾ هجڻ</string>
     <string name="f10a01107">تيز بخار</string>
-    <string name="f10a01108">ماءُ کي دوران حمل جهٽڪن جو اچڻ</string>
+    <string name="f10a01108">جهٽڪا</string>
     <string name="f10a01109">بيهوشي</string>
     <!--<string name="f10a01110">حمل جي دوران بلڊ پريشر جو وڌي وڃڻ جي ڪري پيشاب ۾ پروٽين جو شامل ٿيڻ</string>-->
     <string name="f10a01110">وڌيڪ بلڊ پريشر</string>
     <!--<string name="f10a01111"> سنڊروم (ٽن مختلف بيمارين وارو مرضHELLP</string>-->
-    <string name="f10a01111">ا HELLP سنڊروم</string>
+    <string name="f10a01111">بلڊ پريشر جوگهٽجڻ</string>
     <string name="f10a01112">پيٽ ۾ شديد سور</string>
-    <string name="f10a01113">اوڙهه جو گڏجي وڃڻ</string>
+    <string name="f10a01113">گهڻي الٽي اچڻ</string>
     <string name="f10a01114">جھٽڪو اچڻ /ڪري پوڻ</string>
     <string name="f10a01115">ننڍو ڄائو 37 هفتن کان اڳ</string>
     <string name="f10a01116">شروعاتي 24 ڪلاڪن اندر 500 ايم ايل کان وڌيڪ رت ضايح ٿيڻ</string>
@@ -740,6 +752,9 @@
     <string name="f11a004e">72 ڪلاڪن کان زياده پر 96 ڪلاڪن کان گھٽ</string>
     <string name="f11a004f">96 ڪلاڪن کان زياده</string>
     <string name="f11b001">ڇاشرڪت ڪندڙ عورت راضي هئي دوا وٺڻ لاءِ؟</string>
+    <string name="f11bconsent">زباني رضامندي:
+سار سنڀال جي نتيجي مان معلوم ٿيو ته توهان ۾ Rh (رت جي بيماري) جي تشخيص ٿئي ٿي ان وجه سان توهان جو نئو ڄول ٻار Rh بيماري جي خطري ۾ ٿي سگھي ٿو نئي ڄاول ٻار ۾ Rh (رت جي بيماري) جي روڪڻ جو واحد طريقو RhIg جي هڪ انجيڪشن جي ذريعي آهي ۽ RhIg جو ڪو متبادل علاج موجود نه آهي هن تحقيق جي ذريعي توهان کي پنهنجي نئي ڄاول ٻار جي ممڪن خطري کي گھٽ ۾ گھٽ ڪرڻ جي لاءِ RhIg جي پيشڪش ڪئي وڃي ٿي Rh (رت جي بيماري) کي Rhig جي ذريعي روڪڻ جو انحصار توهان جي رت ۾ پهرين کان موجود اينٽي ڊي آر ايڇ اينٽي بوڊيڊ (anti DRh antibodies) تي آهي ٻئي لفظن ۾ هي ممڪن آهي ته هي انجيڪشن توهان جي نئي ڄاول يا مستقبل جي ٻارن کي Rh (رت جي بيماري) کان بچائي سگھندو Rhig سان مسلڪ گھٽ ۾ گھت خطرا موجود آهي ان جي باوجود Rhig جي بدولت سوئي لڳڻ واري جڳھ گھڻو سور،بخار ڪمزوري ۽ بيچيني،مٿي جو سور،الرجي جو ردعمل (جلدي بيماريون) جيڪي بغير علاج جي جلدي ختم ٿي وينديون آهن- انجيڪشن لڳائڻ کان پوءِ 30 منٽن تائين توهان جو مشاهدو ڪيو ويندو ته جيئين ممڪن منفي ردعمل جي تشخيص ڪري سگھجي شديد منفي رعمل ظاهر ٿيڻ تي توهان جو THQ  يا   DHQ ۾ علاج جو انظآم ڪنداسين توهان تي RhIg وصولي ڪرڻ جي ذميداري نه آهي هي توهان جي مرضي آهي ته توهان هي انجيڪشن لڳائڻ چاهيو ٿيون يا نه.
+</string>
     <string name="f11b002">جيڪڏهن نه ، ته ڇو توهان راضي نه آهيو اها دوا وٺڻ لاء؟</string>
     <string name="f11b002a">ٽائيم نه آهي</string>
     <string name="f11b002b">منهنجا گھر وارا مون کي اجازت نٿا ڏين</string>
@@ -807,6 +822,7 @@
     <string name="f12loc">ٻار جي معائني جي جڳھ؟ </string>
     <string name="f12loc1">ٽي ايڇ ڪيو سهولت </string>
     <string name="f12loc2">گهر </string>
+    <string name="f12loc3">ڊي ايڇ ڪيو سهولت </string>
     <string name="f12loc888">ٻئي ڪا جڳهه </string>
     <string name="f1201">آخري دوري کان هيئر تائين ڇا نئي  ڄاول ٻار کي  NICU
  ۾ داخل ڪرڻ جي ضرورت آهي</string>
@@ -1049,6 +1065,7 @@
     <string name="f1502a">فون جي ذريعي</string>
     <string name="f1502b">گھر جي ڀاتي</string>
     <string name="f1502c">ٽي ايڇ ڪيو</string>
+    <string name="f1502d">ٽي ايڇ ڪيو تي پاڻ آيا </string>
     <string name="f1502888">ڪجھ ٻيو وضاحت ڪريو</string>
     <string name="f1503">منفي واقعي/حادثي جو اطلاع ڪنهن ڏنو؟</string>
     <string name="f1503a">ماءُ (شرڪت ڪندڙ)</string>
@@ -1087,6 +1104,11 @@
 
     <string name="f16Heading02">Blood Collection For Antibody Assessment</string>
     <string name="f16label">ڇا توهان راضي آهيو رت جو نمونو ڏيڻ لاءِ؟</string>
+    <string name="f16consent">توهان جي رت جي نتيجي مان هي معلوم ٿيو آهي ته توهان کي Rh جي بيماري آهي ۽ ان سان گڏ هي به معلوم ٿيو آهي ته توهان جو حمل ضايح
+ٿيو ،ٻار مئل پيدا ٿيو، ٻار پيدائش کان پوءِ فوت ٿيو ان لاءِ آئون توهان کان هي پڇڻ چاهيان ٿي ته توهان رت جو نمونو ڏيڻ جي لاءِ تيار آهيو
+جنهن سان اسان رت ۾ Anti-Rh D antibodies جي موجودگي جو پتو لڳائي سگھون توهان جي Anti-bodies ٽيسٽ جو نتيجو توهان کي
+ٻڌايو ويندو ۽ اسان کي Rh جي بيماري کي سمجھڻ ۾ مدد ملندي جيڪڏهن توهان راضي آهيو ته اسان هڪ تربيت يافته LHV يا ميڊيڪل آفيسر THQ اسپتال جوهي يا DHQ  اسپتال دادو ۾ توهان کان 6-5 ملي ليٽر رت جو نمونو وٺندي. رت جو نمونو دادو ۾ موجود آغاخان يونيورسٽي جي ليبارٽري ۾ موڪليو ويندو جتي ليبارٽري جي معياري طريقن جي استعمال کان پوءِ رت ۾ Antibody جي مقدار کي ناپيو ويندو ۽ تحقيق کان پوءِ ميڊيڪل آفيسر توهان کي هي هدايت ڪندو ته جڏهن مستقبل ۾ ٻيهر حمل ٿيو ته پنهنجي ڊاڪٽر يا نرس کي پنهنجي Rh جي بيماري ۽ اينٽي باڊي جي نتيجي جي باري ۾ آگاھ ڪريو Antibody جي لاءِ رت جو نمونو ڏيڻ يا نه ڏيڻ توهان جي مرضي آهي
+</string>
 
     <!--===========Form 16 Questions and Answers======================-->
 

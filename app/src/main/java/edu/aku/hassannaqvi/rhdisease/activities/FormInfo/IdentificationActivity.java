@@ -11,14 +11,14 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.DoubleBuffer;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -40,7 +40,6 @@ import edu.aku.hassannaqvi.rhdisease.activities.Form7.F07AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form8.F08AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.Form9.F09AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
-import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.MainActivity;
 import edu.aku.hassannaqvi.rhdisease.contracts.FormsContract;
 import edu.aku.hassannaqvi.rhdisease.contracts.rh_resultsContract;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
@@ -62,6 +61,17 @@ public class IdentificationActivity extends Activity {
     @BindView(R.id.fldGrpfooter)
     LinearLayout fldGrpfooter;
 
+    @BindView(R.id.facilityName)
+    RadioGroup facilityName;
+    @BindView(R.id.facilityName1)
+    RadioButton facilityName1;
+    @BindView(R.id.facilityName2)
+    RadioButton facilityName2;
+
+    @BindView(R.id.fldgrpfacility)
+    LinearLayout fldgrpfacility;
+
+
     DatabaseHelper db;
     boolean check = false;
 
@@ -76,11 +86,16 @@ public class IdentificationActivity extends Activity {
 
         if (MainApp.formType.equals("8")) {
             fldGrpF08.setVisibility(View.VISIBLE);
+            fldgrpfacility.setVisibility(View.VISIBLE);
+        } else if (MainApp.formType.equals("10")) {
+            fldgrpfacility.setVisibility(View.VISIBLE);
         } else {
             fldGrpF08.setVisibility(View.GONE);
+            fldgrpfacility.setVisibility(View.GONE);
             f08a001.setText(null);
             f08a001999.setChecked(false);
         }
+
 
         fldGrpfooter.setVisibility(View.GONE);
 
@@ -103,38 +118,35 @@ public class IdentificationActivity extends Activity {
         String formType = MainApp.formType;
         switch (formType) {
             case MainApp.FORM16:
-                if(db.isF12dublicate(participantId.getText().toString())){
+                if (db.isF12dublicate(participantId.getText().toString())) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
-                }
-                else {
+                } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Please fill form 12 first!", Toast.LENGTH_LONG).show();
                 }
                 break;
             case MainApp.FORM13:
                 if (!db.isF13dublicate(participantId.getText().toString())) {
-                    if(db.isF12dublicate(participantId.getText().toString())){
+                    if (db.isF12dublicate(participantId.getText().toString())) {
                         fldGrpfooter.setVisibility(View.VISIBLE);
-                    }
-                    else {
+                    } else {
                         fldGrpfooter.setVisibility(View.GONE);
                         Toast.makeText(this, "Please fill form 12 first!", Toast.LENGTH_LONG).show();
                     }
-                }else {
+                } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Form 13 is already filled!", Toast.LENGTH_LONG).show();
                 }
                 break;
             case MainApp.FORM12:
                 if (!db.isF12dublicate(participantId.getText().toString())) {
-                    if(db.isF11dublicate(participantId.getText().toString())){
+                    if (db.isF11dublicate(participantId.getText().toString())) {
                         fldGrpfooter.setVisibility(View.VISIBLE);
-                    }
-                    else {
+                    } else {
                         fldGrpfooter.setVisibility(View.GONE);
                         Toast.makeText(this, "Please fill form 11 first!", Toast.LENGTH_LONG).show();
                     }
-                }else {
+                } else {
                     fldGrpfooter.setVisibility(View.GONE);
                     Toast.makeText(this, "Form 12 is already filled!", Toast.LENGTH_LONG).show();
                 }
@@ -282,7 +294,7 @@ public class IdentificationActivity extends Activity {
                 if (!db.isF11dublicate(participantId.getText().toString())) {
                     if (!db.checkForRH_Results(participantId.getText().toString())) {
                         String rhResults = db.getRH_Results(participantId.getText().toString());
-                        if (rhResults != null){
+                        if (rhResults != null) {
                             if (rhResults.equals(MainApp.RH_NEGATIVE)) {
                                 if (db.isF10firstdublicate(participantId.getText().toString())) {
 //                            if (db.checkForf15Adverse(participantId.getText().toString()) || db.checkForf15Adverse(participantId.getText().toString(), MainApp.FORM10)) {
@@ -311,7 +323,7 @@ public class IdentificationActivity extends Activity {
                                 Toast.makeText(this, "Rh-Results not found!", Toast.LENGTH_LONG).show();
 
                             }
-                        }else {
+                        } else {
                             fldGrpfooter.setVisibility(View.GONE);
                             Toast.makeText(this, "Rh results not found!! form 9 is used to record Rh results ", Toast.LENGTH_LONG).show();
                         }
@@ -436,22 +448,19 @@ public class IdentificationActivity extends Activity {
             } else if (MainApp.formType.equals("10")) {
                 Intent secB = new Intent(this, F11AActivity.class);
                 startActivity(secB);
-            }else if(MainApp.formType.equals("12")){
+            } else if (MainApp.formType.equals("12")) {
                 Intent secB = new Intent(this, F12Activity.class);
                 startActivity(secB);
-            }else if(MainApp.formType.equals("13")){
+            } else if (MainApp.formType.equals("13")) {
                 Intent secB = new Intent(this, F13Activity.class);
                 startActivity(secB);
-            }
-            else if (MainApp.formType.equals("15")) {
+            } else if (MainApp.formType.equals("15")) {
                 Intent secf15 = new Intent(this, F15Activity.class);
                 startActivity(secf15);
-            }
-            else if(MainApp.formType.equals("16")){
+            } else if (MainApp.formType.equals("16")) {
                 Intent secf16 = new Intent(this, Form16Activity.class);
                 startActivity(secf16);
-            }
-            else if(MainApp.formType.equals("17")){
+            } else if (MainApp.formType.equals("17")) {
                 Intent secf17 = new Intent(this, Form17Activity.class);
                 startActivity(secf17);
             }
@@ -529,10 +538,14 @@ public class IdentificationActivity extends Activity {
         JSONObject sInfo = new JSONObject();
 
         sInfo.put("f08a001", f08a001999.isChecked() ? "999" : f08a001.getText().toString());
+        sInfo.put("facility_name", facilityName1.isChecked() ? "1" : facilityName2.isChecked() ? "2" : "0");
         MainApp.TotalFetusCount = Integer.valueOf(f08a001.getText().toString().isEmpty() ? "0" : f08a001.getText().toString());
 
         if (MainApp.formType.equals("8")) {
             MainApp.fc.setF08(String.valueOf(sInfo));
+        }
+        if (MainApp.formType.equals("10")) {
+            MainApp.fc.setF11(String.valueOf(sInfo));
         }
 
         MainApp.setGPS(this);
@@ -550,8 +563,8 @@ public class IdentificationActivity extends Activity {
         MainApp.ffc.setdeviceID(MainApp.fc.getDeviceID());
         MainApp.rh.setParticipantid(MainApp.fc.getParticipantID());
         MainApp.rh.setForm5_uid(db.getForm5UUID(MainApp.rh.getParticipantid()));
-        if(!MainApp.formType.equals(MainApp.FORM15))
-        MainApp.fc.set_UUID(MainApp.rh.getForm5_uid());
+        if (!MainApp.formType.equals(MainApp.FORM15))
+            MainApp.fc.set_UUID(MainApp.rh.getForm5_uid());
 
         long updcount = db.addForm(MainApp.fc);
 
@@ -563,9 +576,9 @@ public class IdentificationActivity extends Activity {
             //String participantID = db.checkParticipantIDExist(participantId.getText().toString());
             String participantIDinRH = db.checkParticipantIDExistinRH(participantId.getText().toString());
 
-          //  if (participantID.equals(null)) {
-                long filledformid = db.addFilledForms(MainApp.ffc);
-                MainApp.ffc.set_id(String.valueOf(filledformid));
+            //  if (participantID.equals(null)) {
+            long filledformid = db.addFilledForms(MainApp.ffc);
+            MainApp.ffc.set_id(String.valueOf(filledformid));
           /*  } else {
                 MainApp.ffc.set_id(db.getidof(participantId.getText().toString()));
             }*/
@@ -579,7 +592,7 @@ public class IdentificationActivity extends Activity {
 
             MainApp.fc.set_UID((MainApp.fc.getDeviceID() + MainApp.fc.get_ID()));
 
-            if(MainApp.formType.equals(MainApp.FORM10)){
+            if (MainApp.formType.equals(MainApp.FORM10)) {
                 MainApp.rh.setf10_uid(MainApp.fc.get_UID());
                 db.updatef10RhTable();
             }

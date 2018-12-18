@@ -11,7 +11,6 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -101,6 +100,10 @@ public class F07CActivity extends AppCompatActivity
     RadioButton f07c009e;
     @BindView(R.id.f07c009f)
     RadioButton f07c009f;
+
+    @BindView(R.id.f07c009g)
+    RadioButton f07c009g;
+
     @BindView(R.id.f07c009888)
     RadioButton f07c009888;
     @BindView(R.id.f07c009999)
@@ -337,7 +340,7 @@ public class F07CActivity extends AppCompatActivity
         f07c.put("f07c007a", f07c007aage.getText().toString());
         f07c.put("f07c007b", f07c007bage.getText().toString());
         f07c.put("f07c008", f07c008.getText().toString());
-        f07c.put("f07c009", f07c009a.isChecked() ? "1" : f07c009b.isChecked() ? "2" : f07c009c.isChecked() ? "3" : f07c009d.isChecked() ? "4" : f07c009e.isChecked() ? "5" : f07c009f.isChecked() ? "6" : f07c009888.isChecked() ? "888" : f07c009999.isChecked() ? "999" : "0");
+        f07c.put("f07c009", f07c009a.isChecked() ? "1" : f07c009b.isChecked() ? "2" : f07c009c.isChecked() ? "3" : f07c009d.isChecked() ? "4" : f07c009e.isChecked() ? "5" : f07c009f.isChecked() ? "6" : f07c009g.isChecked() ? "7" : f07c009888.isChecked() ? "888" : f07c009999.isChecked() ? "999" : "0");
         f07c.put("f07c009888x", f07c009888x.getText().toString());
 
         MainApp.fc4.setF07c(String.valueOf(f07c));

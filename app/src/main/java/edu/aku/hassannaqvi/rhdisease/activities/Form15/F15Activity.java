@@ -4,17 +4,12 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form15;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-import butterknife.ButterKnife;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,16 +19,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import butterknife.BindView;
-import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
 import edu.aku.hassannaqvi.rhdisease.databinding.ActivityF15Binding;
 import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
-import io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText;
-import io.blackbox_vision.datetimepickeredittext.view.TimePickerEditText;
 public class F15Activity extends AppCompatActivity {
 
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
@@ -120,7 +111,7 @@ public class F15Activity extends AppCompatActivity {
         f15.put("f15rhstatus", bi.f15rhstatusa.isChecked() ? "1" : bi.f15rhstatusb.isChecked() ? "2" : bi.f15rhstatus999.isChecked() ? "999" : "0");
 //        f15.put("f15researchpersonnel", bi.f15researchpersonnel.getText().toString());
         f15.put("f1501dt", dtToday);
-        f15.put("f1502", bi.f1502a.isChecked() ? "1" : bi.f1502b.isChecked() ? "2" : bi.f1502c.isChecked() ? "3" : bi.f1502888.isChecked() ? "888" : "0");
+        f15.put("f1502", bi.f1502a.isChecked() ? "1" : bi.f1502b.isChecked() ? "2" : bi.f1502c.isChecked() ? "3" : bi.f1502d.isChecked() ? "4" : bi.f1502888.isChecked() ? "888" : "0");
         f15.put("f1502888x", bi.f1502888x.getText().toString());
         f15.put("f1503", bi.f1503a.isChecked() ? "1" : bi.f1503b.isChecked() ? "2" : bi.f1503c.isChecked() ? "3" :bi.f1503d.isChecked() ? "4" : bi.f1503888.isChecked() ? "888" : "0");
         f15.put("f1503cx", bi.f1503cx.getText().toString());
@@ -200,9 +191,7 @@ public class F15Activity extends AppCompatActivity {
             return false;
         }
         if (bi.f1509a.isChecked()) {
-            if (!validatorClass.EmptyTextBox(this, bi.f1510, getString(R.string.f1510))) {
-                return false;
-            }
+            return validatorClass.EmptyTextBox(this, bi.f1510, getString(R.string.f1510));
         }
         return true;
     }

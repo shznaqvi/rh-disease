@@ -21,8 +21,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.xml.validation.Validator;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -68,6 +66,10 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a002a;
     @BindView(R.id.f10a002b)
     RadioButton f10a002b;
+
+    @BindView(R.id.f10a002c)
+    RadioButton f10a002c;
+
     @BindView(R.id.f10a002888)
     RadioButton f10a002888;
     @BindView(R.id.f10a002888x)
@@ -88,6 +90,10 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a005b;
     @BindView(R.id.f10a005c)
     RadioButton f10a005c;
+
+    @BindView(R.id.f10a005d)
+    RadioButton f10a005d;
+
     @BindView(R.id.f10a005888)
     RadioButton f10a005888;
     @BindView(R.id.f10a005888x)
@@ -106,6 +112,10 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a006d;
     @BindView(R.id.f10a006e)
     RadioButton f10a006e;
+
+    @BindView(R.id.f10a006f)
+    RadioButton f10a006f;
+
     @BindView(R.id.f10a006888)
     RadioButton f10a006888;
     @BindView(R.id.f10a006888x)
@@ -284,22 +294,22 @@ public class F10AActivity extends AppCompatActivity {
     RadioButton f10a01114b;
     @BindView(R.id.f10a01114999)
     RadioButton f10a01114999;
-    @BindView(R.id.f10a01115)
-    RadioGroup f10a01115;
-    @BindView(R.id.f10a01115a)
-    RadioButton f10a01115a;
-    @BindView(R.id.f10a01115b)
-    RadioButton f10a01115b;
-    @BindView(R.id.f10a01115999)
-    RadioButton f10a01115999;
-    @BindView(R.id.f10a01116)
-    RadioGroup f10a01116;
-    @BindView(R.id.f10a01116a)
-    RadioButton f10a01116a;
-    @BindView(R.id.f10a01116b)
-    RadioButton f10a01116b;
-    @BindView(R.id.f10a01116999)
-    RadioButton f10a01116999;
+    //    @BindView(R.id.f10a01115)
+//    RadioGroup f10a01115;
+//    @BindView(R.id.f10a01115a)
+//    RadioButton f10a01115a;
+//    @BindView(R.id.f10a01115b)
+//    RadioButton f10a01115b;
+//    @BindView(R.id.f10a01115999)
+//    RadioButton f10a01115999;
+//    @BindView(R.id.f10a01116)
+//    RadioGroup f10a01116;
+//    @BindView(R.id.f10a01116a)
+//    RadioButton f10a01116a;
+//    @BindView(R.id.f10a01116b)
+//    RadioButton f10a01116b;
+//    @BindView(R.id.f10a01116999)
+//    RadioButton f10a01116999;
     @BindView(R.id.f10a011888)
     RadioGroup f10a011888;
     @BindView(R.id.f10a011888a)
@@ -443,8 +453,8 @@ public class F10AActivity extends AppCompatActivity {
                     f10a01112.clearCheck();
                     f10a01113.clearCheck();
                     f10a01114.clearCheck();
-                    f10a01115.clearCheck();
-                    f10a01116.clearCheck();
+                    //f10a01115.clearCheck();
+                    // f10a01116.clearCheck();
                     f10a011888.clearCheck();
                     f10a011888x.setText(null);
 
@@ -514,7 +524,7 @@ public class F10AActivity extends AppCompatActivity {
                 : f10a001d.isChecked() ? "4" : f10a001e.isChecked() ? "5" : f10a001888.isChecked() ? "888" : "0");
         f10a.put("f10a001888x", f10a001888x.getText().toString());
 
-        f10a.put("f10a002", f10a002a.isChecked() ? "1" : f10a002b.isChecked() ? "2" : f10a002888.isChecked() ? "888" : "0");
+        f10a.put("f10a002", f10a002a.isChecked() ? "1" : f10a002b.isChecked() ? "2" : f10a002c.isChecked() ? "3" : f10a002888.isChecked() ? "888" : "0");
         f10a.put("f10a002888x", f10a002888x.getText().toString());
 
         f10a.put("f10a003", f10a003.getText().toString());
@@ -522,10 +532,11 @@ public class F10AActivity extends AppCompatActivity {
         f10a.put("f10a004", f10a004.getText().toString());
         f10a.put("f10a004time", f10a004time.getText().toString());
         f10a.put("f10a005", f10a005a.isChecked() ? "1" : f10a005b.isChecked() ? "2" : f10a005c.isChecked() ? "3"
+                : f10a005d.isChecked() ? "4"
                 : f10a005888.isChecked() ? "888" : "0");
         f10a.put("f10a005888x", f10a005888x.getText().toString());
         f10a.put("f10a006", f10a006a.isChecked() ? "1" : f10a006b.isChecked() ? "2" : f10a006c.isChecked() ? "3"
-                : f10a006d.isChecked() ? "4" : f10a006e.isChecked() ? "5" : f10a006888.isChecked() ? "888" : "0");
+                : f10a006d.isChecked() ? "4" : f10a006e.isChecked() ? "5" : f10a006f.isChecked() ? "6" : f10a006888.isChecked() ? "888" : "0");
         f10a.put("f10a006888x", f10a006888x.getText().toString());
 
         f10a.put("f10a007", f10a007a.isChecked() ? "1" : f10a007b.isChecked() ? "2" : f10a007c.isChecked() ? "3"
@@ -554,8 +565,8 @@ public class F10AActivity extends AppCompatActivity {
         f10a.put("f10a01112", f10a01112a.isChecked() ? "1" : f10a01112b.isChecked() ? "2" : f10a01112999.isChecked() ? "999" : "0");
         f10a.put("f10a01113", f10a01113a.isChecked() ? "1" : f10a01113b.isChecked() ? "2" : f10a01113999.isChecked() ? "999" : "0");
         f10a.put("f10a01114", f10a01114a.isChecked() ? "1" : f10a01114b.isChecked() ? "2" : f10a01114999.isChecked() ? "999" : "0");
-        f10a.put("f10a01115", f10a01115a.isChecked() ? "1" : f10a01115b.isChecked() ? "2" : f10a01115999.isChecked() ? "999" : "0");
-        f10a.put("f10a01116", f10a01116a.isChecked() ? "1" : f10a01116b.isChecked() ? "2" : f10a01116999.isChecked() ? "999" : "0");
+        //f10a.put("f10a01115", f10a01115a.isChecked() ? "1" : f10a01115b.isChecked() ? "2" : f10a01115999.isChecked() ? "999" : "0");
+        //f10a.put("f10a01116", f10a01116a.isChecked() ? "1" : f10a01116b.isChecked() ? "2" : f10a01116999.isChecked() ? "999" : "0");
         f10a.put("f10a011888", f10a011888a.isChecked() ? "1" : f10a011888b.isChecked() ? "2" : f10a011888999.isChecked() ? "999" : "0");
         f10a.put("f10a011888x", f10a011888x.getText().toString());
 
@@ -902,24 +913,24 @@ public class F10AActivity extends AppCompatActivity {
             } else {
                 f10a01114a.setError(null);
             }
-            if (f10a01115.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a01115), Toast.LENGTH_SHORT).show();
-                f10a01115a.setError("This data is Required!");
-
-                Log.i(TAG, "f10a01115: This Data is Required!");
-                return false;
-            } else {
-                f10a01115a.setError(null);
-            }
-            if (f10a01116.getCheckedRadioButtonId() == -1) {
-                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a01116), Toast.LENGTH_SHORT).show();
-                f10a01116a.setError("This data is Required!");
-
-                Log.i(TAG, "f10a01116: This Data is Required!");
-                return false;
-            } else {
-                f10a01116a.setError(null);
-            }
+//            if (f10a01115.getCheckedRadioButtonId() == -1) {
+//                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a01115), Toast.LENGTH_SHORT).show();
+//                f10a01115a.setError("This data is Required!");
+//
+//                Log.i(TAG, "f10a01115: This Data is Required!");
+//                return false;
+//            } else {
+//                f10a01115a.setError(null);
+//            }
+//            if (f10a01116.getCheckedRadioButtonId() == -1) {
+//                Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a01116), Toast.LENGTH_SHORT).show();
+//                f10a01116a.setError("This data is Required!");
+//
+//                Log.i(TAG, "f10a01116: This Data is Required!");
+//                return false;
+//            } else {
+//                f10a01116a.setError(null);
+//            }
 
             if (f10a011888.getCheckedRadioButtonId() == -1) {
                 Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f10a011) + " - " + getString(R.string.other), Toast.LENGTH_SHORT).show();

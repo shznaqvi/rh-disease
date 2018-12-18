@@ -2,11 +2,10 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form12;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -19,8 +18,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
 import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
@@ -250,9 +247,7 @@ public class F12Activity extends AppCompatActivity {
                     return false;
                 }
                 if (bi.f1216a.isChecked()) {
-                    if (!validatorClass.EmptyTextBox(this, bi.f1217, getString(R.string.f1217))) {
-                        return false;
-                    }
+                    return validatorClass.EmptyTextBox(this, bi.f1217, getString(R.string.f1217));
                 }
             }
         }
@@ -265,7 +260,7 @@ public class F12Activity extends AppCompatActivity {
         JSONObject f12 = new JSONObject();
         f12.put("f12deld", bi.f12d.getText().toString());
         f12.put("f12delt", bi.f12t.getText().toString());
-        f12.put("f12loc",bi.f12loc1.isChecked() ? "1" : bi.f12loc2.isChecked() ? "2" : bi.f12loc888.isChecked() ? "888" : "0");
+        f12.put("f12loc", bi.f12loc1.isChecked() ? "1" : bi.f12loc2.isChecked() ? "2" : bi.f12loc3.isChecked() ? "3" : bi.f12loc888.isChecked() ? "888" : "0");
         f12.put("f12loc888x", bi.f12loc888x.getText().toString());
         f12.put("f1201",bi.f1201a.isChecked() ? "1" : bi.f1201b.isChecked() ? "2" : bi.f1201999.isChecked() ? "999" : "0");
         f12.put("f1202",bi.f1202a.isChecked() ? "1" : bi.f1202b.isChecked() ? "2" : bi.f1202999.isChecked() ? "999" : "0");

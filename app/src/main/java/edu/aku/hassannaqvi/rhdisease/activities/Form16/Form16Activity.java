@@ -2,8 +2,8 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form16;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -21,7 +21,6 @@ import edu.aku.hassannaqvi.rhdisease.R;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
-import edu.aku.hassannaqvi.rhdisease.databinding.ActivityF12Binding;
 import edu.aku.hassannaqvi.rhdisease.databinding.ActivityForm16Binding;
 import edu.aku.hassannaqvi.rhdisease.validation.ClearClass;
 import edu.aku.hassannaqvi.rhdisease.validation.validatorClass;
@@ -234,7 +233,7 @@ public class Form16Activity extends AppCompatActivity {
         f16.put("f16rh", bi.f16ha.isChecked() ? "1" : bi.f16hb.isChecked() ? "2" : "0");
         f16.put("f16death", bi.f16deatha.isChecked() ? "1" : bi.f16deathb.isChecked() ? "2" : bi.f16deathc.isChecked() ? "3" : "0");
         f16.put("f16hcw", bi.f16hcwx.getText().toString());
-        f16.put("f16facid", bi.f16facidx.getText().toString());
+        f16.put("f16facid", bi.facilityName1.isChecked() ? "1" : bi.facilityName2.isChecked() ? "2" : "0");
         f16.put("f1601", bi.f1601a.isChecked() ? "1" : bi.f1601b.isChecked() ? "2" : "0");
         f16.put("f1602", bi.f1602.getText().toString());
         f16.put("f1603d", bi.f1603date.getText().toString());
@@ -296,7 +295,7 @@ public class Form16Activity extends AppCompatActivity {
                 return false;
             }
 
-            if (!validatorClass.EmptyTextBox(this, bi.f16facidx, getString(R.string.f16facid))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.facilityName, bi.facilityName1, getString(R.string.f16facid))) {
 
                 return false;
             }
@@ -346,10 +345,7 @@ public class Form16Activity extends AppCompatActivity {
 
                     return false;
                 }
-                if (!validatorClass.EmptyRadioButton(this, bi.f1606, bi.f1606b, getString(R.string.f1606))) {
-
-                    return false;
-                }
+                return validatorClass.EmptyRadioButton(this, bi.f1606, bi.f1606b, getString(R.string.f1606));
 
 
             }

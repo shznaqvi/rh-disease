@@ -78,15 +78,26 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@android:color/white" />
 
-        <EditText
-            android:id="@+id/f09facid"
+        <RadioGroup
+            android:id="@+id/facilityName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:layout_weight="1"
-            android:digits="0123456789"
-            android:hint="@string/f09facid"
-            android:inputType="number" />
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/facilityName1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/facilityName1" />
+
+            <RadioButton
+                android:id="@+id/facilityName2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/facilityName2" />
+
+        </RadioGroup>
 
 
         <TextView

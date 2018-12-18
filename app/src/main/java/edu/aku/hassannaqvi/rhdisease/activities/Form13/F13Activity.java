@@ -2,12 +2,11 @@ package edu.aku.hassannaqvi.rhdisease.activities.Form13;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -20,10 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import butterknife.OnClick;
 import edu.aku.hassannaqvi.rhdisease.R;
-import edu.aku.hassannaqvi.rhdisease.activities.Form3.F03BActivity;
-import edu.aku.hassannaqvi.rhdisease.activities.Form4.F04AActivity;
 import edu.aku.hassannaqvi.rhdisease.activities.OtherActivities.EndingActivity;
 import edu.aku.hassannaqvi.rhdisease.core.DatabaseHelper;
 import edu.aku.hassannaqvi.rhdisease.core.MainApp;
@@ -36,6 +32,7 @@ public class F13Activity extends AppCompatActivity {
     String dateToday = new SimpleDateFormat("dd/MM/yyyy").format(new Date().getTime());
     Date date = new GregorianCalendar(2018, Calendar.JUNE, 27).getTime(); // as told by amjad bhai
     String fixedminDate = new SimpleDateFormat("dd/MM/yyyy").format(date);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -1644,30 +1641,31 @@ public class F13Activity extends AppCompatActivity {
 
 
     }
-/*
-    @OnClick(R.id.btn_End)
-    void onBtnEndClick() {
-        Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
 
-        //if (check) {
-        try {
-            SaveDraft();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        if (UpdateDB()) {
-            finish();
-            Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
-            Intent endSec = new Intent(this, EndingActivity.class);
-            endSec.putExtra("complete", false);
-            startActivity(endSec);
-        } else {
-            Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
-        }
-        /*} else {
-            Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
-        }
-    }*/
+    /*
+        @OnClick(R.id.btn_End)
+        void onBtnEndClick() {
+            Toast.makeText(this, "Processing This Section", Toast.LENGTH_SHORT).show();
+
+            //if (check) {
+            try {
+                SaveDraft();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            if (UpdateDB()) {
+                finish();
+                Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
+                Intent endSec = new Intent(this, EndingActivity.class);
+                endSec.putExtra("complete", false);
+                startActivity(endSec);
+            } else {
+                Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
+            }
+            /*} else {
+                Toast.makeText(this, "Click on Check Button", Toast.LENGTH_SHORT).show();
+            }
+        }*/
     public void BtnEnd() {
         Toast.makeText(this, "Not Processing This Section", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Starting Form Ending Section", Toast.LENGTH_SHORT).show();
@@ -1728,7 +1726,7 @@ public class F13Activity extends AppCompatActivity {
 
         f13.put("f13exd", bi.f13exd.getText().toString());
         f13.put("f13ext", bi.f13ext.getText().toString());
-        f13.put("f13a000", bi.f13a000.getText().toString());
+        f13.put("f13a000", bi.facilityName1.isChecked() ? "1" : bi.facilityName2.isChecked() ? "2" : "0");
         f13.put("f13a001", bi.f13a001a.isChecked() ? "1" : bi.f13a001b.isChecked() ? "2" : "0");
         f13.put("f13a002a", bi.f13a002a.isChecked() ? "1" : "0");
         f13.put("f13a002b", bi.f13a002b.isChecked() ? "2" : "0");
@@ -1928,15 +1926,18 @@ public class F13Activity extends AppCompatActivity {
 
     public boolean ValidateForm() {
 
-        if (!validatorClass.EmptyTextBox(this, bi.f13exd,getString(R.string.f13exdt)+" "+getString(R.string.date))) {
+        if (!validatorClass.EmptyTextBox(this, bi.f13exd, getString(R.string.f13exdt) + " " + getString(R.string.date))) {
             return false;
         }
-        if (!validatorClass.EmptyTextBox(this, bi.f13ext,getString(R.string.f13exdt)+" "+getString(R.string.time))) {
+        if (!validatorClass.EmptyTextBox(this, bi.f13ext, getString(R.string.f13exdt) + " " + getString(R.string.time))) {
             return false;
         }
-        if (!validatorClass.EmptyTextBox(this, bi.f13a000,getString(R.string.f13a000))) {
+
+        if (!validatorClass.EmptyRadioButton(this, bi.facilityName, bi.facilityName1, getString(R.string.f13a000))) {
             return false;
         }
+
+
         //=================== bi.f13a001 ==============
         if (bi.f13a001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f13a001), Toast.LENGTH_SHORT).show();

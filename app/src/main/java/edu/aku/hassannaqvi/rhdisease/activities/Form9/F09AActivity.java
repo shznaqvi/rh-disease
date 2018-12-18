@@ -42,8 +42,16 @@ public class F09AActivity extends Activity {
     public static String LMP_TAG = "lmp";
     @BindView(R.id.f09hcwid)
     EditText f09hcwid;
-    @BindView(R.id.f09facid)
-    EditText f09facid;
+
+    @BindView(R.id.facilityName)
+    RadioGroup facilityName;
+
+    @BindView(R.id.facilityName1)
+    RadioButton facilityName1;
+
+    @BindView(R.id.facilityName2)
+    RadioButton facilityName2;
+
     @BindView(R.id.f09gawk)
     EditText f09gawk;
     @BindView(R.id.f09gad)
@@ -624,10 +632,10 @@ public class F09AActivity extends Activity {
     private boolean UpdateDB() {
 
         DatabaseHelper db = new DatabaseHelper(this);
-          // MainApp.fc.set_UUID(db.getForm5_UID(participantID));
-            if(MainApp.fc.get_UUID().equals("") || MainApp.fc.get_UUID() == null) {
-                MainApp.fc.set_UUID(db.getForm5_UID(participantID,MainApp.FORM5));
-            }
+        // MainApp.fc.set_UUID(db.getForm5_UID(participantID));
+        if (MainApp.fc.get_UUID().equals("") || MainApp.fc.get_UUID() == null) {
+            MainApp.fc.set_UUID(db.getForm5_UID(participantID, MainApp.FORM5));
+        }
 
         int updcount = db.updateF09();
 
@@ -662,13 +670,13 @@ public class F09AActivity extends Activity {
 
 
         //f09facid
-        if (f09facid.getText().toString().isEmpty()) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.f09facid), Toast.LENGTH_SHORT).show();
-            f09facid.setError("This data is Required!");    // Set Error on last radio button
-            Log.i(TAG, "f09facid: This data is Required!");
+        if (facilityName.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.facility), Toast.LENGTH_SHORT).show();
+            facilityName1.setError("This data is Required!");    // Set Error on last radio button
+            Log.i(TAG, "f09a001: This data is Required!");
             return false;
         } else {
-            f09facid.setError(null);
+            facilityName1.setError(null);
         }
 
 
@@ -681,7 +689,7 @@ public class F09AActivity extends Activity {
         } else {
             f09gawk.setError(null);
         }
-        if (!validatorClass.RangeTextBox(this,f09gawk,0,42,getString(R.string.f09gawk)," weeks")) {
+        if (!validatorClass.RangeTextBox(this, f09gawk, 0, 42, getString(R.string.f09gawk), " weeks")) {
             return false;
         }
 
@@ -696,17 +704,17 @@ public class F09AActivity extends Activity {
             f09gad.setError(null);
         }
 
-        if (!validatorClass.RangeTextBox(this,f09gad,0,6,getString(R.string.f09gad)," days")) {
+        if (!validatorClass.RangeTextBox(this, f09gad, 0, 6, getString(R.string.f09gad), " days")) {
             return false;
         }
-        if (f09gawk.getText().toString().equals("0")&& f09gad.getText().toString().equals("0")) {
+        if (f09gawk.getText().toString().equals("0") && f09gad.getText().toString().equals("0")) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.f09gawk), Toast.LENGTH_SHORT).show();
             f09gawk.setError("Weeks and days both cannot be zero at the same time!");    // Set Error on last radio button
             f09gad.setError("Weeks and days both cannot be zero at the same time!");    // Set Error on last radio button
             Log.i(TAG, "f09gawk:Weeks and days both cannot be zero at the same time!");
             Log.i(TAG, "f09gad: Weeks and days both cannot be zero at the same time!");
             return false;
-        }else {
+        } else {
             f09gawk.setError(null);
             f09gad.setError(null);
         }
@@ -1135,16 +1143,16 @@ public class F09AActivity extends Activity {
 
         MainApp.fc.setApp_version(MainApp.versionName + "." + MainApp.versionCode);
         MainApp.fc.setLmp(lmp);
-        MainApp.fc.setRh_status(f09a003rh01.isChecked()?"1":f09a003rh02.isChecked()?"2":"0");
+        MainApp.fc.setRh_status(f09a003rh01.isChecked() ? "1" : f09a003rh02.isChecked() ? "2" : "0");
         String rhResult;
         if (f09a003rh01.isChecked()) {
             rhResult = "1";
-        }else if(f09a003rh02.isChecked()){
-           rhResult = "2";
-        }else {
+        } else if (f09a003rh02.isChecked()) {
+            rhResult = "2";
+        } else {
             rhResult = "0";
         }
-MainApp.rh.setRh_status(rhResult);
+        MainApp.rh.setRh_status(rhResult);
 
         //SharedPreferences sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
 
@@ -1162,7 +1170,7 @@ MainApp.rh.setRh_status(rhResult);
         JSONObject f9 = new JSONObject();
 
         f9.put("f09hcwid", f09hcwid.getText().toString());
-        f9.put("f09facid", f09facid.getText().toString());
+        f9.put("F09facility", facilityName1.isChecked() ? "1" : facilityName2.isChecked() ? "2" : "0");
         f9.put("f09gawk", f09gawk.getText().toString());
         f9.put("f09gad", f09gad.getText().toString());
 

@@ -43,6 +43,15 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
     EditText participantName;
     @BindView(R.id.screeningnum)
     EditText screeningnum;
+    @BindView(R.id.f03ascLocation)
+    RadioGroup f03ascLocation;
+
+    @BindView(R.id.f03ascLocation01)
+    RadioButton f03ascLocation01;
+
+    @BindView(R.id.f03ascLocation02)
+    RadioButton f03ascLocation02;
+
     @BindView(R.id.f03a001)
     RadioGroup f03a001;
     @BindView(R.id.f03a001a)
@@ -233,6 +242,7 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         MainApp.f03.put("screennum", screeningnum.getText().toString());
         MainApp.f03.put("participantName", participantName.getText().toString());
+        MainApp.f03.put("screeningLocation", f03ascLocation01.isChecked() ? "1" : f03ascLocation02.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a001", f03a001a.isChecked() ? "1" : f03a001b.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a002", f03a002a.isChecked() ? "1" : f03a002b.isChecked() ? "2" : "0");
         MainApp.f03.put("f03a002date", f03a002date.getText().toString());
@@ -275,6 +285,16 @@ public class F03AActivity extends AppCompatActivity implements RadioGroup.OnChec
         } else {
             participantName.setError(null);
         }
+
+        if (f03ascLocation.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(Empty)" + getString(R.string.locationOfScreening), Toast.LENGTH_SHORT).show();
+            f03ascLocation01.setError("This data is required");
+            Log.d(TAG, "f03a001:empty ");
+            return false;
+        } else {
+            f03ascLocation01.setError(null);
+        }
+
         // =================== 1 ====================
         if (f03a001.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(Empty)" + getString(R.string.f03a001), Toast.LENGTH_SHORT).show();
