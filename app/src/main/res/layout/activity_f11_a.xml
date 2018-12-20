@@ -36,7 +36,36 @@
             android:layout_height="2dp"
             android:layout_marginTop="5dp"
             android:background="@color/colorPrimary" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/locationOfScreening"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
+        <RadioGroup
+            android:id="@+id/f11facloc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/f11facloca"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="@string/locationOfScreening1" />
+
+            <RadioButton
+                android:id="@+id/f11faclocb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_weight="1"
+                android:text="@string/locationOfScreening2" />
+
+        </RadioGroup>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

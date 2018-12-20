@@ -1170,7 +1170,7 @@ public class F09AActivity extends Activity {
         JSONObject f9 = new JSONObject();
 
         f9.put("f09hcwid", f09hcwid.getText().toString());
-        f9.put("F09facility", facilityName1.isChecked() ? "1" : facilityName2.isChecked() ? "2" : "0");
+        f9.put("f09facid", facilityName1.isChecked() ? "1" : facilityName2.isChecked() ? "2" : "0");
         f9.put("f09gawk", f09gawk.getText().toString());
         f9.put("f09gad", f09gad.getText().toString());
 

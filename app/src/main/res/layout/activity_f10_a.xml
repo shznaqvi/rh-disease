@@ -408,7 +408,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
                 android:text="@string/f10a005c" />
-
+            <RadioButton
+                android:id="@+id/f10a005d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/f10a005d" />
             <RadioButton
                 android:id="@+id/f10a005888"
                 android:layout_width="match_parent"
@@ -416,12 +421,7 @@
                 android:layout_marginBottom="1dp"
                 android:text="@string/other" />
 
-            <RadioButton
-                android:id="@+id/f10a005d"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:text="@string/f10a005d" />
+
 
         </RadioGroup>
 

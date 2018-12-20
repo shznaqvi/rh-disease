@@ -351,6 +351,18 @@ public class F11AActivity extends AppCompatActivity {
     @BindView(R.id.btn_End)
     Button btn_End;
 
+
+    @BindView(R.id.f11facloc)
+    RadioGroup f11facloc;
+
+    @BindView(R.id.f11facloca)
+    RadioButton f11facloca;
+
+    @BindView(R.id.f11faclocb)
+    RadioButton f11faclocb;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -832,6 +844,15 @@ public class F11AActivity extends AppCompatActivity {
 
     private boolean formValidation() {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
+        //f11facloc
+        if (f11facloc.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.locationOfScreening), Toast.LENGTH_SHORT).show();
+            f11facloca.setError("This data is Required!");    // Set Error on last radio button
+            Log.i(TAG, "f11a002: This data is Required!");
+            return false;
+        } else {
+            f11facloca.setError(null);
+        }
 
         //f11a001
         if (f11a001.getText().toString().isEmpty()) {
@@ -1341,7 +1362,7 @@ public class F11AActivity extends AppCompatActivity {
 
         JSONObject f11 = new JSONObject();
 
-
+        f11.put("f11facloc", f11facloca.isChecked() ? "1" : f11faclocb.isChecked() ? "2" : "0");
         f11.put("f11a001", f11a001.getText().toString());
         f11.put("f11a002", f11a002a.isChecked() ? "1" : f11a002b.isChecked() ? "2" : "0");
         f11.put("f11a003", f11a003a.isChecked() ? "1" : f11a003b.isChecked() ? "2" : "0");
