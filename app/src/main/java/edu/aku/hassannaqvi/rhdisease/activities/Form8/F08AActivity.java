@@ -123,6 +123,13 @@ public class F08AActivity extends Activity {
     @BindView(R.id.count)
     TextView count;
 
+    @BindView(R.id.facilityName)
+    RadioGroup facilityName;
+    @BindView(R.id.facilityName1)
+    RadioButton facilityName1;
+    @BindView(R.id.facilityName2)
+    RadioButton facilityName2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -253,7 +260,16 @@ public class F08AActivity extends Activity {
         }*/
 
 
-        //        02
+        //
+        if (facilityName.getCheckedRadioButtonId() == -1) {
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.facilityName), Toast.LENGTH_SHORT).show();
+            facilityName1.setError("This data is Required!");    // Set Error on last radio button
+            Log.i(TAG, "f08a002: This data is Required!");
+            return false;
+        } else {
+            facilityName1.setError(null);
+        }
+        //      02
         if (f08a002.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "ERROR(empty): " + getString(R.string.f08a002), Toast.LENGTH_SHORT).show();
             f08a002a.setError("This data is Required!");    // Set Error on last radio button
@@ -449,6 +465,7 @@ public class F08AActivity extends Activity {
             f8.put("f08a001", f08a001.getText().toString());
         }*/
 
+        f8.put("f08facility", facilityName1.isChecked() ? "1" : facilityName2.isChecked() ? "2" : "0");
         f8.put("f08a002", f08a002a.isChecked() ? "1"
                 : f08a002b.isChecked() ? "2"
                 : f08a002c.isChecked() ? "3"

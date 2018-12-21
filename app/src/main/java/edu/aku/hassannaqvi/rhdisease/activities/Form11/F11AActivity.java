@@ -362,7 +362,6 @@ public class F11AActivity extends AppCompatActivity {
     RadioButton f11faclocb;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -834,7 +833,7 @@ public class F11AActivity extends AppCompatActivity {
                 if (b) {
                     f11b024888x.setVisibility(View.VISIBLE);
                     f11b024888x.requestFocus();
-                }else {
+                } else {
                     f11b024888x.setText(null);
                     f11b024888x.setVisibility(GONE);
                 }
@@ -846,7 +845,7 @@ public class F11AActivity extends AppCompatActivity {
         Toast.makeText(this, "Validating This Section ", Toast.LENGTH_SHORT).show();
         //f11facloc
         if (f11facloc.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "ERROR(empty): " + getString(R.string.locationOfScreening), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ERROR(empty): " + getString(R.string.facilityName), Toast.LENGTH_SHORT).show();
             f11facloca.setError("This data is Required!");    // Set Error on last radio button
             Log.i(TAG, "f11a002: This data is Required!");
             return false;
@@ -1248,9 +1247,6 @@ public class F11AActivity extends AppCompatActivity {
                 }
 
 
-
-
-
             }
 
 
@@ -1335,9 +1331,7 @@ public class F11AActivity extends AppCompatActivity {
         if (f11b023a.isChecked() || f11b023999.isChecked()) {
 
             //f11b024
-            if (!validatorClass.EmptyCheckBox(this,f11b024,f11b024888,f11b024888x,getString(R.string.f11b024))) {
-                return false;
-            }
+            return validatorClass.EmptyCheckBox(this, f11b024, f11b024888, f11b024888x, getString(R.string.f11b024));
         }
 
 
@@ -1513,14 +1507,14 @@ public class F11AActivity extends AppCompatActivity {
                 : "0");
 
 
-        f11.put("f11b024a", f11b024a.isChecked() ? "1":"0");
-        f11.put("f11b024b", f11b024b.isChecked() ? "2":"0");
-        f11.put("f11b024c", f11b024c.isChecked() ? "3":"0");
-        f11.put("f11b024d", f11b024d.isChecked() ? "4":"0");
-        f11.put("f11b024e", f11b024e.isChecked() ? "5":"0");
-        f11.put("f11b024f", f11b024f.isChecked() ? "6":"0");
-        f11.put("f11b024g", f11b024g.isChecked() ? "7":"0");
-        f11.put("f11b024888", f11b024888.isChecked() ? "888":"0");
+        f11.put("f11b024a", f11b024a.isChecked() ? "1" : "0");
+        f11.put("f11b024b", f11b024b.isChecked() ? "2" : "0");
+        f11.put("f11b024c", f11b024c.isChecked() ? "3" : "0");
+        f11.put("f11b024d", f11b024d.isChecked() ? "4" : "0");
+        f11.put("f11b024e", f11b024e.isChecked() ? "5" : "0");
+        f11.put("f11b024f", f11b024f.isChecked() ? "6" : "0");
+        f11.put("f11b024g", f11b024g.isChecked() ? "7" : "0");
+        f11.put("f11b024888", f11b024888.isChecked() ? "888" : "0");
         f11.put("f11b024888x", f11b024888x.getText().toString());
 
         MainApp.fc.setF11(String.valueOf(f11));

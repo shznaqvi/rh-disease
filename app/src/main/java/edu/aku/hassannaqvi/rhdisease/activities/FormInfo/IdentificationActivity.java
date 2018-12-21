@@ -86,12 +86,9 @@ public class IdentificationActivity extends Activity {
 
         if (MainApp.formType.equals("8")) {
             fldGrpF08.setVisibility(View.VISIBLE);
-            fldgrpfacility.setVisibility(View.VISIBLE);
-        } else if (MainApp.formType.equals("10")) {
-            fldgrpfacility.setVisibility(View.VISIBLE);
+
         } else {
             fldGrpF08.setVisibility(View.GONE);
-            fldgrpfacility.setVisibility(View.GONE);
             f08a001.setText(null);
             f08a001999.setChecked(false);
         }
@@ -538,14 +535,11 @@ public class IdentificationActivity extends Activity {
         JSONObject sInfo = new JSONObject();
 
         sInfo.put("f08a001", f08a001999.isChecked() ? "999" : f08a001.getText().toString());
-        sInfo.put("facility_name", facilityName1.isChecked() ? "1" : facilityName2.isChecked() ? "2" : "0");
+
         MainApp.TotalFetusCount = Integer.valueOf(f08a001.getText().toString().isEmpty() ? "0" : f08a001.getText().toString());
 
         if (MainApp.formType.equals("8")) {
             MainApp.fc.setF08(String.valueOf(sInfo));
-        }
-        if (MainApp.formType.equals("10")) {
-            MainApp.fc.setF11(String.valueOf(sInfo));
         }
 
         MainApp.setGPS(this);
