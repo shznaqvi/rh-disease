@@ -61,15 +61,17 @@ public class IdentificationActivity extends Activity {
     @BindView(R.id.fldGrpfooter)
     LinearLayout fldGrpfooter;
 
-    @BindView(R.id.facilityName)
+ /*   @BindView(R.id.facilityName)
     RadioGroup facilityName;
     @BindView(R.id.facilityName1)
     RadioButton facilityName1;
     @BindView(R.id.facilityName2)
     RadioButton facilityName2;
-
+*/
+/*
     @BindView(R.id.fldgrpfacility)
     LinearLayout fldgrpfacility;
+*/
 
 
     DatabaseHelper db;
@@ -115,11 +117,11 @@ public class IdentificationActivity extends Activity {
         String formType = MainApp.formType;
         switch (formType) {
             case MainApp.FORM16:
-                if (db.isF12dublicate(participantId.getText().toString())) {
+                if (db.isF11dublicate(participantId.getText().toString())) {
                     fldGrpfooter.setVisibility(View.VISIBLE);
                 } else {
                     fldGrpfooter.setVisibility(View.GONE);
-                    Toast.makeText(this, "Please fill form 12 first!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Please fill form 11 first!", Toast.LENGTH_LONG).show();
                 }
                 break;
             case MainApp.FORM13:
@@ -196,26 +198,7 @@ public class IdentificationActivity extends Activity {
                 if (db.isF9dublicate(participantId.getText().toString())) {
                     if (!db.checkForRH_Results(participantId.getText().toString())) {
                         if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE)) {
-                            rh_resultsContract resultsContract = new rh_resultsContract();
-                            resultsContract = db.getRH_Results(participantId.getText().toString(), MainApp.RH_NEGATIVE);
-                            if (!resultsContract.get_id().equals("")) {
-                                try {
-                                    String lmpDate = resultsContract.getLmp();
-                                    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                                    Date frmDate = sdf.parse(lmpDate);
-                                    Date curretDate = new Date();
-                                    Double GA = getDateDiff(frmDate, curretDate, TimeUnit.DAYS);
-//                                    if (GA >= 32 && GA <= 36) {
-                                    if (GA >= 20 && GA <= 42) {
-                                        fldGrpfooter.setVisibility(View.VISIBLE);
-                                        Toast.makeText(this, "Gestational age is " + GA, Toast.LENGTH_LONG).show();
-                                    } else {
-                                        Toast.makeText(this, "Gestational age is " + GA + " i:e not in range", Toast.LENGTH_LONG).show();
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
+                                fldGrpfooter.setVisibility(View.VISIBLE);
                         } else if (db.checkForRH_Results(participantId.getText().toString(), MainApp.RH_POSITIVE)) {
                             fldGrpfooter.setVisibility(View.VISIBLE);
                         }
