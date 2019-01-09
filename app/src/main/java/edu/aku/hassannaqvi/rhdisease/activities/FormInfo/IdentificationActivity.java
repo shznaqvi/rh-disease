@@ -61,16 +61,6 @@ public class IdentificationActivity extends Activity {
     @BindView(R.id.fldGrpfooter)
     LinearLayout fldGrpfooter;
 
-    @BindView(R.id.facilityName)
-    RadioGroup facilityName;
-    @BindView(R.id.facilityName1)
-    RadioButton facilityName1;
-    @BindView(R.id.facilityName2)
-    RadioButton facilityName2;
-
-    @BindView(R.id.fldgrpfacility)
-    LinearLayout fldgrpfacility;
-
 
     DatabaseHelper db;
     boolean check = false;

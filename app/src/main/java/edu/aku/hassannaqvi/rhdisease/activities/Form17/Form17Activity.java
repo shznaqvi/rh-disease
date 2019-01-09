@@ -141,6 +141,7 @@ public class Form17Activity extends AppCompatActivity {
         f17.put("f1703t", bi.f1703t.getText().toString());
         f17.put("f1704d", bi.f1704d.getText().toString());
         f17.put("f1704t", bi.f1704t.getText().toString());
+        f17.put("f1704name", bi.f1704a.getText().toString());
         f17.put("f1705", bi.f1705a.isChecked() ? "1" : bi.f1705b.isChecked() ? "2" : "0");
         f17.put("f1706", bi.f1706a.isChecked() ? "1" : bi.f1706b.isChecked() ? "2" : "0");
         f17.put("f17researchName",MainApp.userName);
@@ -182,6 +183,9 @@ public class Form17Activity extends AppCompatActivity {
                         return false;
                     }
                     if (!validatorClass.EmptyTextBox(this, bi.f1704t, getString(R.string.f1704) + " " + getString(R.string.time))) {
+                        return false;
+                    }
+                    if (!validatorClass.EmptyTextBox(this, bi.f1704a, getString(R.string.f1704a))) {
                         return false;
                     }
                     if (!validatorClass.EmptyRadioButton(this, bi.f1705, bi.f1705a, getString(R.string.f1705))) {
