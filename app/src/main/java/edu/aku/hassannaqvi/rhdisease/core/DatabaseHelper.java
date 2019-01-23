@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "rhdisease.db";
     public static final String DB_NAME = "rhdisease_copy.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     private static final String SQL_CREATE_FORMS = "CREATE TABLE "
             + FormsTable.TABLE_NAME + "("
@@ -138,7 +138,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             RH_ResultsTable.COLUMN_F12 + " TEXT,"+
             RH_ResultsTable.COLUMN_F13 + " TEXT,"+
             RH_ResultsTable.COLUMN_F14 + " TEXT,"+
-            RH_ResultsTable.COLUMN_F16 + " TEXT"
+            RH_ResultsTable.COLUMN_F16 + " TEXT,"+
+            RH_ResultsTable.COLUMN_DOD + " TEXT"
             + " );";
     private static final String SQL_CREATE_FILLEDFORMS = "CREATE TABLE "
             + FilledFormsTable.TABLE_NAME + "("
@@ -175,6 +176,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_ALTER_FORM_ADD_F16 = "ALTER TABLE " +
             FormsTable.TABLE_NAME + " ADD COLUMN " +
             FormsTable.COLUMN_F16 + " TEXT";
+    private static final String SQL_ALTER_RHRESULT_ADD_DOD = "ALTER TABLE " +
+            RH_ResultsTable.TABLE_NAME + " ADD COLUMN " +
+            RH_ResultsTable.COLUMN_DOD + " TEXT";
     private static final String SQL_ALTER_FORM_ADD_F17 = "ALTER TABLE " +
             FormsTable.TABLE_NAME + " ADD COLUMN " +
             FormsTable.COLUMN_F17 + " TEXT";
@@ -237,6 +241,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 3:
                 db.execSQL(SQL_ALTER_FORM_ADD_F16);
                 db.execSQL(SQL_ALTER_FORM_ADD_F17);
+            case 4:
+                db.execSQL(SQL_ALTER_RHRESULT_ADD_DOD);
 
         }
 
@@ -315,6 +321,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(RH_ResultsTable.COLUMN_F13, rh.getf13());
                 values.put(RH_ResultsTable.COLUMN_F14, rh.getf14());
                 values.put(RH_ResultsTable.COLUMN_F16, rh.getf16());
+                values.put(RH_ResultsTable.COLUMN_DOD, rh.getDod());
 
 
 
@@ -846,6 +853,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rh;
 
     }
+    public String getRH_Results_DOD(String participantID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String rh = null;
+        String query = "SELECT  * FROM " + RH_ResultsTable.TABLE_NAME + " WHERE " + RH_ResultsTable.COLUMN_PARTICIPANTID + " = '" + participantID+"'";
+
+        Cursor mCursor = db.rawQuery(query, null);
+        if (mCursor != null) {
+            if (mCursor.getCount() > 0) {
+                mCursor.moveToFirst();
+                rh = mCursor.getString(mCursor.getColumnIndex(RH_ResultsTable.COLUMN_DOD));
+            }
+        }
+        db.close();
+        return rh;
+
+    }
     public rh_resultsContract getRH_Results(String participantID, String status) {
 
         // Select All Query
@@ -1080,6 +1103,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(RH_ResultsTable.COLUMN_F13, rh.getf13());
         values.put(RH_ResultsTable.COLUMN_F14, rh.getf14());
         values.put(RH_ResultsTable.COLUMN_F16, rh.getf16());
+        values.put(RH_ResultsTable.COLUMN_DOD, rh.getDod());
 
 
         // Insert the new row, returning the primary key value of the new row

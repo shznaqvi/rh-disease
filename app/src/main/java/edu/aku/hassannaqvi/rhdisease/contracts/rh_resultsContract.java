@@ -31,6 +31,7 @@ public class rh_resultsContract {
     private String f13 = "";
     private String f14 = "";
     private String f16 = "";
+    private String dod = "";
 
 
     public String getIsrhCompleted() {
@@ -217,6 +218,14 @@ public class rh_resultsContract {
         this.f10_uid = f10_uid;
     }
 
+    public String getDod() {
+        return dod;
+    }
+
+    public void setDod(String dod) {
+        this.dod = dod;
+    }
+
     public rh_resultsContract Sync(JSONObject jsonObject) throws JSONException {
         this.participantid= jsonObject.getString(RH_ResultsTable.COLUMN_PARTICIPANTID);
         this.lmp= jsonObject.getString(RH_ResultsTable.COLUMN_LMP);
@@ -240,6 +249,7 @@ public class rh_resultsContract {
         this.f13= jsonObject.getString(RH_ResultsTable.COLUMN_F13);
         this.f14= jsonObject.getString(RH_ResultsTable.COLUMN_F14);
         this.f16= jsonObject.getString(RH_ResultsTable.COLUMN_F16);
+        this.dod= jsonObject.getString(RH_ResultsTable.COLUMN_DOD);
 
 
 
@@ -270,6 +280,7 @@ public class rh_resultsContract {
         this.f13 = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F13));
         this.f14 = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F14));
         this.f16 = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_F16));
+        this.dod = cursor.getString(cursor.getColumnIndex(RH_ResultsTable.COLUMN_DOD));
 
 
         return this;
@@ -300,6 +311,7 @@ public class rh_resultsContract {
         json.put(RH_ResultsTable.COLUMN_F13, this.f13 == null ? JSONObject.NULL : this.f13);
         json.put(RH_ResultsTable.COLUMN_F14, this.f14 == null ? JSONObject.NULL : this.f14);
         json.put(RH_ResultsTable.COLUMN_F16, this.f16 == null ? JSONObject.NULL : this.f16);
+        json.put(RH_ResultsTable.COLUMN_DOD, this.dod == null ? JSONObject.NULL : this.dod);
 
 
         return json;
@@ -330,6 +342,7 @@ public class rh_resultsContract {
         public static final String COLUMN_F13 = "f13";
         public static final String COLUMN_F14 = "f14";
         public static final String COLUMN_F16 = "f16";
+        public static final String COLUMN_DOD = "dod"; // Date of Delivery
 
 
         public static String _URL = "rh_results.php";

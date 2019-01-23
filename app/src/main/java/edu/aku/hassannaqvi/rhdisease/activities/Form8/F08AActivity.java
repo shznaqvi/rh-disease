@@ -306,6 +306,9 @@ public class F08AActivity extends Activity {
             } else {
                 f08a004.setError(null);
             }
+            if (!validatorClass.RangeTextBox(this,f08a004,72,90,getString(R.string.f08a004)," mm")) {
+                return false;
+            }
         }
 
 
@@ -319,7 +322,7 @@ public class F08AActivity extends Activity {
             } else {
                 f08a005.setError(null);
             }
-            if (!validatorClass.RangeTextBox(this,f08a005,280,350,getString(R.string.f08a005)," mm")) {
+            if (!validatorClass.RangeTextBox(this,f08a005,240,350,getString(R.string.f08a005)," mm")) {
                return false;
             }
         }
@@ -348,6 +351,9 @@ public class F08AActivity extends Activity {
                 return false;
             } else {
                 f08a007.setError(null);
+            }
+            if (!validatorClass.RangeTextBox(this,f08a007,54,69,getString(R.string.f08a007)," mm")) {
+                return false;
             }
         }
 

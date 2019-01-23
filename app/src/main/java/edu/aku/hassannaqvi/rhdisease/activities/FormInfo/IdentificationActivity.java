@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -127,7 +129,32 @@ public class IdentificationActivity extends Activity {
             case MainApp.FORM13:
                 if (!db.isF13dublicate(participantId.getText().toString())) {
                     if (db.isF12dublicate(participantId.getText().toString())) {
-                        fldGrpfooter.setVisibility(View.VISIBLE);
+                        String dod = "";
+                        dod = db.getRH_Results_DOD(participantId.getText().toString());
+                            if(!TextUtils.isEmpty(dod)){
+                                try {
+                                    String dateofDelivery = dod;
+                                    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                                    Date frmDate = sdf.parse(dateofDelivery);
+                                    Date curretDate = new Date();
+                                    long windowperiod = getDateDiffinDays(frmDate, curretDate, TimeUnit.DAYS);
+                                    if (windowperiod >= 29 && windowperiod <= 31) {
+                                        fldGrpfooter.setVisibility(View.VISIBLE);
+                                        Toast.makeText(this, "Window period is " + windowperiod, Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(this, "Window period  is " + windowperiod + " that is either fall short of or exceeds the duration!", Toast.LENGTH_LONG).show();
+                                        fldGrpfooter.setVisibility(View.GONE);
+
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }else {
+                                Toast.makeText(this, "Date of Delivery Not Found!!!", Toast.LENGTH_LONG).show();
+                            }
+
+
+//                        fldGrpfooter.setVisibility(View.VISIBLE);
                     } else {
                         fldGrpfooter.setVisibility(View.GONE);
                         Toast.makeText(this, "Please fill form 12 first!", Toast.LENGTH_LONG).show();
@@ -140,7 +167,32 @@ public class IdentificationActivity extends Activity {
             case MainApp.FORM12:
                 if (!db.isF12dublicate(participantId.getText().toString())) {
                     if (db.isF11dublicate(participantId.getText().toString())) {
-                        fldGrpfooter.setVisibility(View.VISIBLE);
+                        String dod = "";
+                        dod = db.getRH_Results_DOD(participantId.getText().toString());
+                        if(!TextUtils.isEmpty(dod)){
+                            try {
+                                String dateofDelivery = dod;
+                                DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                                Date frmDate = sdf.parse(dateofDelivery);
+                                Date curretDate = new Date();
+                                long windowperiod = getDateDiffinDays(frmDate, curretDate, TimeUnit.DAYS);
+                                if (windowperiod >= 29 && windowperiod <= 31) {
+                                    fldGrpfooter.setVisibility(View.VISIBLE);
+                                    Toast.makeText(this, "Window period is " + windowperiod, Toast.LENGTH_LONG).show();
+                                } else {
+                                    Toast.makeText(this, "Window period  is " + windowperiod + " that is either fall short of or exceeds the duration!", Toast.LENGTH_LONG).show();
+                                    fldGrpfooter.setVisibility(View.GONE);
+
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }else {
+                            Toast.makeText(this, "Date of Delivery Not Found!!!", Toast.LENGTH_LONG).show();
+                        }
+
+
+//                        fldGrpfooter.setVisibility(View.VISIBLE);
                     } else {
                         fldGrpfooter.setVisibility(View.GONE);
                         Toast.makeText(this, "Please fill form 11 first!", Toast.LENGTH_LONG).show();
@@ -373,6 +425,11 @@ public class IdentificationActivity extends Activity {
         long days = timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS) % 7;
         Double gage = Double.parseDouble(weeks + "." + days);
         return gage;
+    }
+    public static long getDateDiffinDays(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        long days = timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        return days;
     }
 
     @OnClick(R.id.btn_Continue)
