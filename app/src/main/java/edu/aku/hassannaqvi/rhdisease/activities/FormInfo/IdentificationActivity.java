@@ -133,8 +133,9 @@ public class IdentificationActivity extends Activity {
                         dod = db.getRH_Results_DOD(participantId.getText().toString());
                             if(!TextUtils.isEmpty(dod)){
                                 try {
-                                    String dateofDelivery = dod;
-                                    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                                    String[] dodarr = dod.split(" ");
+                                    String dateofDelivery = dodarr[0];
+                                    DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                                     Date frmDate = sdf.parse(dateofDelivery);
                                     Date curretDate = new Date();
                                     long windowperiod = getDateDiffinDays(frmDate, curretDate, TimeUnit.DAYS);
@@ -171,8 +172,9 @@ public class IdentificationActivity extends Activity {
                         dod = db.getRH_Results_DOD(participantId.getText().toString());
                         if(!TextUtils.isEmpty(dod)){
                             try {
-                                String dateofDelivery = dod;
-                                DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+                                String[] dodarr = dod.split(" ");
+                                String dateofDelivery = dodarr[0];
+                                DateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                                 Date frmDate = sdf.parse(dateofDelivery);
                                 Date curretDate = new Date();
                                 long windowperiod = getDateDiffinDays(frmDate, curretDate, TimeUnit.DAYS);
